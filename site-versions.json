@@ -1,0 +1,23 @@
+{
+  "site": "htp.sh",
+  "serving": "gh",
+  "versions": [
+    {
+      "id": "cf",
+      "runtime": "cloudflare-workers",
+      "origin": "https://cf.htp.sh",
+      "apex": "https://htp.sh"
+    },
+    {
+      "id": "vercel",
+      "runtime": "vercel",
+      "origin": "https://vercel.htp.sh"
+    },
+    {
+      "id": "gh",
+      "runtime": "github-pages",
+      "origin": "https://gh.htp.sh",
+      "pages": "https://tailoredaccessoperations.github.io/htp-edge/"
+    }
+  ]
+}
