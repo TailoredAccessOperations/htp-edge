@@ -1,0 +1,15 @@
+{
+  "name": "pi-htp-sh-worker",
+  "version": "1.0.0",
+  "description": "Cloudflare Worker serving pi.htp.sh static site with security headers",
+  "main": "src/index.ts",
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "publish": "wrangler publish"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20240808.0",
+    "wrangler": "^4.131.1"
+  }
+}

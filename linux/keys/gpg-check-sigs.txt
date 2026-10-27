@@ -1,0 +1,57 @@
+/tmp/kb-gnupg/pubring.kbx
+-------------------------
+pub   rsa4096 2015-10-28 [SC]
+      B8BCDE6BEA3EA0A82E0C4254EBEFE17FC98AE022
+uid           [ unknown] keybase.io/linux <linux@keybase.io>
+sig!3        EBEFE17FC98AE022 2015-10-28  [self-signature]
+
+pub   rsa4096 2015-11-09 [SC]
+      AF6A43DDD8FF680E6F829DE93C152EDF89C41A7D
+uid           [ unknown] keybase.io/linux <linux@keybase.io>
+sig!3        3C152EDF89C41A7D 2015-11-09  [self-signature]
+
+pub   rsa4096 2017-10-20 [SC]
+      A3AAE6E98A01A49605E6C327EE32288C6BCD7F7B
+uid           [ unknown] LOL DONGS <fish@neko.li>
+sig!3        EE32288C6BCD7F7B 2017-10-20  [self-signature]
+
+pub   rsa4096 2016-01-11 [SC]
+      F2FF202B093F7C006C802772FE5FCFCCFCEF7946
+uid           [ unknown] Snowden <root@masa.li>
+sig!3        FE5FCFCCFCEF7946 2016-01-11  [self-signature]
+sig!3        FE5FCFCCFCEF7946 2016-01-11  [self-signature]
+
+pub   rsa4096 2018-11-28 [SC] [expires: 2034-11-24]
+      CFAF38D3B4F9CE3C741A25C5248DD05E7659917C
+uid           [ unknown] John Doe <x@neko.li>
+sig!3        248DD05E7659917C 2018-11-28  [self-signature]
+uid           [ unknown] John Doe <x@htp.re>
+sig!3        248DD05E7659917C 2018-11-28  [self-signature]
+sub   rsa4096 2018-11-28 [E] [expires: 2034-11-24]
+      75C29AFA98E64ECAFE9430AF5F4BA80ED811C50B
+sig!         248DD05E7659917C 2018-11-28  [self-signature]
+
+pub   rsa4096 2020-05-03 [SC] [expires: 2036-04-29]
+      FBAC1C8431B354C2B7189CFB35DAA039056F8983
+uid           [ unknown] Yuri Kazantsev <user@neko.li>
+sig!3        35DAA039056F8983 2020-05-03  [self-signature]
+uid           [ unknown] Yuri Kazantsev <x@htp.sh>
+sig!3        35DAA039056F8983 2020-05-03  [self-signature]
+uid           [ unknown] Yuri Kazantsev <0x539@htp.sh>
+sig!3        35DAA039056F8983 2020-05-03  [self-signature]
+sub   rsa4096 2020-05-03 [E] [expires: 2036-04-29]
+      7A1ADDEAC1D3AD49B01AC1DACD9525DE9480D97A
+sig!         35DAA039056F8983 2020-05-03  [self-signature]
+
+pub   rsa4096 2022-10-24 [SC] [expires: 2038-10-20]
+      DA994C8789892C2C9CA0DF149E88D841D1DDC62E
+uid           [ unknown] Will Ericson <admin@htp.sh>
+sig!3        9E88D841D1DDC62E 2022-10-24  [self-signature]
+uid           [ unknown] Will Ericson <x@neko.li>
+sig!3        9E88D841D1DDC62E 2022-10-24  [self-signature]
+sub   rsa4096 2022-10-24 [E] [expires: 2038-10-20]
+      7DF5FA6F43FF0EB78EC3F073F027AC0389673261
+sig!         9E88D841D1DDC62E 2022-10-24  [self-signature]
+
+
+gpg: 15 good signatures

@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Spiral lattice — linux and easter47</title>
+<link rel="stylesheet" href="/linux/lattice.css">
+<link href="/css/htp-critical-viewport.css?v=2" rel="stylesheet"><link href="/css/htp-responsive.css?v=2" rel="stylesheet"><script src="/js/htp-viewport.js?v=2" defer></script></head>
+<body>
+<a class="skip" href="#ledger">Skip to the ledger</a>
+<div class="page">
+<header class="top">
+  <svg class="mark" viewBox="0 0 64 64" aria-hidden="true">
+    <path d="M 32.0 29.0 L 33.9 28.7 L 35.4 29.2 L 36.6 30.4 L 37.4 32.1 L 37.6 34.2 L 36.9 36.3 L 35.3 38.2 L 33.1 39.5 L 30.3 39.9 L 27.4 39.3 L 24.7 37.6 L 22.7 34.9 L 21.7 31.5 L 22.1 27.7 L 23.8 24.2 L 26.7 21.3 L 30.7 19.6 L 35.2 19.4 L 39.6 20.8 L 43.5 23.9 L 46.1 28.2 L 47.1 33.3 L 46.2 38.7 L 43.4 43.6 L 38.9 47.3 L 33.2 49.2 L 27.0 49.1 L 21.1 46.8 L 16.2 42.4 L 13.1 36.4 L 12.2 29.5 L 13.8 22.6 L 17.8 16.5 L 23.8 12.0 L 31.2 9.9 L 39.1 10.4 L 46.4 13.8 L 52.3 19.6 L 55.8 27.3 L 56.5 35.9 L 54.1 44.4 L 48.8 51.7 L 41.1 56.8 L 32.0 59.0"/>
+  </svg>
+  <div>
+    <p class="kicker"><a href="/linux/">htp.sh/linux</a> · E8 · 240 roots · Coxeter plane</p>
+    <h1>Spiral lattice</h1>
+    <p class="lede">linux and easter47, one root system. The copper spiral is linux in signature order, seq 1 through 349. The open blue arc continues with easter47, seq 1 through 25. The flower is all 240 roots. A link sits on the spiral, and it is indexed to the nearest root.</p>
+    <ul class="facts">
+      <li>349/349 linux pass</li>
+      <li>25/25 easter47 pass</li>
+      <li>seq 10 pins seq 349</li>
+      <li>0 shared fingerprints</li>
+    </ul>
+  </div>
+</header>
+
+<div class="shell">
+  <div class="bezel">
+    <div class="stage">
+      <svg id="plate" viewBox="0 0 1000 1000" tabindex="0" role="img" aria-labelledby="plate-title">
+        <title id="plate-title">Spiral of 374 verified links around the E8 root flower. Left and right arrows move the selection. The ledger lists every link.</title>
+      </svg>
+      <p class="legend"><span class="swatch linux"></span>linux <span class="swatch easter"></span>easter47 <span class="swatch sync"></span>track <span class="swatch root"></span>integer root <span class="swatch half"></span>half-integer root</p>
+      <p class="hoverline" id="hoverline">Select a bead or a ledger row.</p>
+    </div>
+  </div>
+  <aside class="panel" id="reading" aria-live="polite">
+    <p class="kicker" id="read-kicker">Lattice</p>
+    <h2 id="read-title">Both chains</h2>
+    <p class="statement" id="read-statement">The picture loads from the public index. The ledger below already lists every link.</p>
+    <p class="note-line" id="read-note"></p>
+    <dl id="read-facts"></dl>
+  </aside>
+</div>
+<p class="sr" id="live" aria-live="polite"></p>
+
+<section id="ledger">
+  <h2 class="ledger-title">Ledger <em id="occupied"></em></h2>
+  <div class="toolbar">
+    <div class="modes" role="group" aria-label="Which links to show">
+      <button type="button" data-mode="all" aria-pressed="true">All</button>
+      <button type="button" data-mode="linux" aria-pressed="false">linux</button>
+      <button type="button" data-mode="easter47" aria-pressed="false">easter47</button>
+      <button type="button" data-mode="sync" aria-pressed="false">Sync</button>
+    </div>
+    <label class="search">Find
+      <input id="q" type="search" placeholder="seq, htp.sh, pgp, root">
+    </label>
+    <span id="count"></span>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <caption class="sr">Every verified link from linux and easter47, with its nearest E8 root.</caption>
+      <thead>
+        <tr><th>Account</th><th>Seq</th><th>Time</th><th>Type</th><th>Statement</th><th>Root</th><th>Check</th></tr>
+      </thead>
+      <tbody id="ledger-body"></tbody>
+    </table>
+  </div>
+</section>
+
+<footer class="colophon">
+  <p>Nearest root: eight bytes of the payload hash, mapped to coordinates in the range −1 to 1, then the Euclidean nearest of the 240 roots. Ties keep the lower index. The same rule as the site lattice. The index is geometric. The signatures were checked before this picture was drawn.</p>
+  <p>The flower is the Coxeter plane. In that plane the Coxeter element is a 12° rotation, order 30. Norms are √2. Inner products of distinct non-opposite roots are −1, 0, or 1. 112 roots are integer, 128 are half-integer with an even number of minus signs.</p>
+  <p>linux PGP <a href="/linux/keys/DA994C8789892C2C9CA0DF149E88D841D1DDC62E.asc">da994c8789892c2c9ca0df149e88d841d1ddc62e</a> and easter47 PGP <a href="/linux/easter47/20867A78369EA23A420DF3C4D10E7AF2A93DE56B.asc">20867A78369EA23A420DF3C4D10E7AF2A93DE56B</a> are different keys. GnuPG shows no certification from one onto the other. A track pins a published chain head. A cryptocurrency line is a signed claim.</p>
+  <p><a href="/linux/lattice.json">lattice.json</a> · <a href="/linux/current/sigchain.json">linux sigchain</a> · <a href="/linux/easter47/sigchain.json">easter47 sigchain</a> · <a href="/linux/sync/crossref.json">crossref</a> · <a href="/linux/">record</a></p>
+</footer>
+</div>
+<noscript><p>The spiral needs the script. The link list is in <a href="/linux/lattice.json">lattice.json</a> and on the <a href="/linux/">linux record</a>.</p></noscript>
+<script src="/linux/lattice.js"></script>
+</body>
+</html>

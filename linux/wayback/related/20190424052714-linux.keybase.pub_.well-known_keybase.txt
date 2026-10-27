@@ -1,0 +1,56 @@
+==================================================================
+https://keybase.io/linux
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://linux.keybase.pub
+  * I am linux (https://keybase.io/linux) on keybase.
+  * I have a public key ASB50kh1ZqB5GEVL5eSnZrpWZqNmfkhvAE0hdBLuD5inQQo
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "012079d2487566a07918454be5e4a766ba5666a3667e486f004d217412ee0f98a7410a",
+      "host": "keybase.io",
+      "kid": "012079d2487566a07918454be5e4a766ba5666a3667e486f004d217412ee0f98a7410a",
+      "uid": "caf90169eefa5f807d577486b9f79519",
+      "username": "linux"
+    },
+    "merkle_root": {
+      "ctime": 1543438023,
+      "hash": "4ac61cae0ebe161e13f50bff4e0a96a776c34efc84733488ab829931308bddcce2da2ab88ffdf988596070a93e615f05c184371efdd8d772b79015126ab17d9b",
+      "hash_meta": "651cb928c3df4857f8ea737c61d8e2e36fd1a49e4a30af55e871ce995ef06177",
+      "seqno": 4023949
+    },
+    "service": {
+      "entropy": "GYQItmB5H8xDEeeoGObH4OPG",
+      "hostname": "linux.keybase.pub",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 2
+  },
+  "client": {
+    "name": "keybase.io go client",
+    "version": "2.10.1"
+  },
+  "ctime": 1543438057,
+  "expire_in": 504576000,
+  "prev": "5f11f80c310f09a23537c8299be3b17d9232890d74babd5df961dc46cdb6517a",
+  "seqno": 174,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEgedJIdWageRhFS+Xkp2a6VmajZn5IbwBNIXQS7g+Yp0EKp3BheWxvYWTES5cCzK7EIF8R+AwxDwmiNTfIKZvjsX2SMokNdLq9Xflh3EbNtlF6xCBl74U41xSKkrOaSMqAlUrJHc12WPpOCQAYOt9pdl/GYwIBwqNzaWfEQIfYL86NFbyrXQRexdPwey++0opvm9Rx/jZiXpCejK4E9SKJj9fMnJJKzfvB5u3MSsuGAIxvcNQGKfiBm6/PwwGoc2lnX3R5cGUgpGhhc2iCpHR5cGUIpXZhbHVlxCC3UKiiPLdZ1F0PpC0MkEd8Mcj2hHVncKsagt3HOJcUAqN0YWfNAgKndmVyc2lvbgE=
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/linux
+
+==================================================================

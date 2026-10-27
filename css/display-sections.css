@@ -1,0 +1,176 @@
+/* Display page composition
+ * Keeps the original terminal aesthetic while giving every functional area
+ * a predictable section boundary, heading rhythm, and responsive surface.
+ */
+:root {
+  --display-width: 1180px;
+  --display-gap: clamp(1.25rem, 3vw, 2.75rem);
+  --display-rule: rgba(74, 222, 128, .18);
+  --display-surface: rgba(4, 12, 8, .72);
+}
+
+body > .htp-termbar,
+main.site,
+.display-section,
+.page-section {
+  min-width: 0;
+}
+
+.htp-termbar.top {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  max-width: var(--display-width);
+  margin-inline: auto;
+  padding-inline: clamp(.75rem, 3vw, 1.5rem);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.top-actions {
+  scrollbar-width: thin;
+  scrollbar-color: var(--green-dim) transparent;
+}
+
+.display-section,
+.page-section {
+  position: relative;
+  width: min(100%, var(--display-width));
+  margin-inline: auto;
+  scroll-margin-top: 4.75rem;
+}
+
+.display-section + .page-section,
+.page-section + .page-section {
+  border-top: 1px solid var(--display-rule);
+}
+
+.display-section--tv {
+  width: 100%;
+  max-width: var(--display-width);
+  padding: clamp(1rem, 3vw, 2rem) var(--page-gutter, 1rem) clamp(1.5rem, 4vw, 3rem);
+}
+
+.page-section--media-stage {
+  display: grid;
+  place-items: center;
+  min-height: clamp(20rem, 60vw, 42rem);
+  padding: clamp(1.5rem, 5vw, 4rem) var(--page-gutter, 1rem);
+  background: linear-gradient(180deg, rgba(0, 12, 7, .16), rgba(0, 0, 0, .28));
+}
+
+main.site {
+  width: min(100% - var(--page-gutter, 1rem), var(--display-width));
+  gap: var(--display-gap);
+  padding-block: clamp(1.5rem, 4vw, 3.5rem);
+}
+
+main.site > .page-section {
+  width: 100%;
+  padding-block: clamp(1rem, 2vw, 1.75rem);
+}
+
+.page-section--hero {
+  padding-top: 0 !important;
+}
+
+.page-section--hero .hero {
+  padding-top: clamp(1rem, 3vw, 2.5rem);
+}
+
+.page-section--agents,
+.page-section--content,
+.page-section--media,
+.page-section--terminal,
+.page-section--legal {
+  display: grid;
+  gap: 1rem;
+}
+
+.page-section--agents::before,
+.page-section--content::before,
+.page-section--media::before,
+.page-section--terminal::before,
+.page-section--legal::before {
+  display: block;
+  color: var(--green-dim);
+  font-size: .68rem;
+  font-weight: 600;
+  letter-spacing: .16em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.page-section--agents::before { content: "01 / control plane"; }
+.page-section--content::before { content: "02 / visual board"; }
+.page-section--media::before { content: "03 / media library"; }
+.page-section--terminal::before { content: "04 / interactive shell"; }
+.page-section--legal::before { content: "05 / system notice"; }
+
+.page-section--agents > .panel,
+.page-section--content > .panel,
+.page-section--media > .shelf-wrap,
+.page-section--terminal > .term-wrap,
+.page-section--legal > .legal-drop {
+  width: 100%;
+  min-width: 0;
+}
+
+.page-section--content > .panel {
+  margin: 0;
+}
+
+.page-section--media .shelf-wrap {
+  margin: 0;
+}
+
+.page-section--terminal .term-wrap {
+  margin: 0;
+}
+
+.page-section--legal .site-foot {
+  width: 100%;
+  margin: 0;
+}
+
+/* Prevent long terminal/code content from expanding a section. */
+.page-section pre,
+.page-section textarea,
+.page-section .panel-body,
+.page-section .agent-grid,
+.page-section .ghost-grid {
+  min-width: 0;
+  max-width: 100%;
+}
+
+@media (max-width: 720px) {
+  .htp-termbar.top {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .top-actions {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    max-width: 100%;
+    overflow-x: auto;
+    padding-bottom: .25rem;
+  }
+
+  .display-section--tv {
+    padding-inline: .65rem;
+  }
+
+  main.site {
+    width: min(100% - .85rem, var(--display-width));
+    gap: 1.35rem;
+  }
+
+  main.site > .page-section {
+    padding-block: .8rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .htp-termbar.top { backdrop-filter: none; -webkit-backdrop-filter: none; }
+}

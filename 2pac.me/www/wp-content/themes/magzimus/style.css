@@ -1,0 +1,28 @@
+/*
+Theme Name: Magzimus
+Theme URI: http://wordpressthemes.oscaralcala.com/magzimus
+Description: Design by Oscar Alcala
+Version: 1.2
+Author: Oscar Alcala
+Author URI: http://oscaralcala.com/
+Tags: fixed width, two columns, widgets, ajax
+
+	Theme made for sale exclusively on Theme Forest
+	http://www.themeforest.com
+
+*/
+
+/*Core*/
+@import url(reset.css);
+@import url(styles/common.css);
+
+/*Structure and general look*/
+@import url(styles/main.css);
+@import url(styles/sidebar.css);
+@import url(styles/footer.css);
+@import url(styles/sliders.css);
+/*@import url(styles/menu.css);*/
+
+/*Scripts*/
+@import url(styles/prettyPhoto.css);
+@import url(styles/nivo-slider.css);

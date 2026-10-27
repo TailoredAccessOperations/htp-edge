@@ -1,0 +1,47 @@
+HTP /money trust anchors
+updated_utc: 2026-10-11T02:10:59Z
+
+Keybase account
+  username: easter47
+  uid: e24107e5a5687a829a06a0e60a78d219
+  device: aio
+  device_id: 431a8206365e48288ca6718d5e201218
+  profile: https://keybase.io/easter47
+
+OpenPGP (this account, published on the Keybase sigchain)
+  fingerprint: 2086 7A78 369E A23A 420D F3C4 D10E 7AF2 A93D E56B
+  fingerprint_hex: 20867A78369EA23A420DF3C4D10E7AF2A93DE56B
+  uid: easter47 (htp.sh/money) <easter47@keybase.io>
+  algorithm: Ed25519
+  public_key: /btc/easter47-pgp.asc
+  keybase_export: https://keybase.io/easter47/pgp_keys.asc
+  secret_key_on_keybase_servers: no
+
+Keybase NaCl eldest device key (signs the Bitcoin claim and the PGP publication)
+  kid: 0120f7a7c82a39e3a6d560a26b8f6f588abcbd8112fc3ac17377057b3c0281c48a360a
+  ed25519: f7a7c82a39e3a6d560a26b8f6f588abcbd8112fc3ac17377057b3c0281c48a36
+
+Operator Bitcoin wallet
+  p2pkh: 15tWKRJHfR62tvJ4uaVGasJ2eXffVTn56s
+  p2pkh spend control: PASS (BIP137)
+  bech32: bc1q925c9f08xer3mdyvuxtqcz7mtjgm0ep8zlzd0f
+  bech32 import: watch-only wpkh descriptor, private key absent
+  import document: /btc/WALLET-IMPORT.json
+  spend control API: GET /api/money/spend-control
+
+Genesis coinbase (Keybase cryptocurrency claim only)
+  address: 1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa
+  claim_sig_id: fa0d750fa6644335738cde1b61a967099b2bf9b4dc2243578f3746924240466e0f
+  spend_control: NOT_PROVEN
+
+DNS proof
+  name: war.htp.sh
+  txt: keybase-site-verification=kWeP57XOd_CxiO4XXFtmKyVDvBAZKowBqRIkFt8ooxs
+
+Twitter proof
+  nametag: madmonero
+  url: https://twitter.com/madmonero/status/2068890480197165325
+
+Package trust anchor (Keybase Linux, not the easter47 signing key)
+  fingerprint: 9E88D841D1DDC62E
+  uid: Will Ericson <admin@htp.sh>

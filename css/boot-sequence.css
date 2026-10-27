@@ -1,0 +1,43 @@
+/* Homepage boot staging: keep the page hidden until audio and visuals initialize. */
+html.booting body > * {
+  visibility: hidden;
+}
+
+html.booting::before {
+  content: "INITIALIZING AUDIO…";
+  position: fixed;
+  inset: 0;
+  z-index: 2147483647;
+  display: grid;
+  place-items: center;
+  background: #010402;
+  color: #39ff6a;
+  font: 600 0.8rem/1.2 "IBM Plex Mono", monospace;
+  letter-spacing: 0.18em;
+  text-shadow: 0 0 12px currentColor;
+}
+
+html.booting[data-boot-stage="visual"]::before {
+  content: "STARTING VISUAL SYSTEMS…";
+}
+
+html.booting[data-boot-stage="display"]::before {
+  content: "LOADING DISPLAY…";
+}
+
+html.booting .boot-ready {
+  visibility: visible;
+}
+
+html.boot-complete body > * {
+  animation: boot-display-in 420ms ease-out both;
+}
+
+@keyframes boot-display-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.boot-complete body > * { animation-duration: 1ms; }
+}

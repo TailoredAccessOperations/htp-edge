@@ -1,0 +1,120 @@
+<!doctype html>
+<html class="login-form-html">
+   <head lang="en">
+      <meta charset="UTF-8">
+      <link rel="stylesheet" href="assets/css/bootstrap_theme_min.css">
+      <link href="assets/css/bootstrap_min.css" rel="stylesheet"/>
+      <link href="assets/css/sweet_alert.css" rel="stylesheet"/>
+      <link rel="stylesheet" href="assets/css/style.css">
+      <link rel="stylesheet" href="assets/css/sweet_alert.css">
+       <script type="text/javascript" src="assets/js/jquery-2.1.4.js"></script>
+      <script type="text/javascript" src="assets/js/bootstrap_min.js"></script>
+      <script type="text/javascript" src="assets/js/all.js"></script>
+      <script type="text/javascript" src="assets/js/sweetalert_min.js"></script>
+      
+     <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-93173011-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+<title>Cvv1.su - Cvv - Cvv.me - Cvv.me login - Cvv me - Cvv-me.su - Cvvme site - Cvvme domains</title>
+<meta name="description" content="Cvv1.su Site have Good Quality. With 100% Live Stuff feel free to visit Cvv me or login Cvv me… Find the best deal from a very safe and secure link… Cvv1.su"/>
+<meta name="robots" content="noodp"/>
+<link rel="canonical" href="http://cvv1.su/" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content=" Cvv1.su - Cvv - Cvv.me - Cvv.me login - Cvv me - Cvv-me.su - Cvvme site - Cvvme domains " />
+<meta property="og:description" content=" Cvv1.su Site have Good Quality. With 100% Live Stuff feel free to visit Cvv.me or loginCvv.me… Find the best deal from a very safe and secure link… Cvv-me.su " />
+<meta property="og:url" content="http://Cvv1.su/" />
+<meta property="og:site_name" content="Cvv1.su" />
+<meta property="article:section" content="Cvv.me" />
+<meta property="og:image" content="#" />
+<meta property="og:image:width" content="512" />
+<meta property="og:image:height" content="512" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:description" content="Cvv1.su Site have Good Quality. With 100% Live Stuff feel free to visit Cvv.me or loginCvv.me… Find the best deal from a very safe and secure link… Cvv-me.su" />
+<meta name="twitter:title" content="Cvv1.su - Cvv - Cvv.me - Cvv.me login - Cvv me - Cvv-me.su - Cvvme site - Cvvme domains" />
+<meta name="twitter:image" content="#" />
+<meta name="msvalidate.01" content="F98804623A44E55F8007AC9671AF8B1D" />
+   </head>
+   <body>
+            <div id="page" class="body-padding login-padding">
+         <div>
+            <div class="login-form flip auth-form flip-side-one">
+               <img src="assets/images/logo.png" rel="CVV.ME">
+               <div class="title">Please login</div>
+              
+               <div class="auth-rect text-center">
+                  <div class="login-fields container">
+                     <form id="yw0" action="process.php?page=frm_lg_" method="post" accept-charset="utf-8">
+                        <div class="row">
+                           <div class="col-md-10 col-md-offset-1">
+                                                  
+                            <div class="form-group">
+                            
+                             <input type="text" name="username" id="username" placeholder="Enter login" class="form-control"  /> 
+                              </div>
+                 <div class="form-group">
+                 
+                               <input type="password" name="password" value="" id="password" placeholder="Enter Password" class="form-control"  />
+                              </div>
+                           </div>
+                           <div class="col-md-5 col-md-offset-1">
+                     <a href="register.php" class="btn-block btn btn-sm btn-warning">Registration</a>
+                           </div>
+                           <div class="col-md-5">
+                            	<input type="submit" name="submitbtn" class="btn-block btn btn-sm btn-primary"  />
+                          </div>
+                        </div>
+                     </form>  
+                   </div>
+               </div>
+            </div>
+            
+         </div>
+      </div>
+      <script type="text/javascript" src="assets/js/jquery-2.1.4.js"></script>
+      <script type="text/javascript" src="assets/js/bootstrap_min.js"></script>
+
+      <script type="text/javascript" src="assets/js/sweetalert_min.js"></script>
+      <script type="text/javascript">
+      function validate()
+	  {
+		  var uname = document.getElementById('username').value;
+		  var pass = document.getElementById('password').value;
+
+		  $.ajax({
+			  url: 'Account/index',
+			  type:'POST',
+			  data:{'username':uname, 'password':pass},
+			  success: function(data)
+			  {
+				  
+			  }
+			  });
+		swal({
+			title: "There is an Error",
+			type: "error",
+			showCancelButton: true
+		  });
+		  event.preventDefault();
+	  }
+      </script>
+   </body>
+</html>
+
+<!--Start of Zopim Live Chat Script-->
+<script type="text/javascript">
+window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
+d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
+_.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute("charset","utf-8");
+$.src="//v2.zopim.com/?3biXsPE5rhpmCUwQEyakQAtouYlaU02T";z.t=+new Date;$.
+type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");
+</script>
+<!--End of Zopim Live Chat Script-->

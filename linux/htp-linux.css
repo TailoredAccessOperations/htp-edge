@@ -1,0 +1,330 @@
+/* HTP Linux Division Theme */
+:root {
+  --linux-black: #000000;
+  --linux-dark: #0a0a0a;
+  --linux-green: #00ff88;
+  --linux-light-green: #00cc6a;
+  --linux-white: #ffffff;
+  --linux-gray: #30363d;
+  --linux-border: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="htp-linux"] {
+  background-color: var(--linux-black);
+  color: var(--linux-white);
+}
+
+[data-theme="htp-linux"] * {
+  color-scheme: dark;
+}
+
+[data-theme="htp-linux"] body {
+  background-color: var(--linux-black);
+  color: var(--linux-white);
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+
+[data-theme="htp-linux"] a {
+  color: var(--linux-green);
+  text-decoration: none;
+}
+
+[data-theme="htp-linux"] a:hover {
+  text-decoration: underline;
+  color: var(--linux-light-green);
+}
+
+[data-theme="htp-linux"] .htp-logo-text {
+  color: var(--linux-green);
+  font-weight: bold;
+  margin-left: 10px;
+  font-size: 1.2rem;
+}
+
+[data-theme="htp-linux"] .htp-header,
+[data-theme="htp-linux"] .htp-footer {
+  border-color: var(--linux-border);
+}
+
+[data-theme="htp-linux"] .htp-btn {
+  background-color: var(--linux-green);
+  color: var(--linux-black);
+  border: none;
+}
+
+[data-theme="htp-linux"] .htp-btn:hover {
+  background-color: var(--linux-light-green);
+}
+
+[data-theme="htp-linux"] .htp-btn--secondary {
+  background-color: var(--linux-gray);
+  color: var(--linux-white);
+  border: 1px solid var(--linux-border);
+}
+
+[data-theme="htp-linux"] .htp-btn--secondary:hover {
+  background-color: rgba(48, 54, 61, 0.8);
+}
+
+[data-theme="htp-linux"] .htp-section {
+  border-color: var(--linux-border);
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="htp-linux"] .htp-hero {
+  background: linear-gradient(135deg, #000000 0%, #0a0a0a 100%);
+  border-color: var(--linux-border);
+}
+
+[data-theme="htp-linux"] .htp-hero-title {
+  color: var(--linux-green);
+}
+
+[data-theme="htp-linux"] .htp-hero-subtitle {
+  color: var(--linux-white);
+  opacity: 0.8;
+}
+
+[data-theme="htp-linux"] .htp-section-title {
+  color: var(--linux-green);
+  border-bottom: 2px solid var(--linux-green);
+  padding-bottom: 10px;
+}
+
+[data-theme="htp-linux"] .htp-section-lead {
+  color: var(--linux-white);
+  opacity: 0.7;
+  font-style: italic;
+}
+
+[data-theme="htp-linux"] .htp-card {
+  background-color: rgba(0, 0, 0, 0.4);
+  border: 1px solid var(--linux-border);
+}
+
+[data-theme="htp-linux"] .htp-card-title {
+  color: var(--linux-green);
+}
+
+[data-theme="htp-linux"] .htp-card-desc {
+  color: var(--linux-white);
+  opacity: 0.8;
+}
+
+[data-theme="htp-linux"] .htp-card-link {
+  color: var(--linux-light-green);
+  font-weight: bold;
+}
+
+[data-theme="htp-linux"] .htp-card-link:hover {
+  text-decoration: underline;
+}
+
+[data-theme="htp-linux"] .htp-content-main p {
+  color: var(--linux-white);
+  line-height: 1.6;
+}
+
+[data-theme="htp-linux"] .htp-content-main ul {
+  color: var(--linux-white);
+}
+
+[data-theme="htp-linux"] .htp-content-main li {
+  margin-bottom: 8px;
+}
+
+[data-theme="htp-linux"] .htp-content-main li:before {
+  content: "▶";
+  color: var(--linux-green);
+  margin-right: 8px;
+}
+
+[data-theme="htp-linux"] .htp-pullquote {
+  border-left: 4px solid var(--linux-green);
+  padding-left: 20px;
+  margin: 20px 0;
+  color: var(--linux-white);
+  font-style: italic;
+}
+
+[data-theme="htp-linux"] .htp-intel-icon {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  display: block;
+}
+
+[data-theme="htp-linux"] .htp-intel-title {
+  color: var(--linux-green);
+  margin-bottom: 10px;
+}
+
+[data-theme="htp-linux"] .htp-intel-desc {
+  color: var(--linux-white);
+  opacity: 0.9;
+}
+
+[data-theme="htp-linux"] .htp-process-title {
+  color: var(--linux-green);
+  margin-bottom: 20px;
+}
+
+[data-theme="htp-linux"] .htp-process-steps li {
+  color: var(--linux-white);
+  margin-bottom: 15px;
+  padding-left: 25px;
+  position: relative;
+}
+
+[data-theme="htp-linux"] .htp-process-steps li:before {
+  content: counter(step);
+  counter-increment: step;
+  background: var(--linux-green);
+  color: var(--linux-black);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  margin-left: -25px;
+  position: absolute;
+  left: 0;
+}
+
+[data-theme="htp-linux"] .htp-process-steps li {
+  counter-increment: step;
+}
+
+[data-theme="htp-linux"] .htp-process-steps li:before {
+  content: counter(step);
+}
+
+[data-theme="htp-linux"] .htp-cta-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 25px;
+}
+
+[data-theme="htp-linux"] .htp-cta-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  background-color: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--linux-border);
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+[data-theme="htp-linux"] .htp-cta-link:hover {
+  background-color: rgba(0, 255, 136, 0.1);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 255, 136, 0.2);
+}
+
+[data-theme="htp-linux"] .htp-cta-icon {
+  font-size: 1.5rem;
+}
+
+[data-theme="htp-linux"] .htp-cta-link span:first-child {
+  font-weight: bold;
+  color: var(--linux-green);
+}
+
+[data-theme="htp-linux"] .htp-cta-desc {
+  font-size: 0.9rem;
+  color: var(--linux-white);
+  opacity: 0.7;
+}
+
+/* Terminal Demo Styles */
+[data-theme="htp-linux"] .htp-terminal-demo {
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--linux-border);
+  border-radius: 8px;
+  padding: 25px;
+  margin-top: 25px;
+}
+
+[data-theme="htp-linux"] .terminal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--linux-border);
+}
+
+[data-theme="htp-linux"] .terminal-prompt {
+  color: var(--linux-green);
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: bold;
+}
+
+[data-theme="htp-linux"] .terminal-output {
+  color: var(--linux-light-green);
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: bold;
+  min-height: 24px;
+}
+
+[data-theme="htp-linux"] .terminal-code {
+  background-color: var(--linux-black);
+  border: 1px solid var(--linux-border);
+  border-radius: 6px;
+  padding: 20px;
+  margin: 20px 0;
+  overflow-x: auto;
+}
+
+[data-theme="htp-linux"] .terminal-code code {
+  color: var(--linux-white);
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+[data-theme="htp-linux"] .terminal-result {
+  color: var(--linux-light-green);
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: bold;
+  margin: 15px 0;
+  min-height: 24px;
+}
+
+[data-theme="htp-linux"] .terminal-controls {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+[data-theme="htp-linux"] .htp-btn--small {
+  padding: 8px 16px;
+  font-size: 0.9rem;
+}
+
+/* Linux Logo Styles */
+[data-theme="htp-linux"] .linux-logo {
+  display: flex;
+  align-items: center;
+}
+
+[data-theme="htp-linux"] .linux-logo img {
+  border-radius: 50%;
+  border: 2px solid var(--linux-green);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  [data-theme="htp-linux"] .htp-cta-links {
+    flex-direction: column;
+  }
+  
+  [data-theme="htp-linux"] .htp-card-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  [data-theme="htp-linux"] .htp-intel-grid {
+    grid-template-columns: 1fr;
+  }
+}

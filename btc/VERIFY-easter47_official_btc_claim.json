@@ -1,0 +1,16 @@
+{
+  "overall": "PASS",
+  "username": "easter47",
+  "uid": "e24107e5a5687a829a06a0e60a78d219",
+  "btc_address": "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa",
+  "type": "bitcoin",
+  "sig_id": "fa0d750fa6644335738cde1b61a967099b2bf9b4dc2243578f3746924240466e0f",
+  "kid": "0120f7a7c82a39e3a6d560a26b8f6f588abcbd8112fc3ac17377057b3c0281c48a360a",
+  "ed25519_pubkey": "f7a7c82a39e3a6d560a26b8f6f588abcbd8112fc3ac17377057b3c0281c48a36",
+  "checks": {
+    "ed25519_over_compact_link": "PASS",
+    "payload_json_bound_via_sha256": "PASS",
+    "sig_id_eq_sha256_blob_0f": "PASS"
+  },
+  "caveat": "Keybase claim is self-attestation by NaCl device key; does NOT prove BTC private-key control."
+}

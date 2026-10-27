@@ -1,0 +1,271 @@
+/* htp-ghost.css — morphing code-ghost (inspired by Ghostty homepage, original art)
+ * home-ghost-0x539 · CRT green · Anonymous / LulzSec adjacent
+ */
+.htp-ghost-stage {
+  position: relative;
+  margin: 0.85rem auto 1.25rem;
+  max-width: min(100%, 720px);
+  border: 1px solid rgba(57, 255, 106, 0.35);
+  border-radius: 2px;
+  background:
+    linear-gradient(180deg, rgba(0, 12, 4, 0.95), rgba(0, 4, 2, 0.98)),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 2px,
+      rgba(0, 40, 12, 0.18) 2px 3px
+    );
+  box-shadow:
+    0 0 0 1px rgba(212, 255, 0, 0.08),
+    0 0 28px rgba(57, 255, 106, 0.12),
+    inset 0 0 60px rgba(0, 0, 0, 0.55);
+  overflow: hidden;
+}
+
+.htp-ghost-chrome {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.35rem 0.65rem;
+  border-bottom: 1px solid rgba(57, 255, 106, 0.22);
+  background: rgba(0, 0, 0, 0.55);
+  font-family: var(--font-mono, "Share Tech Mono", ui-monospace, monospace);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--green, #39ff6a);
+}
+
+.htp-ghost-chrome .dots {
+  display: inline-flex;
+  gap: 0.35rem;
+}
+.htp-ghost-chrome .dots i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: block;
+  background: #39ff6a;
+  box-shadow: 0 0 6px #39ff6a;
+  opacity: 0.85;
+}
+.htp-ghost-chrome .dots i:nth-child(2) { background: #d4ff00; box-shadow: 0 0 6px #d4ff00; }
+.htp-ghost-chrome .dots i:nth-child(3) { background: #ff2bd6; box-shadow: 0 0 6px #ff2bd6; }
+
+.htp-ghost-chrome .title {
+  color: #d4ff00;
+  text-shadow: 0 0 8px rgba(212, 255, 0, 0.35);
+}
+.htp-ghost-chrome .meta {
+  color: rgba(57, 255, 106, 0.55);
+  font-variant-numeric: tabular-nums;
+}
+
+.htp-ghost-canvas-wrap {
+  position: relative;
+  padding: 0.5rem 0.4rem 0.65rem;
+}
+
+#htp-ghost-canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  image-rendering: pixelated;
+  filter: drop-shadow(0 0 10px rgba(57, 255, 106, 0.35));
+}
+
+.htp-ghost-caption {
+  margin: 0;
+  padding: 0 0.65rem 0.55rem;
+  font-family: var(--font-mono, "Share Tech Mono", ui-monospace, monospace);
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  color: rgba(57, 255, 106, 0.65);
+  text-align: center;
+}
+.htp-ghost-caption code {
+  color: #d4ff00;
+  background: rgba(0, 0, 0, 0.35);
+  padding: 0.05rem 0.3rem;
+  border: 1px solid rgba(212, 255, 0, 0.25);
+}
+
+.htp-ghost-stage::before {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 40%, rgba(0, 0, 0, 0.45) 100%);
+  z-index: 2;
+}
+.htp-ghost-stage::after {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(57, 255, 106, 0.04),
+    transparent 30%,
+    transparent 70%,
+    rgba(0, 0, 0, 0.25)
+  );
+  mix-blend-mode: screen;
+  animation: htp-ghost-flicker 5.5s steps(2, end) infinite;
+  z-index: 3;
+}
+
+@keyframes htp-ghost-flicker {
+  0%, 97%, 100% { opacity: 1; }
+  98% { opacity: 0.7; }
+}
+
+/* Sticky terminal header chrome */
+header.top.htp-termbar {
+  position: sticky;
+  top: 0;
+  z-index: 900;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.55rem 1rem;
+  padding: 0.45rem 0.75rem 0.35rem !important;
+  background:
+    linear-gradient(180deg, rgba(0, 18, 6, 0.98), rgba(1, 8, 3, 0.96)) !important;
+  border-bottom: 1px solid rgba(57, 255, 106, 0.4) !important;
+  box-shadow:
+    0 0 24px rgba(57, 255, 106, 0.14),
+    inset 0 -1px 0 rgba(212, 255, 0, 0.12) !important;
+  backdrop-filter: blur(6px);
+}
+
+header.top.htp-termbar .term-prompt {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.35rem 0.55rem;
+  min-width: 0;
+  font-family: var(--font-mono, "Share Tech Mono", ui-monospace, monospace);
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  color: #39ff6a;
+  line-height: 1.35;
+}
+header.top.htp-termbar .term-prompt .host {
+  color: #d4ff00;
+  text-shadow: 0 0 8px rgba(212, 255, 0, 0.35);
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: 0.06em;
+}
+header.top.htp-termbar .term-prompt .host::before {
+  content: "root@";
+  color: #39ff6a;
+  text-shadow: 0 0 6px rgba(57, 255, 106, 0.45);
+}
+header.top.htp-termbar .term-prompt .path {
+  color: rgba(57, 255, 106, 0.75);
+}
+header.top.htp-termbar .term-prompt .cmd {
+  color: #c8ffd8;
+}
+header.top.htp-termbar .term-prompt .cmd::before {
+  content: "$ ";
+  color: #ff2bd6;
+  text-shadow: 0 0 6px rgba(255, 43, 214, 0.45);
+}
+header.top.htp-termbar .term-prompt .cursor {
+  display: inline-block;
+  width: 0.55ch;
+  height: 1em;
+  margin-left: 0.1rem;
+  background: #39ff6a;
+  box-shadow: 0 0 8px #39ff6a;
+  vertical-align: -0.1em;
+  animation: htp-term-blink 1.05s steps(1, end) infinite;
+}
+@keyframes htp-term-blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+header.top.htp-termbar .brand {
+  display: none !important; /* replaced by .term-prompt */
+}
+
+header.top.htp-termbar .top-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.3rem;
+  max-width: 100%;
+}
+
+header.top.htp-termbar .chip {
+  border-radius: 0 !important;
+  border-color: rgba(57, 255, 106, 0.35) !important;
+  background: rgba(0, 0, 0, 0.55) !important;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.4);
+  font-size: 0.65rem !important;
+  padding: 0.28rem 0.45rem !important;
+}
+header.top.htp-termbar .chip::before {
+  content: "./";
+  opacity: 0.55;
+  margin-right: 0.1rem;
+}
+
+/* Scanline stripe under termbar (replaces old marquee ::after content layout clash) */
+header.top.htp-termbar::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: repeating-linear-gradient(
+    90deg,
+    #39ff6a 0 8px,
+    #d4ff00 8px 16px,
+    #ff2bd6 16px 24px,
+    transparent 24px 32px
+  );
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+/* Keep marquee strip as a second row */
+header.top.htp-termbar::after {
+  grid-column: 1 / -1;
+  content: "WE ARE ANONYMOUS · WE DO NOT FORGIVE · WE DO NOT FORGET · EXPECT US · HTP.SH ·";
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  color: #ff2bd6;
+  background: #000;
+  border-top: 1px solid rgba(255, 43, 214, 0.35);
+  margin: 0.25rem -0.75rem -0.35rem;
+  padding: 0.18rem 0;
+  animation: lz-marquee 28s linear infinite;
+}
+
+@media (max-width: 720px) {
+  header.top.htp-termbar {
+    grid-template-columns: 1fr;
+  }
+  header.top.htp-termbar .top-actions {
+    justify-content: flex-start;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .htp-ghost-stage::after,
+  header.top.htp-termbar .term-prompt .cursor,
+  header.top.htp-termbar::after {
+    animation: none !important;
+  }
+  header.top.htp-termbar .term-prompt .cursor { opacity: 1; }
+}

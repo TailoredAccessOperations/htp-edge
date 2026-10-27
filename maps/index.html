@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>Apple Maps — Reference</title>
+  <link href="/htp-critical.css" rel="stylesheet">
+  <link href="/osint/osint.css" rel="stylesheet">
+  <link href="/osint/vendor/leaflet/leaflet.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/htp-a11y.css?v=1">
+  <link rel="stylesheet" href="/css/htp-critical-viewport.css?v=2">
+  <link rel="stylesheet" href="/css/htp-responsive.css?v=2">
+  <script src="/js/htp-viewport.js?v=2" defer></script>
+  <style>
+    body { margin: 0; padding: 0; overflow: hidden; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+    #map { height: 100vh; height: 100dvh; width: 100vw; z-index: 1; }
+    .apple-overlay {
+      position: absolute; top: 20px; left: 20px; z-index: 1000;
+      width: min(320px, calc(100vw - 40px));
+      max-height: calc(100dvh - 40px); overflow: auto;
+      background: rgba(255,255,255,0.92); backdrop-filter: blur(10px);
+      border-radius: 18px; padding: 1.5rem; box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+      color: #000;
+    }
+    .apple-overlay h1 { font-size: 1.2rem; margin: 0 0 0.5rem; font-weight: 600; }
+    .apple-overlay p { font-size: 0.9rem; color: #666; margin: 0 0 1rem; line-height: 1.4; }
+    .legend { list-style: none; margin: 0 0 1rem; padding: 0; }
+    .legend li { display: flex; align-items: center; gap: 8px; font-size: 0.85rem; margin: 0.3rem 0; color: #222; }
+    .swatch { width: 10px; height: 10px; border-radius: 50%; flex: 0 0 auto; }
+    .apple-btn {
+      display: block; width: 100%; padding: 10px; background: #007AFF; color: #fff;
+      text-align: center; text-decoration: none; border-radius: 10px;
+      font-weight: 500; font-size: 0.9rem; margin-bottom: 0.5rem;
+      border: 0; cursor: pointer; font-family: inherit;
+    }
+    .apple-btn-sec { background: #E5E5EA; color: #000; }
+  </style>
+</head>
+<body>
+  <div class="apple-overlay" id="overlay">
+    <h1 id="title">Loading...</h1>
+    <p id="address">Connecting to GPS satellites...</p>
+    <p id="set-status">Loading curated set...</p>
+    <ul class="legend" id="legend"></ul>
+    <a id="directions" href="https://maps.apple.com" class="apple-btn">Directions</a>
+    <button type="button" id="fit" class="apple-btn apple-btn-sec">Curated set</button>
+    <button type="button" id="home" class="apple-btn apple-btn-sec">Reference</button>
+    <a href="/osint" class="apple-btn apple-btn-sec">Back to OSINT</a>
+  </div>
+  <div id="map"></div>
+  <script src="/osint/vendor/leaflet/leaflet.js"></script>
+  <script type="module" src="/maps/map.js"></script>
+</body>
+</html>

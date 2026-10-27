@@ -1,0 +1,10 @@
+services:
+  pi-dashboard:
+    build: .
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+    container_name: pi-dashboard
+    labels:
+      - "org.opencontainers.image.description=Dockerized pi.htp.sh Raspberry Pi Dashboard"
+      - "org.opencontainers.image.version=1.0.0"

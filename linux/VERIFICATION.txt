@@ -1,0 +1,10 @@
+Keybase linux verification  2026-10-22 18:16:55 UTC
+uid caf90169eefa5f807d577486b9f79519  created 2015-10-28 17:07:29 UTC
+sigchain 349/349 pass
+stored file_access/user_linux.json matches live lookup: True
+snapshot pgp EE32 288C 6BCD 7F7B kid 01010176c4f264f12d9d1bd06500e51628b6f87aa1630f8caf5f91cb9c5585625a6a0a
+current pgp da994c8789892c2c9ca0df149e88d841d1ddc62e
+bitcoin claim good=True address_in_plaintext=True expired_key=True
+
+Failures:
+none

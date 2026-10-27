@@ -1,0 +1,305 @@
+{
+  "bitcoin": {
+    "akula47_same_address_claim": {
+      "note": "A second Keybase user claims the same genesis address. Claims are not exclusive.",
+      "result": "PASS",
+      "sig_id": "6786e86aabce6720a3ac52f3661537c9d01a53fa2905fa8622503642997e9e6e0f",
+      "username": "akula47"
+    },
+    "genesis_coinbase": {
+      "address": "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa",
+      "checks": {
+        "ed25519_over_compact_link": "PASS",
+        "outer_hash_eq_api_payload_hash": "5fe28c5674511115dc24a0170354b9e56339988275e8b9b8d1e5b477957c83ee",
+        "payload_json_bound_via_sha256": "PASS",
+        "sig_id_eq_sha256_blob_0f": "PASS"
+      },
+      "ed25519_pubkey": "f7a7c82a39e3a6d560a26b8f6f588abcbd8112fc3ac17377057b3c0281c48a36",
+      "imported": false,
+      "keybase_claim_crypto": "PASS",
+      "keybase_claim_sig_id": "fa0d750fa6644335738cde1b61a967099b2bf9b4dc2243578f3746924240466e0f",
+      "network": "bitcoin-mainnet",
+      "note": "The Keybase cryptocurrency claim is a NaCl signature by the easter47 device key. No Bitcoin signed message for the genesis coinbase is published.",
+      "spend_control": "NOT_PROVEN"
+    },
+    "operator_wallet": {
+      "bech32": "bc1q925c9f08xer3mdyvuxtqcz7mtjgm0ep8zlzd0f",
+      "import": {
+        "descriptor": "wpkh([cbbe345b/84h/0h/0h/0/0]030527d7ee94e6f3b83e99e436e8d41d23efe00c02932b3a2fdd8dd95dd3751f85)#gs3l57d5",
+        "document": "/btc/WALLET-IMPORT.json",
+        "mode": "watchonly",
+        "note": "Published primary descriptor only. The wallet cannot sign. Legacy spend control remains the BIP137 signatures.",
+        "primary_spend_control": "KEY_ABSENT",
+        "private_keys_present": false
+      },
+      "legacy_p2pkh": "15tWKRJHfR62tvJ4uaVGasJ2eXffVTn56s",
+      "method": "BIP137 recoverable ECDSA, verified with /dist/js/btc-message.min.js",
+      "signatures": [
+        {
+          "message": "easter47-mainnet-onchain-verify:2026-08-02T14:43:45Z:addr:15tWKRJHfR62tvJ4uaVGasJ2eXffVTn56s",
+          "name": "m5",
+          "recovered_address": "15tWKRJHfR62tvJ4uaVGasJ2eXffVTn56s",
+          "result": "PASS",
+          "signature": "H0opWqfzI97M8Blr5hp4aEa7HYl4VEVyCBMpeRERuiNud0lYPzVp58joM9CFznSwAttj+rlV8fcSt0wkz2/xHH4="
+        },
+        {
+          "message": "easter47-mainnet-wallet-seed:20260802T143414Z:addr:15tWKRJHfR62tvJ4uaVGasJ2eXffVTn56s",
+          "name": "seed",
+          "recovered_address": "15tWKRJHfR62tvJ4uaVGasJ2eXffVTn56s",
+          "result": "PASS",
+          "signature": "IMetZ0HEcnwVo6olPpoSeUtj+8RBnnoCBb7YUkxym+IDA67nP1mUGFsGwbaOPamaYGkD3Og4bSKkbB4B+KVElV4="
+        }
+      ],
+      "spend_control": "PASS"
+    },
+    "whitepaper": {
+      "byte_identical": true,
+      "bytes": 184292,
+      "note": "wallet.dat on this origin is the whitepaper bytes, not a Bitcoin Core wallet.",
+      "paths": [
+        "/bitcoin.pdf",
+        "/bitcoin.dat",
+        "/wallet.dat"
+      ],
+      "sha256": "b1674191a88ec5cdd733e4240a81803105dc412d6c6708d53ab94fc248f4f553"
+    }
+  },
+  "files": [
+    {
+      "bytes": 18106,
+      "path": "/money.html",
+      "sha256": "6b1b1ed5abb87a6576dc526276da6768aaa2f14f7a5bb6e7c2786c4f39db8cab"
+    },
+    {
+      "bytes": 648,
+      "path": "/js/money-boot.mjs",
+      "sha256": "a15a36d0601c7ddb6e5956eca64a1dbffc061f83214b42f2e0771c1f9a21a8c7"
+    },
+    {
+      "bytes": 6968,
+      "path": "/js/money-pgp.mjs",
+      "sha256": "6cbe7d47739ae750b72e42f962f2b6b723d18ac5af4e30575b5752e51f6e38d2"
+    },
+    {
+      "bytes": 29564,
+      "path": "/dist/js/btc-verify.min.js",
+      "sha256": "c12e765ece1371f9f246e637c99d7c3020658e25626a83fcd4b9936874618e4a"
+    },
+    {
+      "bytes": 12057,
+      "path": "/dist/js/btc-message.min.js",
+      "sha256": "1ab5211a1cf92f69c43d22d45c6c747077f08bb2792091df5a6e0383b1b1de28"
+    },
+    {
+      "bytes": 30126,
+      "path": "/dist/js/satoshi-21e8.min.js",
+      "sha256": "0a5d7342abb79933faf7228d94ce7beeaa302e12b03067a085e26a9fba65e5c6"
+    },
+    {
+      "bytes": 184292,
+      "path": "/bitcoin.pdf",
+      "sha256": "b1674191a88ec5cdd733e4240a81803105dc412d6c6708d53ab94fc248f4f553"
+    },
+    {
+      "bytes": 184292,
+      "path": "/bitcoin.dat",
+      "sha256": "b1674191a88ec5cdd733e4240a81803105dc412d6c6708d53ab94fc248f4f553"
+    },
+    {
+      "bytes": 184292,
+      "path": "/wallet.dat",
+      "sha256": "b1674191a88ec5cdd733e4240a81803105dc412d6c6708d53ab94fc248f4f553"
+    },
+    {
+      "bytes": 1034734,
+      "path": "/imgs/satoshi/21e8.jpeg",
+      "sha256": "81587de308f6a473cbf6b83a8483ec76025509bb2ba3883d044cef62fd969c0c"
+    },
+    {
+      "bytes": 19882,
+      "path": "/imgs/satoshi/21e8.webp",
+      "sha256": "153e4e1e68c7bb61681a7e413372a944c534205b7568a7cbe19153feff33cc03"
+    },
+    {
+      "bytes": 7430,
+      "path": "/imgs/satoshi/21e8.coin.svg",
+      "sha256": "bcef7b8f4f8e80413acf32030a791c1eaffd2c34e18ebd789f51f3afe837581a"
+    },
+    {
+      "bytes": 8396,
+      "path": "/imgs/satoshi/21e8.chain.json",
+      "sha256": "fcfffbaea59a63bde8a7a9b3289d6457fe87dda3ae4b9ebd7101e83329021a99"
+    },
+    {
+      "bytes": 2068,
+      "path": "/money-team/coin.svg",
+      "sha256": "5ba4e179a0d55be0329e5c68293cc00c03dcbb4d66509570b29e493618f056d3"
+    },
+    {
+      "bytes": 1631,
+      "path": "/money-team/bag.svg",
+      "sha256": "c13dbeed586a3a8d285be516e824c99bc7e3f4a995e5dbfdeb51f839ca7837e4"
+    },
+    {
+      "bytes": 1706,
+      "path": "/money-team/bills.svg",
+      "sha256": "522ee197d8441baf84c16c823d7ba38c58f3daf8823e2f603a3fd4ffd6e572f9"
+    },
+    {
+      "bytes": 738,
+      "path": "/money-team/stack.svg",
+      "sha256": "b04b596584fe4c2cd4d5f5e60c6add5cd969379836acd698a016744795ec29fa"
+    },
+    {
+      "bytes": 13444,
+      "path": "/av/money.png",
+      "sha256": "82ff8c7c83fdcdb6b0bc8418bc7714883e02a24f9a7a382fdb17b7c015e76cf8"
+    },
+    {
+      "bytes": 7626,
+      "path": "/av/money.webp",
+      "sha256": "390c13b933a37083fee7d99df7b4a20d51a9e3959c33044593325394f103d48d"
+    },
+    {
+      "bytes": 10768,
+      "path": "/av/chain.json",
+      "sha256": "9b978d3ffb89e0e3882226e3cd1d47a206cfa30557e7f6423d47deccda29e3a0"
+    },
+    {
+      "bytes": 982,
+      "path": "/btc/21e8-SATOSHI-BIND.json",
+      "sha256": "cbe45d5648bf2d961da3eda322349a1b0e815cce28a9d2c0c7e17d3784888b5d"
+    },
+    {
+      "bytes": 2281,
+      "path": "/btc/easter47-btc-sig.json",
+      "sha256": "d8f95c4f5327ee613018d88e2eb78590b2a1da764bfa7429be4f34fb74e81e2c"
+    },
+    {
+      "bytes": 2280,
+      "path": "/btc/easter47-sig-get.json",
+      "sha256": "08889fc3829ed5385e619cca16911fab118c0f22295b87aa9349555f0090ce82"
+    },
+    {
+      "bytes": 10472,
+      "path": "/btc/easter47-user.json",
+      "sha256": "99570137096b5008ddc92b6aac167750e46545e67e058beb42b0556b686c253d"
+    },
+    {
+      "bytes": 3045,
+      "path": "/btc/VERIFY-FINAL.json",
+      "sha256": "80a495f83f468748498c12e8bb37da448c6485e8a2f847a3649692a6d7d59c8e"
+    },
+    {
+      "bytes": 677,
+      "path": "/btc/VERIFY-easter47_official_btc_claim.json",
+      "sha256": "864c0849b10d62c549f52cc4cf33356624aa38e36375ea062d5e264ec6610a94"
+    },
+    {
+      "bytes": 11697,
+      "path": "/btc/FULL-VERIFY-LATEST.json",
+      "sha256": "96c1804148123c1aa41364a1639115e323828246079718927ca37a517253edd6"
+    },
+    {
+      "bytes": 14374,
+      "path": "/btc/ALL-PROOFS-LATEST.json",
+      "sha256": "8e0f319b0c02f69f0aa428998a1fb070f5cc7adb49d5c1294ac946ec669facce"
+    },
+    {
+      "bytes": 14398,
+      "path": "/btc/ALL-PROOFS-LATEST.summary.txt",
+      "sha256": "ff557c9662bf6bc4ad4e8c6969be22450b7a7602790d848cef42c9096e832775"
+    },
+    {
+      "bytes": 7877,
+      "path": "/btc/MAINNET-WALLET-VERIFY-LATEST.json",
+      "sha256": "7e9bc80584424298e4b678888058428a75201b4a39173547c85c07ffa23b4142"
+    },
+    {
+      "bytes": 9376,
+      "path": "/btc/OWNERSHIP-VERIFY-LATEST.json",
+      "sha256": "524bce8fb8b73a0e1b1aabdacf1c89717006ea290b4fb2f6f24d3ff462cf3343"
+    },
+    {
+      "bytes": 7288,
+      "path": "/btc/OWNERSHIP-VERIFY-LATEST.canonical.json",
+      "sha256": "9c99c25f77fd643f027f23b57c272d4acccb97e6b4a0b785508fa1bcb6d7cde3"
+    },
+    {
+      "bytes": 2419,
+      "path": "/btc/SPEND-CONTROL-VERIFY.json",
+      "sha256": "b1877ba98dccfa06f00595eec9fbf3cf888a50412a58b1c43ee5b0116273f54b"
+    },
+    {
+      "bytes": 3399,
+      "path": "/btc/BITCOIN-DAT-CURL-VERIFY.json",
+      "sha256": "d2f55054b7b71b4156115f0dd875c8d4b582550e0f53c6bc14e7edc4b85dcb5a"
+    },
+    {
+      "bytes": 1910,
+      "path": "/btc/akula47-user.json",
+      "sha256": "84c7fb9daf7fdebfe2b217d905192d5718f0ed67c2dd3da603b58e9e38bc0cfa"
+    },
+    {
+      "bytes": 676,
+      "path": "/btc/VERIFY-user_provided_sig_id.json",
+      "sha256": "571bf574ed3860cc6813fd8d7c8dad622ecf35bbb0b87d7c26f04cf11f2ac075"
+    },
+    {
+      "bytes": 728,
+      "path": "/btc/easter47-pgp.asc",
+      "sha256": "118d7eac8662af821adfcf41ffea128b2edf3f4e61320802de8109031da306e7"
+    },
+    {
+      "bytes": 1730,
+      "path": "/btc/TRUST-ANCHORS.txt",
+      "sha256": "4499261169e83b6186c7cf344ce2d69815a450014dd6f659ed3d7945e50cb8c1"
+    },
+    {
+      "bytes": 1377,
+      "path": "/btc/VERIFICATION-REPORT.txt",
+      "sha256": "04961ae7c3726805056e77e099762956e55974e535a6218e398b89485a121464"
+    },
+    {
+      "bytes": 9835,
+      "path": "/js/money-spend.mjs",
+      "sha256": "ea1ffe92530b871d7f5206f16022b5271b34c67127424ea73bde88520b5d8e35"
+    },
+    {
+      "bytes": 1729,
+      "path": "/btc/WALLET-IMPORT.json",
+      "sha256": "96572a12ec41206e30d25c47a1dcc869f96a20497a16919eb93987853ccf3f3d"
+    }
+  ],
+  "generated_utc": "2026-10-11T02:38:57Z",
+  "keybase_proofs": {
+    "dns": {
+      "domain": "war.htp.sh",
+      "result": "PASS",
+      "txt": "keybase-site-verification=kWeP57XOd_CxiO4XXFtmKyVDvBAZKowBqRIkFt8ooxs"
+    },
+    "twitter": {
+      "nametag": "madmonero",
+      "result": "PASS",
+      "source": "keybase id easter47",
+      "url": "https://twitter.com/madmonero/status/2068890480197165325"
+    }
+  },
+  "page": "https://htp.sh/money",
+  "schema": "htp-money-pgp-attestation-v1",
+  "signer": {
+    "device_id": "431a8206365e48288ca6718d5e201218",
+    "device_name": "aio",
+    "keybase_pgp_kid": "0116b30b03b7d6eef868e022ace71f753128a42d805384ca2468d8fb7d3b6f82f1770a",
+    "keybase_profile": "https://keybase.io/easter47",
+    "keybase_uid": "e24107e5a5687a829a06a0e60a78d219",
+    "keybase_username": "easter47",
+    "pgp_algorithm": "ed25519",
+    "pgp_fingerprint": "20867A78369EA23A420DF3C4D10E7AF2A93DE56B",
+    "pgp_uid": "easter47 (htp.sh/money) <easter47@keybase.io>",
+    "public_key_path": "/btc/easter47-pgp.asc",
+    "published_on_keybase": true,
+    "secret_key_uploaded_to_keybase_servers": false
+  },
+  "statement": "Keybase user easter47 signed this manifest with OpenPGP fingerprint 20867A78369EA23A420DF3C4D10E7AF2A93DE56B. The signature covers the SHA-256 of the files listed here and the verification results below. It proves the Keybase account published this statement. It proves secp256k1 spend control only for 15tWKRJHfR62tvJ4uaVGasJ2eXffVTn56s. It does not prove spend control of the genesis coinbase 1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa."
+}

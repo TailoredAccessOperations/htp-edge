@@ -1,0 +1,19 @@
+{
+  "scheme": "htp-nft-coin-v1",
+  "generated_at": "2026-08-04T23:32:31Z",
+  "reverify_on_load": true,
+  "image_sha256": "81587de308f6a473cbf6b83a8483ec76025509bb2ba3883d044cef62fd969c0c",
+  "image_bytes": 1034734,
+  "coin_sha256": "5ba4e179a0d55be0329e5c68293cc00c03dcbb4d66509570b29e493618f056d3",
+  "stamp_sha256": "bcef7b8f4f8e80413acf32030a791c1eaffd2c34e18ebd789f51f3afe837581a",
+  "address": "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa",
+  "keybase_user": "easter47",
+  "sig_id": "fa0d750fa6644335738cde1b61a967099b2bf9b4dc2243578f3746924240466e0f",
+  "ed25519_pubkey": "f7a7c82a39e3a6d560a26b8f6f588abcbd8112fc3ac17377057b3c0281c48a36",
+  "commitment": "cf7c041b3421014cc75d20022bd8a4c4e8df58158bfcbb0e9780a73fac9f7c10",
+  "chain_tip": "3c547dc3336eb6fd55d3cbaf16e31fca39b6b98d31188bb3ffbc4d0c223cd825",
+  "chain_path": "imgs/satoshi/21e8.chain.json",
+  "stamp_path": "imgs/satoshi/21e8.coin.svg",
+  "image_path": "imgs/satoshi/21e8.jpeg",
+  "witness_path": "money-team/coin.svg"
+}

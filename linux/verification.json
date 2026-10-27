@@ -1,0 +1,48 @@
+{
+  "fetched_at": "2026-10-22 18:16:55 UTC",
+  "username": "linux",
+  "username_cased": "Linux",
+  "uid": "caf90169eefa5f807d577486b9f79519",
+  "created": "2015-10-28 17:07:29 UTC",
+  "sigchain_links": 349,
+  "sigchain_pass": 349,
+  "sigchain_fail": 0,
+  "pgp_signatures_with_now_expired_subkey": 133,
+  "link_types": {
+    "eldest": 7,
+    "web_service_binding": 84,
+    "track": 149,
+    "cryptocurrency": 11,
+    "untrack": 25,
+    "revoke": 31,
+    "sibkey": 18,
+    "subkey": 18,
+    "per_user_key": 5,
+    "wallet.stellar": 1
+  },
+  "stored_lookup_matches_live": true,
+  "primary_fingerprint": "da994c8789892c2c9ca0df149e88d841d1ddc62e",
+  "snapshot_pgp_short": "EE32 288C 6BCD 7F7B",
+  "snapshot_kid": "01010176c4f264f12d9d1bd06500e51628b6f87aa1630f8caf5f91cb9c5585625a6a0a",
+  "bitcoin_claim": {
+    "present": true,
+    "good": true,
+    "expired_key": true,
+    "signer": "",
+    "address": "19uDB5UDJRoTXBPzyMF2KD1Z7ZvqmdVWA4",
+    "sig_id": "cfdb568da40075fc42fa06701a70c94d3a0343f653db8c6c502e7b9b0cf5fd840f",
+    "address_in_plaintext": true
+  },
+  "failures": [],
+  "method": [
+    "Payload hash for sig_version 1 is SHA-256 of payload_json.",
+    "Each link prev equals the previous payload_hash. Link 1 has no prev.",
+    "OpenPGP statements are ASCII-armored signed messages. GnuPG decrypts them and the plaintext must equal payload_json.",
+    "NaCl sig_version 1 signs payload_json with Ed25519. The public key is the 32 bytes inside the KID.",
+    "NaCl sig_version 2 signs a msgpack array that contains the seqno, the previous payload hash, and SHA-256 of payload_json. payload_hash is SHA-256 of that array.",
+    "A NaCl sig_id is SHA-256 of the decoded signature blob plus one suffix byte. 0x0f is the user-signature suffix. 0x22 is the suffix Keybase uses for a sig_version 2 wallet.stellar link.",
+    "A signing subkey that has since expired still counts as a good historical signature when GnuPG reports GOODSIG.",
+    "The Keybase daemon was not started. This check does not ask keybase.io to re-validate remote proofs.",
+    "A Keybase cryptocurrency statement does not prove spend control of that address."
+  ]
+}

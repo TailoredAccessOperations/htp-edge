@@ -1,0 +1,1 @@
+:root{--matrix-color: #0f0}.matrix-char{color:var(--matrix-color);text-shadow:0 0 8px rgba(62,214,120,.25);font-family:IBM Plex Mono,ui-monospace,SF Mono,Menlo,Consolas,Courier New,monospace}

@@ -1,0 +1,89 @@
+/* Critical CSS - above-the-fold only */
+:root{
+  --bg0:#070b09;
+  --bg1:#0c1410;
+  --bg2:#101a14;
+  --green:#3ed678;
+  --green-bright:#6aff9f;
+  --text:#c8e6d4;
+  --muted:#7a9a88;
+  --cyan:#5ce1e6;
+  --max:920px;
+  --font-mono:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,Consolas,"Courier New",monospace;
+  --font-sans:"IBM Plex Sans",system-ui,-apple-system,sans-serif;
+  --ease:cubic-bezier(.22,1,.36,1)
+}
+*,*:before,*:after{box-sizing:border-box;margin:0;padding:0}
+html{color-scheme:dark;scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  min-height:100vh;
+  font-family:var(--font-mono);
+  font-size:15px;
+  line-height:1.7;
+  color:var(--text);
+  background:linear-gradient(180deg,var(--bg0),var(--bg1) 40%,var(--bg0));
+  overflow-x:hidden
+}
+#crt,#scanlines{position:fixed;inset:0;pointer-events:none;z-index:0}
+#crt{opacity:.2;background:radial-gradient(ellipse at center,transparent 50%,rgba(0,0,0,.45) 100%)}
+#scanlines{opacity:.12;height:200%;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.08) 2px,rgba(0,0,0,.08) 4px)}
+
+/* Background media geometry.
+   These three rules are duplicated verbatim from htp-inline-theme.css, and
+   they have to be: that stylesheet is swapped in asynchronously
+   (media="print" -> "all"), so until it lands the <video> elements fall back
+   to the UA default 300x150 box, push the whole document down, and then snap
+   to fullscreen. That single flash measured 0.71 of a 1.90 CLS. An unstyled
+   replaced element has no intrinsic size to fall back on, so the fix has to
+   live in the render-blocking sheet. Later sheets still win on order; these
+   only govern first paint. */
+#ghostvideo{position:fixed;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:.5;mix-blend-mode:screen;pointer-events:none}
+#bgvideo{position:fixed;top:50%;left:50%;min-width:100%;min-height:100%;transform:translate(-50%,-50%);z-index:-2;opacity:.08;filter:blur(3px) brightness(.5) saturate(.8);pointer-events:none}
+#avstage{position:fixed;inset:0;width:100%;height:100%;object-fit:cover;z-index:-3;opacity:.7;mix-blend-mode:screen;pointer-events:none}
+#avstage[hidden],#bgvideo[hidden]{display:none!important}
+/* Reserve the slideshow frame before imgs/*.webp decode. The <img> tags carry
+   width/height, but the wrapping box is sized by the theme sheet. */
+.imgbox{width:min(100%,720px);aspect-ratio:800/450;margin:0 auto;overflow:hidden;position:relative;background:#000}
+.imgbox img,.imgbox picture{display:block;width:100%;height:100%;object-fit:cover}
+img{max-width:100%;height:auto}
+.site{position:relative;z-index:1;width:min(100% - 2rem,var(--max));max-width:100%;margin:0 auto;padding:2rem 0 3rem;display:flex;flex-direction:column;gap:1.5rem}
+.hero{display:flex;flex-direction:column;align-items:center;text-align:center;gap:1.05rem;padding:1.25rem 0 .5rem}
+.glitch{font-family:var(--font-mono);font-size:clamp(2.8rem,10vw,5rem);font-weight:700;letter-spacing:.14em;color:#f2fff6;line-height:1;text-shadow:0 0 40px rgba(62,214,120,.25),2px 0 0 rgba(255,90,110,.35),-2px 0 0 rgba(92,225,230,.35)}
+.panel{width:100%;background:rgba(10,18,14,.92);border:1px solid rgba(62,214,120,.18);border-radius:12px;box-shadow:0 0 24px rgba(62,214,120,.12),0 16px 48px #00000059;padding:1.3rem 1.4rem 1.6rem;display:flex;flex-direction:column;gap:1.05rem;overflow-x:hidden}
+
+/* Tap-to-start splash. Ships `hidden` in the markup and is revealed by init.js
+   only once JS is confirmed running, so a no-JS visitor never gets locked out
+   behind a gate they cannot dismiss. `[hidden]` needs the !important because
+   the display:flex below would otherwise beat the UA sheet's display:none. */
+.htp-boot{position:fixed;inset:0;z-index:2147483000;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.7rem;width:100%;height:100%;padding:1.5rem;margin:0;border:0;background:radial-gradient(900px 480px at 50% -8%,rgba(62,214,120,.09),transparent 55%),linear-gradient(180deg,var(--bg0),var(--bg1) 40%,var(--bg0));color:var(--green-bright);font-family:var(--font-mono);text-align:center;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.htp-boot[hidden]{display:none!important}
+.htp-boot:focus-visible{outline:2px solid var(--cyan);outline-offset:-4px}
+.boot-title{position:relative;font-family:var(--font-mono);font-size:clamp(1.2rem,6vw,2.4rem);font-weight:700;letter-spacing:.1em;text-shadow:0 0 28px rgba(62,214,120,.5),2px 0 0 rgba(255,90,110,.4),-2px 0 0 rgba(92,225,230,.4)}
+.boot-sub{font-size:clamp(.7rem,2.4vw,.9rem);color:var(--cyan);opacity:.85}
+
+/* ---- Above-the-fold geometry, hoisted from htp-inline-theme.css ----
+   Same reasoning as the video rules: anything whose *box* differs between
+   first paint and final style is a layout shift waiting to happen. These are
+   geometry-only (no colour/decoration), so the theme sheet still owns the look
+   and wins on order. Values are duplicated verbatim from the theme so the two
+   states agree exactly; scripts/critical_css_audit.py re-checks that.
+   Audit before/after on a 1440x900 viewport:
+     header.hero   1391px -> 244px      .ticker  102px -> 40px
+     nav.links    1148px ->  44px       .ascii-frame 1122px -> 420px
+     canvas#matrix was an inline 1440px box in flow -> position:fixed
+     #cmd          was a 149px inline input in flow -> visually hidden */
+
+/* Matrix canvas is the first thing in <body>. Unstyled it is an inline element
+   in normal flow and shoves the whole document down by a viewport. */
+#matrix{position:fixed;inset:0;z-index:-1;width:100%;height:100%;pointer-events:none}
+/* Offscreen input for the terminal; must never occupy flow. */
+#cmd{position:absolute;left:0;top:0;width:1px;height:1px;margin:0;padding:0;border:0;opacity:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap;pointer-events:none}
+.ticker{position:relative;width:100%;height:40px;display:flex;align-items:center;overflow:hidden}
+.ticker-track{display:flex;width:max-content}
+.ticker-text{white-space:nowrap;flex-shrink:0}
+.links{display:flex;flex-wrap:wrap;justify-content:center;gap:.55rem}
+.links a{display:inline-flex;align-items:center;gap:.5rem}
+/* The banner is fixed-pitch preformatted text. At the inherited 15px it is
+   ~2.7x too tall (1122px vs 420px) and the panel below it slides off-screen. */
+.ascii-frame{width:100%;max-width:100%;min-width:0;overflow-x:auto;overflow-y:visible;padding:.65rem .35rem .85rem}
+pre.ascii,.ascii-scroll{display:block;box-sizing:border-box;width:max-content;min-width:100%;max-width:none;margin:0;padding:.5rem .65rem;white-space:pre;line-height:1.05;letter-spacing:0;word-spacing:0;word-break:normal;overflow-wrap:normal;text-align:left;font-size:11px}

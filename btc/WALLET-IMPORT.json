@@ -1,0 +1,50 @@
+{
+  "schema": "htp-wallet-import-v1",
+  "wallet_name": "easter47-mainnet",
+  "network": "bitcoin-mainnet",
+  "mode": "watchonly",
+  "private_keys_present": false,
+  "private_keys_accepted_by_api": false,
+  "genesis_imported": false,
+  "note": "The spendable easter47-wallet image is not on this machine. Bitcoin Core imports the published primary descriptor as watch-only. That import cannot sign. Spend control of the legacy address is the two BIP137 signatures. The genesis coinbase is not imported.",
+  "descriptors": [
+    {
+      "role": "primary",
+      "desc": "wpkh([cbbe345b/84h/0h/0h/0/0]030527d7ee94e6f3b83e99e436e8d41d23efe00c02932b3a2fdd8dd95dd3751f85)#gs3l57d5",
+      "address": "bc1q925c9f08xer3mdyvuxtqcz7mtjgm0ep8zlzd0f",
+      "solvable": true,
+      "spend_control": "KEY_ABSENT"
+    },
+    {
+      "role": "legacy_signmessage",
+      "desc_template": "addr(15tWKRJHfR62tvJ4uaVGasJ2eXffVTn56s)",
+      "address": "15tWKRJHfR62tvJ4uaVGasJ2eXffVTn56s",
+      "solvable": false,
+      "spend_control": "PASS",
+      "method": "BIP137 recoverable ECDSA"
+    }
+  ],
+  "tracked_without_keys": [
+    {
+      "role": "taproot",
+      "address": "bc1pz45hxlg5etw4h3pgpkec50my0zuqmnracqwu8xt6n44xysms8cwqvqg6dk",
+      "spend_control": "NOT_PROVEN"
+    },
+    {
+      "role": "change",
+      "address": "bc1q3uklvvpd3lmm24c6uk0z3lq5zn9ssvmawvv3ut",
+      "spend_control": "NOT_PROVEN"
+    }
+  ],
+  "genesis": {
+    "address": "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa",
+    "import": false,
+    "spend_control": "NOT_PROVEN"
+  },
+  "api": {
+    "report": "GET /api/money/spend-control",
+    "verify": "POST /api/money/spend-control",
+    "wallet": "GET /api/money/wallet",
+    "import": "POST /api/money/wallet/import"
+  }
+}

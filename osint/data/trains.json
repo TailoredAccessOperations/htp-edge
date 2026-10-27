@@ -1,0 +1,1510 @@
+{
+  "meta": {
+    "source": "htp747ebk curated builder",
+    "generated_at": "2026-09-24T11:12:35.919Z",
+    "curated": true,
+    "license": "labeled synthetic sample"
+  },
+  "items": [
+    {
+      "id": "tr0",
+      "line": "L4",
+      "operator": "RENFE",
+      "lat": 36.4644,
+      "lon": 138.8673,
+      "heading": 125,
+      "speed_kmh": 196,
+      "status": "stopped"
+    },
+    {
+      "id": "tr1",
+      "line": "L1",
+      "operator": "SNCF",
+      "lat": 29.7595,
+      "lon": 30.6322,
+      "heading": 132,
+      "speed_kmh": 187,
+      "status": "delayed"
+    },
+    {
+      "id": "tr2",
+      "line": "Northeast Corridor",
+      "operator": "ICE",
+      "lat": -33.8199,
+      "lon": 151.8796,
+      "heading": 330,
+      "speed_kmh": 2,
+      "status": "running"
+    },
+    {
+      "id": "tr3",
+      "line": "L1",
+      "operator": "Shinkansen",
+      "lat": 30.5988,
+      "lon": 30.7117,
+      "heading": 288,
+      "speed_kmh": 65,
+      "status": "delayed"
+    },
+    {
+      "id": "tr4",
+      "line": "Sanyo",
+      "operator": "SNCF",
+      "lat": 51.596,
+      "lon": 4.4369,
+      "heading": 103,
+      "speed_kmh": 305,
+      "status": "running"
+    },
+    {
+      "id": "tr5",
+      "line": "L1",
+      "operator": "Eurostar",
+      "lat": 60.6465,
+      "lon": 11.549,
+      "heading": 258,
+      "speed_kmh": 256,
+      "status": "delayed"
+    },
+    {
+      "id": "tr6",
+      "line": "AVE",
+      "operator": "Eurostar",
+      "lat": -24.0277,
+      "lon": -47.3064,
+      "heading": 220,
+      "speed_kmh": 295,
+      "status": "stopped"
+    },
+    {
+      "id": "tr7",
+      "line": "L1",
+      "operator": "SNCF",
+      "lat": -34.2611,
+      "lon": 18.6792,
+      "heading": 99,
+      "speed_kmh": 233,
+      "status": "delayed"
+    },
+    {
+      "id": "tr8",
+      "line": "AVE",
+      "operator": "Amtrak",
+      "lat": 52.7939,
+      "lon": 5.4825,
+      "heading": 55,
+      "speed_kmh": 168,
+      "status": "stopped"
+    },
+    {
+      "id": "tr9",
+      "line": "Sanyo",
+      "operator": "Shinkansen",
+      "lat": -34.1954,
+      "lon": 151.5209,
+      "heading": 322,
+      "speed_kmh": 186,
+      "status": "running"
+    },
+    {
+      "id": "tr10",
+      "line": "Northeast Corridor",
+      "operator": "TGV",
+      "lat": 1.7645,
+      "lon": 103.2783,
+      "heading": 274,
+      "speed_kmh": 162,
+      "status": "stopped"
+    },
+    {
+      "id": "tr11",
+      "line": "AVE",
+      "operator": "TGV",
+      "lat": 52.7263,
+      "lon": 4.2818,
+      "heading": 129,
+      "speed_kmh": 285,
+      "status": "delayed"
+    },
+    {
+      "id": "tr12",
+      "line": "L1",
+      "operator": "ICE",
+      "lat": -23.7698,
+      "lon": -46.1661,
+      "heading": 324,
+      "speed_kmh": 271,
+      "status": "running"
+    },
+    {
+      "id": "tr13",
+      "line": "L4",
+      "operator": "Shinkansen",
+      "lat": 52.5632,
+      "lon": 4.8394,
+      "heading": 284,
+      "speed_kmh": 202,
+      "status": "stopped"
+    },
+    {
+      "id": "tr14",
+      "line": "Tohoku",
+      "operator": "TGV",
+      "lat": 6.3471,
+      "lon": 3.1941,
+      "heading": 250,
+      "speed_kmh": 229,
+      "status": "stopped"
+    },
+    {
+      "id": "tr15",
+      "line": "L2",
+      "operator": "Shinkansen",
+      "lat": 60.4121,
+      "lon": 10.9509,
+      "heading": 3,
+      "speed_kmh": 42,
+      "status": "running"
+    },
+    {
+      "id": "tr16",
+      "line": "L4",
+      "operator": "Eurostar",
+      "lat": 60.2614,
+      "lon": 10.487,
+      "heading": 236,
+      "speed_kmh": 257,
+      "status": "running"
+    },
+    {
+      "id": "tr17",
+      "line": "AVE",
+      "operator": "RENFE",
+      "lat": 44.0984,
+      "lon": 26.3247,
+      "heading": 119,
+      "speed_kmh": 283,
+      "status": "running"
+    },
+    {
+      "id": "tr18",
+      "line": "L5",
+      "operator": "Amtrak",
+      "lat": 37.0465,
+      "lon": 126.7897,
+      "heading": 294,
+      "speed_kmh": 101,
+      "status": "delayed"
+    },
+    {
+      "id": "tr19",
+      "line": "AVE",
+      "operator": "RENFE",
+      "lat": 52.006,
+      "lon": 4.3908,
+      "heading": 195,
+      "speed_kmh": 188,
+      "status": "stopped"
+    },
+    {
+      "id": "tr20",
+      "line": "Northeast Corridor",
+      "operator": "Amtrak",
+      "lat": 52.8409,
+      "lon": 5.6359,
+      "heading": 15,
+      "speed_kmh": 43,
+      "status": "stopped"
+    },
+    {
+      "id": "tr21",
+      "line": "L3",
+      "operator": "RENFE",
+      "lat": 30.2256,
+      "lon": 31.6689,
+      "heading": 165,
+      "speed_kmh": 105,
+      "status": "running"
+    },
+    {
+      "id": "tr22",
+      "line": "L3",
+      "operator": "Eurostar",
+      "lat": -33.3175,
+      "lon": 150.9061,
+      "heading": 218,
+      "speed_kmh": 303,
+      "status": "running"
+    },
+    {
+      "id": "tr23",
+      "line": "L1",
+      "operator": "Shinkansen",
+      "lat": -22.7811,
+      "lon": -45.8946,
+      "heading": 319,
+      "speed_kmh": 228,
+      "status": "stopped"
+    },
+    {
+      "id": "tr24",
+      "line": "Northeast Corridor",
+      "operator": "Shinkansen",
+      "lat": 52.1576,
+      "lon": 4.3161,
+      "heading": 237,
+      "speed_kmh": 244,
+      "status": "running"
+    },
+    {
+      "id": "tr25",
+      "line": "Sanyo",
+      "operator": "Amtrak",
+      "lat": -1.5567,
+      "lon": 37.4617,
+      "heading": 278,
+      "speed_kmh": 22,
+      "status": "stopped"
+    },
+    {
+      "id": "tr26",
+      "line": "Tohoku",
+      "operator": "TGV",
+      "lat": 18.9283,
+      "lon": -98.3684,
+      "heading": 83,
+      "speed_kmh": 77,
+      "status": "running"
+    },
+    {
+      "id": "tr27",
+      "line": "L4",
+      "operator": "NS",
+      "lat": 52.2232,
+      "lon": 4.5015,
+      "heading": 269,
+      "speed_kmh": 23,
+      "status": "running"
+    },
+    {
+      "id": "tr28",
+      "line": "L1",
+      "operator": "RENFE",
+      "lat": 36.1095,
+      "lon": 139.7786,
+      "heading": 223,
+      "speed_kmh": 213,
+      "status": "running"
+    },
+    {
+      "id": "tr29",
+      "line": "L2",
+      "operator": "ICE",
+      "lat": 0.8457,
+      "lon": 103.7596,
+      "heading": 178,
+      "speed_kmh": 158,
+      "status": "stopped"
+    },
+    {
+      "id": "tr30",
+      "line": "Tohoku",
+      "operator": "TGV",
+      "lat": -24.0785,
+      "lon": -45.8754,
+      "heading": 185,
+      "speed_kmh": 85,
+      "status": "running"
+    },
+    {
+      "id": "tr31",
+      "line": "Tohoku",
+      "operator": "TGV",
+      "lat": 37.8869,
+      "lon": 126.9451,
+      "heading": 308,
+      "speed_kmh": 82,
+      "status": "delayed"
+    },
+    {
+      "id": "tr32",
+      "line": "Sanyo",
+      "operator": "Eurostar",
+      "lat": 18.8775,
+      "lon": -99.9205,
+      "heading": 16,
+      "speed_kmh": 156,
+      "status": "running"
+    },
+    {
+      "id": "tr33",
+      "line": "AVE",
+      "operator": "SNCF",
+      "lat": 30.3784,
+      "lon": 31.1778,
+      "heading": 298,
+      "speed_kmh": 15,
+      "status": "delayed"
+    },
+    {
+      "id": "tr34",
+      "line": "L5",
+      "operator": "NS",
+      "lat": 53.1266,
+      "lon": 5.3219,
+      "heading": 171,
+      "speed_kmh": 196,
+      "status": "delayed"
+    },
+    {
+      "id": "tr35",
+      "line": "L4",
+      "operator": "NS",
+      "lat": 19.7559,
+      "lon": -99.9132,
+      "heading": 250,
+      "speed_kmh": 14,
+      "status": "running"
+    },
+    {
+      "id": "tr36",
+      "line": "Sanyo",
+      "operator": "NS",
+      "lat": 15.231,
+      "lon": 120.7707,
+      "heading": 13,
+      "speed_kmh": 23,
+      "status": "running"
+    },
+    {
+      "id": "tr37",
+      "line": "Sanyo",
+      "operator": "Eurostar",
+      "lat": -23.9345,
+      "lon": -47.0222,
+      "heading": 333,
+      "speed_kmh": 43,
+      "status": "running"
+    },
+    {
+      "id": "tr38",
+      "line": "L3",
+      "operator": "SNCF",
+      "lat": -34.0354,
+      "lon": 151.3418,
+      "heading": 27,
+      "speed_kmh": 102,
+      "status": "running"
+    },
+    {
+      "id": "tr39",
+      "line": "AVE",
+      "operator": "ICE",
+      "lat": 60.4141,
+      "lon": 11.3998,
+      "heading": 157,
+      "speed_kmh": 160,
+      "status": "delayed"
+    },
+    {
+      "id": "tr40",
+      "line": "L3",
+      "operator": "RENFE",
+      "lat": 14.687,
+      "lon": 120.4628,
+      "heading": 167,
+      "speed_kmh": 107,
+      "status": "delayed"
+    },
+    {
+      "id": "tr41",
+      "line": "L3",
+      "operator": "SNCF",
+      "lat": 63.6461,
+      "lon": -22.0671,
+      "heading": 70,
+      "speed_kmh": 237,
+      "status": "delayed"
+    },
+    {
+      "id": "tr42",
+      "line": "Tohoku",
+      "operator": "NS",
+      "lat": -33.2392,
+      "lon": 17.7731,
+      "heading": 40,
+      "speed_kmh": 15,
+      "status": "delayed"
+    },
+    {
+      "id": "tr43",
+      "line": "L3",
+      "operator": "Amtrak",
+      "lat": -33.7391,
+      "lon": 19.0657,
+      "heading": 282,
+      "speed_kmh": 309,
+      "status": "delayed"
+    },
+    {
+      "id": "tr44",
+      "line": "AVE",
+      "operator": "ICE",
+      "lat": -1.237,
+      "lon": 37.0084,
+      "heading": 118,
+      "speed_kmh": 234,
+      "status": "delayed"
+    },
+    {
+      "id": "tr45",
+      "line": "AVE",
+      "operator": "TGV",
+      "lat": 5.8738,
+      "lon": 4.0648,
+      "heading": 244,
+      "speed_kmh": 107,
+      "status": "running"
+    },
+    {
+      "id": "tr46",
+      "line": "Sanyo",
+      "operator": "Eurostar",
+      "lat": 1.3426,
+      "lon": 104.3181,
+      "heading": 267,
+      "speed_kmh": 59,
+      "status": "running"
+    },
+    {
+      "id": "tr47",
+      "line": "Northeast Corridor",
+      "operator": "TGV",
+      "lat": 59.4625,
+      "lon": 10.8514,
+      "heading": 209,
+      "speed_kmh": 18,
+      "status": "delayed"
+    },
+    {
+      "id": "tr48",
+      "line": "L1",
+      "operator": "ICE",
+      "lat": -0.5594,
+      "lon": 37.3559,
+      "heading": 224,
+      "speed_kmh": 117,
+      "status": "delayed"
+    },
+    {
+      "id": "tr49",
+      "line": "L2",
+      "operator": "Shinkansen",
+      "lat": 35.5929,
+      "lon": 139.94,
+      "heading": 188,
+      "speed_kmh": 112,
+      "status": "running"
+    },
+    {
+      "id": "tr50",
+      "line": "L4",
+      "operator": "Eurostar",
+      "lat": 36.2145,
+      "lon": 140.1327,
+      "heading": 261,
+      "speed_kmh": 69,
+      "status": "delayed"
+    },
+    {
+      "id": "tr51",
+      "line": "L2",
+      "operator": "ICE",
+      "lat": 64.4199,
+      "lon": -22.4249,
+      "heading": 222,
+      "speed_kmh": 27,
+      "status": "stopped"
+    },
+    {
+      "id": "tr52",
+      "line": "L2",
+      "operator": "RENFE",
+      "lat": 0.6375,
+      "lon": 103.4449,
+      "heading": 21,
+      "speed_kmh": 285,
+      "status": "delayed"
+    },
+    {
+      "id": "tr53",
+      "line": "Sanyo",
+      "operator": "RENFE",
+      "lat": -1.6742,
+      "lon": 36.2407,
+      "heading": 43,
+      "speed_kmh": 29,
+      "status": "delayed"
+    },
+    {
+      "id": "tr54",
+      "line": "Tohoku",
+      "operator": "SNCF",
+      "lat": -23.3776,
+      "lon": -46.575,
+      "heading": 88,
+      "speed_kmh": 243,
+      "status": "stopped"
+    },
+    {
+      "id": "tr55",
+      "line": "L2",
+      "operator": "Eurostar",
+      "lat": 19.2144,
+      "lon": -98.7506,
+      "heading": 102,
+      "speed_kmh": 224,
+      "status": "stopped"
+    },
+    {
+      "id": "tr56",
+      "line": "AVE",
+      "operator": "RENFE",
+      "lat": -33.2973,
+      "lon": 17.8302,
+      "heading": 121,
+      "speed_kmh": 119,
+      "status": "running"
+    },
+    {
+      "id": "tr57",
+      "line": "L1",
+      "operator": "NS",
+      "lat": 63.6068,
+      "lon": -22.7322,
+      "heading": 92,
+      "speed_kmh": 280,
+      "status": "delayed"
+    },
+    {
+      "id": "tr58",
+      "line": "L3",
+      "operator": "SNCF",
+      "lat": 29.4097,
+      "lon": 31.7141,
+      "heading": 86,
+      "speed_kmh": 164,
+      "status": "running"
+    },
+    {
+      "id": "tr59",
+      "line": "AVE",
+      "operator": "Shinkansen",
+      "lat": 43.8161,
+      "lon": 25.6144,
+      "heading": 39,
+      "speed_kmh": 57,
+      "status": "stopped"
+    },
+    {
+      "id": "tr60",
+      "line": "L1",
+      "operator": "TGV",
+      "lat": 6.4157,
+      "lon": 3.4154,
+      "heading": 104,
+      "speed_kmh": 112,
+      "status": "running"
+    },
+    {
+      "id": "tr61",
+      "line": "L3",
+      "operator": "TGV",
+      "lat": 44.4474,
+      "lon": 26.6585,
+      "heading": 19,
+      "speed_kmh": 273,
+      "status": "running"
+    },
+    {
+      "id": "tr62",
+      "line": "Tohoku",
+      "operator": "Amtrak",
+      "lat": 2.0389,
+      "lon": 103.9659,
+      "heading": 90,
+      "speed_kmh": 162,
+      "status": "running"
+    },
+    {
+      "id": "tr63",
+      "line": "L3",
+      "operator": "SNCF",
+      "lat": 20.0235,
+      "lon": -98.9531,
+      "heading": 114,
+      "speed_kmh": 210,
+      "status": "running"
+    },
+    {
+      "id": "tr64",
+      "line": "Northeast Corridor",
+      "operator": "Shinkansen",
+      "lat": 63.6288,
+      "lon": -21.1831,
+      "heading": 140,
+      "speed_kmh": 116,
+      "status": "running"
+    },
+    {
+      "id": "tr65",
+      "line": "L4",
+      "operator": "Eurostar",
+      "lat": 38.7013,
+      "lon": -8.9594,
+      "heading": 213,
+      "speed_kmh": 71,
+      "status": "running"
+    },
+    {
+      "id": "tr66",
+      "line": "L5",
+      "operator": "Shinkansen",
+      "lat": -23.2438,
+      "lon": -46.456,
+      "heading": 347,
+      "speed_kmh": 20,
+      "status": "running"
+    },
+    {
+      "id": "tr67",
+      "line": "AVE",
+      "operator": "RENFE",
+      "lat": 30.5253,
+      "lon": 30.5925,
+      "heading": 85,
+      "speed_kmh": 291,
+      "status": "delayed"
+    },
+    {
+      "id": "tr68",
+      "line": "AVE",
+      "operator": "SNCF",
+      "lat": -1.9743,
+      "lon": 37.1837,
+      "heading": 0,
+      "speed_kmh": 42,
+      "status": "delayed"
+    },
+    {
+      "id": "tr69",
+      "line": "AVE",
+      "operator": "ICE",
+      "lat": -23.2374,
+      "lon": -47.1185,
+      "heading": 208,
+      "speed_kmh": 100,
+      "status": "delayed"
+    },
+    {
+      "id": "tr70",
+      "line": "L5",
+      "operator": "TGV",
+      "lat": 29.8817,
+      "lon": 30.8212,
+      "heading": 79,
+      "speed_kmh": 93,
+      "status": "running"
+    },
+    {
+      "id": "tr71",
+      "line": "L5",
+      "operator": "Eurostar",
+      "lat": -22.8811,
+      "lon": -46.4662,
+      "heading": 148,
+      "speed_kmh": 114,
+      "status": "delayed"
+    },
+    {
+      "id": "tr72",
+      "line": "Northeast Corridor",
+      "operator": "SNCF",
+      "lat": 6.222,
+      "lon": 3.2758,
+      "heading": 272,
+      "speed_kmh": 45,
+      "status": "delayed"
+    },
+    {
+      "id": "tr73",
+      "line": "Tohoku",
+      "operator": "ICE",
+      "lat": 37.7479,
+      "lon": 127.3797,
+      "heading": 243,
+      "speed_kmh": 147,
+      "status": "running"
+    },
+    {
+      "id": "tr74",
+      "line": "Northeast Corridor",
+      "operator": "RENFE",
+      "lat": 38.7743,
+      "lon": -8.9906,
+      "heading": 349,
+      "speed_kmh": 158,
+      "status": "stopped"
+    },
+    {
+      "id": "tr75",
+      "line": "Northeast Corridor",
+      "operator": "RENFE",
+      "lat": -23.1952,
+      "lon": -46.9572,
+      "heading": 224,
+      "speed_kmh": 62,
+      "status": "running"
+    },
+    {
+      "id": "tr76",
+      "line": "Tohoku",
+      "operator": "TGV",
+      "lat": 19.3232,
+      "lon": -98.6071,
+      "heading": 79,
+      "speed_kmh": 51,
+      "status": "stopped"
+    },
+    {
+      "id": "tr77",
+      "line": "L3",
+      "operator": "Eurostar",
+      "lat": 37.9424,
+      "lon": 127.5536,
+      "heading": 343,
+      "speed_kmh": 222,
+      "status": "running"
+    },
+    {
+      "id": "tr78",
+      "line": "L2",
+      "operator": "Amtrak",
+      "lat": -33.1265,
+      "lon": 151.8573,
+      "heading": 291,
+      "speed_kmh": 23,
+      "status": "delayed"
+    },
+    {
+      "id": "tr79",
+      "line": "L2",
+      "operator": "RENFE",
+      "lat": 7.0159,
+      "lon": 2.6931,
+      "heading": 195,
+      "speed_kmh": 215,
+      "status": "delayed"
+    },
+    {
+      "id": "tr80",
+      "line": "L1",
+      "operator": "TGV",
+      "lat": 14.9645,
+      "lon": 120.704,
+      "heading": 126,
+      "speed_kmh": 240,
+      "status": "running"
+    },
+    {
+      "id": "tr81",
+      "line": "Tohoku",
+      "operator": "ICE",
+      "lat": -1.2942,
+      "lon": 37.4055,
+      "heading": 206,
+      "speed_kmh": 75,
+      "status": "stopped"
+    },
+    {
+      "id": "tr82",
+      "line": "L3",
+      "operator": "NS",
+      "lat": 30.5255,
+      "lon": 30.7163,
+      "heading": 312,
+      "speed_kmh": 87,
+      "status": "stopped"
+    },
+    {
+      "id": "tr83",
+      "line": "Sanyo",
+      "operator": "Eurostar",
+      "lat": 63.4936,
+      "lon": -21.9142,
+      "heading": 325,
+      "speed_kmh": 254,
+      "status": "stopped"
+    },
+    {
+      "id": "tr84",
+      "line": "L2",
+      "operator": "Shinkansen",
+      "lat": 7.072,
+      "lon": 2.9748,
+      "heading": 77,
+      "speed_kmh": 199,
+      "status": "delayed"
+    },
+    {
+      "id": "tr85",
+      "line": "L3",
+      "operator": "TGV",
+      "lat": 19.9362,
+      "lon": -99.226,
+      "heading": 176,
+      "speed_kmh": 26,
+      "status": "stopped"
+    },
+    {
+      "id": "tr86",
+      "line": "Northeast Corridor",
+      "operator": "Shinkansen",
+      "lat": 19.3745,
+      "lon": -98.9319,
+      "heading": 301,
+      "speed_kmh": 70,
+      "status": "running"
+    },
+    {
+      "id": "tr87",
+      "line": "AVE",
+      "operator": "RENFE",
+      "lat": 52.1087,
+      "lon": 5.0355,
+      "heading": 155,
+      "speed_kmh": 285,
+      "status": "delayed"
+    },
+    {
+      "id": "tr88",
+      "line": "L2",
+      "operator": "Amtrak",
+      "lat": 19.9847,
+      "lon": -99.1297,
+      "heading": 8,
+      "speed_kmh": 186,
+      "status": "running"
+    },
+    {
+      "id": "tr89",
+      "line": "Northeast Corridor",
+      "operator": "Eurostar",
+      "lat": 30.3282,
+      "lon": 31.4847,
+      "heading": 1,
+      "speed_kmh": 138,
+      "status": "stopped"
+    },
+    {
+      "id": "tr90",
+      "line": "L2",
+      "operator": "NS",
+      "lat": 30.29,
+      "lon": 31.6373,
+      "heading": 239,
+      "speed_kmh": 142,
+      "status": "running"
+    },
+    {
+      "id": "tr91",
+      "line": "L2",
+      "operator": "ICE",
+      "lat": 37.2808,
+      "lon": 126.4542,
+      "heading": 149,
+      "speed_kmh": 235,
+      "status": "stopped"
+    },
+    {
+      "id": "tr92",
+      "line": "L2",
+      "operator": "Amtrak",
+      "lat": 38.2598,
+      "lon": -8.7578,
+      "heading": 307,
+      "speed_kmh": 172,
+      "status": "running"
+    },
+    {
+      "id": "tr93",
+      "line": "L2",
+      "operator": "ICE",
+      "lat": 29.8977,
+      "lon": 31.1475,
+      "heading": 134,
+      "speed_kmh": 154,
+      "status": "stopped"
+    },
+    {
+      "id": "tr94",
+      "line": "Tohoku",
+      "operator": "Amtrak",
+      "lat": 37.3169,
+      "lon": 127.7381,
+      "heading": 119,
+      "speed_kmh": 215,
+      "status": "running"
+    },
+    {
+      "id": "tr95",
+      "line": "L1",
+      "operator": "NS",
+      "lat": 2.1226,
+      "lon": 103.4041,
+      "heading": 18,
+      "speed_kmh": 39,
+      "status": "running"
+    },
+    {
+      "id": "tr96",
+      "line": "L1",
+      "operator": "NS",
+      "lat": 44.7633,
+      "lon": 25.5565,
+      "heading": 5,
+      "speed_kmh": 308,
+      "status": "delayed"
+    },
+    {
+      "id": "tr97",
+      "line": "L5",
+      "operator": "Eurostar",
+      "lat": 18.9508,
+      "lon": -99.5912,
+      "heading": 340,
+      "speed_kmh": 165,
+      "status": "stopped"
+    },
+    {
+      "id": "tr98",
+      "line": "L1",
+      "operator": "Amtrak",
+      "lat": 63.6478,
+      "lon": -21.6441,
+      "heading": 62,
+      "speed_kmh": 316,
+      "status": "delayed"
+    },
+    {
+      "id": "tr99",
+      "line": "L2",
+      "operator": "NS",
+      "lat": 59.8103,
+      "lon": 11.1576,
+      "heading": 308,
+      "speed_kmh": 297,
+      "status": "delayed"
+    },
+    {
+      "id": "tr100",
+      "line": "AVE",
+      "operator": "Eurostar",
+      "lat": 43.7665,
+      "lon": 26.2228,
+      "heading": 350,
+      "speed_kmh": 259,
+      "status": "stopped"
+    },
+    {
+      "id": "tr101",
+      "line": "L3",
+      "operator": "Shinkansen",
+      "lat": 64.0474,
+      "lon": -21.698,
+      "heading": 84,
+      "speed_kmh": 128,
+      "status": "delayed"
+    },
+    {
+      "id": "tr102",
+      "line": "L3",
+      "operator": "ICE",
+      "lat": 39.3895,
+      "lon": -9.1684,
+      "heading": 263,
+      "speed_kmh": 10,
+      "status": "running"
+    },
+    {
+      "id": "tr103",
+      "line": "Tohoku",
+      "operator": "RENFE",
+      "lat": 1.4928,
+      "lon": 104.5585,
+      "heading": 343,
+      "speed_kmh": 106,
+      "status": "delayed"
+    },
+    {
+      "id": "tr104",
+      "line": "L3",
+      "operator": "SNCF",
+      "lat": 0.9024,
+      "lon": 103.1794,
+      "heading": 96,
+      "speed_kmh": 132,
+      "status": "delayed"
+    },
+    {
+      "id": "tr105",
+      "line": "Sanyo",
+      "operator": "Eurostar",
+      "lat": 51.5971,
+      "lon": 5.6976,
+      "heading": 160,
+      "speed_kmh": 244,
+      "status": "running"
+    },
+    {
+      "id": "tr106",
+      "line": "L1",
+      "operator": "NS",
+      "lat": -34.2757,
+      "lon": 18.7221,
+      "heading": 10,
+      "speed_kmh": 6,
+      "status": "stopped"
+    },
+    {
+      "id": "tr107",
+      "line": "L1",
+      "operator": "ICE",
+      "lat": 63.5108,
+      "lon": -22.4028,
+      "heading": 47,
+      "speed_kmh": 70,
+      "status": "running"
+    },
+    {
+      "id": "tr108",
+      "line": "Sanyo",
+      "operator": "Amtrak",
+      "lat": 64.6696,
+      "lon": -21.3269,
+      "heading": 122,
+      "speed_kmh": 4,
+      "status": "stopped"
+    },
+    {
+      "id": "tr109",
+      "line": "L5",
+      "operator": "ICE",
+      "lat": 35.345,
+      "lon": 138.9835,
+      "heading": 53,
+      "speed_kmh": 236,
+      "status": "running"
+    },
+    {
+      "id": "tr110",
+      "line": "L5",
+      "operator": "Amtrak",
+      "lat": 14.087,
+      "lon": 120.3859,
+      "heading": 4,
+      "speed_kmh": 295,
+      "status": "running"
+    },
+    {
+      "id": "tr111",
+      "line": "Sanyo",
+      "operator": "TGV",
+      "lat": 29.4561,
+      "lon": 31.7058,
+      "heading": 275,
+      "speed_kmh": 189,
+      "status": "running"
+    },
+    {
+      "id": "tr112",
+      "line": "L4",
+      "operator": "Shinkansen",
+      "lat": 44.7098,
+      "lon": 26.7591,
+      "heading": 71,
+      "speed_kmh": 300,
+      "status": "delayed"
+    },
+    {
+      "id": "tr113",
+      "line": "AVE",
+      "operator": "Shinkansen",
+      "lat": -1.0635,
+      "lon": 37.2728,
+      "heading": 90,
+      "speed_kmh": 169,
+      "status": "running"
+    },
+    {
+      "id": "tr114",
+      "line": "Northeast Corridor",
+      "operator": "NS",
+      "lat": 60.3448,
+      "lon": 9.9549,
+      "heading": 39,
+      "speed_kmh": 106,
+      "status": "stopped"
+    },
+    {
+      "id": "tr115",
+      "line": "L3",
+      "operator": "SNCF",
+      "lat": -1.731,
+      "lon": 36.6826,
+      "heading": 349,
+      "speed_kmh": 300,
+      "status": "running"
+    },
+    {
+      "id": "tr116",
+      "line": "Tohoku",
+      "operator": "Eurostar",
+      "lat": 64.8171,
+      "lon": -21.453,
+      "heading": 3,
+      "speed_kmh": 171,
+      "status": "stopped"
+    },
+    {
+      "id": "tr117",
+      "line": "Tohoku",
+      "operator": "TGV",
+      "lat": 35.9932,
+      "lon": 140.1704,
+      "heading": 94,
+      "speed_kmh": 212,
+      "status": "stopped"
+    },
+    {
+      "id": "tr118",
+      "line": "L4",
+      "operator": "Eurostar",
+      "lat": -0.7168,
+      "lon": 37.3398,
+      "heading": 300,
+      "speed_kmh": 188,
+      "status": "stopped"
+    },
+    {
+      "id": "tr119",
+      "line": "Tohoku",
+      "operator": "Eurostar",
+      "lat": 30.3428,
+      "lon": 30.6981,
+      "heading": 233,
+      "speed_kmh": 106,
+      "status": "stopped"
+    },
+    {
+      "id": "tr120",
+      "line": "Tohoku",
+      "operator": "RENFE",
+      "lat": 64.5456,
+      "lon": -22.1021,
+      "heading": 114,
+      "speed_kmh": 52,
+      "status": "running"
+    },
+    {
+      "id": "tr121",
+      "line": "L3",
+      "operator": "Eurostar",
+      "lat": 6.8271,
+      "lon": 3.6736,
+      "heading": 316,
+      "speed_kmh": 308,
+      "status": "stopped"
+    },
+    {
+      "id": "tr122",
+      "line": "L3",
+      "operator": "RENFE",
+      "lat": 6.5692,
+      "lon": 3.9226,
+      "heading": 153,
+      "speed_kmh": 260,
+      "status": "delayed"
+    },
+    {
+      "id": "tr123",
+      "line": "L3",
+      "operator": "RENFE",
+      "lat": 63.7,
+      "lon": -21.5817,
+      "heading": 99,
+      "speed_kmh": 262,
+      "status": "stopped"
+    },
+    {
+      "id": "tr124",
+      "line": "L4",
+      "operator": "Eurostar",
+      "lat": 14.7229,
+      "lon": 120.5755,
+      "heading": 322,
+      "speed_kmh": 59,
+      "status": "running"
+    },
+    {
+      "id": "tr125",
+      "line": "L3",
+      "operator": "SNCF",
+      "lat": 59.8853,
+      "lon": 11.4274,
+      "heading": 34,
+      "speed_kmh": 48,
+      "status": "running"
+    },
+    {
+      "id": "tr126",
+      "line": "L5",
+      "operator": "Amtrak",
+      "lat": 7.3096,
+      "lon": 3.6155,
+      "heading": 173,
+      "speed_kmh": 221,
+      "status": "stopped"
+    },
+    {
+      "id": "tr127",
+      "line": "L3",
+      "operator": "Eurostar",
+      "lat": -23.3994,
+      "lon": -45.839,
+      "heading": 252,
+      "speed_kmh": 127,
+      "status": "stopped"
+    },
+    {
+      "id": "tr128",
+      "line": "Northeast Corridor",
+      "operator": "Shinkansen",
+      "lat": 35.3955,
+      "lon": 138.961,
+      "heading": 188,
+      "speed_kmh": 52,
+      "status": "delayed"
+    },
+    {
+      "id": "tr129",
+      "line": "L4",
+      "operator": "Shinkansen",
+      "lat": 15.0414,
+      "lon": 120.3324,
+      "heading": 78,
+      "speed_kmh": 195,
+      "status": "stopped"
+    },
+    {
+      "id": "tr130",
+      "line": "Northeast Corridor",
+      "operator": "NS",
+      "lat": -33.0799,
+      "lon": 151.3307,
+      "heading": 219,
+      "speed_kmh": 53,
+      "status": "delayed"
+    },
+    {
+      "id": "tr131",
+      "line": "L1",
+      "operator": "Eurostar",
+      "lat": 64.2873,
+      "lon": -21.4278,
+      "heading": 305,
+      "speed_kmh": 207,
+      "status": "running"
+    },
+    {
+      "id": "tr132",
+      "line": "AVE",
+      "operator": "NS",
+      "lat": -23.8228,
+      "lon": -46.9592,
+      "heading": 116,
+      "speed_kmh": 4,
+      "status": "stopped"
+    },
+    {
+      "id": "tr133",
+      "line": "L1",
+      "operator": "Shinkansen",
+      "lat": 64.4351,
+      "lon": -22.1692,
+      "heading": 162,
+      "speed_kmh": 76,
+      "status": "delayed"
+    },
+    {
+      "id": "tr134",
+      "line": "L1",
+      "operator": "NS",
+      "lat": 0.9766,
+      "lon": 103.1232,
+      "heading": 53,
+      "speed_kmh": 47,
+      "status": "running"
+    },
+    {
+      "id": "tr135",
+      "line": "L5",
+      "operator": "RENFE",
+      "lat": 37.6083,
+      "lon": 126.2496,
+      "heading": 235,
+      "speed_kmh": 82,
+      "status": "stopped"
+    },
+    {
+      "id": "tr136",
+      "line": "L5",
+      "operator": "Amtrak",
+      "lat": 14.4519,
+      "lon": 121.3868,
+      "heading": 6,
+      "speed_kmh": 180,
+      "status": "delayed"
+    },
+    {
+      "id": "tr137",
+      "line": "L5",
+      "operator": "TGV",
+      "lat": -33.3159,
+      "lon": 18.5358,
+      "heading": 139,
+      "speed_kmh": 102,
+      "status": "stopped"
+    },
+    {
+      "id": "tr138",
+      "line": "L3",
+      "operator": "TGV",
+      "lat": 35.8863,
+      "lon": 139.1034,
+      "heading": 192,
+      "speed_kmh": 167,
+      "status": "delayed"
+    },
+    {
+      "id": "tr139",
+      "line": "L1",
+      "operator": "Shinkansen",
+      "lat": 19.0205,
+      "lon": -98.7896,
+      "heading": 222,
+      "speed_kmh": 146,
+      "status": "stopped"
+    },
+    {
+      "id": "tr140",
+      "line": "L2",
+      "operator": "NS",
+      "lat": 35.0633,
+      "lon": 139.6367,
+      "heading": 343,
+      "speed_kmh": 78,
+      "status": "stopped"
+    },
+    {
+      "id": "tr141",
+      "line": "Northeast Corridor",
+      "operator": "Eurostar",
+      "lat": 59.1684,
+      "lon": 11.4485,
+      "heading": 218,
+      "speed_kmh": 108,
+      "status": "stopped"
+    },
+    {
+      "id": "tr142",
+      "line": "AVE",
+      "operator": "TGV",
+      "lat": -1.481,
+      "lon": 37.5435,
+      "heading": 83,
+      "speed_kmh": 110,
+      "status": "stopped"
+    },
+    {
+      "id": "tr143",
+      "line": "Tohoku",
+      "operator": "TGV",
+      "lat": 52.9287,
+      "lon": 5.185,
+      "heading": 216,
+      "speed_kmh": 303,
+      "status": "delayed"
+    },
+    {
+      "id": "tr144",
+      "line": "L2",
+      "operator": "Amtrak",
+      "lat": 38.3911,
+      "lon": -9.6405,
+      "heading": 76,
+      "speed_kmh": 11,
+      "status": "delayed"
+    },
+    {
+      "id": "tr145",
+      "line": "L5",
+      "operator": "NS",
+      "lat": 7.1822,
+      "lon": 3.8383,
+      "heading": 212,
+      "speed_kmh": 270,
+      "status": "delayed"
+    },
+    {
+      "id": "tr146",
+      "line": "AVE",
+      "operator": "Shinkansen",
+      "lat": 37.0147,
+      "lon": 126.5487,
+      "heading": 65,
+      "speed_kmh": 207,
+      "status": "running"
+    },
+    {
+      "id": "tr147",
+      "line": "Northeast Corridor",
+      "operator": "Shinkansen",
+      "lat": 43.6406,
+      "lon": 25.3463,
+      "heading": 333,
+      "speed_kmh": 187,
+      "status": "stopped"
+    },
+    {
+      "id": "tr148",
+      "line": "L4",
+      "operator": "TGV",
+      "lat": -33.3125,
+      "lon": 151.6079,
+      "heading": 281,
+      "speed_kmh": 227,
+      "status": "stopped"
+    },
+    {
+      "id": "tr149",
+      "line": "AVE",
+      "operator": "TGV",
+      "lat": 60.1445,
+      "lon": 10.6168,
+      "heading": 91,
+      "speed_kmh": 60,
+      "status": "running"
+    }
+  ]
+}

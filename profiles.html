@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>Profile Vault · HTP</title>
+  <meta name="description" content="A local-first multi-profile viewer for public TikTok and X sources.">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/profiles.css">
+<link href="/css/htp-critical-viewport.css?v=2" rel="stylesheet"><link href="/css/htp-responsive.css?v=2" rel="stylesheet"><script src="/js/htp-viewport.js?v=2" defer></script></head>
+<body>
+  <main class="profiles-app">
+    <header class="profiles-header">
+      <a class="back-link" href="/">← htp.sh</a>
+      <div class="eyebrow">PROFILE VAULT / PUBLIC SOURCES</div>
+      <h1>Multi-profile downloader <span>/ viewer</span></h1>
+      <p class="lede">Browse one workspace for the six configured public profiles. Use the source links to open each profile, then add authorized exports to the local manifest for viewing and downloading.</p>
+      <div class="notice"><strong>Local-first:</strong> this interface never bypasses platform access controls. Only download content you are authorized to save.</div>
+    </header>
+
+    <section class="toolbar" aria-label="Viewer controls">
+      <label class="search-field"><span>Filter</span><input id="profile-filter" type="search" placeholder="Search profiles or platforms" autocomplete="off"></label>
+      <div class="toolbar-actions">
+        <button class="button" id="refresh-library" type="button">↻ refresh library</button>
+        <button class="button button-accent" id="download-visible" type="button">↓ download visible</button>
+      </div>
+    </section>
+
+    <div class="workspace">
+      <aside class="profile-panel" aria-label="Profiles">
+        <div class="panel-heading"><span>Sources</span><strong id="profile-count">6 profiles</strong></div>
+        <div id="profile-list" class="profile-list"></div>
+      </aside>
+      <section class="library-panel" aria-live="polite">
+        <div class="library-heading">
+          <div><div class="eyebrow" id="active-platform">TIKTOK</div><h2 id="active-title">Select a profile</h2><p id="active-url" class="muted"></p></div>
+          <a id="open-source" class="button" href="#" target="_blank" rel="noopener noreferrer">open source ↗</a>
+        </div>
+        <div id="library-status" class="library-status">Loading local manifest…</div>
+        <div id="media-grid" class="media-grid"></div>
+      </section>
+    </div>
+
+    <footer class="profiles-footer">Public profile links are displayed as supplied. Platform APIs, rate limits, login requirements, and copyright restrictions still apply.</footer>
+  </main>
+  <script src="/js/profiles.js" defer></script>
+</body>
+</html>

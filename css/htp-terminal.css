@@ -1,0 +1,245 @@
+/* HTP · terminal shell */
+/* Terminal shell */
+.term-wrap {
+  display: flex;
+  flex-direction: column;
+  min-height: 28rem;
+  max-height: min(78vh, 720px);
+  overflow: hidden;
+  border-color: var(--line-strong);
+  box-shadow: 0 0 0 1px rgba(62, 214, 120, 0.08), 0 20px 50px rgba(0, 0, 0, 0.4);
+}
+.term-bar {
+  flex-shrink: 0;
+  padding: 0.6rem 1rem;
+  background: linear-gradient(90deg, rgba(8, 28, 16, 0.98), rgba(8, 18, 16, 0.98));
+  border-bottom: 1px solid var(--line);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--cyan);
+  user-select: none;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+.term-bar .term-title { color: var(--cyan); }
+.term-spacer { flex: 1 1 auto; }
+button.term-btn {
+  background: transparent;
+  color: var(--green);
+  border: 1px solid var(--line);
+  font-family: var(--font-ascii);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: lowercase;
+  padding: 0.15rem 0.55rem;
+  cursor: pointer;
+}
+button.term-btn:hover,
+button.term-btn:focus-visible {
+  color: var(--green-bright);
+  border-color: var(--green);
+  outline: none;
+}
+.py-ide {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+.py-editor {
+  display: flex;
+  flex: 1 1 46%;
+  min-height: 8rem;
+  min-width: 0;
+  border-bottom: 1px solid var(--line);
+  background: #050a07;
+}
+.py-gutter {
+  flex: 0 0 auto;
+  margin: 0;
+  padding: 0.55rem 0.45rem 0.55rem 0.7rem;
+  color: #3d5c49;
+  text-align: right;
+  user-select: none;
+  overflow: hidden;
+  white-space: pre;
+  font-family: var(--font-ascii);
+  font-size: 13px;
+  line-height: 1.45;
+}
+#py-code {
+  flex: 1 1 auto;
+  min-width: 0;
+  margin: 0;
+  padding: 0.55rem 0.7rem;
+  border: 0;
+  resize: none;
+  overflow: auto;
+  background: transparent;
+  color: var(--green);
+  caret-color: var(--green-bright);
+  font-family: var(--font-ascii);
+  font-size: 13px;
+  line-height: 1.45;
+  font-variant-ligatures: none;
+}
+#py-code:focus { outline: none; }
+.term-form {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 0.45rem;
+  margin: 0;
+  padding: 0.35rem 0.7rem 0.55rem;
+  background: #050a07;
+  border-top: 1px solid var(--line);
+}
+.term-prompt {
+  color: var(--amber);
+  font-family: var(--font-ascii);
+  font-size: 13px;
+  white-space: nowrap;
+}
+.term-bar::before {
+  content: "";
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 8px var(--green);
+}
+.term-bar span { color: var(--amber); }
+#terminal {
+  flex: 1 1 40%;
+  min-height: 6rem;
+  margin: 0;
+  padding: 1rem 1.1rem;
+  overflow-y: auto;
+  overflow-x: auto;
+  line-height: 1.45;
+  font-size: 13px;
+  white-space: pre-wrap;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  user-select: text;
+  color: var(--green);
+  font-family: var(--font-ascii);
+  font-variant-ligatures: none;
+  font-feature-settings: "liga" 0, "calt" 0;
+  letter-spacing: 0;
+  cursor: text;
+  background: #050a07;
+  scrollbar-width: thin;
+  scrollbar-color: var(--green-dim) transparent;
+  -webkit-overflow-scrolling: touch;
+}
+#terminal:focus {
+  outline: 1px solid rgba(62, 214, 120, 0.3);
+  outline-offset: -1px;
+}
+#terminal::-webkit-scrollbar { width: 8px; }
+#terminal::-webkit-scrollbar-thumb {
+  background: rgba(62, 214, 120, 0.3);
+  border-radius: 4px;
+}
+
+.term-static {
+  margin: 0;
+  padding: 1rem 1.1rem;
+  color: var(--green);
+  font-size: 13px;
+  line-height: 1.45;
+  white-space: pre-wrap;
+  background: #050a07;
+  border-top: 1px solid var(--line);
+  font-family: var(--font-ascii);
+  font-variant-ligatures: none;
+  letter-spacing: 0;
+  overflow-x: auto;
+}
+.js .term-static { display: none; }
+.no-js #terminal,
+.no-js .py-editor,
+.no-js .term-form { display: none; }
+.no-js .term-static { display: block; }
+
+@keyframes softpulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+.blink { animation: softpulse 2.8s ease-in-out infinite; }
+.cursor {
+  display: inline-block;
+  width: 0.55ch;
+  background: var(--green-bright);
+  color: #000;
+  animation: softpulse 1s steps(1) infinite;
+  vertical-align: baseline;
+}
+.cmdline {
+  color: var(--green-bright);
+  white-space: pre-wrap;
+}
+
+.red { color: #ff7a8a !important; }
+.cyan { color: var(--cyan) !important; }
+.yellow { color: var(--amber) !important; }
+.purple { color: #d4a0ff !important; }
+.gray { color: #8fa89a !important; }
+.green { color: var(--green) !important; }
+
+#cmd {
+  position: static;
+  flex: 1 1 auto;
+  width: auto;
+  height: auto;
+  opacity: 1;
+  border: 0;
+  padding: 0.2rem 0;
+  margin: 0;
+  background: transparent;
+  color: var(--green-bright);
+  font-family: var(--font-ascii);
+  font-size: 13px;
+  line-height: 1.45;
+  caret-color: var(--green-bright);
+}
+#cmd:focus { outline: none; }
+
+footer.site-foot {
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 0.25rem 0 0.5rem;
+  opacity: 0.65;
+}
+footer.site-foot a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 0.15s, border-color 0.15s, opacity 0.15s;
+}
+footer.site-foot a:hover,
+footer.site-foot a:focus-visible {
+  color: var(--green-bright);
+  border-bottom-color: var(--green-dim);
+  outline: none;
+  opacity: 1;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+

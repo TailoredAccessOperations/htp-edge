@@ -1,0 +1,263 @@
+/* WPSS Super-Container */
+#wpss_survey {
+	color: #333;
+}
+#wpss_survey h2{
+	font-family:Verdana;
+	vertical-align: top; 
+	font-size:17px; margin:5px 0 15px 0;
+	color:#333;font-weight:bold;
+	line-height:1em;
+}
+
+/* Quiz Component Contaner */
+#wpss_survey .form-container { 
+	width:480px;  /* width of quiz*/
+	margin:0 auto; 
+	position:relative; 
+	font-family:Verdana; 
+	font-size:12px; 
+	padding:20px; 
+	background-color:#e0e3e2; 	
+	border:3px solid #abadac; 
+}
+
+#wpss_survey .form-panel fieldset{ 
+	width:480px;
+	margin: auto; 
+	padding:22px 0 0; 
+	border:1px solid #abadac; 
+	background-color:#ffffff; 
+	margin-top:20px; /* Gap between Progress bar and form feild*/
+}
+
+/* Progress bar text */
+#wpss_survey p.pgress{ 
+	float:left; 
+	vertical-align: top;
+	font-size:9px;font-weight:bold;
+	margin:0 0 0 6px;color:#333;
+	height:1em;
+	padding:0px;
+}
+#wpss_survey label#amount { 
+	float:right; 
+	vertical-align: top;
+	font-size:9px;font-weight:bold;
+	margin:2px 5px 0 0;color:#333; 
+	height:1em;
+	padding:0px;
+}
+
+/* Question */
+#wpss_survey p.form_question{
+	text-align:left;
+	padding:0 20px 20px 20px;
+	margin-top:0;
+	width:440px;
+	margin-bottom:0;
+}
+
+/* Radio Set of Answers*/
+#wpss_survey .answer{
+	width:440px;
+	margin:0 20px 20px 20px;
+	padding-bottom:10px;
+}
+
+/* Label - Answers, Answer set Style */
+#wpss_survey .form-panel label { 
+	width:440px;
+	vertical-align: middle;
+	margin: 0px;
+	padding: 0 0 0 8px;
+	color:#333;
+	size:12px;
+}
+/* Inputs */
+#wpss_survey .form-panel input, #wpss_survey .form-panel textarea { 
+	vertical-align: middle;
+	margin: 0px;
+	padding: 0px;
+
+}
+#wpss_survey .form-panel radio{
+	-webkit-appearance: radio;
+	-webkit-box-sizing: border-box;
+}
+#wpss_survey .form-container button { float:right; }
+
+
+/* Quiz Outro Text */
+#wpss_survey .infoForm{
+	text-align:left;
+	width:250px;
+	margin:auto;
+
+}
+#wpss_survey .infoForm p{
+	font-size:12px;
+}
+#wpss_survey .infoForm label{
+	float:left;
+	font-size:12px;
+	font-weight:bold;
+	padding:0;
+	margin:0;
+	width: 4em;
+}
+#wpss_survey .infoForm input{
+	float:none;
+}
+
+#wpss_survey p.form_subtitle{font-family:Verdana; font-size:17px; margin-top:5px;margin-bottom:15px;}
+
+
+#wpss_survey h3{ text-align:center; font-size:18px; padding:10px; }
+
+#wpss_survey #submitButton{
+	padding:5px;
+	margin:20px;
+	text-align:right;
+	float:right;
+}
+
+/*-------------------Results Page-----------------------------*/
+#wpss_results{
+	text-decoration: none;
+}
+#wpss_results p{
+	font-size:10px;
+	text-decoration: none;
+}
+#wpss_results span.name{
+	float:right;
+}
+.wpss_large{
+	font-size:20px;
+}
+.wpss_b{
+	font-weight:bold;
+}
+.wpss_options{
+	margin-top:15px;
+	margin-bottom:5px;
+	padding:10px;
+	padding-top:0;
+	border:#DFDFDF solid 1px;
+	border-bottom-left-radius: 4px 4px;
+	border-bottom-left-radius: 4px 4px;
+	border-bottom-left-radius: 4px 4px;
+	border-bottom-right-radius: 4px 4px;
+	border-bottom-right-radius: 4px 4px;
+	border-bottom-right-radius: 4px 4px;
+	border-top-left-radius: 4px 4px;
+	border-top-left-radius: 4px 4px;
+	border-top-left-radius: 4px 4px;
+	border-top-right-radius: 4px 4px;
+	border-top-right-radius: 4px 4px;
+	border-top-right-radius: 4px 4px;
+}
+
+.wpss_options .wpss_info{
+	vertical-align:middle;
+	border:none;
+}
+
+.tooltip {
+	display:none;
+	background:transparent url(images/white.png) no-repeat 0 0;
+	font-size:12px;
+	height:80px;
+	width:170px;
+	padding:20px;
+	color:black;	
+}
+
+#wpss_results ol, #wpss_results ul {
+	list-style: none;
+}
+#wpss_results blockquote, #wpss_results q {
+	quotes: none;
+}
+#wpss_results blockquote:before, #wpss_results blockquote:after,#wpss_results q:before, #wpss_results q:after {
+	content: '';
+	content: none;
+}
+
+
+/* remember to define focus styles! */
+#wpss_results  :focus {
+	outline: 0;
+}
+
+/* remember to highlight inserts somehow! */
+#wpss_results  ins {
+	text-decoration: none;
+}
+#wpss_results  del {
+	text-decoration: line-through;
+}
+
+/* tables still need 'cellspacing="0"' in the markup */
+#wpss_results table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+#wpss_results {
+	width:100%;
+	margin-left:auto;
+	margin-right:auto;
+	overflow:hidden;
+}
+#wpss_results h2 {
+	padding:3px 10px 3px 10px;
+	font-size:13px;
+	color:#243953;
+	background-color:#fafafa;
+	border: 1px solid #a9a9a9;
+	-moz-border-radius: 7px;
+    	-webkit-border-radius: 7px;
+	-khtml-border-radius: 7px;
+	text-align:left;
+	font-family:Georgia, "Times New Roman", Times, serif;
+	margin-bottom:5px;
+	font-style:normal;
+	cursor:pointer
+}
+#wpss_results .togglebox {
+	background-color:#CCC;
+	border: 1px solid #a9a9a9;
+	/* Rounder Corner */
+	-moz-border-radius: 7px;
+	-webkit-border-radius: 7px;
+	-khtml-border-radius: 7px;
+	overflow: hidden;
+	font-size: 1.2em;
+	width: 100%;
+	clear: both;
+	margin-bottom:10px;
+}
+#wpss_results .togglebox .block {
+	padding: 20px;
+}
+#wpss_results .togglebox1 {
+	background-color:#CCC;
+	border: 1px solid #a9a9a9;
+	/* Rounder Corner */
+	-moz-border-radius: 7px;
+	-webkit-border-radius: 7px;
+	-khtml-border-radius: 7px;
+	overflow: hidden;
+	font-size: 1.2em;
+	width: 100%;
+	clear: both;
+	margin-bottom:10px;
+}
+#wpss_results .togglebox1 .block {
+	padding: 20px;
+}
+#wpss_results .break{
+	height:10px;
+}

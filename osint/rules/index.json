@@ -1,0 +1,55 @@
+{
+  "generated_at": "2026-09-24T11:13:55.647Z",
+  "source": "7WaySecurity/ai_osint",
+  "pinsha": "7ea0296d162d4c1ba6276fa334e1c0588302bb73",
+  "license": "MIT (code) / CC BY-SA 4.0 (docs) — see LICENSE/NOTICE",
+  "top": [
+    "detection-rules",
+    "dorks",
+    "resources",
+    "threat-intel",
+    "tools"
+  ],
+  "files": [
+    {
+      "path": "CHANGELOG.md",
+      "title": "CHANGELOG.md"
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "title": "CONTRIBUTING.md"
+    },
+    {
+      "path": "detection-rules/SIGMA_RULES.md",
+      "title": "SIGMA_RULES.md"
+    },
+    {
+      "path": "dorks/censys/AI_CENSYS_QUERIES.md",
+      "title": "AI_CENSYS_QUERIES.md"
+    },
+    {
+      "path": "dorks/github/AI_GITHUB_DORKS.md",
+      "title": "AI_GITHUB_DORKS.md"
+    },
+    {
+      "path": "dorks/google/AI_GOOGLE_DORKS.md",
+      "title": "AI_GOOGLE_DORKS.md"
+    },
+    {
+      "path": "dorks/shodan/AI_SHODAN_DORKS.md",
+      "title": "AI_SHODAN_DORKS.md"
+    },
+    {
+      "path": "resources/RESOURCES.md",
+      "title": "RESOURCES.md"
+    },
+    {
+      "path": "threat-intel/THREAT_INTELLIGENCE.md",
+      "title": "THREAT_INTELLIGENCE.md"
+    },
+    {
+      "path": "tools/TOOLS.md",
+      "title": "TOOLS.md"
+    }
+  ]
+}

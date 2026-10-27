@@ -1,0 +1,15 @@
+window.HTP_AGENT_CATALOG = Object.freeze([
+  ["builtin", "browser-use", "Web browsing and interaction agent"],
+  ["builtin", "cursor", "Alternate toolset and prompt profile"],
+  ["builtin", "explore", "Fast, read-only agent specialized for codebase exploration"],
+  ["builtin", "general-purpose", "General purpose agent for multi-step tasks"],
+  ["builtin", "grok-build", "Grok Build agent for software engineering tasks"],
+  ["builtin", "plan", "Software architect for planning implementation strategies"],
+  ["core", "coder", "Writes and edits code"],
+  ["core", "planner", "Breaks a task into subtasks for other agents"],
+  ["core", "reviewer", "Reviews work and merges mesh results"],
+  ["mesh", "router", "Documents the ocmesh message protocol"],
+  ["ops", "debugger", "Root-causes errors from logs and traces"],
+  ["ops", "devops", "Shell, CI, deploys, services"],
+  ["research", "researcher", "Gathers and summarizes information"],
+]);

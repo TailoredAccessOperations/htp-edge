@@ -1,0 +1,218 @@
+{
+  "schema_version": "1.0.0",
+  "generated_utc": "2026-08-02T12:59:17Z",
+  "address": {
+    "value": "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa",
+    "network": "bitcoin-mainnet",
+    "type": "P2PKH",
+    "notes": "Genesis coinbase (Satoshi) if 1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa; multiple Keybase users may claim any address."
+  },
+  "claimed_owner": {
+    "keybase_username": "easter47",
+    "keybase_uid": "e24107e5a5687a829a06a0e60a78d219",
+    "device_name": "aio",
+    "device_id": "431a8206365e48288ca6718d5e201218",
+    "local_whoami": "easter47"
+  },
+  "challenge": {
+    "type": "btc-keybase-ownership-attestation",
+    "schema_version": "1.0.0",
+    "generated_utc": "2026-08-02T12:59:17Z",
+    "keybase_username": "easter47",
+    "keybase_uid": "e24107e5a5687a829a06a0e60a78d219",
+    "bitcoin_address": "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa",
+    "network": "bitcoin-mainnet",
+    "keybase_claim_sig_id": "fa0d750fa6644335738cde1b61a967099b2bf9b4dc2243578f3746924240466e0f",
+    "device_name": "aio",
+    "device_id": "431a8206365e48288ca6718d5e201218",
+    "nonce": "f7dc2f59aa7cd205",
+    "statement": "I am Keybase user 'easter47'. My Keybase cryptocurrency claim binds me to Bitcoin address 1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa. This document is signed with my Keybase device keys. This does not by itself prove secp256k1 spend control of that address unless layer L5 (Bitcoin message signature) also PASSes."
+  },
+  "challenge_sha256": "27e61511a3ce77c9b1d039d295b04e76db9b1c6a752ec382c4d860a9a74a9a75",
+  "layers": {
+    "L1_local_keybase_session": {
+      "result": "PASS",
+      "whoami": "easter47",
+      "expected": "easter47",
+      "logged_in": true,
+      "session_valid": true,
+      "keys_unlocked": true,
+      "device_name": "aio",
+      "device_id": "431a8206365e48288ca6718d5e201218",
+      "proves": "Local operator controls an unlocked device key for this Keybase account"
+    },
+    "L2_keybase_cryptocurrency_claim": {
+      "result": "PASS",
+      "username": "easter47",
+      "uid": "e24107e5a5687a829a06a0e60a78d219",
+      "address": "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa",
+      "type": "bitcoin",
+      "sig_id": "fa0d750fa6644335738cde1b61a967099b2bf9b4dc2243578f3746924240466e0f",
+      "kid": "0120f7a7c82a39e3a6d560a26b8f6f588abcbd8112fc3ac17377057b3c0281c48a360a",
+      "ed25519_pubkey": "f7a7c82a39e3a6d560a26b8f6f588abcbd8112fc3ac17377057b3c0281c48a36",
+      "checks": {
+        "ed25519_over_compact_link": "PASS",
+        "payload_json_bound_via_sha256": "PASS",
+        "sig_id_eq_sha256_blob_0f": "PASS",
+        "username_matches": "PASS",
+        "address_matches": "PASS",
+        "type_is_bitcoin": "PASS"
+      },
+      "method": "Keybase sig_version=2 NaCl ed25519 over msgpack compact link",
+      "published_via_api": true
+    },
+    "L3_keybase_identity_proofs": {
+      "result": "PASS",
+      "address_listed_in_keybase_id": true,
+      "cryptocurrencies": [
+        {
+          "rowId": 0,
+          "pkhash": "AGLpB7FcvyfVQlOZ6/bw+1DruI8Y",
+          "address": "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa",
+          "sigID": "fa0d750fa6644335738cde1b61a967099b2bf9b4dc2243578f3746924240466e0f",
+          "type": "bitcoin",
+          "family": "bitcoin"
+        }
+      ],
+      "proofs": [
+        {
+          "proof": {
+            "proofType": 2,
+            "key": "twitter",
+            "value": "madmonero",
+            "displayMarkup": "madmonero",
+            "sigID": "52ab5edb838976ecf05b4f8fc6b6e284121db50d234dccb39c0aa14ac7605e020f",
+            "mTime": 1782096854000
+          },
+          "result": {
+            "proofId": 0,
+            "proofResult": {
+              "state": 1,
+              "status": 1,
+              "desc": ""
+            },
+            "snoozedResult": {
+              "state": 1,
+              "status": 1,
+              "desc": ""
+            },
+            "torWarning": false,
+            "tmpTrackExpireTime": 0,
+            "cached": {
+              "proofResult": {
+                "state": 1,
+                "status": 1,
+                "desc": ""
+              },
+              "time": 1785674820814,
+              "freshness": 0
+            },
+            "hint": {
+              "remoteId": "2068890480197165325",
+              "humanUrl": "https://twitter.com/madmonero/status/2068890480197165325",
+              "apiUrl": "https://twitter.com/madmonero/status/2068890480197165325",
+              "checkText": "Verifying myself: I am easter47 on Keybase.io. Uqte24OJduzwW0-PxrbihBIdtQ0jTcyznAqh /"
+            },
+            "breaksTracking": false
+          }
+        },
+        {
+          "proof": {
+            "proofType": 1001,
+            "key": "dns",
+            "value": "war.htp.sh",
+            "displayMarkup": "war.htp.sh",
+            "sigID": "91678fe7b5ce77f0b188ee175c5b662b2543bc10192a8c01a9122416df28a31b0f",
+            "mTime": 1784532362000
+          },
+          "result": {
+            "proofId": 1,
+            "proofResult": {
+              "state": 1,
+              "status": 1,
+              "desc": ""
+            },
+            "snoozedResult": {
+              "state": 1,
+              "status": 1,
+              "desc": ""
+            },
+            "torWarning": false,
+            "tmpTrackExpireTime": 0,
+            "cached": {
+              "proofResult": {
+                "state": 1,
+                "status": 1,
+                "desc": ""
+              },
+              "time": 1785674820636,
+              "freshness": 0
+            },
+            "hint": {
+              "remoteId": "dns://war.htp.sh",
+              "humanUrl": "dns://war.htp.sh",
+              "apiUrl": "dns://war.htp.sh",
+              "checkText": "keybase-site-verification=kWeP57XOd_CxiO4XXFtmKyVDvBAZKowBqRIkFt8ooxs"
+            },
+            "breaksTracking": false
+          }
+        }
+      ],
+      "identifyKey": null,
+      "proves": "keybase id shows address on the user's sigchain view"
+    },
+    "L4_keybase_signed_attestation": {
+      "result": "PASS",
+      "method": "keybase saltpack sign --detached + verify --signed-by",
+      "signed_by_assertion": "easter47",
+      "challenge_sha256": "27e61511a3ce77c9b1d039d295b04e76db9b1c6a752ec382c4d860a9a74a9a75",
+      "challenge_path": "/home/av/btc/ownership-verify/OWNERSHIP-CHALLENGE.canonical.json",
+      "detached_saltpack_path": "/home/av/btc/ownership-verify/OWNERSHIP-ATTESTATION.saltpack",
+      "attached_saltpack_path": "/home/av/btc/ownership-verify/OWNERSHIP-ATTESTATION.signed.saltpack",
+      "verify_stderr": "\u001b[32mSigned by \u001b[1measter47\u001b[22m (you).\n\u001b[39m",
+      "verify_stdout": "",
+      "proves": "The Keybase user cryptographically signed the canonical attestation binding their username to the BTC address and claim sig_id"
+    },
+    "L5_bitcoin_message_signature": {
+      "result": "NOT_PROVEN",
+      "message": "keybase:easter47:btc-ownership:1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa:nonce:f7dc2f59aa7cd205:challenge_sha256:27e61511a3ce77c9b1d039d295b04e76db9b1c6a752ec382c4d860a9a74a9a75",
+      "challenge_file": "/home/av/btc/ownership-verify/BTC-SPEND-CONTROL-CHALLENGE.json",
+      "proves": "secp256k1 private key control — not supplied",
+      "hint": "Pass --btc-sig to attempt L5"
+    }
+  },
+  "overall": {
+    "keybase_identity_binding": "PASS",
+    "bitcoin_spend_control": "NOT_PROVEN",
+    "verdict": "KEYBASE_BINDING_ONLY: Keybase user easter47 cryptographically claims and saltpack-signed binding to 1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa. Bitcoin spend control NOT proven (L5=NOT_PROVEN).",
+    "layer_summary": {
+      "L1_session": "PASS",
+      "L2_claim_crypto": "PASS",
+      "L3_keybase_id": "PASS",
+      "L4_saltpack": "PASS",
+      "L5_btc_message": "NOT_PROVEN"
+    }
+  },
+  "caveats": [
+    "Keybase cryptocurrency claims are self-attestations signed by Keybase device keys, not by the Bitcoin address key.",
+    "L1–L4 together prove: the local operator is Keybase user U, U's claim binds U→address, and U saltpack-signed that binding.",
+    "Only L5 (Bitcoin signmessage) proves control of the address private key / spend authority.",
+    "Anyone can claim any BTC address on Keybase; claims are not exclusive."
+  ],
+  "verify_commands": {
+    "re_run": "kb-verify-ownership",
+    "verify_saltpack": "keybase verify --detached /home/av/btc/ownership-verify/OWNERSHIP-ATTESTATION.saltpack --infile /home/av/btc/ownership-verify/OWNERSHIP-CHALLENGE.canonical.json --signed-by easter47 --no-output",
+    "keybase_id": "keybase id easter47",
+    "offline_claim": "/home/av/btc/.venv/bin/python /home/av/btc/verify_keybase_sig.py /home/av/btc/cache/easter47-btc-sig.json"
+  },
+  "artifacts": {
+    "canonical_json_sha256": "146824066394340f557e4600ff80a5206b698a2bc43a9213b0ee41f5393438c7",
+    "document_path": "/home/av/btc/ownership-verify/OWNERSHIP-VERIFY.json",
+    "pretty_document_path": "/home/av/btc/ownership-verify/OWNERSHIP-VERIFY.pretty.json",
+    "saltpack_detached_path": "/home/av/btc/ownership-verify/OWNERSHIP-ATTESTATION.saltpack",
+    "challenge_path": "/home/av/btc/ownership-verify/OWNERSHIP-CHALLENGE.canonical.json",
+    "btc_spend_challenge_path": "/home/av/btc/ownership-verify/BTC-SPEND-CONTROL-CHALLENGE.json",
+    "schema_path": "/home/av/btc/schema/ownership-verification.schema.json",
+    "pretty_saltpack_path": "/home/av/btc/ownership-verify/OWNERSHIP-VERIFY.pretty.json.saltpack"
+  }
+}

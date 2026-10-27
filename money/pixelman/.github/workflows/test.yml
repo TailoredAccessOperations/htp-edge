@@ -1,0 +1,124 @@
+name: Integration Tests
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+    branches:
+      - main
+      - develop
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    services:
+      docker:
+        image: docker:24-dind
+        options: >-
+          --privileged
+          --health-cmd "docker ps"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build images for testing
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./docker/e8-server/Dockerfile
+          load: true
+          tags: pixelman-e8-server:test
+          cache-from: type=gha
+
+      - name: Build btc-mempool for testing
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./docker/btc-mempool/Dockerfile
+          load: true
+          tags: pixelman-btc-mempool:test
+          cache-from: type=gha
+
+      - name: Test docker-compose config
+        run: |
+          docker compose -f docker-compose.yml config > /dev/null
+          echo "✓ docker-compose.yml is valid"
+
+      - name: Check image sizes
+        run: |
+          e8_size=$(docker image inspect pixelman-e8-server:test --format='{{.Size}}')
+          btc_size=$(docker image inspect pixelman-btc-mempool:test --format='{{.Size}}')
+          
+          e8_mb=$((e8_size / 1024 / 1024))
+          btc_mb=$((btc_size / 1024 / 1024))
+          
+          echo "Image Sizes:"
+          echo "  e8-server: ${e8_mb}MB"
+          echo "  btc-mempool: ${btc_mb}MB"
+          
+          # Alert if images are too large
+          if [ $e8_mb -gt 200 ]; then
+            echo "⚠ WARNING: e8-server image exceeds 200MB (${e8_mb}MB)"
+          fi
+          if [ $btc_mb -gt 200 ]; then
+            echo "⚠ WARNING: btc-mempool image exceeds 200MB (${btc_mb}MB)"
+          fi
+
+      - name: Test e8-server container startup
+        run: |
+          docker run -d --name e8-test pixelman-e8-server:test
+          sleep 2
+          docker ps | grep e8-test && echo "✓ e8-server started successfully" || exit 1
+
+      - name: Test btc-mempool container startup
+        run: |
+          docker run -d --name btc-test pixelman-btc-mempool:test
+          sleep 2
+          docker ps | grep btc-test && echo "✓ btc-mempool started successfully" || exit 1
+
+      - name: Check .dockerignore efficiency
+        run: |
+          context_size=$(du -sh . | cut -f1)
+          echo "Build context size: ${context_size}"
+          echo "Files in context:"
+          ls -la .dockerignore
+          cat .dockerignore | head -10
+
+      - name: Lint Dockerfiles
+        uses: hadolint/hadolint-action@v3
+        with:
+          dockerfile: docker/e8-server/Dockerfile
+          ignore: DL3008
+
+      - name: Lint btc-mempool Dockerfile
+        uses: hadolint/hadolint-action@v3
+        with:
+          dockerfile: docker/btc-mempool/Dockerfile
+          ignore: DL3008
+
+      - name: Test summary
+        run: |
+          echo "## Integration Test Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "✓ All tests passed" >> $GITHUB_STEP_SUMMARY
+          echo "- docker-compose.yml valid" >> $GITHUB_STEP_SUMMARY
+          echo "- Images built successfully" >> $GITHUB_STEP_SUMMARY
+          echo "- Containers start correctly" >> $GITHUB_STEP_SUMMARY
+
+      - name: Cleanup
+        if: always()
+        run: |
+          docker rm -f e8-test btc-test 2>/dev/null || true
+          docker rmi pixelman-e8-server:test pixelman-btc-mempool:test 2>/dev/null || true

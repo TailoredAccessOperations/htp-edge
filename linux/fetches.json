@@ -1,0 +1,596 @@
+[
+  {
+    "url": "https://keybase.io/_/api/1.0/user/lookup.json?username=linux",
+    "final": "https://keybase.io/_/api/1.0/user/lookup.json?username=linux",
+    "code": 200,
+    "bytes": 55291,
+    "path": "current/lookup.json",
+    "error": "",
+    "attempt": 1
+  },
+  {
+    "url": "https://keybase.io/linux",
+    "final": "https://keybase.io/linux",
+    "code": 200,
+    "bytes": 33046,
+    "path": "current/profile.html",
+    "error": "",
+    "reused": true
+  },
+  {
+    "url": "https://keybase.io/linux/pgp_keys.asc",
+    "final": "https://keybase.io/linux/pgp_keys.asc",
+    "code": 200,
+    "bytes": 3967,
+    "path": "current/pgp_keys.asc",
+    "error": "",
+    "reused": true
+  },
+  {
+    "url": "https://keybase.io/linux/key.asc",
+    "final": "https://keybase.io/linux/key.asc",
+    "code": 200,
+    "bytes": 3967,
+    "path": "current/key.asc",
+    "error": "",
+    "reused": true
+  },
+  {
+    "url": "https://web.archive.org/web/20181109074129id_/https://keybase.io/linux",
+    "final": "https://web.archive.org/web/20181109074129id_/https://keybase.io/linux",
+    "code": 200,
+    "bytes": 35033,
+    "path": "wayback/20181109074129/keybase.io/linux.id.html",
+    "error": "",
+    "reused": true
+  },
+  {
+    "url": "https://web.archive.org/web/20181109074129id_/https://keybase.io/Linux",
+    "final": "https://web.archive.org/web/20181109074129id_/https://keybase.io/Linux",
+    "code": 200,
+    "bytes": 35033,
+    "path": "wayback/20181109074129/keybase.io/Linux.id.html",
+    "error": "",
+    "reused": true
+  },
+  {
+    "url": "https://web.archive.org/web/20181109074129im_/https://s3.amazonaws.com/keybase_processed_uploads/a054308b22cade27ddca527ade535805_360_360.jpg",
+    "final": "https://web.archive.org/web/20181109074129im_/https://s3.amazonaws.com/keybase_processed_uploads/a054308b22cade27ddca527ade535805_360_360.jpg",
+    "code": 0,
+    "bytes": 0,
+    "path": "wayback/20181109074129/avatar.jpg",
+    "error": "curl: (7) Failed to connect to web.archive.org port 443 after 307 ms: Couldn't connect to server",
+    "attempt": 2
+  },
+  {
+    "url": "https://s3.amazonaws.com/keybase_processed_uploads/a054308b22cade27ddca527ade535805_360_360.jpg",
+    "final": "https://s3.amazonaws.com/keybase_processed_uploads/a054308b22cade27ddca527ade535805_360_360.jpg",
+    "code": 403,
+    "bytes": 263,
+    "path": "wayback/20181109074129/avatar.jpg",
+    "error": "",
+    "attempt": 1
+  },
+  {
+    "url": "https://web.archive.org/web/20190423200920id_/https://keybase.io/Linux",
+    "final": "https://web.archive.org/web/20190423200920id_/https://keybase.io/Linux",
+    "code": 200,
+    "bytes": 31117,
+    "path": "wayback/profile-history/20190423200920.html",
+    "error": "",
+    "reused": true
+  },
+  {
+    "url": "https://web.archive.org/web/20190426012128id_/https://keybase.io/linux/",
+    "final": "https://web.archive.org/web/20190426012128id_/https://keybase.io/linux/",
+    "code": 200,
+    "bytes": 29345,
+    "path": "wayback/profile-history/20190426012128.html",
+    "error": "",
+    "reused": true
+  },
+  {
+    "url": "https://web.archive.org/web/20190426012129id_/https://keybase.io/linux",
+    "final": "https://web.archive.org/web/20190426012129id_/https://keybase.io/linux",
+    "code": 200,
+    "bytes": 30978,
+    "path": "wayback/profile-history/20190426012129.html",
+    "error": "",
+    "reused": true
+  },
+  {
+    "url": "https://web.archive.org/web/20190717024518id_/https://keybase.io/Linux",
+    "final": "https://web.archive.org/web/20190717024518id_/https://keybase.io/Linux",
+    "code": 200,
+    "bytes": 30763,
+    "path": "wayback/profile-history/20190717024518.html",
+    "error": "",
+    "reused": true
+  },
+  {
+    "url": "https://web.archive.org/web/20190718140310id_/https://keybase.io/Linux",
+    "final": "https://web.archive.org/web/20190718140310id_/https://keybase.io/Linux",
+    "code": 200,
+    "bytes": 30762,
+    "path": "wayback/profile-history/20190718140310.html",
+    "error": "",
+    "reused": true
+  },
+  {
+    "url": "https://web.archive.org/web/20190721232551id_/https://keybase.io/linux",
+    "final": "https://web.archive.org/web/20190721232551id_/https://keybase.io/linux",
+    "code": 200,
+    "bytes": 32024,
+    "path": "wayback/profile-history/20190721232551.html",
+    "error": "",
+    "reused": true
+  },
+  {
+    "url": "https://web.archive.org/web/20190916162405id_/https://keybase.io/Linux",
+    "final": "https://web.archive.org/web/20190916162405id_/https://keybase.io/Linux",
+    "code": 200,
+    "bytes": 36974,
+    "path": "wayback/profile-history/20190916162405.html",
+    "error": "",
+    "reused": true
+  },
+  {
+    "url": "https://web.archive.org/web/20190919042157id_/https://keybase.io/linux",
+    "final": "https://web.archive.org/web/20190919042157id_/https://keybase.io/linux",
+    "code": 200,
+    "bytes": 38406,
+    "path": "wayback/profile-history/20190919042157.html",
+    "error": "",
+    "reused": true
+  },
+  {
+    "url": "https://web.archive.org/web/20191113095122id_/https://keybase.io/Linux",
+    "final": "https://web.archive.org/web/20191113095122id_/https://keybase.io/Linux",
+    "code": 200,
+    "bytes": 36525,
+    "path": "wayback/profile-history/20191113095122.html",
+    "error": "",
+    "reused": true
+  },
+  {
+    "url": "https://web.archive.org/web/20191209101045id_/https://keybase.io/linux",
+    "final": "https://web.archive.org/web/20191209101045id_/https://keybase.io/linux",
+    "code": 200,
+    "bytes": 37122,
+    "path": "wayback/profile-history/20191209101045.html",
+    "error": "",
+    "reused": true
+  },
+  {
+    "url": "https://web.archive.org/web/20210127112710id_/https://keybase.io/linux",
+    "final": "https://web.archive.org/web/20210127112710id_/https://keybase.io/linux",
+    "code": 200,
+    "bytes": 33395,
+    "path": "wayback/profile-history/20210127112710.html",
+    "error": "",
+    "reused": true
+  },
+  {
+    "url": "https://web.archive.org/web/20220127053737id_/https://keybase.io/linux",
+    "final": "https://web.archive.org/web/20220127053737id_/https://keybase.io/linux",
+    "code": 200,
+    "bytes": 34635,
+    "path": "wayback/profile-history/20220127053737.html",
+    "error": "",
+    "reused": true
+  },
+  {
+    "url": "https://web.archive.org/web/20220903031443id_/https://keybase.io/linux",
+    "final": "https://web.archive.org/web/20220903031443id_/https://keybase.io/linux",
+    "code": 200,
+    "bytes": 37089,
+    "path": "wayback/profile-history/20220903031443.html",
+    "error": "",
+    "reused": true
+  },
+  {
+    "url": "https://web.archive.org/web/20230120223728id_/https://keybase.io/linux",
+    "final": "https://web.archive.org/web/20230120223728id_/https://keybase.io/linux",
+    "code": 200,
+    "bytes": 29762,
+    "path": "wayback/profile-history/20230120223728.html",
+    "error": "",
+    "reused": true
+  },
+  {
+    "url": "https://web.archive.org/web/20230204121739id_/https://keybase.io/linux",
+    "final": "https://web.archive.org/web/20230204121739id_/https://keybase.io/linux",
+    "code": 200,
+    "bytes": 29118,
+    "path": "wayback/profile-history/20230204121739.html",
+    "error": "",
+    "reused": true
+  },
+  {
+    "url": "https://web.archive.org/web/20230302004044id_/https://keybase.io/linux",
+    "final": "https://web.archive.org/web/20230302004044id_/https://keybase.io/linux",
+    "code": 200,
+    "bytes": 34050,
+    "path": "wayback/profile-history/20230302004044.html",
+    "error": "",
+    "reused": true
+  },
+  {
+    "url": "https://web.archive.org/web/20240225015834id_/https://keybase.io/linux",
+    "final": "https://web.archive.org/web/20240225015834id_/https://keybase.io/linux",
+    "code": 200,
+    "bytes": 35277,
+    "path": "wayback/profile-history/20240225015834.html",
+    "error": "",
+    "reused": true
+  },
+  {
+    "url": "https://web.archive.org/web/20240919032510id_/https://keybase.io/linux",
+    "final": "https://web.archive.org/web/20240919032510id_/https://keybase.io/linux",
+    "code": 200,
+    "bytes": 33874,
+    "path": "wayback/profile-history/20240919032510.html",
+    "error": "",
+    "reused": true
+  },
+  {
+    "url": "https://web.archive.org/web/20250517065612id_/https://keybase.io/linux",
+    "final": "https://web.archive.org/web/20250517065612id_/https://keybase.io/linux",
+    "code": 200,
+    "bytes": 32972,
+    "path": "wayback/profile-history/20250517065612.html",
+    "error": "",
+    "reused": true
+  },
+  {
+    "url": "https://web.archive.org/web/20260504224038id_/https://keybase.io/linux",
+    "final": "https://web.archive.org/web/20260504224038id_/https://keybase.io/linux",
+    "code": 200,
+    "bytes": 32580,
+    "path": "wayback/profile-history/20260504224038.html",
+    "error": "",
+    "reused": true
+  },
+  {
+    "url": "https://web.archive.org/web/20181109074129id_/http://2pac.me/",
+    "final": "https://web.archive.org/web/20181109074129id_/http://2pac.me/",
+    "code": 0,
+    "bytes": 0,
+    "path": "wayback/2pac.me/20181109074129-http_2pac.me_",
+    "error": "curl: (7) Failed to connect to web.archive.org port 443 after 321 ms: Couldn't connect to server",
+    "attempt": 2
+  },
+  {
+    "url": "https://web.archive.org/web/20110404230210id_/http://2pac.me/",
+    "final": "https://web.archive.org/web/20110404230210id_/http://2pac.me/",
+    "code": 200,
+    "bytes": 649,
+    "path": "wayback/2pac.me/20110404230210-http_2pac.me_",
+    "error": "",
+    "reused": true
+  },
+  {
+    "url": "https://web.archive.org/web/20130521065703id_/http://2pac.me/",
+    "final": "https://web.archive.org/web/20130521065703id_/http://2pac.me/",
+    "code": 200,
+    "bytes": 9249,
+    "path": "wayback/2pac.me/20130521065703-http_2pac.me_",
+    "error": "",
+    "reused": true
+  },
+  {
+    "url": "https://web.archive.org/web/20140516211225id_/http://2pac.me/",
+    "final": "https://web.archive.org/web/20140516211225id_/http://2pac.me/",
+    "code": 200,
+    "bytes": 9276,
+    "path": "wayback/2pac.me/20140516211225-http_2pac.me_",
+    "error": "",
+    "reused": true
+  },
+  {
+    "url": "https://web.archive.org/web/20141216182128id_/http://2pac.me/",
+    "final": "https://web.archive.org/web/20141216182128id_/http://2pac.me/",
+    "code": 200,
+    "bytes": 287,
+    "path": "wayback/2pac.me/20141216182128-http_2pac.me_",
+    "error": "",
+    "reused": true
+  },
+  {
+    "url": "https://web.archive.org/web/20150801004950id_/http://2pac.me/",
+    "final": "https://web.archive.org/web/20150801004950id_/http://2pac.me/",
+    "code": 200,
+    "bytes": 287,
+    "path": "wayback/2pac.me/20150801004950-http_2pac.me_",
+    "error": "",
+    "reused": true
+  },
+  {
+    "url": "https://web.archive.org/web/20170503051648id_/http://www.2pac.me/",
+    "final": "https://web.archive.org/web/20170503051648id_/http://www.2pac.me/",
+    "code": 200,
+    "bytes": 5783,
+    "path": "wayback/2pac.me/20170503051648-http_www.2pac.me_",
+    "error": "",
+    "reused": true
+  },
+  {
+    "url": "https://web.archive.org/web/20180104213941id_/http://2pac.me/",
+    "final": "https://web.archive.org/web/20180104213941id_/http://2pac.me/",
+    "code": 200,
+    "bytes": 366442,
+    "path": "wayback/2pac.me/20180104213941-http_2pac.me_",
+    "error": "",
+    "reused": true
+  },
+  {
+    "url": "https://web.archive.org/web/20190828025226id_/http://2pac.me/",
+    "final": "https://web.archive.org/web/20190828025226id_/http://2pac.me/",
+    "code": 0,
+    "bytes": 0,
+    "path": "wayback/2pac.me/20190828025226-http_2pac.me_",
+    "error": "curl: (7) Failed to connect to web.archive.org port 443 after 331 ms: Couldn't connect to server",
+    "attempt": 2
+  },
+  {
+    "url": "https://web.archive.org/web/20211123083025id_/http://2pac.me/",
+    "final": "https://web.archive.org/web/20211123083025id_/http://2pac.me/",
+    "code": 200,
+    "bytes": 463,
+    "path": "wayback/2pac.me/20211123083025-http_2pac.me_",
+    "error": "",
+    "reused": true
+  },
+  {
+    "url": "https://web.archive.org/web/20241128155613id_/http://2pac.me/",
+    "final": "https://web.archive.org/web/20241128155613id_/http://2pac.me/",
+    "code": 200,
+    "bytes": 265,
+    "path": "wayback/2pac.me/20241128155613-http_2pac.me_",
+    "error": "",
+    "reused": true
+  },
+  {
+    "url": "https://web.archive.org/web/20190828025223id_/http://2pac.me/robots.txt",
+    "final": "https://web.archive.org/web/20190828025223id_/http://2pac.me/robots.txt",
+    "code": 0,
+    "bytes": 0,
+    "path": "wayback/2pac.me/20190828025223-http_2pac.me_robots.txt",
+    "error": "curl: (7) Failed to connect to web.archive.org port 443 after 330 ms: Couldn't connect to server",
+    "attempt": 2
+  },
+  {
+    "url": "https://web.archive.org/web/20190424052710id_/https://keybase.io/linux/devices",
+    "final": "https://web.archive.org/web/20190424052710id_/https://keybase.io/linux/devices",
+    "code": 200,
+    "bytes": 9576,
+    "path": "wayback/related/20190424052710-keybase.io_linux_devices",
+    "error": "",
+    "reused": true
+  },
+  {
+    "url": "https://web.archive.org/web/20190424052711id_/https://keybase.io/linux/sigchain",
+    "final": "https://web.archive.org/web/20190424052711id_/https://keybase.io/linux/sigchain",
+    "code": 200,
+    "bytes": 8506,
+    "path": "wayback/related/20190424052711-keybase.io_linux_sigchain",
+    "error": "",
+    "reused": true
+  },
+  {
+    "url": "https://web.archive.org/web/20190424052714id_/https://linux.keybase.pub/",
+    "final": "https://web.archive.org/web/20190424052714id_/https://linux.keybase.pub/",
+    "code": 200,
+    "bytes": 948,
+    "path": "wayback/related/20190424052714-linux.keybase.pub_",
+    "error": "",
+    "reused": true
+  },
+  {
+    "url": "https://web.archive.org/web/20181109074129id_/https://linux.keybase.pub/.well-known/keybase.txt",
+    "final": "https://web.archive.org/web/20181109074129id_/https://linux.keybase.pub/.well-known/keybase.txt",
+    "code": 200,
+    "bytes": 2173,
+    "path": "wayback/related/20181109074129-linux.keybase.pub_.well-known_keybase.txt",
+    "error": "",
+    "reused": true
+  },
+  {
+    "url": "https://web.archive.org/web/20190424052714id_/https://linux.keybase.pub/.well-known/keybase.txt",
+    "final": "https://web.archive.org/web/20190424052714id_/https://linux.keybase.pub/.well-known/keybase.txt",
+    "code": 200,
+    "bytes": 2173,
+    "path": "wayback/related/20190424052714-linux.keybase.pub_.well-known_keybase.txt",
+    "error": "",
+    "reused": true
+  },
+  {
+    "url": "https://web.archive.org/web/20191209093444id_/http://brick.lol/",
+    "final": "https://web.archive.org/web/20191209093444id_/http://brick.lol/",
+    "code": 200,
+    "bytes": 5033,
+    "path": "wayback/related/20191209093444-brick.lol_",
+    "error": "",
+    "reused": true
+  },
+  {
+    "url": "https://web.archive.org/web/20201101070529id_/https://brooke.lol/",
+    "final": "https://web.archive.org/web/20201101070529id_/https://brooke.lol/",
+    "code": 200,
+    "bytes": 4945,
+    "path": "wayback/related/20201101070529-brooke.lol_",
+    "error": "",
+    "reused": true
+  },
+  {
+    "url": "https://web.archive.org/web/20181109074129id_/https://gist.github.com/90584061e3d84010dc92c6cf6d8c06b2",
+    "final": "https://web.archive.org/web/20181109074129id_/https://gist.github.com/90584061e3d84010dc92c6cf6d8c06b2",
+    "code": 200,
+    "bytes": 4619,
+    "path": "wayback/related/20181109074129-gist.github.com_90584061e3d84010dc92c6cf6d8c06b2",
+    "error": "",
+    "reused": true
+  },
+  {
+    "url": "https://gist.github.com/08faba27d55b5065b43c",
+    "final": "https://gist.github.com/grsecurity/08faba27d55b5065b43c",
+    "code": 200,
+    "bytes": 112876,
+    "path": "external/9-gist.github.com.txt",
+    "error": "",
+    "attempt": 1
+  },
+  {
+    "url": "https://coinbase.com/Snowden/public-key",
+    "final": "https://www.coinbase.com/Snowden/public-key",
+    "code": 403,
+    "bytes": 5621,
+    "path": "external/10-coinbase.com.txt",
+    "error": "",
+    "attempt": 1
+  },
+  {
+    "url": "http://masa.li/.well-known/keybase.txt",
+    "final": "http://masa.li/.well-known/keybase.txt",
+    "code": 0,
+    "bytes": 0,
+    "path": "external/23-masa.li.txt",
+    "error": "timeout",
+    "attempt": 1
+  },
+  {
+    "url": "https://masa.li/.well-known/keybase.txt",
+    "final": "https://masa.li/.well-known/keybase.txt",
+    "code": 0,
+    "bytes": 0,
+    "path": "external/34-masa.li.txt",
+    "error": "timeout",
+    "attempt": 1
+  },
+  {
+    "url": "https://gist.github.com/02ba5c79726f6f9fdccf",
+    "final": "https://gist.github.com/02ba5c79726f6f9fdccf",
+    "code": 404,
+    "bytes": 9,
+    "path": "external/40-gist.github.com.txt",
+    "error": "",
+    "attempt": 1
+  },
+  {
+    "url": "https://avac.io/.well-known/keybase.txt",
+    "final": "https://avac.io/.well-known/keybase.txt",
+    "code": 0,
+    "bytes": 0,
+    "path": "external/56-avac.io.txt",
+    "error": "timeout",
+    "attempt": 1
+  },
+  {
+    "url": "https://cf0.pw/.well-known/keybase.txt",
+    "final": "https://cf0.pw/.well-known/keybase.txt",
+    "code": 0,
+    "bytes": 0,
+    "path": "external/70-cf0.pw.txt",
+    "error": "timeout",
+    "attempt": 1
+  },
+  {
+    "url": "http://cf0.pw/keybase.txt",
+    "final": "http://cf0.pw/keybase.txt",
+    "code": 0,
+    "bytes": 0,
+    "path": "external/101-cf0.pw.txt",
+    "error": "timeout",
+    "attempt": 1
+  },
+  {
+    "url": "https://brick.lol/.well-known/keybase.txt",
+    "final": "https://brick.lol/.well-known/keybase.txt",
+    "code": 0,
+    "bytes": 0,
+    "path": "external/121-brick.lol.txt",
+    "error": "timeout",
+    "attempt": 1
+  },
+  {
+    "url": "https://gist.github.com/90584061e3d84010dc92c6cf6d8c06b2",
+    "final": "https://gist.github.com/grsecurity/90584061e3d84010dc92c6cf6d8c06b2",
+    "code": 200,
+    "bytes": 113395,
+    "path": "external/145-gist.github.com.txt",
+    "error": "",
+    "attempt": 1
+  },
+  {
+    "url": "https://linux.keybase.pub/.well-known/keybase.txt",
+    "final": "https://linux.keybase.pub/.well-known/keybase.txt",
+    "code": 0,
+    "bytes": 0,
+    "path": "external/148-linux.keybase.pub.txt",
+    "error": "timeout",
+    "attempt": 1
+  },
+  {
+    "url": "https://gist.github.com/085be584e0f2253fdfb99dcd04cf4032",
+    "final": "https://gist.github.com/dongforce/085be584e0f2253fdfb99dcd04cf4032",
+    "code": 200,
+    "bytes": 113624,
+    "path": "external/169-gist.github.com.txt",
+    "error": "",
+    "attempt": 1
+  },
+  {
+    "url": "https://www.reddit.com/r/KeybaseProofs/comments/ctkgbd/my_keybase_proof_redditzbmath_keybaselinux/",
+    "final": "https://www.reddit.com/r/KeybaseProofs/comments/ctkgbd/my_keybase_proof_redditzbmath_keybaselinux/",
+    "code": 403,
+    "bytes": 190240,
+    "path": "external/178-www.reddit.com.txt",
+    "error": "",
+    "attempt": 1
+  },
+  {
+    "url": "https://htp.sh/keybase.txt",
+    "final": "https://htp.sh/keybase.txt",
+    "code": 404,
+    "bytes": 10,
+    "path": "external/200-htp.sh.txt",
+    "error": "",
+    "attempt": 1
+  },
+  {
+    "url": "https://www.reddit.com/r/KeybaseProofs/comments/gcy2d6/my_keybase_proof_redditzbmath_keybaselinux/",
+    "final": "https://www.reddit.com/r/KeybaseProofs/comments/gcy2d6/my_keybase_proof_redditzbmath_keybaselinux/",
+    "code": 403,
+    "bytes": 190240,
+    "path": "external/212-www.reddit.com.txt",
+    "error": "",
+    "attempt": 1
+  },
+  {
+    "url": "https://files.htp.sh/keybase.txt",
+    "final": "https://files.htp.sh/keybase.txt",
+    "code": 0,
+    "bytes": 0,
+    "path": "external/264-files.htp.sh.txt",
+    "error": "curl: (6) Could not resolve host: files.htp.sh\ncurl: (6) Could not resolve host: files.htp.sh\ncurl: (6) Could not resolve host: files.htp.sh",
+    "attempt": 1
+  },
+  {
+    "url": "https://upload.doxbin.gg/.well-known/keybase.txt",
+    "final": "https://upload.doxbin.gg/.well-known/keybase.txt",
+    "code": 0,
+    "bytes": 0,
+    "path": "external/274-upload.doxbin.gg.txt",
+    "error": "curl: (6) Could not resolve host: upload.doxbin.gg\ncurl: (6) Could not resolve host: upload.doxbin.gg\ncurl: (6) Could not resolve host: upload.doxbin.gg",
+    "attempt": 1
+  },
+  {
+    "url": "https://gist.github.com/517f25764b601e76bdc679196485777d",
+    "final": "https://gist.github.com/TailoredAccessOperations/517f25764b601e76bdc679196485777d",
+    "code": 200,
+    "bytes": 116486,
+    "path": "external/281-gist.github.com.txt",
+    "error": "",
+    "attempt": 1
+  }
+]

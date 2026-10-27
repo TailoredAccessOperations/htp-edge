@@ -1,0 +1,32 @@
+HTP /money verification report
+generated_utc: 2026-10-11T02:10:59Z
+page: https://htp.sh/money
+
+Keybase
+  username: easter47
+  uid: e24107e5a5687a829a06a0e60a78d219
+  device: aio 431a8206365e48288ca6718d5e201218
+  session on this machine: logged in, keys unlocked
+  OpenPGP fingerprint: 20867A78369EA23A420DF3C4D10E7AF2A93DE56B
+  OpenPGP uid: easter47 (htp.sh/money) <easter47@keybase.io>
+  secret key uploaded to Keybase servers: no
+  public key: /btc/easter47-pgp.asc
+
+Bitcoin
+  operator P2PKH 15tWKRJHfR62tvJ4uaVGasJ2eXffVTn56s signmessage: PASS
+  operator bech32 bc1q925c9f08xer3mdyvuxtqcz7mtjgm0ep8zlzd0f watch-only descriptor, private key absent
+  wallet import: watchonly /btc/WALLET-IMPORT.json
+  spend control API: GET /api/money/spend-control
+  genesis 1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa Keybase claim crypto: PASS
+  genesis imported: no
+  genesis spend control: NOT_PROVEN
+  whitepaper bitcoin.pdf == bitcoin.dat == wallet.dat
+  whitepaper sha256: b1674191a88ec5cdd733e4240a81803105dc412d6c6708d53ab94fc248f4f553
+
+Identity proofs
+  DNS war.htp.sh TXT keybase-site-verification=kWeP57XOd_CxiO4XXFtmKyVDvBAZKowBqRIkFt8ooxs: PASS
+  Twitter madmonero: PASS via keybase id (cached check on this login)
+
+This report is covered by /btc/PGP-ATTESTATION.json
+Detached signature: /btc/PGP-ATTESTATION.json.asc
+Verify: gpg --verify PGP-ATTESTATION.json.asc PGP-ATTESTATION.json

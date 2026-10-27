@@ -1,0 +1,13 @@
+{
+  "target": "ORLANDO_SIGHT_01",
+  "coordinates": {
+    "lat": 28.4632,
+    "lon": -81.3451,
+    "alt": 32.0
+  },
+  "address": "12956 New York Woods Cir, Orlando, FL 32824, USA",
+  "reference_id": "ZAVvWTYrdin8mm",
+  "system": "Apple Maps / GPS-S5",
+  "accuracy": "1:1 Reference",
+  "timestamp": "2026-09-30T00:00:00Z"
+}

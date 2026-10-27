@@ -1,0 +1,330 @@
+/* htp.sh — viewport-fit + in-app webview support
+ *
+ * WHY THIS FILE EXISTS
+ *   The base layout assumed a normal browser tab. Two real contexts break it:
+ *
+ *   1. In-app webviews (Telegram, Discord, Slack, iOS/Android standalone PWAs).
+ *      They add their own header/footer chrome, and on iOS the rounded display
+ *      corners and the home indicator overlay the viewport edge. Content placed
+ *      at the extremes gets clipped or sits under the system UI.
+ *
+ *   2. Short viewports (landscape phone, split-screen, a small laptop with the
+ *      devtools open). Anything sized in vh or fixed px overflows and, because
+ *      several panels set `overflow: hidden`, the overflow is silently clipped
+ *      rather than scrollable. Content becomes unreachable.
+ *
+ * The rule throughout: nothing may be sized so that content can be clipped out
+ * of existence. Heights become min-heights, and any genuinely bounded region
+ * scrolls instead of hiding.
+ *
+ * Loaded async from the page head (media="print" onload) so it cannot block
+ * first paint, and it only *adds* rules — no existing declaration is overridden
+ * except inside the @media blocks below.
+ */
+
+/* ---------------------------------------------------------------- *
+ * 1. Safe-area padding
+ *
+ * viewport-fit=cover (added to the meta tag) lets the page extend under the
+ * rounded corners and notch. That is only safe if content is then inset away
+ * from those edges, which is what env(safe-area-inset-*) provides. Where the
+ * browser does not support it, the fallback keeps the original padding.
+ * ---------------------------------------------------------------- */
+/*
+ * Safe-area custom properties are declared in htp-critical-viewport.css, which
+ * is render-blocking and therefore always present by the time these rules
+ * apply. Re-declaring them here would be dead weight — and if the two ever
+ * disagreed, this lazy sheet would win the cascade and silently change
+ * first-paint behaviour. Consume, don't redefine. tests/viewport-fit.unit.test.ts
+ * enforces that.
+ *
+ * Full-bleed decorative layers (scanlines, the CRT overlay) intentionally ignore
+ * the insets: a glow should still reach the physical display edge. They are
+ * aria-hidden and pointer-events:none, so nothing interactive sits there.
+ */
+
+/* Full-bleed decorative layers intentionally ignore the insets (a scanline or
+   CRT glow should still reach the physical edge) but must not be interactive
+   there, so they stay aria-hidden and pointer-events:none as they already are. */
+
+/* ---------------------------------------------------------------- *
+ * 2. Short viewports
+ *
+ * `height: 100vh` on iOS Safari means the *largest* viewport, so it overflows
+ * whenever a browser bar is showing. dvh tracks the real visible box. The vh
+ * is kept ahead of it as a fallback for browsers without dvh.
+ * ---------------------------------------------------------------- */
+@supports (height: 100dvh) {
+  .htp-page,
+  body.htp-body {
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+}
+
+@media (max-height: 30rem), (max-height: 480px) and (orientation: landscape) {
+  /* Landscape phone / split-screen. Vertical space is the scarce resource, so
+     give it back to the content and let the page scroll normally. */
+  .term-wrap {
+    min-height: 0 !important;
+    max-height: none !important;
+  }
+
+  .ticker {
+    height: auto !important;
+    min-height: 2.25rem;
+  }
+
+  .ascii-frame,
+  pre.ascii-scroll {
+    max-height: 60vh;
+  }
+}
+
+/* ---------------------------------------------------------------- *
+ * 3. Terminal: never clip the editor or the scrollback
+ *
+ * .term-wrap sets max-height + overflow:hidden, which is what makes the
+ * editor and output panes share the box. That is right on a tall screen and
+ * wrong on a short one, where it hides the prompt entirely. Below, the wrap
+ * stops being a bounded box and becomes a normal-height stack that scrolls
+ * with the page.
+ * ---------------------------------------------------------------- */
+@media (max-height: 40rem) {
+  .term-wrap {
+    min-height: 0;
+    max-height: none;
+    overflow: visible;
+  }
+
+  /* Inside an unbounded wrap the flex children need their own bounds or they
+     collapse to nothing. */
+  .py-ide {
+    min-height: 22rem;
+  }
+
+  #terminal {
+    min-height: 8rem;
+    max-height: 14rem;
+  }
+}
+
+/* htp-layout.css carries a NARROWER breakpoint for the same element:
+     `@media (max-width: 45rem) { .term-wrap { max-height: min(88vh, 640px); min-height: 22rem } }`
+   45rem is wider than the 40rem breakpoint here, so on a 42rem viewport
+   htp-layout's clamp wins and ours never gets a chance to run. This block
+   deliberately overlaps that range (48rem > 45rem) and is loaded after it, so
+   the unbounded wrap actually takes effect at the widths where the bug is
+   visible. Matching the same 40rem would have silently fixed nothing.
+*/
+@media (max-width: 48rem) and (max-height: 40rem) {
+  .term-wrap {
+    min-height: 0;
+    max-height: none;
+    overflow: visible;
+  }
+}
+
+/* On a narrow screen the editor and output stack instead of sitting
+   side-by-side, so neither is squeezed to an unusable width. */
+@media (max-width: 30rem) {
+  .term-bar {
+    font-size: 0.7rem;
+    gap: 0.4rem;
+  }
+
+  button.term-btn {
+    padding: 0.3rem 0.5rem;
+    min-height: 44px; /* touch target */
+  }
+
+  #py-code,
+  .py-gutter {
+    font-size: 12px;
+  }
+}
+
+/* ASCII art is monospace and does not reflow. Several panels pair a fixed
+   max-height with `overflow: hidden`, which amputates the right-hand columns
+   instead of letting them scroll — the content is then genuinely unreachable.
+   Any scroll region holding ASCII gets horizontal scrolling instead. This is a
+   blanket rule on purpose: the panels have different class names across the
+   four stylesheets and missing one reintroduces the bug silently.
+*/
+.ascii-frame,
+pre.ascii-scroll,
+.ascii-scroll {
+  overflow-x: auto;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ---------------------------------------------------------------- *
+ * 3b. Full-bleed media layers must never widen the page
+ *
+ * Measured on an iPhone 14 (390px CSS px): the page scrolled horizontally to
+ * 640px because two decorative <video>s were rendering at their intrinsic
+ * width.
+ *
+ *   · video#bgvideo used `min-width: 100%`. min-* is a FLOOR, and a replaced
+ *     element is never laid out narrower than its intrinsic size — so it stayed
+ *     640px wide regardless of the viewport. Fixed at the source in
+ *     htp-base.css with explicit width/height + object-fit.
+ *   · video#live-stream carries the `hidden` attribute but is unhidden at
+ *     runtime by live-tv-ebk68.js, and it had NO CSS rule anywhere. An unstyled
+ *     <video> is a normal-flow replaced element at its intrinsic 640px, which
+ *     is exactly what pushed the page wide. Hence the rule below.
+ *
+ * Belt-and-braces: max-width:100vw on every fixed layer, so a future element in
+ * this class cannot reintroduce the horizontal scroll.
+ * ---------------------------------------------------------------- */
+video#live-stream {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: 100vw;
+  object-fit: cover;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.5;
+}
+
+/* `hidden` must keep winning even though JS toggles it. */
+video#live-stream[hidden] {
+  display: none;
+}
+
+#crt,
+#scanlines,
+canvas#matrix,
+video#bgvideo,
+video#ghostvideo {
+  max-width: 100vw;
+  max-height: 100vh;
+}
+
+/* ---------------------------------------------------------------- *
+ * 4. Content grids and long tokens
+ *
+ * `auto-fill` + `minmax(min(100%, X), 1fr)` — the `min(100%, X)` is what stops
+ * a 16rem minimum from forcing horizontal scroll on a 320px phone. Apply that
+ * pattern wherever a grid can hold text.
+ * ---------------------------------------------------------------- */
+@media (max-width: 40rem) {
+  .money-page .money-embed-frame {
+    min-height: 60vh;
+  }
+
+  .ghost-detail-img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+  }
+}
+
+/* Long unbroken strings (hashes, the base64 dat blobs, DNS records) are the
+   single most common cause of horizontal scroll on mobile. Break them rather
+   than widening the page. */
+@media (max-width: 40rem) {
+  pre,
+  code,
+  .hash,
+  .mono {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  /* …except inside a scroll region, where wrapping would destroy alignment. */
+  pre.ascii-scroll,
+  pre.ascii-scroll code {
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+}
+
+/* ---------------------------------------------------------------- *
+ * 5. Media shelf on small screens
+ *
+ * Only the viewport-dependent parts live here. Base appearance stays in
+ * htp-media-shelf.css, so the two files cannot drift into fighting each other
+ * over the same declaration at different breakpoints.
+ * ---------------------------------------------------------------- */
+@media (max-width: 30rem) {
+  /* A single stage has no column count to collapse; what a narrow screen wants
+     is tighter chrome and shorter buttons. Those live in htp-media-shelf.css
+     under the same breakpoint — this block only holds what is genuinely a
+     viewport adaptation and not appearance. */
+  .viewer-stage {
+    border-radius: 3px;
+  }
+
+  .viewer-cap {
+    padding: 0.35rem 0.45rem;
+    font-size: 0.75rem;
+  }
+}
+
+/* ---------------------------------------------------------------- *
+ * 6. In-app webview
+ *
+ * Telegram/Discord/etc. report the *full* screen size including their own
+ * chrome, so `100vh` overshoots. Where the WebApp API exists we can ask the
+ * host to expand to the real content area, and we stop trusting vh entirely in
+ * favour of the measured height.
+ * ---------------------------------------------------------------- */
+.htp-inapp {
+  /* Set by JS when a Telegram/Discord WebApp host is detected. */
+  min-height: var(--htp-viewport-h, 100vh);
+}
+
+.htp-inapp .term-wrap {
+  /* Inside an in-app browser the soft keyboard covers roughly the bottom third.
+     Capping the terminal to the visible area keeps the prompt above it. */
+  max-height: calc(var(--htp-viewport-h, 100vh) - 8rem);
+}
+
+/* iOS zooms any input whose font-size is under 16px on focus. The terminal
+   inputs are 13px for monospace alignment; this avoids the zoom-in without
+   changing the desktop layout. */
+@supports (-webkit-touch-callout: none) {
+  @media (max-width: 40rem) {
+    #py-code,
+    #cmd,
+    .term-form input,
+    input,
+    textarea,
+    select {
+      font-size: 16px;
+    }
+  }
+}
+
+/* Respect the OS-level motion and contrast preferences. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media (prefers-contrast: more) {
+  :root {
+    --line: currentColor;
+    --line-strong: currentColor;
+  }
+}
+
+/* Users who ask for less motion usually also want the CRT/glow decoration gone —
+   large soft shadows and text-shadow are a real accessibility cost. */
+@media (prefers-reduced-transparency: reduce) {
+  .scanlines,
+  #crt {
+    display: none;
+  }
+}

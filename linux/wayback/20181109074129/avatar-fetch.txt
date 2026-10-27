@@ -1,0 +1,5 @@
+The 9 Nov 2018 profile picture URL did not return a JPEG.
+url: https://s3.amazonaws.com/keybase_processed_uploads/a054308b22cade27ddca527ade535805_360_360.jpg
+sample:
+<?xml version="1.0" encoding="UTF-8"?>
+<Error><Code>AccessDenied</Code><Message>Access Denied</Message><RequestId>BE122W7DH299JMN9</RequestId><HostId>/3/NGPdN+H+4y7J8HE+mmpaCIDfy1fVI27tHnZW5HjdlCjYuf1b7ZYzJnB38snUr5Loe5cojO4HB2zBxj7hy2m4VDD

@@ -1,0 +1,18 @@
+/* Performance-safe enhancement layer. Keep layout-critical geometry in htp-critical.css. */
+:where(img, video) { max-width: 100%; }
+img { content-visibility: auto; }
+.imgbox img { aspect-ratio: 16 / 9; }
+.ghost-card img { aspect-ratio: 1; }
+@media (prefers-reduced-motion: reduce) {
+  :where(*, *::before, *::after) {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: .001ms !important;
+  }
+}
+@media (max-width: 720px) {
+  .site { width: min(calc(100% - 1.25rem), var(--max)); }
+  .panel { padding-inline: 1rem; }
+  .imgbox { width: 100%; }
+}

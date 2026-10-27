@@ -1,0 +1,12 @@
+Keybase easter47 verification  2026-10-22 18:42:18 UTC
+uid e24107e5a5687a829a06a0e60a78d219  created 2026-06-22 02:53:37 UTC
+sigchain 25/25 pass
+pgp 20867A78369EA23A420DF3C4D10E7AF2A93DE56B
+track linux seq 10 ok=True pins linux seq 349 hash_match=True
+pgp sibkey seq 24 ok=True
+linux chain mentions easter47: False
+shared fingerprints: none
+gpg cross certifications: 0
+
+Failures:
+none

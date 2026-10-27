@@ -1,0 +1,29 @@
+services:
+  dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: pi-htp-sh-dev
+    ports:
+      - "8787:8787"
+    environment:
+      - NODE_ENV=development
+    networks:
+      - pi-network
+
+  publish:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: pi-htp-sh-publish
+    environment:
+      - NODE_ENV=production
+    command: wrangler publish
+    networks:
+      - pi-network
+    profiles:
+      - publish
+
+networks:
+  pi-network:
+    driver: bridge

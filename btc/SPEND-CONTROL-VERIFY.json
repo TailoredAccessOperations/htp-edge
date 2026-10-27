@@ -1,0 +1,51 @@
+{
+  "schema": "htp-spend-control-v1",
+  "generated_utc": "2026-08-04T23:50:00Z",
+  "description": "Client-side spend-control verification package. Wallet P2PKH signmessage is live-verified in-browser via secp256k1 recovery. Genesis coinbase spend control remains NOT_PROVEN unless a Bitcoin signed-message for 1A1z… is supplied.",
+  "genesis": {
+    "address": "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa",
+    "network": "bitcoin-mainnet",
+    "type": "P2PKH",
+    "result": "NOT_PROVEN",
+    "signature": null,
+    "message": null,
+    "note": "Keybase cryptocurrency claim binds identity easter47 to this address. That is not secp256k1 spend control of the genesis coinbase key."
+  },
+  "wallet": {
+    "result": "PASS",
+    "network": "bitcoin-mainnet",
+    "type": "P2PKH",
+    "address": "15tWKRJHfR62tvJ4uaVGasJ2eXffVTn56s",
+    "primary_bech32": "bc1q925c9f08xer3mdyvuxtqcz7mtjgm0ep8zlzd0f",
+    "message": "easter47-mainnet-onchain-verify:2026-08-02T14:43:45Z:addr:15tWKRJHfR62tvJ4uaVGasJ2eXffVTn56s",
+    "signature": "H0opWqfzI97M8Blr5hp4aEa7HYl4VEVyCBMpeRERuiNud0lYPzVp58joM9CFznSwAttj+rlV8fcSt0wkz2/xHH4=",
+    "verifymessage": true,
+    "method": "Bitcoin Core signmessage / BIP137 recoverable ECDSA",
+    "proves": "Operator wallet holds the secp256k1 private key for 15tWKRJHfR62tvJ4uaVGasJ2eXffVTn56s (spend control of this address)",
+    "source": "MAINNET-WALLET-VERIFY-LATEST.json layers.M5_signmessage_key_control",
+    "explorers": {
+      "mempool": "https://mempool.space/address/15tWKRJHfR62tvJ4uaVGasJ2eXffVTn56s",
+      "blockstream": "https://blockstream.info/address/15tWKRJHfR62tvJ4uaVGasJ2eXffVTn56s"
+    }
+  },
+  "alternate_signatures": [
+    {
+      "address": "15tWKRJHfR62tvJ4uaVGasJ2eXffVTn56s",
+      "message": "easter47-mainnet-wallet-seed:20260802T143414Z:addr:15tWKRJHfR62tvJ4uaVGasJ2eXffVTn56s",
+      "signature": "IMetZ0HEcnwVo6olPpoSeUtj+8RBnnoCBb7YUkxym+IDA67nP1mUGFsGwbaOPamaYGkD3Og4bSKkbB4B+KVElV4=",
+      "verified": true,
+      "source": "baked_wallet_meta.signmessage"
+    }
+  ],
+  "ownership_context": {
+    "keybase_user": "easter47",
+    "L1_L4": "PASS",
+    "L5_genesis_message": "NOT_PROVEN",
+    "document": "/btc/OWNERSHIP-VERIFY-LATEST.json"
+  },
+  "client_verify": {
+    "algorithm": "double-SHA-256(Bitcoin Signed Message magic) + secp256k1 ECDSA recover + HASH160 → P2PKH",
+    "library": "@noble/secp256k1 (vendored)",
+    "entry": "/js/btc-message.js"
+  }
+}

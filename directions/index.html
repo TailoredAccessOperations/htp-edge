@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Directions — HTP</title>
+<link rel="stylesheet" href="/osint/vendor/leaflet/leaflet.css">
+<style>
+  body { margin: 0; background: #0b0f0c; color: #e8e4dc; font-family: "IBM Plex Sans", system-ui, sans-serif; }
+  #map { height: 100vh; }
+  .card { position: absolute; top: 16px; left: 16px; z-index: 500; width: min(320px, calc(100% - 32px)); background: rgba(7,11,9,.9); border: 1px solid rgba(62,214,120,.35); border-radius: 12px; padding: 1rem 1.1rem; }
+  a.btn { display: block; margin-top: .6rem; background: #3ed678; color: #07110c; text-decoration: none; text-align: center; padding: .55rem .7rem; border-radius: 8px; font-weight: 650; }
+  a.ghost { background: transparent; color: #c8e6d4; border: 1px solid rgba(200,230,212,.3); }
+  h1 { font-size: 1.05rem; margin: 0 0 .35rem; }
+  p { margin: 0; color: #9bb5a6; font-size: .9rem; }
+</style>
+  <link rel="stylesheet" href="/css/htp-a11y.css?v=1">
+
+</script>
+
+
+
+
+
+
+</script>
+
+
+</script>
+
+
+  <link rel="stylesheet" href="/css/htp-critical-viewport.css?v=2">
+  <link rel="stylesheet" href="/css/htp-responsive.css?v=2">
+  <script src="/js/htp-viewport.js?v=2" defer></script>
+
+
+</head>
+<body>
+<div class="card">
+  <h1 id="title">Directions</h1>
+  <p id="address">Reading the reference point…</p>
+  <a id="go" class="btn" href="/maps">Open in Apple Maps</a>
+  <a class="btn ghost" href="/maps">Reference map</a>
+  <a class="btn ghost" href="/">Home</a>
+</div>
+<div id="map"></div>
+<script src="/osint/vendor/leaflet/leaflet.js"></script>
+<script>
+fetch("/maps/gps-ref.json").then(r => r.json()).then(d => {
+  const lat = d.coordinates.lat, lon = d.coordinates.lon;
+  document.getElementById("title").textContent = d.target;
+  document.getElementById("address").textContent = d.address;
+  const go = document.getElementById("go");
+  go.href = "https://maps.apple.com/?daddr=" + lat + "," + lon;
+  go.textContent = "Directions in Apple Maps";
+  const map = L.map("map", { zoomControl: false }).setView([lat, lon], 14);
+  L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}", { attribution: "Tiles &copy; Esri" }).addTo(map);
+  L.marker([lat, lon]).addTo(map).bindPopup(d.address).openPopup();
+});
+</script>
+</body>
+</html>

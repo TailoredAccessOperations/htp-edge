@@ -1,0 +1,344 @@
+{
+  "schema_version": "1.0.0-prove-all",
+  "generated_utc": "2026-08-03T02:32:13Z",
+  "address": "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa",
+  "keybase_user": "easter47",
+  "package_root": "/home/av/btc/prove-all",
+  "overall": {
+    "result": "PASS_CORE_SESSION_ISSUES",
+    "counts": {
+      "PASS": 8,
+      "FAIL": 1,
+      "SKIP": 2,
+      "PARTIAL": 1
+    },
+    "critical_methods": [
+      "M01",
+      "M03",
+      "M08",
+      "M09",
+      "M10"
+    ],
+    "critical_all_pass": true,
+    "verdict": "PASS_CORE_SESSION_ISSUES: Critical methods (offline claim, Keybase API, base58, genesis, dual-indexer) all PASS. Keybase claim binding is cryptographic. Bitcoin spend control requires L5/signmessage or wallet ismine."
+  },
+  "methods": [
+    {
+      "id": "M01",
+      "name": "Offline Keybase claim crypto (easter47)",
+      "result": "PASS",
+      "returncode": 0,
+      "stdout": "PASS\nusername: easter47\naddress: 1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa\nsig_id: fa0d750fa6644335738cde1b61a967099b2bf9b4dc2243578f3746924240466e0f",
+      "stderr": "",
+      "fixture": "/home/av/btc/prove-all/fixtures/easter47-btc-sig.json",
+      "proves": "NaCl ed25519 Keybase claim crypto for easter47→address (offline)"
+    },
+    {
+      "id": "M02",
+      "name": "Offline Keybase claim crypto (akula47)",
+      "result": "PASS",
+      "stdout": "PASS\nusername: akula47\naddress: 1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa\nsig_id: 6786e86aabce6720a3ac52f3661537c9d01a53fa2905fa8622503642997e9e6e0f",
+      "proves": "Second Keybase user also claims same address (claims are non-exclusive)",
+      "note": "akula47 claim PASS does not weaken easter47 claim crypto"
+    },
+    {
+      "id": "M03",
+      "name": "Keybase HTTP API live + crypto",
+      "result": "PASS",
+      "uid": "e24107e5a5687a829a06a0e60a78d219",
+      "matching_claim": {
+        "address": "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa",
+        "sig_id": "fa0d750fa6644335738cde1b61a967099b2bf9b4dc2243578f3746924240466e0f"
+      },
+      "claim_crypto": {
+        "result": "PASS",
+        "username": "easter47",
+        "uid": "e24107e5a5687a829a06a0e60a78d219",
+        "address": "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa",
+        "type": "bitcoin",
+        "sig_id": "fa0d750fa6644335738cde1b61a967099b2bf9b4dc2243578f3746924240466e0f",
+        "kid": "0120f7a7c82a39e3a6d560a26b8f6f588abcbd8112fc3ac17377057b3c0281c48a360a",
+        "ed25519_pubkey": "f7a7c82a39e3a6d560a26b8f6f588abcbd8112fc3ac17377057b3c0281c48a36",
+        "checks": {
+          "ed25519_over_compact_link": "PASS",
+          "payload_json_bound_via_sha256": "PASS",
+          "sig_id_eq_sha256_blob_0f": "PASS",
+          "username_matches": "PASS",
+          "address_matches": "PASS",
+          "type_is_bitcoin": "PASS"
+        },
+        "method": "Keybase sig_version=2 NaCl ed25519 over msgpack compact link"
+      },
+      "proofs": [
+        {
+          "type": "twitter",
+          "nametag": "madmonero",
+          "state": 1
+        },
+        {
+          "type": "dns",
+          "nametag": "war.htp.sh",
+          "state": 1
+        }
+      ],
+      "proves": "Live Keybase API + cryptographic claim verification"
+    },
+    {
+      "id": "M04",
+      "name": "Keybase CLI session + id",
+      "result": "FAIL",
+      "keybase_path": "/home/av/btc/bin/keybase",
+      "whoami": "Keybase isn't running. To start, you can run:",
+      "logged_in": false,
+      "id_shows_address": false,
+      "id_excerpt": "Keybase isn't running. To start, you can run:\n\topen /Applications/Keybase.app\n2026-08-02T22:31:52.983746-04:00 ▶ [ERRO keybase main.go:86] 001 There were multiple errors: dial unix /home/av/Library/Caches/Keybase/keybased.sock: connect: no such file or directory; dial unix /home/av/Library/Caches/Keybase/keybased.sock: connect: no such file or directory",
+      "proves": "Local Keybase service session + identity chain listing"
+    },
+    {
+      "id": "M05",
+      "name": "Ownership layers L1–L5",
+      "result": "PARTIAL",
+      "keybase_identity_binding": "FAIL",
+      "bitcoin_spend_control": "NOT_PROVEN",
+      "layer_summary": {
+        "L1_session": "FAIL",
+        "L2_claim_crypto": "PASS",
+        "L3_keybase_id": "FAIL",
+        "L4_saltpack": "FAIL",
+        "L5_btc_message": "NOT_PROVEN"
+      },
+      "verdict": "FAIL: Keybase identity binding incomplete (L1–L4).",
+      "stdout_tail": "=== OWNERSHIP VERIFICATION ===\nAddress:  1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa\nOwner:    easter47\nL1 session:     FAIL\nL2 claim crypto:PASS\nL3 keybase id:  FAIL\nL4 saltpack:    FAIL\nL5 btc message: NOT_PROVEN\nKeybase binding: FAIL\nBTC spend ctrl:  NOT_PROVEN\nVerdict: FAIL: Keybase identity binding incomplete (L1–L4).\nJSON: /home/av/btc/prove-all/output/workspace/ownership-verify/OWNERSHIP-VERIFY.pretty.json\nLatest: /home/av/btc/prove-all/output/workspace/OWNERSHIP-VERIFY-LATEST.json",
+      "stderr_tail": "",
+      "returncode": 1,
+      "proves": "Layered ownership verification L1–L5"
+    },
+    {
+      "id": "M06",
+      "name": "Full Keybase API + Bitcoin chain + genesis",
+      "result": "PASS",
+      "overall": {
+        "result": "FAIL",
+        "verdict": "FAIL: one or more of Keybase binding / Keybase API / chain checks failed",
+        "keybase_identity_binding": "FAIL",
+        "bitcoin_chain": "PASS",
+        "bitcoin_spend_control": "NOT_PROVEN",
+        "components": {
+          "ownership_layers": {
+            "L1_session": "FAIL",
+            "L2_claim_crypto": "PASS",
+            "L3_keybase_id": "FAIL",
+            "L4_saltpack": "FAIL",
+            "L5_btc_message": "NOT_PROVEN"
+          },
+          "keybase_http_api": "PASS",
+          "bitcoin_indexers": "PASS",
+          "genesis_linkage": "PASS",
+          "indexer_consensus": "PASS"
+        }
+      },
+      "balance": {
+        "confirmed_sats": 5732620004,
+        "confirmed_btc": 57.32620004,
+        "mempool_delta_sats": 1092,
+        "total_received_sats": 5732620004,
+        "total_spent_sats": 0,
+        "tx_count_confirmed": 64617,
+        "utxo_count_approx": 77201,
+        "never_spent": true,
+        "chain_tip_height": 960804,
+        "chain_tip_hash": "0000000000000000000081c26d870f8ac4a0217b8c6dab7b63c25f03b3882c52"
+      },
+      "genesis": {
+        "result": "PASS",
+        "block_hash": "000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f",
+        "coinbase_txid": "4a5e1e4baab89f3a32518a88c31bc87f618f76673e2cc77ab2127b7afdeda33b",
+        "derived_p2pkh_from_genesis_pubkey": "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa",
+        "coinbase_message_utf8": "The Times 03/Jan/2009 Chancellor on brink of second bailout for banks"
+      },
+      "stdout_tail": "=== A) Keybase ownership layers (CLI + claim crypto + saltpack) ===\n=== B) Keybase HTTP API ===\n  Keybase API: PASS\n=== C) Bitcoin blockchain (Esplora indexers) ===\n  Chain: PASS\n  Confirmed balance: 57.32620004 BTC (5732620004 sats)\n  Tip height: 960804\n  Genesis linkage: PASS derived=1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa\n  Saltpack: SKIP\n\n=== FULL VERIFICATION SUMMARY ===\nOverall:     FAIL\nKeybase:     FAIL\nBlockchain:  PASS\nSpend ctrl:  NOT_PROVEN\nVerdict:     FAIL: one or more of Keybase binding / Keybase API / chain checks failed\nJSON:        /home/av/btc/prove-all/output/workspace/FULL-VERIFY-LATEST.json",
+      "returncode": 1,
+      "proves": "Keybase API + dual Esplora Bitcoin chain + genesis linkage"
+    },
+    {
+      "id": "M07",
+      "name": "Mainnet wallet RPC (optional)",
+      "result": "SKIP",
+      "reason": "mainnet wallet RPC not reachable (optional bitcoind)",
+      "stdout_tail": "M1 RPC:         FAIL\nM2 ismine:      FAIL\nM3 Esplora:     PASS\nM4 on-chain:    PASS funded=False bal_btc=0.0\nM5 signmessage: FAIL\nM6 genesis/KB:  PASS\n\nOVERALL: FAIL\nVerdict: Mainnet wallet verification failed — see layers.\n\nExplorers:\n  https://blockstream.info/address/bc1q925c9f08xer3mdyvuxtqcz7mtjgm0ep8zlzd0f\n  https://mempool.space/address/bc1q925c9f08xer3mdyvuxtqcz7mtjgm0ep8zlzd0f\nJSON: /home/av/btc/prove-all/output/workspace/mainnet-wallet-verify/MAINNET-WALLET-VERIFY.json\n",
+      "stderr_tail": ""
+    },
+    {
+      "id": "M08",
+      "name": "Base58check address validation",
+      "result": "PASS",
+      "address": "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa",
+      "version": 0,
+      "type": "P2PKH",
+      "checksum_ok": true,
+      "proves": "Address is valid Bitcoin mainnet P2PKH base58check"
+    },
+    {
+      "id": "M09",
+      "name": "Genesis P2PK→P2PKH derivation",
+      "result": "PASS",
+      "block_hash": "000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f",
+      "coinbase_txid": "4a5e1e4baab89f3a32518a88c31bc87f618f76673e2cc77ab2127b7afdeda33b",
+      "coinbase_value_sats": 5000000000,
+      "genesis_pubkey": "04678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5f",
+      "derived_p2pkh": "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa",
+      "matches_target": true,
+      "times_message": "The Times 03/Jan/2009 Chancellor on brink of second bailout for banks",
+      "proves": "Bitcoin genesis coinbase P2PK pubkey hashes to claimed P2PKH address"
+    },
+    {
+      "id": "M10",
+      "name": "Dual Esplora indexer consensus",
+      "result": "PASS",
+      "field_matches": {
+        "funded_txo_count": true,
+        "funded_txo_sum": true,
+        "spent_txo_count": true,
+        "spent_txo_sum": true,
+        "tx_count": true
+      },
+      "chain_stats": {
+        "funded_txo_count": 77201,
+        "funded_txo_sum": 5732620004,
+        "spent_txo_count": 0,
+        "spent_txo_sum": 0,
+        "tx_count": 64617
+      },
+      "confirmed_balance_sats": 5732620004,
+      "confirmed_balance_btc": 57.32620004,
+      "tip_heights": {
+        "blockstream": 960804,
+        "mempool": 960804,
+        "delta": 0
+      },
+      "proves": "Two independent Bitcoin full-node indexers agree on address UTXO stats"
+    },
+    {
+      "id": "M11",
+      "name": "Package source integrity (sha256)",
+      "result": "PASS",
+      "file_count": 19,
+      "files": [
+        {
+          "path": "ALL-PROOFS-LATEST.json",
+          "sha256": "37eab82830c95d64b2ea696ad5b09e779f15da33683ee637efa518471efa9f75",
+          "bytes": 13779
+        },
+        {
+          "path": "Dockerfile",
+          "sha256": "a8217f6ed9d596d5a08afc793c598d886f6a6314d8b437eedefda1ee3fb91964",
+          "bytes": 1273
+        },
+        {
+          "path": "README.md",
+          "sha256": "f4a45a0f8452ffc2cae27efc1d5393970d47907251101af459cc413fdd4211d4",
+          "bytes": 2035
+        },
+        {
+          "path": "docker-compose.yml",
+          "sha256": "d17034406c44dadb0a0647e2acd8fd68e938d897fbfc4c5c457deefbcb4a0ccc",
+          "bytes": 453
+        },
+        {
+          "path": "entrypoint.sh",
+          "sha256": "f0c8cc2479be619cf1b0bbf55cc1cd7ed310c744ae7c8aa5ac0e3f01f98b619a",
+          "bytes": 454
+        },
+        {
+          "path": "fixtures/TRUST-ANCHORS.txt",
+          "sha256": "6e4d6a1d2ad0bd0e6d54137a6fac9d91aa828c3882ee305a127d79e5a27b5b1a",
+          "bytes": 919
+        },
+        {
+          "path": "fixtures/VERIFY-FINAL.json",
+          "sha256": "8487bb0da5a560b26e03876ab6219b9ff7ff2308782b61f3706af2ca91502960",
+          "bytes": 2696
+        },
+        {
+          "path": "fixtures/akula47-user.json",
+          "sha256": "84c7fb9daf7fdebfe2b217d905192d5718f0ed67c2dd3da603b58e9e38bc0cfa",
+          "bytes": 1910
+        },
+        {
+          "path": "fixtures/easter47-btc-sig.json",
+          "sha256": "d8f95c4f5327ee613018d88e2eb78590b2a1da764bfa7429be4f34fb74e81e2c",
+          "bytes": 2281
+        },
+        {
+          "path": "fixtures/easter47-user.json",
+          "sha256": "7cf80b54d5b441b95e6dd98a1ff83569984f5815f97d325bd8c497255ae0b41f",
+          "bytes": 3538
+        },
+        {
+          "path": "fixtures/user-provided-sig.json",
+          "sha256": "08889fc3829ed5385e619cca16911fab118c0f22295b87aa9349555f0090ce82",
+          "bytes": 2280
+        },
+        {
+          "path": "lib/verify_full.py",
+          "sha256": "e8651c488809498a1e88d1655d623d24c72accc4fd6c9dde7466ea92f3bbefbc",
+          "bytes": 17643
+        },
+        {
+          "path": "lib/verify_keybase_sig.py",
+          "sha256": "238eb92d5fc6c875a1e4befa9d4fa87334bc5967ef491bc3f232e8e2e3196c0d",
+          "bytes": 1299
+        },
+        {
+          "path": "lib/verify_mainnet_wallet.py",
+          "sha256": "fe3e54f77f9c6ed36c7acf0be27b411879e45f67eb1cab2cf67a2a07a3148c1f",
+          "bytes": 28989
+        },
+        {
+          "path": "lib/verify_ownership.py",
+          "sha256": "55b5a156ffc73e756c1a623429acdd812a3ddce274dd17bce92c0486e2238a44",
+          "bytes": 31704
+        },
+        {
+          "path": "prove_all.py",
+          "sha256": "9a3bcd8ab6033efc5a3ff1533476ab8d5f5948237829cf3cdfed1d6bc3ec8df5",
+          "bytes": 27855
+        },
+        {
+          "path": "prove_all.sh",
+          "sha256": "6f45759ceda0da2d9a57b8a30a4d8267ae212ce481562c672a0ee5d2836b5c62",
+          "bytes": 1132
+        },
+        {
+          "path": "requirements.txt",
+          "sha256": "978f00920bb82319cf0f574aa0f8c7192edfaa9e5a7bc43844278bd9308519b7",
+          "bytes": 86
+        },
+        {
+          "path": "schema/ownership-verification.schema.json",
+          "sha256": "73bfb8596fafe9a09eda9122087cae4873a9ce089d529fc65c654fe23608f6de",
+          "bytes": 3208
+        }
+      ],
+      "proves": "SHA256 inventory of packaged sources (intact code bundle)"
+    },
+    {
+      "id": "M12",
+      "name": "Saltpack sign final report",
+      "result": "SKIP",
+      "reason": "not logged in as easter47",
+      "whoami": "Keybase isn't running. To start, you can run:\n\n\topen /Applications/Keybase.app"
+    }
+  ],
+  "caveats": [
+    "Keybase cryptocurrency claims are self-attestations (device NaCl keys), not Bitcoin private keys.",
+    "Genesis address spend control is NOT claimed by these proofs.",
+    "Docker runs public API + offline crypto; host Keybase login enables L1/L4 saltpack methods.",
+    "Mainnet wallet RPC (M07) is optional and skipped when bitcoind is unavailable."
+  ],
+  "artifacts": {
+    "all_proofs_json": "/home/av/btc/prove-all/output/ALL-PROOFS.json",
+    "sha256": "7a230853e40fada24b3cab3f88fa79bd394cfc7d0a2b501e876a503d42dc320f",
+    "saltpack": null
+  }
+}

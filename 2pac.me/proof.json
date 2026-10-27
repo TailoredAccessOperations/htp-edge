@@ -1,0 +1,68 @@
+{
+  "domain": "2pac.me",
+  "hosted_at": "/2pac.me/",
+  "snapshot": {
+    "wayback": "https://web.archive.org/web/20110404230210/http://2pac.me/",
+    "raw": "https://web.archive.org/web/20110404230210id_/http://2pac.me/",
+    "timestamp": "20110404230210",
+    "original_url": "http://2pac.me/",
+    "path": "/2pac.me/snapshot/20110404230210.html",
+    "sha256": "4cfca8f7b37e40908de0902372f9ed4eeb140151427a4c64284efc39a8ba863e",
+    "bytes": 649,
+    "cdx_length": 610,
+    "cdx_captures_that_day": [
+      "http://2pac.me/"
+    ],
+    "framed": [
+      {
+        "url": "http://www.2pac.com",
+        "loaded": false,
+        "reason": "The 2011 page only pointed at the official site. That site is not copied here."
+      },
+      {
+        "url": "http://www.truoffers.com",
+        "loaded": false,
+        "reason": "1px third-party frame in the snapshot. It is not requested."
+      }
+    ]
+  },
+  "keybase": {
+    "username": "linux",
+    "profile": "https://keybase.io/linux",
+    "uid": "caf90169eefa5f807d577486b9f79519",
+    "sig_id": "1735830fa41825812e4f0abfe346b6c0d2281e0daee1d6d107b3bf7f655e8fbf0f",
+    "sig_id_short": "FzWDD6QYJYEuTwq_40a2wNIoHg2u4dbRB7O_",
+    "seqno": 117,
+    "sigchain": "https://keybase.io/linux/sigchain#1735830fa41825812e4f0abfe346b6c0d2281e0daee1d6d107b3bf7f655e8fbf0f",
+    "wayback_sigchain": "https://web.archive.org/web/20190424052711/https://keybase.io/linux/sigchain#1735830fa41825812e4f0abfe346b6c0d2281e0daee1d6d107b3bf7f655e8fbf0f",
+    "type": "web_service_binding",
+    "service": {
+      "domain": "2pac.me",
+      "protocol": "dns"
+    },
+    "proof_text": "keybase-site-verification=FzWDD6QYJYEuTwq_40a2wNIoHg2u4dbRB7O_f2Vej78",
+    "proof_text_path": "/2pac.me/keybase.txt",
+    "signed_at": "2017-11-04T00:37:28Z",
+    "expires_at": "2022-11-03T00:37:28Z",
+    "last_dns_success": "2018-11-28T18:59:17Z",
+    "sig_type": 2,
+    "sig_type_name": "remote_proof",
+    "sig_status": 2,
+    "proof_state": 8,
+    "proof_state_name": "DELETED",
+    "proof_status": 1,
+    "proof_status_name": "OK",
+    "live_proofs": [
+      "github:tailoredaccessoperations",
+      "dns:files.htp.sh",
+      "dns:htp.sh"
+    ],
+    "note": "Seqno 117 is a signed DNS web_service_binding of keybase.io/linux to 2pac.me. Keybase now reports the proof DELETED (proof_state 8) and it is absent from the live proof list. The signature still attests the historical statement.",
+    "kid": "01010176c4f264f12d9d1bd06500e51628b6f87aa1630f8caf5f91cb9c5585625a6a0a",
+    "fingerprint": "a3aae6e98a01a49605e6c327ee32288c6bcd7f7b",
+    "payload_hash": "a0f1aba80101d58ce8d3c159d5cb5e6d81c46880a6e36b8d79ea6f88505bf05e",
+    "prev": "283497071d5a8ba23ee5a7c169fab4f835ee91b0f0272824b954db947c5e10e8",
+    "payload_json": "{\"body\":{\"key\":{\"eldest_kid\":\"01010176c4f264f12d9d1bd06500e51628b6f87aa1630f8caf5f91cb9c5585625a6a0a\",\"fingerprint\":\"a3aae6e98a01a49605e6c327ee32288c6bcd7f7b\",\"host\":\"keybase.io\",\"key_id\":\"ee32288c6bcd7f7b\",\"kid\":\"01010176c4f264f12d9d1bd06500e51628b6f87aa1630f8caf5f91cb9c5585625a6a0a\",\"uid\":\"caf90169eefa5f807d577486b9f79519\",\"username\":\"linux\"},\"service\":{\"domain\":\"2pac.me\",\"protocol\":\"dns\"},\"type\":\"web_service_binding\",\"version\":1},\"ctime\":1509755848,\"expire_in\":157680000,\"prev\":\"283497071d5a8ba23ee5a7c169fab4f835ee91b0f0272824b954db947c5e10e8\",\"seqno\":117,\"tag\":\"signature\"}",
+    "sig": "-----BEGIN PGP MESSAGE-----\nVersion: Keybase OpenPGP v2.0.76\nComment: https://keybase.io/crypto\n\nyMIoAnicrVJbSBRRGN51s8tGdpUelkDHooe2bc7MnDkzUpQY0oVuhuB2287MnFmH\n1plx9pLbJkVgaFRaPZTdhQzSUihEiB4quyxFdBUy6fJQaXYjqIeIojNSbz12zsPh\n/P/3ff/3//w3Jvg8fu/hxlW754Rn8d671/YmPeGf47MZRrG0NFOcYbaQkYfENBJP\nRLYYGlPMsMC9SFQFnRMFHXCarAFFY0XIsgQCkZMUUZcQxkDkWV1SsQ51GaiKrEIo\nQZGDWMQsZoKMbphR4tiOYSaoLOYxJiKRJcwCLMgiC4mo8hwihOc4SVJFRdWQjhRK\nrLLiLoOaU3CchAyLxugnMmLvH/j/7Ds5IkfzMgtEmRAdQ11ikQYREiRRkXUkQyC7\nwDhxTFxNKDpmmMlapi7I0FDKUIk7Vc2qxoZJk5yN1RCFBRnbsRKWasVoUDPjLj6R\ntl3+VqJE/lAjimFqdHQUniJO3LCoBKBINWG4pQBkZUQdC1KQIbW24ZCIWwRAJEos\nPW4RknKrSrwgIxYBDWJJwRxPCMRIpS3pWBF0iYeEyEBhdZZDnMQJigwFTZEFpEIC\nWCIxbjM1pkW1AaJGcZSKxo2oiRNJhzB1169uGOXx+j2jc3PcpfL4x036u2r28rGe\n9wV5G1ZPP2OvPF7YlD8IDz2a2FOy7d3p7ReF6YNLSh/fO/Bmz/cp36sLJj85mj3X\n7R8uPHGtdWlLeUmX/WTTyR0fq6P57Yt3Rnvnrdk//1vbVz1ck3l66347aOkLYbX5\nRzMp3fip4nZ3NnC/wv427fT4RYcGxrxPP2vCvV3+sv4vDaUDC876zneubZwRSA/t\nQ1Xby1Y0/Hjc8rDp5/ObUwca267UH39QPzs379K7Yx98HXhoozVxl/zicOhXxeqS\nvlO5R2ZmK5d9TuW9XZe53HqhI5iz/nnDwfRc34uil6louDzxqmhhZU3PydfD/Zsv\nFdfjO5XNXmfmnZTv4+dA4GVbp1UX+w2CIjy7\n=Y2MC\n-----END PGP MESSAGE-----"
+  }
+}

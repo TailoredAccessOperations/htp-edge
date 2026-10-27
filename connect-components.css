@@ -1,0 +1,2361 @@
+/* ============================================================================
+   Cloudflare Connect 2026 — component layer
+   ----------------------------------------------------------------------------
+   Ported from https://www.cloudflare.com/connect/ (tokens in
+   /_connect/after-party.g2xymzuG.css, scoped component CSS in inline
+   <style> blocks + FAQAccordion.js / FlipperText.js / StripeMorphHero).
+
+   Everything here is additive. It does not restyle the existing HTP hacker
+   theme — the CF palette is injected as its own token namespace (--cf-*,
+   --connect-*) so the terminal greens keep winning on legacy selectors.
+
+   Fonts: STK Bureau Sans + Paper Mono are Cloudflare's licensed faces.
+   Self-hosted here; system fallbacks keep the layout intact if they 404.
+   ========================================================================== */
+
+@font-face {
+  font-family: "Connect 2026 STK Bureau Sans";
+  src: url(/fonts/STKBureauSans-Book.6yelHiG-.woff2) format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Connect 2026 STK Bureau Sans";
+  src: url(/fonts/STKBureauSans-Regular.Cogyas__.woff2) format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Paper Mono";
+  src: url(/fonts/PaperMonoVariable.I2B71st_.woff2) format("woff2");
+  font-weight: 100 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ── Tokens ─────────────────────────────────────────────────────────────────
+   Scoped to :root but written with a --connect- prefix so they never collide
+   with htp-critical.css's --bg0/--green/--text namespace. */
+
+:root {
+  color-scheme: dark;
+
+  --cf-bg: #070b09;
+  --cf-bg-alt: #0c1410;
+  --cf-orange: #3ed678;
+  --cf-orange-hi: #5fd992;
+  /* Brand field: deep terminal green, so --cf-on-brand can be light text. */
+  --cf-field: #0b4423;
+  --cf-field-hi: #0f5c2e;
+  --cf-field-wash: #1f9a4e;
+  --cf-accent-text: #5fd992;
+  --cf-text: #c8e6d4;
+  --cf-text-warm: #b7d6c4;
+  --cf-text-muted: #7a9a88;
+  --cf-text-dim: #6f9d85;
+  --cf-border: #1c2a22;
+  --cf-border-subtle: #16241c;
+  --cf-border-hover: #2b4234;
+  --cf-surface: #0c1410;
+  --cf-surface-hover: #101a14;
+  --cf-control-hover: #14251b;
+  --cf-control-selected: #172c20;
+  --cf-on-brand: #c8e6d4;
+  --cf-on-accent: #04140b;
+
+  --connect-text-base: #c8e6d4;
+  --connect-text-default: #9dbdaa;
+  --connect-text-muted: #7a9a88;
+  --connect-text-subtle: #6f9d85;
+  --connect-text-faint: #7a9a88;
+  --connect-icon-faint: #6f8f7c;
+  --connect-orange-0: #eafff1;
+  --connect-orange-100: #d2fbe2;
+  --connect-orange-200: #b5f0cd;
+  --connect-orange-300: #8fe6b3;
+  --connect-orange-400: #5fd992;
+  --connect-orange-500: #3ed678;
+  --connect-orange-600: #2bb862;
+  --connect-orange-700: #1f9a4e;
+  --connect-orange-800: #17793d;
+  --connect-orange-900: #0f5c2e;
+  --connect-orange-1000: #0b4423;
+  --connect-orange-1100: #07321a;
+  --connect-orange-1200: #052413;
+  --connect-orange-1300: #031a0e;
+  --connect-orange-1400: #02120a;
+  --connect-orange-1500: #010b06;
+  --connect-text-accent-orange: var(--connect-orange-400);
+  --connect-icon-accent-orange: var(--connect-orange-400);
+  --connect-background-base: #070b09;
+  --connect-background-surface: #0c1410;
+  --connect-background-accent-orange: var(--connect-orange-500);
+  --connect-border-default: #1c2a22;
+  --connect-border-muted: #17251d;
+  --connect-border-dashed: #1a2a21;
+  --connect-border-accent-orange: var(--connect-orange-400);
+
+  --connect-font-sans: "Connect 2026 STK Bureau Sans", sans-serif;
+  --connect-font-mono: "Paper Mono", ui-monospace, SFMono-Regular, Menlo, Consolas,
+    monospace;
+
+  --connect-shadow-elevation-default: inset 0 0 0 1px transparent,
+    0 24px 32px -12px color-mix(in oklab, black 3%, transparent),
+    0 6px 12px 0 color-mix(in oklab, black 1%, transparent),
+    0 3px 6px 0 color-mix(in oklab, black 1%, transparent),
+    0 0 0 1px color-mix(in oklab, black 4%, transparent);
+  --connect-shadow-elevation-no-outline: inset 0 0 0 1px transparent,
+    0 24px 32px -12px color-mix(in oklab, black 3%, transparent),
+    0 6px 12px 0 color-mix(in oklab, black 1%, transparent),
+    0 3px 6px 0 color-mix(in oklab, black 1%, transparent);
+
+  --connect-shadow-button-primary-rest: inset 0 -1px 3px 0
+      color-mix(in oklab, #8fe6b3 12%, transparent),
+    inset 0 -0.5px 0.5px 0 color-mix(in oklab, #8fe6b3 24%, transparent),
+    inset 0 -0.25px 0.25px 0 color-mix(in oklab, #3ed678 40%, transparent),
+    inset 0 4px 8px 0 color-mix(in oklab, #8fe6b3 12%, transparent),
+    inset 0 1px 3px 0 color-mix(in oklab, #8fe6b3 24%, transparent),
+    inset 0 0.5px 0.5px 0 color-mix(in oklab, #8fe6b3 32%, transparent),
+    inset 0 0.25px 0.25px 0 #3ed678,
+    0 6px 10px -4px color-mix(in oklab, #1f9a4e 24%, transparent),
+    0 2px 4px -1px color-mix(in oklab, #1f9a4e 12%, transparent),
+    0 1px 1px -0.5px color-mix(in oklab, #1f9a4e 12%, transparent),
+    0 0.5px 0.5px 0 color-mix(in oklab, #1f9a4e 12%, transparent);
+  --connect-shadow-button-primary-hover: inset 0 -1px 3px 0
+      color-mix(in oklab, #8fe6b3 24%, transparent),
+    inset 0 -0.5px 0.5px 0 color-mix(in oklab, #8fe6b3 24%, transparent),
+    inset 0 -0.25px 0.25px 0 color-mix(in oklab, #3ed678 40%, transparent),
+    inset 0 4px 8px 0 color-mix(in oklab, #8fe6b3 24%, transparent),
+    inset 0 1px 3px 0 color-mix(in oklab, #8fe6b3 24%, transparent),
+    inset 0 0.5px 0.5px 0 color-mix(in oklab, #8fe6b3 32%, transparent),
+    inset 0 0.25px 0.25px 0 #3ed678,
+    0 6px 10px -4px color-mix(in oklab, #1f9a4e 32%, transparent),
+    0 2px 4px -1px color-mix(in oklab, #1f9a4e 12%, transparent),
+    0 1px 1px -0.5px color-mix(in oklab, #1f9a4e 12%, transparent),
+    0 0.5px 0.5px 0 color-mix(in oklab, #1f9a4e 12%, transparent);
+  --connect-shadow-button-primary-pressed: inset 0 -1px 3px 0
+      color-mix(in oklab, #8fe6b3 12%, transparent),
+    inset 0 -0.5px 0.5px 0 color-mix(in oklab, #8fe6b3 24%, transparent),
+    inset 0 -0.25px 0.25px 0 color-mix(in oklab, #3ed678 40%, transparent),
+    inset 0 4px 8px 0 color-mix(in oklab, #8fe6b3 12%, transparent),
+    inset 0 1px 3px 0 color-mix(in oklab, #8fe6b3 24%, transparent),
+    inset 0 0.5px 0.5px 0 color-mix(in oklab, #8fe6b3 32%, transparent),
+    inset 0 0.25px 0.25px 0 #3ed678,
+    0 6px 10px -4px color-mix(in oklab, #1f9a4e 12%, transparent),
+    0 2px 4px -1px color-mix(in oklab, #1f9a4e 12%, transparent),
+    0 1px 1px -0.5px color-mix(in oklab, #1f9a4e 12%, transparent),
+    0 0.5px 0.5px 0 color-mix(in oklab, #1f9a4e 12%, transparent);
+  --connect-shadow-button-primary-focus: var(--connect-shadow-button-primary-rest),
+    0 0 0 1.5px var(--connect-background-base), 0 0 0 2.5px var(--connect-orange-400);
+
+  --connect-shadow-button-secondary-rest: 0 8px 12px -2px transparent,
+    0 4px 8px -2px rgb(0 0 0 / 2%), 0 2px 4px -1px rgb(0 0 0 / 2%),
+    0 1px 1px -0.5px rgb(0 0 0 / 2%), 0 0 0 1px rgb(0 0 0 / 4%);
+  --connect-shadow-button-secondary-hover: 0 8px 12px -2px rgb(0 0 0 / 2%),
+    0 4px 8px -2px rgb(0 0 0 / 2%), 0 2px 4px -1px rgb(0 0 0 / 2%),
+    0 1px 1px -0.5px rgb(0 0 0 / 2%), 0 0 0 1px rgb(0 0 0 / 4%);
+  --connect-shadow-button-secondary-active: 0 8px 12px -2px transparent,
+    0 3px 6px -2px rgb(0 0 0 / 1%), 0 2px 4px -1px rgb(0 0 0 / 2%),
+    0 1px 1px -0.5px rgb(0 0 0 / 2%), 0 0 0 1px rgb(0 0 0 / 4%);
+  --connect-shadow-button-secondary-focus: 0 4px 8px -2px rgb(0 0 0 / 2%),
+    0 2px 4px -1px rgb(0 0 0 / 2%), 0 1px 1px -0.5px rgb(0 0 0 / 2%),
+    0 0 0 1px rgb(0 0 0 / 4%), 0 0 0 2.5px var(--connect-background-base),
+    0 0 0 3.5px var(--connect-orange-400);
+
+  --text-hero: clamp(2.75rem, 5vw, 4rem);
+  --text-section: clamp(1.75rem, 3.5vw, 2.5rem);
+  --text-subsection: clamp(1.25rem, 2vw, 1.5rem);
+  --text-body-lg: 1.125rem;
+  --text-code: 0.8125rem;
+  --space-section: clamp(64px, 10vh, 80px);
+  --max-width: 1296px;
+}
+
+@supports (background: color(display-p3 0 0 0)) {
+  :root {
+    --connect-background-base: color(display-p3 0.0275 0.0431 0.0353);
+    --connect-background-surface: color(display-p3 0.0471 0.0784 0.0627);
+    --connect-border-default: color(display-p3 0.1098 0.1647 0.1333);
+    --connect-border-muted: color(display-p3 0.0902 0.1451 0.1137);
+    --connect-border-dashed: color(display-p3 0.102 0.1647 0.1294);
+  }
+}
+
+/* HTP sits on a dark terminal, so the nav re-points its surfaces at the hacker
+   palette. This is deliberately scoped to [data-cf-surface="dark"] only — the
+   hero and the build card are orange brand fields, and running them through
+   this block would put a near-black button on a near-black hero. */
+[data-cf-surface="dark"] {
+  --cf-bg: #070b09;
+  --cf-bg-alt: #0c1410;
+  --cf-text-warm: #b7d6c4;
+  --cf-text-muted: #7a9a88;
+  --cf-text-dim: #6f9d85;
+  --cf-border: rgba(62, 214, 120, 0.18);
+  --connect-text-base: #c8e6d4;
+  --connect-text-default: #9dbdaa;
+  --connect-text-muted: #7a9a88;
+  --connect-background-base: #070b09;
+  --connect-background-surface: #0c1410;
+  --connect-border-default: rgba(62, 214, 120, 0.16);
+  --connect-border-muted: rgba(62, 214, 120, 0.12);
+  --connect-border-dashed: rgba(62, 214, 120, 0.2);
+}
+
+/* ── Selection on brand ──────────────────────────────────────────────────── */
+
+.selection-on-orange ::selection {
+  background: #04140b59;
+}
+
+/* ── Offscreen globe render target ──────────────────────────────────────────
+   Verbatim from the Connect hero. The WebGL globe is parked off-canvas at
+   -10000px and its pixels are read back for the hero's dither effect, so this
+   is deliberately invisible and must never take layout space. */
+
+.globe-source {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 1400px;
+  height: 718px;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(-10000px, -10000px);
+  z-index: -1;
+}
+
+/* ── Globe view ────────────────────────────────────────────────────────────
+   The visible half of the Connect globe. js/cf-globe.js renders the WebGL2
+   sphere into .globe-source, then dithers the density field into this canvas.
+   It layers over the hero's orange field and under the hero copy. */
+
+.globe-view {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 700ms ease-out;
+}
+.globe-view[data-globe-ready] {
+  opacity: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .globe-view {
+    transition: none;
+  }
+}
+
+/* ── Stripe-morph hero canvas stack ──────────────────────────────────────── */
+
+.stripe-morph-hero,
+.stripe-morph-hero__canvas,
+.stripe-morph-hero__frames {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.stripe-morph-hero {
+  overflow: hidden;
+}
+.stripe-morph-hero__canvas,
+.stripe-morph-hero__frames {
+  display: block;
+  opacity: 1;
+  pointer-events: none;
+}
+
+/* ── BDP (bloom-dither-paint) hero ───────────────────────────────────────── */
+
+.bdp-hero {
+  --bdp-orange: #3ed678;
+  --bdp-yellow: #7ef0a4;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: transparent;
+  isolation: isolate;
+}
+.bdp-shake {
+  position: absolute;
+  inset: 0;
+  will-change: transform;
+}
+.bdp-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  background: transparent;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+[&_.bdp-hero]:h-full .bdp-hero {
+  height: 100%;
+}
+[&_.bdp-hero]:w-full .bdp-hero {
+  width: 100%;
+}
+@media (prefers-reduced-motion: reduce) {
+  .bdp-shake {
+    transform: none !important;
+  }
+}
+
+/* ── Line pattern ──────────────────────────────────────────────────────────
+   Two repeating-linear-gradients intersected via mask-composite, so only the
+   grid intersections paint. */
+
+.cf-line-pattern {
+  --_size: var(--cf-line-size, var(--cf-line-size-default, 7px));
+  --_gap: var(--cf-line-gap, var(--cf-line-gap-default, 7px));
+  --_color: var(--cf-line-color, var(--cf-line-color-default, #2bb862));
+  --_step: calc(var(--_size) + var(--_gap));
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background-color: var(--_color);
+  -webkit-mask-image: repeating-linear-gradient(
+      to right,
+      #000 0,
+      #000 var(--_size),
+      transparent var(--_size),
+      transparent var(--_step)
+    ),
+    repeating-linear-gradient(
+      to bottom,
+      #000 0,
+      #000 var(--_size),
+      transparent var(--_size),
+      transparent var(--_step)
+    );
+  mask-image: repeating-linear-gradient(
+      to right,
+      #000 0,
+      #000 var(--_size),
+      transparent var(--_size),
+      transparent var(--_step)
+    ),
+    repeating-linear-gradient(
+      to bottom,
+      #000 0,
+      #000 var(--_size),
+      transparent var(--_size),
+      transparent var(--_step)
+    );
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+}
+
+/* Upstream wraps the pattern in a mask that fades it out toward the top of the
+   hero, so the grid dissolves into the orange instead of ending on a hard
+   edge. Applied as a modifier rather than a wrapper element. */
+.cf-line-pattern--fade-top {
+  -webkit-mask-image: linear-gradient(to top, #000 50%, transparent 100%),
+    repeating-linear-gradient(to right, #000 0, #000 var(--_size), transparent var(--_size), transparent var(--_step)),
+    repeating-linear-gradient(to bottom, #000 0, #000 var(--_size), transparent var(--_size), transparent var(--_step));
+  mask-image: linear-gradient(to top, #000 50%, transparent 100%),
+    repeating-linear-gradient(to right, #000 0, #000 var(--_size), transparent var(--_size), transparent var(--_step)),
+    repeating-linear-gradient(to bottom, #000 0, #000 var(--_size), transparent var(--_size), transparent var(--_step));
+  -webkit-mask-composite: source-in, source-in;
+  mask-composite: intersect, intersect;
+}
+
+/* ── Flipper text ──────────────────────────────────────────────────────────
+   Scaffolding only — the animation is a JS character scramble
+   (js/cf-connect.js :: initFlippers). No transforms, no keyframes. */
+
+.cf-flipper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: baseline;
+  line-height: 1;
+  /* Reserve the width of the longest word so the box never resizes as the
+     flipper rotates. Without this, .cf-flipcell.is-empty (width:0) makes the
+     box swing between ~2ch and ~10ch inside a centred title, shifting the
+     whole hero on every rotation. cf-connect.js re-sets this from the actual
+     max word length so the two cannot drift; 10 = "Verbinden". */
+  min-width: 10ch;
+}
+.cf-flipper__inner {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  /* Track the reserved box on the parent. Without this the inner still resizes
+     as cells appear, and a centred resize moves its own left edge, which the
+     layout-shift API counts even though nothing around it moves. */
+  width: 100%;
+}
+.cf-flipper[dir="rtl"] .cf-flipper__inner {
+  direction: rtl;
+}
+.cf-flipcell {
+  display: inline-block;
+  position: relative;
+  font-variant-ligatures: none;
+  font-feature-settings: "liga" 0;
+  white-space: pre;
+  will-change: transform;
+}
+.cf-flipcell.is-empty {
+  /* keep zero width but allow gap */
+  width: 0;
+}
+@media (prefers-reduced-motion: reduce) {
+  .cf-flipcell {
+    transition: none !important;
+  }
+}
+
+/* ── Buttons ────────────────────────────────────────────────────────────────
+   On cloudflare.com/connect these carry only semantic hook classes plus
+   Tailwind utilities; here they carry the real rules. */
+
+.cf-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.625rem;
+  border-radius: 9999px;
+  font-family: var(--connect-font-sans);
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.25rem;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: box-shadow 0.2s ease, background-color 0.2s ease, color 0.2s ease,
+    opacity 0.2s ease, transform 0.03s ease;
+}
+.cf-btn > span {
+  position: relative;
+  z-index: 1;
+  padding-inline: 0.375rem;
+}
+.cf-btn:focus-visible {
+  outline: none;
+}
+.cf-btn:active {
+  transform: scale(0.99);
+  transition-duration: 30ms;
+}
+
+.cf-btn--secondary {
+  background-color: var(--connect-background-base);
+  color: var(--connect-text-base);
+  box-shadow: var(--connect-shadow-button-secondary-rest);
+}
+.cf-btn--secondary:hover {
+  box-shadow: var(--connect-shadow-button-secondary-hover);
+}
+.cf-btn--secondary:active {
+  box-shadow: var(--connect-shadow-button-secondary-active);
+}
+.cf-btn--secondary:focus-visible {
+  box-shadow: var(--connect-shadow-button-secondary-focus);
+}
+
+.cf-btn--primary {
+  background-color: var(--connect-orange-500);
+  color: var(--cf-on-accent);
+  box-shadow: var(--connect-shadow-button-primary-rest);
+}
+.cf-btn--primary:hover {
+  box-shadow: var(--connect-shadow-button-primary-hover);
+}
+.cf-btn--primary:active {
+  box-shadow: var(--connect-shadow-button-primary-pressed);
+}
+.cf-btn--primary:focus-visible {
+  box-shadow: var(--connect-shadow-button-primary-focus);
+}
+/* The two gradient sheen layers Cloudflare overlays on primary CTAs. */
+.cf-btn--primary::before,
+.cf-btn--primary::after {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  content: "";
+  pointer-events: none;
+  opacity: 0.24;
+  transition: all 0.2s ease;
+}
+.cf-btn--primary::before {
+  background: linear-gradient(to bottom, var(--connect-orange-600), transparent 40%);
+}
+.cf-btn--primary::after {
+  background: linear-gradient(to top, var(--connect-orange-600), transparent 40%);
+}
+.cf-btn--primary:hover::before,
+.cf-btn--primary:hover::after {
+  opacity: 0.32;
+}
+.cf-btn--primary:active::before,
+.cf-btn--primary:active::after {
+  opacity: 0.08;
+  transition-duration: 30ms;
+}
+
+@media (max-width: 767px) {
+  .cf-btn--full-mobile {
+    width: 100%;
+  }
+}
+
+/* ── Ticket tiers ──────────────────────────────────────────────────────────
+   .cf-ticket-tier--active is the only tier rule that existed upstream; the
+   dotted field is two stacked background layers. */
+
+.cf-ticket-tier--active {
+  background-image: linear-gradient(to top, transparent 0%, var(--cf-field-wash) 72%),
+    radial-gradient(circle at 1px 1px, #3ed678 1px, transparent 1.5px);
+  background-size: auto, 9px 9px;
+}
+
+/* ── FAQ accordion ─────────────────────────────────────────────────────────
+   grid-template-rows 0fr -> 1fr drives the expand; the clip stays
+   visibility:hidden when closed so collapsed content is unreachable by tab. */
+
+.cf-faq {
+  border-bottom: 1px solid var(--cf-border);
+}
+.cf-faq:last-child {
+  border-bottom: 0;
+}
+.cf-faq--last {
+  border-bottom: 0;
+}
+.cf-faq__trigger {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 24px 0;
+  background: transparent;
+  border: 0;
+  text-align: left;
+  cursor: pointer;
+  color: var(--cf-text-warm);
+}
+.cf-faq__question {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.35;
+  color: var(--cf-text-warm);
+  opacity: 0.8;
+  transition: opacity 0.15s ease, color 0.15s ease;
+}
+.cf-faq__trigger:hover .cf-faq__question {
+  opacity: 1;
+  color: var(--cf-orange);
+}
+.cf-faq__chevron {
+  display: inline-flex;
+  align-items: center;
+  color: var(--cf-text-muted);
+  transition: transform 0.2s ease, color 0.15s ease;
+  flex-shrink: 0;
+}
+.cf-faq__trigger:hover .cf-faq__chevron {
+  color: var(--cf-text-warm);
+}
+.cf-faq__answer {
+  padding: 0 0 24px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--cf-text-dim);
+}
+.cf-faq__answer-wrap {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 250ms ease;
+}
+.cf-faq[data-open] .cf-faq__answer-wrap {
+  grid-template-rows: 1fr;
+}
+.cf-faq__answer-clip {
+  min-height: 0;
+  overflow: hidden;
+  visibility: hidden;
+}
+.cf-faq[data-open] .cf-faq__answer-clip {
+  visibility: visible;
+}
+.cf-faq__answer p {
+  margin: 0;
+}
+.cf-faq__answer p + p,
+.cf-faq__answer ul + p {
+  margin-top: 12px;
+}
+.cf-faq__answer ul {
+  list-style: disc;
+  margin: 12px 0 0;
+  padding-left: 20px;
+}
+.cf-faq__answer li {
+  display: list-item;
+  margin: 4px 0;
+}
+.cf-faq__answer strong {
+  font-weight: 500;
+}
+.cf-faq__answer a {
+  color: var(--cf-orange);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.cf-faq__answer a:hover {
+  color: var(--cf-orange-hi);
+}
+
+.cf-faq--connect {
+  border-bottom-color: var(--connect-border-muted);
+}
+.cf-faq--connect .cf-faq__trigger {
+  padding: 32px 0;
+  color: var(--connect-text-base);
+}
+.cf-faq--connect .cf-faq__question {
+  color: var(--connect-text-base);
+  font-family: var(--connect-font-sans);
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: -0.0175em;
+  opacity: 1;
+  text-wrap: balance;
+}
+.cf-faq--connect .cf-faq__trigger:hover .cf-faq__question {
+  color: var(--connect-text-base);
+}
+.cf-faq--connect .cf-faq__chevron,
+.cf-faq--connect .cf-faq__trigger:hover .cf-faq__chevron {
+  color: var(--connect-text-default);
+}
+.cf-faq--connect .cf-faq__answer {
+  padding-bottom: 32px;
+  color: var(--connect-text-default);
+  font-family: var(--connect-font-sans);
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 24px;
+  white-space: pre-line;
+}
+.cf-faq--connect.cf-faq--original-type .cf-faq__question {
+  font-size: 18px;
+  line-height: 1.35;
+}
+.cf-faq--connect.cf-faq--original-type .cf-faq__answer {
+  font-size: 16px;
+  line-height: 1.6;
+}
+@media (max-width: 991px) {
+  .cf-faq--connect .cf-faq__trigger {
+    padding: 20px 0;
+  }
+  .cf-faq--connect .cf-faq__answer {
+    padding-bottom: 20px;
+  }
+}
+@media (max-width: 767px) {
+  .cf-faq--connect.cf-faq--original-type .cf-faq__question,
+  .cf-faq--connect.cf-faq--original-type .cf-faq__answer {
+    font-size: 16px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cf-faq__answer-wrap {
+    transition: none;
+  }
+}
+
+/* ── Ticker ─────────────────────────────────────────────────────────────────
+   The track holds two identical halves; translate(-50%) lands exactly on the
+   seam, so the loop is invisible. */
+
+/* ── Font utility ───────────────────────────────────────────────────────────
+   The injected markup carries font-connect (upstream's Tailwind font family
+   utility). This stylesheet is hand-written and never goes through Tailwind,
+   so the class would otherwise be inert. */
+
+.font-connect {
+  font-family: var(--connect-font-sans);
+}
+
+/* Absolute fill layer for the bdp-hero canvas inside .cf-build-card. Replaces
+   upstream's arbitrary variant [&_.bdp-hero]:h-full, which is inert here. */
+
+.cf-build-card__canvas-fill {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.cf-build-card__canvas-fill .bdp-hero {
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes cf-ticker {
+  0% {
+    transform: translate(0);
+  }
+  to {
+    transform: translate(-50%);
+  }
+}
+.animate-cf-ticker {
+  animation: cf-ticker 32s linear infinite;
+}
+/* This has to live inside the media query. Declared globally it silently kills
+   the ticker for everyone, because the element carries both classes. */
+@media (prefers-reduced-motion: reduce) {
+  .animate-cf-ticker,
+  .motion-reduce\:animate-none {
+    animation: none;
+  }
+}
+
+/* ── Section divider ───────────────────────────────────────────────────────
+   The dash <svg> is 8px wider than its side and the right side is pre-shifted
+   -8px, so translating by exactly one dash cycle (8px = 3 + 5) has no seam. */
+
+.section-divider {
+  display: flex;
+  height: 1px;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  color: var(--connect-border-default);
+  overflow: hidden;
+}
+.section-divider__center {
+  width: min(1200px, calc(100% - 16px));
+  flex: none;
+  background: var(--connect-border-default);
+}
+.section-divider__side {
+  position: relative;
+  min-width: 0;
+  flex: 1;
+  overflow: hidden;
+}
+.section-divider__dash {
+  position: relative;
+  display: block;
+  width: calc(100% + 8px);
+  height: 1px;
+  animation: section-divider-march 0.75s linear infinite;
+}
+.section-divider__side--left .section-divider__dash {
+  --section-divider-travel: -8px;
+}
+.section-divider__side--right .section-divider__dash {
+  --section-divider-travel: 8px;
+  left: -8px;
+}
+@keyframes section-divider-march {
+  to {
+    transform: translate3d(var(--section-divider-travel), 0, 0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .section-divider__dash {
+    animation: none;
+  }
+}
+
+/* ── Vertical grid rails ────────────────────────────────────────────────────
+   Outer rails hug the 1480px frame, inner rails hug the 1200px content. */
+
+.grid-lines {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.grid-lines__v {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--connect-border-default);
+}
+.grid-lines__v--edge-l {
+  left: max(8px, calc((100% - 1480px) / 2));
+}
+.grid-lines__v--edge-r {
+  right: max(8px, calc((100% - 1480px) / 2));
+}
+.grid-lines__v--inner-l {
+  left: max(8px, calc((100% - 1200px) / 2));
+}
+.grid-lines__v--inner-r {
+  right: max(8px, calc((100% - 1200px) / 2));
+}
+@media (max-width: 720px) {
+  .grid-lines__v--inner-l,
+  .grid-lines__v--inner-r {
+    display: none;
+  }
+  .grid-lines--content-only .grid-lines__v--inner-l,
+  .grid-lines--content-only .grid-lines__v--inner-r {
+    display: block;
+  }
+}
+
+/* ── Grid surface ───────────────────────────────────────────────────────────
+   A 1-unit stroke square tiled at 32px (80px on wide viewports) as a mask over
+   the border colour; :after draws the outer frame. */
+
+.bg-connect-grid {
+  --connect-grid-pattern: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='0.25' y='0.25' width='31.5' height='31.5' stroke='%23fff' stroke-width='0.5' /%3E%3C/svg%3E");
+}
+.bg-connect-grid:before {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  content: "";
+  background-color: var(--connect-border-default);
+  -webkit-mask-image: var(--connect-grid-pattern);
+  mask-image: var(--connect-grid-pattern);
+  -webkit-mask-size: 32px 32px;
+  mask-size: 32px 32px;
+}
+.bg-connect-grid:after {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  content: "";
+  border: 1px solid var(--connect-border-default);
+  border-radius: inherit;
+}
+.bg-connect-grid.connect-grid-no-border:after {
+  display: none;
+}
+@media (min-width: 1120px) {
+  .bg-connect-grid {
+    --connect-grid-pattern: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='0.25' y='0.25' width='79.5' height='79.5' stroke='%23fff' stroke-width='0.5' /%3E%3C/svg%3E");
+  }
+  .bg-connect-grid:before {
+    -webkit-mask-size: 80px 80px;
+    mask-size: 80px 80px;
+  }
+}
+
+/* ── Speaker paint ──────────────────────────────────────────────────────────
+   Two stacked images in one square box; both desaturate until the card group
+   is hovered. */
+
+.speaker-paint-photo {
+  filter: grayscale(1);
+  transition: filter 100ms linear;
+  will-change: filter;
+}
+.speaker-paint-photo--base {
+  z-index: 0;
+}
+.speaker-paint-photo--foreground {
+  z-index: 31;
+  pointer-events: none;
+}
+.group:hover .speaker-paint-photo {
+  filter: grayscale(0);
+}
+
+/* ── Scroll reveal ───────────────────────────────────────────────────────── */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *:before, *:after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ── Nav ────────────────────────────────────────────────────────────────────
+   Condensed from the 741-line upstream block: the sliding hover pill, the
+   over-hero transparent state, the shimmer sweep, dropdowns and the
+   full-screen mobile menu. */
+
+.cf-nav {
+  --cf-nav-h: 80px;
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  /* main.site constrains its children to a 920px column; the nav is meant to
+     span the full viewport, so it breaks out the same way .section-divider
+     does rather than sitting boxed in the content gutter. */
+  width: 100vw;
+  margin-inline: calc(50% - 50vw);
+  background: var(--cf-bg);
+  transition: background 0.25s ease, box-shadow 0.25s ease;
+}
+.cf-nav--menu-open {
+  z-index: 100;
+  background: transparent;
+}
+.cf-nav--menu-open .cf-nav__logo img {
+  filter: none !important;
+}
+.cf-nav--menu-open .cf-nav__bar {
+  background: var(--cf-text-warm) !important;
+}
+.cf-nav--menu-open .cf-nav__cta {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.2s ease, visibility 0.2s;
+}
+html[data-nav-menu-open] .cf-mode-toggle {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.cf-nav__shell {
+  display: flex;
+  align-items: center;
+  height: var(--cf-nav-h);
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+  position: relative;
+  z-index: 2;
+}
+.cf-nav__logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  line-height: 0;
+  justify-self: start;
+  text-decoration: none;
+}
+.cf-nav__logo img {
+  width: 57px;
+  height: 26px;
+  display: block;
+}
+.cf-nav__wordmark {
+  display: flex;
+  flex-direction: column;
+  color: var(--connect-orange-400);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.32px;
+  white-space: nowrap;
+  transition: color 0.25s ease;
+}
+.cf-nav__separator {
+  width: 1px;
+  height: 13px;
+  margin-left: 24px;
+  margin-right: 10px;
+  flex: 0 0 auto;
+  border-radius: 9999px;
+  background: var(--connect-border-default);
+  transition: opacity 150ms ease;
+}
+.cf-nav__links {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  /* Containing block for the absolutely-positioned hover pill. */
+  position: relative;
+}
+.cf-nav__dropdown {
+  position: relative;
+}
+.cf-nav__link {
+  display: inline-flex;
+  align-items: center;
+  height: 32px;
+  padding: 0 14px;
+  border-radius: 9999px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--connect-text-base);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 150ms ease, opacity 150ms ease;
+  /* Sit above the sliding pill so the link text stays legible. */
+  position: relative;
+  z-index: 1;
+}
+.cf-nav__dropdown-trigger {
+  gap: 4px;
+  margin: 0;
+  border: 0;
+  background: transparent;
+  font-family: inherit;
+  cursor: pointer;
+}
+.cf-nav__dropdown-chevron {
+  transition: transform 200ms ease;
+}
+.cf-nav__dropdown-trigger[aria-expanded="true"] .cf-nav__dropdown-chevron {
+  transform: rotate(180deg);
+}
+
+/* Shimmer sweep for the emphasised nav item. Brightness alone can't carry the
+   glint over the orange hero, so the glint shifts hue into the apricot band. */
+.cf-nav__shimmer {
+  --cf-nav-shimmer-base: var(--connect-text-base);
+  --cf-nav-shimmer-glint: var(--connect-orange-600);
+  --cf-nav-shimmer-duration: 1.5s;
+  background-image: linear-gradient(
+    100deg,
+    var(--cf-nav-shimmer-base) 40%,
+    var(--cf-nav-shimmer-glint) 50%,
+    var(--cf-nav-shimmer-base) 60%
+  );
+  background-size: 300% 100%;
+  background-position: 100% 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: cf-nav-shimmer 6s var(--cf-nav-shimmer-duration) linear infinite;
+}
+@keyframes cf-nav-shimmer {
+  0%,
+  70%,
+  100% {
+    background-position: 100% 0;
+  }
+  85% {
+    background-position: 0 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cf-nav__shimmer {
+    animation: none;
+    background-image: none;
+    color: var(--connect-text-base);
+  }
+}
+
+.cf-nav__hover-pill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 32px;
+  border-radius: 9999px;
+  background: var(--cf-surface-hover);
+  pointer-events: none;
+  opacity: 0;
+  transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1), width 0.28s
+      cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease;
+}
+.cf-nav__links:hover .cf-nav__hover-pill,
+.cf-nav__links:focus-within .cf-nav__hover-pill {
+  opacity: 1;
+}
+
+.cf-nav__dropdown-panel {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  min-width: 280px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-4px);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+  z-index: 10;
+}
+.cf-nav__dropdown-panel[data-open] {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.cf-nav__dropdown-surface {
+  padding: 8px;
+  border-radius: 10px;
+  background: var(--connect-background-base);
+  border: 1px solid var(--connect-border-default);
+  box-shadow: var(--connect-shadow-elevation-default);
+}
+.cf-nav__dropdown-link {
+  display: block;
+  padding: 8px 12px;
+  border-radius: 8px;
+  text-decoration: none;
+}
+.cf-nav__dropdown-link:hover {
+  background: var(--cf-surface-hover);
+}
+.cf-nav__dropdown-label {
+  display: block;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--connect-text-base);
+}
+.cf-nav__dropdown-description {
+  display: block;
+  font-size: 13px;
+  line-height: 18px;
+  color: var(--connect-text-default);
+}
+
+.cf-nav__right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: auto;
+}
+.cf-nav__hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  padding: 0 9px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+.cf-nav__bar {
+  display: block;
+  height: 1.5px;
+  width: 100%;
+  background: var(--connect-text-base);
+  transition: transform 0.25s ease, opacity 0.2s ease;
+}
+
+.cf-nav__menu {
+  position: fixed;
+  inset: 0;
+  background: var(--connect-background-base);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s;
+  z-index: 90;
+}
+.cf-nav__menu[data-open] {
+  opacity: 1;
+  visibility: visible;
+}
+.cf-nav__menu-inner {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: calc(var(--cf-nav-h) + 24px) 24px 32px;
+  overflow-y: auto;
+}
+.cf-nav__menu-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+  border: 0;
+  background: transparent;
+  font-family: var(--connect-font-sans);
+  font-size: 24px;
+  line-height: 32px;
+  letter-spacing: -0.02em;
+  color: var(--connect-text-base);
+  text-decoration: none;
+  text-align: left;
+  cursor: pointer;
+}
+.cf-nav__menu-submenu {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 250ms ease;
+}
+.cf-nav__menu-submenu > * {
+  min-height: 0;
+  overflow: hidden;
+}
+.cf-nav__menu-submenu[data-open] {
+  grid-template-rows: 1fr;
+}
+.cf-nav__menu-trigger[aria-expanded="true"] .cf-nav__menu-chevron {
+  transform: rotate(180deg);
+}
+.cf-nav__menu-chevron {
+  transition: transform 200ms ease;
+}
+.cf-nav__menu-sublink {
+  display: block;
+  padding: 8px 0 8px 16px;
+  font-size: 18px;
+  line-height: 28px;
+  color: var(--connect-text-default);
+  text-decoration: none;
+}
+.cf-nav__menu-footer {
+  margin-top: auto;
+  padding-top: 24px;
+}
+
+/* Over the orange hero the nav drops its own background and recolors to warm
+   white so the links and logo read against orange. Desktop only — on mobile
+   the nav sits over a solid panel. */
+@media (min-width: 768px) {
+  html[data-over-hero] .cf-nav {
+    background: transparent;
+    box-shadow: none;
+  }
+  html[data-over-hero] .cf-nav__link {
+    color: var(--cf-on-brand);
+  }
+  html[data-over-hero] .cf-nav__hover-pill {
+    background: rgba(200, 230, 212, 0.12);
+  }
+  html[data-over-hero] .cf-nav__logo img {
+    filter: brightness(0) invert(1);
+  }
+  html[data-over-hero] .cf-nav__wordmark {
+    color: var(--cf-on-brand);
+  }
+  html[data-over-hero] .cf-nav__separator {
+    opacity: 0.45;
+  }
+  html[data-over-hero] .cf-nav__shimmer {
+    --cf-nav-shimmer-base: #0b4423;
+    --cf-nav-shimmer-glint: var(--connect-orange-300);
+    --cf-nav-shimmer-duration: 1.5s;
+  }
+  html[data-over-hero] .cf-nav__links:has(.cf-nav__link:hover) .cf-nav__link:not(:hover),
+  html[data-over-hero]
+    .cf-nav__links:has(.cf-nav__link:focus-visible)
+    .cf-nav__link:not(:focus-visible),
+  html[data-over-hero]
+    .cf-nav__links:has(.cf-nav__dropdown-trigger[aria-expanded="true"])
+    .cf-nav__link:not([aria-expanded="true"]) {
+    opacity: 0.72;
+  }
+}
+
+/* The hero carries its own Register button, so the nav CTA slides away with
+   the hero on narrow viewports rather than duplicating it. */
+@media (max-width: 900px) {
+  .cf-nav__hamburger {
+    display: flex;
+  }
+  /* Collapse to the full-screen panel. Without this the desktop bar stays
+     display:flex and renders on top of the hamburger. */
+  .cf-nav__links,
+  .cf-nav__hover-pill {
+    display: none;
+  }
+  .cf-nav__cta {
+    transition: opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+      transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.35s,
+      max-width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    max-width: 200px;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  html[data-over-hero] .cf-nav__cta {
+    opacity: 0;
+    transform: translateY(-8px);
+    visibility: hidden;
+    pointer-events: none;
+    max-width: 0;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+@media (max-width: 1024px) {
+  .cf-nav__shell {
+    padding: 0 16px;
+  }
+}
+
+/* ── Hero ───────────────────────────────────────────────────────────────────
+   The hero keeps the existing HTP treatment; this only supplies the CF
+   typography scale, the selection colour and the overscroll fade so the
+   new components sit on the same page without repainting it. */
+
+.cf-hero {
+  position: relative;
+  /* Full-bleed out of main.site's 920px column, matching .cf-nav. */
+  width: 100vw;
+  height: 100vh;
+  min-height: 100svh;
+  margin-inline: calc(50% - 50vw);
+  overflow: hidden;
+  /* The brand field. Every text colour inside resolves to --cf-on-brand, which
+     is why the field is a deep terminal green and the art on it can glow. */
+  background: var(--cf-field);
+  isolation: isolate;
+}
+.cf-hero__content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  padding: 4rem 1.5rem;
+  min-height: 100svh;
+  text-align: center;
+}
+.cf-hero__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.875rem;
+  border: 1px solid rgba(255, 251, 245, 0.25);
+  border-radius: 9999px;
+  font-family: var(--connect-font-sans);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: var(--cf-on-brand);
+  text-decoration: none;
+  backdrop-filter: blur(6px);
+  transition: background-color 0.2s ease;
+}
+.cf-hero__eyebrow:hover {
+  background: rgba(255, 251, 245, 0.12);
+}
+.cf-hero__title {
+  margin: 0;
+  font-family: var(--connect-font-sans);
+  font-weight: 400;
+  font-size: clamp(2.5rem, 7vw, 96px);
+  line-height: 1.05;
+  letter-spacing: -0.026em;
+  color: var(--cf-on-brand);
+  text-wrap: balance;
+}
+.cf-hero__meta {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.375rem 0.75rem;
+  border-radius: 9999px;
+  background: rgba(3, 10, 6, 0.62);
+  font-family: var(--connect-font-mono);
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--cf-on-brand);
+  white-space: nowrap;
+  max-width: 100%;
+}
+/* The uppercase mono meta pill is 504px wide at full size, so on a phone it
+   has to wrap or it pushes the document ~115px past the viewport. */
+@media (max-width: 560px) {
+  .cf-hero__meta {
+    white-space: normal;
+    text-align: center;
+    line-height: 1.4;
+    letter-spacing: 0.05em;
+  }
+}
+.cf-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+}
+/* The second hero CTA on cloudflare.com/connect is an orange-on-orange variant.
+   It only reads because of the translucent on-brand border, so the border is
+   not optional here. */
+.cf-btn--on-orange {
+  background-color: var(--cf-field);
+  color: var(--cf-on-brand);
+  border: 1px solid var(--cf-on-brand);
+  box-shadow: none;
+}
+.cf-btn--on-orange:hover {
+  background-color: var(--cf-field-hi);
+}
+.cf-btn--on-orange:focus-visible {
+  box-shadow: 0 0 0 2.5px var(--cf-on-brand);
+}
+@media (max-width: 767px) {
+  .cf-hero {
+    min-height: 100svh;
+    height: 100svh;
+  }
+  .cf-hero__actions {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+}
+
+/* Suffix that sits beside the flipper — the version stamp, kept out of the
+   scrambler so it stays legible while the word cycles. */
+.cf-flipper__static {
+  white-space: pre;
+}
+
+/* ── Section scaffolding ────────────────────────────────────────────────────
+   Generic wrappers so CF-styled sections can drop into the HTP column without
+   each one hand-rolling the max-width and gutters. */
+
+.cf-section {
+  position: relative;
+  width: 100%;
+  padding-block: var(--space-section);
+  /* The nav is sticky at 80px, so anchor jumps have to clear it. */
+  scroll-margin-top: 100px;
+}
+.cf-section__label {
+  display: block;
+  font-family: var(--connect-font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--connect-text-faint);
+}
+.cf-section__head {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 680px;
+  margin: 0 auto 3rem;
+  text-align: center;
+}
+.cf-section__title {
+  margin: 0;
+  font-family: var(--connect-font-sans);
+  font-weight: 400;
+  font-size: var(--text-section);
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  color: var(--cf-text-warm);
+  text-wrap: balance;
+}
+.cf-section__sub {
+  margin: 0;
+  font-family: var(--connect-font-sans);
+  font-size: 1.125rem;
+  font-weight: 300;
+  line-height: 1.5;
+  color: var(--connect-text-default);
+}
+.cf-panel {
+  position: relative;
+  padding: 2.5rem;
+  background: var(--connect-background-surface);
+  box-shadow: var(--connect-shadow-elevation-default);
+}
+@media (max-width: 1024px) {
+  .cf-panel {
+    padding: 1.5rem;
+  }
+}
+
+/* Card grid (pillars / tiers / speakers share this shell). */
+.cf-cardgrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border: 1px solid var(--connect-border-default);
+  background: var(--connect-background-base);
+  box-shadow: var(--connect-shadow-elevation-default);
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.cf-cardgrid > * {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-height: 262px;
+  padding: 2.5rem;
+  border-right: 1px solid var(--connect-border-default);
+}
+.cf-cardgrid > *:last-child {
+  border-right: 0;
+}
+.cf-cardgrid__title {
+  margin: 0;
+  font-family: var(--connect-font-sans);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+  letter-spacing: -0.005em;
+  color: var(--connect-text-base);
+}
+.cf-cardgrid__body {
+  max-width: 320px;
+  margin: 0;
+  font-family: var(--connect-font-sans);
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 22px;
+  color: var(--connect-text-default);
+}
+@media (max-width: 1024px) {
+  .cf-cardgrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .cf-cardgrid > * {
+    padding: 1.5rem;
+  }
+  .cf-cardgrid > *:nth-child(2n) {
+    border-right: 0;
+  }
+}
+@media (max-width: 720px) {
+  .cf-cardgrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .cf-cardgrid > * {
+    min-height: 0;
+    border-right: 0;
+    border-bottom: 1px solid var(--connect-border-default);
+  }
+  .cf-cardgrid > *:last-child {
+    border-bottom: 0;
+  }
+}
+
+/* ── Stats ──────────────────────────────────────────────────────────────────
+   Number above label (order 1 / order 2), tabular figures so digits don't
+   jitter during the count-up. */
+
+.cf-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 0;
+  border-bottom: 1px solid var(--connect-border-default);
+  background: var(--cf-surface);
+}
+.cf-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 2rem;
+}
+.cf-stat__value {
+  order: 1;
+  margin: 0;
+  font-family: var(--connect-font-sans);
+  font-size: 44px;
+  font-weight: 400;
+  line-height: 48px;
+  letter-spacing: -0.025em;
+  font-variant-numeric: tabular-nums;
+  color: var(--connect-orange-400);
+}
+.cf-stat__label {
+  order: 2;
+  font-family: var(--connect-font-mono);
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  line-height: 1.4;
+  letter-spacing: 0.04em;
+  color: var(--cf-text-muted);
+}
+@media (max-width: 1024px) {
+  .cf-stat {
+    padding: 2rem 1.5rem;
+  }
+}
+@media (max-width: 767px) {
+  .cf-stat__value {
+    font-size: 32px;
+    line-height: 2.25rem;
+  }
+}
+@media (min-width: 640px) {
+  .cf-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 639px) {
+  .cf-stats {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .cf-stat {
+    padding: 1.75rem 1.5rem;
+  }
+}
+@media (min-width: 1024px) {
+  .cf-stats {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* ── Build / register card + ticker ───────────────────────────────────────── */
+
+.cf-build-card {
+  position: relative;
+  width: 100%;
+  max-width: 1424px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 1rem 1rem 0 0;
+  background: var(--cf-field);
+  isolation: isolate;
+  aspect-ratio: 1424 / 472;
+  box-shadow: 0 4px 12px rgb(0 0 0 / 2%), 0 2px 12px rgb(0 0 0 / 3%),
+    inset 1px 6px 16px rgb(255 255 255 / 5%);
+}
+.cf-build-card__title {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  padding: 4rem 2rem 2rem;
+  font-family: var(--connect-font-sans);
+  font-weight: 400;
+  font-size: clamp(2rem, 5vw, 56px);
+  line-height: 1;
+  letter-spacing: -0.025em;
+  text-align: center;
+  color: var(--cf-on-brand);
+  text-shadow: 0 10px 30px rgb(255 94 31 / 58%), 0 2px 10px rgb(255 94 31 / 48%);
+}
+.cf-ticker {
+  height: 3.5rem;
+  width: 100%;
+  max-width: 1424px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-top: 1px solid rgb(255 221 153 / 50%);
+  border-radius: 0 0 1rem 1rem;
+  background: var(--cf-field);
+}
+.cf-ticker__track {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: max-content;
+}
+.cf-ticker__half {
+  display: flex;
+  flex-shrink: 0;
+  gap: 1.5rem;
+  padding-right: 1.5rem;
+}
+.cf-ticker__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.5rem;
+  font-family: var(--connect-font-sans);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1;
+  white-space: nowrap;
+  color: var(--cf-on-brand);
+}
+.cf-ticker__dot {
+  color: rgb(200 230 212 / 62%);
+}
+@media (max-width: 720px) {
+  .cf-ticker {
+    height: 3rem;
+  }
+  .cf-ticker__half {
+    gap: 1rem;
+    padding-right: 1rem;
+  }
+  .cf-ticker__item {
+    gap: 1rem;
+    font-size: 0.875rem;
+  }
+}
+@media (max-width: 1024px) {
+  .cf-build-card {
+    aspect-ratio: 1424 / 560;
+  }
+}
+.cf-build-card__actions {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+  padding: 0 2rem 3rem;
+}
+
+@media (max-width: 720px) {
+  .cf-build-card {
+    aspect-ratio: auto;
+    min-height: 460px;
+  }
+  .cf-build-card__title {
+    padding: 3rem 1.5rem 1.5rem;
+  }
+  .cf-build-card__actions {
+    padding: 0 1.5rem 2.5rem;
+  }
+}
+
+/* ── Agenda timeline ────────────────────────────────────────────────────────
+   Dashed SVG connector between entries, dot coloured per event type. */
+
+.cf-agenda {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.cf-agenda__day {
+  padding: 2rem;
+  border-right: 1px solid var(--connect-border-default);
+}
+.cf-agenda__day:last-child {
+  border-right: 0;
+}
+.cf-agenda__date {
+  margin: 0 0 1.5rem;
+  font-family: var(--connect-font-mono);
+  font-size: 0.8125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--connect-text-default);
+}
+.cf-agenda__list {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.cf-agenda__item {
+  position: relative;
+  padding: 0 0 1.75rem 22px;
+}
+.cf-agenda__item:last-child {
+  padding-bottom: 0;
+}
+.cf-agenda__dot {
+  position: absolute;
+  top: 5px;
+  left: 0;
+  width: 9px;
+  height: 9px;
+  border-radius: 9999px;
+  background: var(--connect-orange-500);
+}
+/* Dashed connector: the 3 5 dash cycle over a 1px stroke, extended below the
+   dot and clipped by the item so the gap between entries stays rhythm-even. */
+.cf-agenda__item:not(:last-child)::before {
+  content: "";
+  position: absolute;
+  top: 14px;
+  left: 4px;
+  bottom: 0;
+  width: 1px;
+  background-image: linear-gradient(
+    to bottom,
+    var(--connect-border-default) 0 3px,
+    transparent 3px 8px
+  );
+  background-size: 1px 8px;
+}
+.cf-agenda__time {
+  display: block;
+  font-family: var(--connect-font-mono);
+  font-size: 0.8125rem;
+  text-transform: uppercase;
+  font-variant-numeric: tabular-nums;
+  color: var(--connect-text-default);
+}
+.cf-agenda__title {
+  margin: 0.25rem 0 0;
+  font-family: var(--connect-font-sans);
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.4;
+  color: var(--connect-text-base);
+}
+@media (max-width: 1024px) {
+  .cf-agenda {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .cf-agenda__day:nth-child(2n) {
+    border-right: 0;
+  }
+}
+@media (max-width: 720px) {
+  .cf-agenda {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .cf-agenda__day {
+    border-right: 0;
+    border-bottom: 1px solid var(--connect-border-default);
+  }
+  .cf-agenda__day:last-child {
+    border-bottom: 0;
+  }
+}
+
+/* ── Speaker cards ────────────────────────────────────────────────────────── */
+
+.cf-speakers {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 3rem 3rem;
+}
+.cf-speaker {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+.cf-speaker__photo {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border: 1px solid var(--connect-border-muted);
+  background: var(--connect-background-surface);
+}
+.cf-speaker__photo img {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.cf-speaker__meta {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  position: relative;
+  z-index: 5;
+  font-family: var(--connect-font-sans);
+}
+.cf-speaker__name {
+  margin: 0 0 8px;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+  letter-spacing: -0.005em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--connect-text-base);
+}
+.cf-speaker__role {
+  margin: 0;
+  height: 22px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 22px;
+  color: var(--connect-text-default);
+}
+@media (max-width: 991px) {
+  .cf-speakers {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 567px) {
+  .cf-speakers {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2rem 0;
+  }
+}
+
+/* ── Utility ─────────────────────────────────────────────────────────────── */
+
+.cf-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* The CF components assume a light canvas for their shadows. On HTP's black
+   terminal the 1px outer ring reads as a hard outline, so soften it. */
+body .cf-panel,
+body .cf-cardgrid,
+body .cf-nav__dropdown-surface {
+  box-shadow: 0 24px 32px -12px rgb(0 0 0 / 55%),
+    0 6px 12px 0 rgb(0 0 0 / 35%), 0 3px 6px 0 rgb(0 0 0 / 30%),
+    0 0 0 1px rgb(255 255 255 / 4%);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   SHARED WITH public/htp-nav.css
+
+   The sub-page banner stylesheet ends with the block below, because /money
+   and /osint load global theme stylesheets that set bare `a`, `span` and
+   `div` with !important colors and font-families, which outranks anything
+   the banner declares. The homepage loads this file instead of htp-nav.css
+   and is subject to the same override (sv-efferd-htp-theme.css sets
+   `a { color: var(--cyan) }`), so it needs the same escape hatch.
+
+   Keep the two copies byte-identical. inject_nav.py --check fails if the
+   .cf-nav block here drifts from the one in htp-nav.css.
+   ───────────────────────────────────────────────────────────────────────── */
+/* Some global theme styles (*.css shipped with subpages) set bare `a`, `span`,
+   `div` and `p` to !important colors and font-families. That is lethal for the
+   banner: it rewrites the whole bar on /money and /osint regardless of source
+   order or how specific our own rules are, because !important outranks
+   specificity. To win we must punch through with equal strength, but only
+   inside the nav subtree — otherwise we would be reintroducing the exact
+   global !important cascade we are escaping.
+
+   The bare-element reset has to cover every element the banner is built from,
+   not just the ones that visibly carry text: the wrappers (.cf-nav__shell,
+   .cf-nav__links, .cf-nav__separator) set the font-size and line-height the
+   links inherit, so leaving them alone leaves the links on the page theme's
+   type scale even after their own color is fixed. */
+.cf-nav,
+.cf-nav div,
+.cf-nav span,
+.cf-nav p,
+.cf-nav li,
+.cf-nav a,
+.cf-nav button,
+.cf-nav svg,
+.cf-nav path {
+  font-family: var(--connect-font-sans) !important;
+  color: var(--connect-text-base) !important;
+}
+/* The banner's own type scale, pinned rather than inherited. Each host page
+   sets body{font-size} to its own value (15px on /, /money and /osint, 14px on
+   /chat), and .cf-nav takes no font-size of its own, so without this the bar
+   silently re-typesets itself to whichever page it is on — same component,
+   four different sizes. */
+.cf-nav,
+.cf-nav div,
+.cf-nav span,
+.cf-nav p,
+.cf-nav li,
+.cf-nav a,
+.cf-nav button {
+  font-size: 14px;
+  line-height: 20px;
+}
+/* Re-apply the accent and muted tones the design actually uses. These sit above
+   the reset because they are scoped to the element that owns the value, so
+   they still win on specificity within the !important set. */
+.cf-nav .cf-nav__wordmark,
+.cf-nav .cf-nav__wordmark span {
+  color: var(--connect-orange-400) !important;
+}
+.cf-nav .cf-nav__dropdown-description {
+  color: var(--connect-text-muted) !important;
+  font-family: var(--connect-font-mono) !important;
+}
+.cf-nav .cf-nav__separator {
+  background: var(--connect-border-default) !important;
+}
+.cf-nav .cf-nav__link[aria-current="page"],
+.cf-nav .cf-nav__menu-link[aria-current="page"] {
+  color: var(--connect-orange-400) !important;
+}
+.cf-nav .cf-nav__link[aria-current="page"]::before {
+  background: var(--connect-orange-400) !important;
+}
+.cf-nav .cf-nav__cta,
+.cf-nav .cf-nav__menu-footer .cf-btn--primary {
+  color: var(--cf-on-accent) !important;
+}
+/* The button label is a <span> inside the <a>, and the bare-element reset
+   above colors spans too — so without this the CTA reads pale green on its own
+   green fill. Same trap as the wordmark: colour the text node's own element,
+   not just its ancestor. */
+.cf-nav .cf-nav__cta span,
+.cf-nav .cf-nav__menu-footer .cf-btn--primary span {
+  color: var(--cf-on-accent) !important;
+}
+.cf-nav .cf-nav__cta:hover,
+.cf-nav .cf-nav__cta:focus-visible,
+.cf-nav .cf-nav__menu-footer .cf-btn--primary:hover,
+.cf-nav .cf-nav__menu-footer .cf-btn--primary:focus-visible {
+  color: var(--cf-on-accent) !important;
+}
+/* END SHARED RESET — see inject_nav.py css_drift() */
+/* ═══════════════════════════════════════════════════════════════════════════
+   Registration panel — js/cf-register.js
+
+   A terminal window dropped into the Access section. The panel is styled from
+   the same tokens as everything else above, so it inherits the page's palette
+   instead of introducing a second one.
+
+   Two structural notes, both load-bearing:
+
+   1. Type and colour are pinned with the same `!important` strategy the banner
+      uses below. sv-efferd-htp-theme.css sets bare `a`, `span`, `div`, `p`,
+      `label` and `button` with !important colors and font-families, and those
+      outrank any selector this file can write without the same priority. The
+      panel's inputs, labels and status lines are exactly the elements those
+      sheets reach for.
+
+   2. The focus ring is drawn rather than removed. The default outline is
+      invisible against the near-black field, and a form whose only focus cue
+      is a colour change is not keyboard-usable.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.cf-register {
+  position: relative;
+  margin-top: 2.5rem;
+  border: 1px solid var(--connect-border-default);
+  border-radius: 0.75rem;
+  background: var(--cf-bg-alt);
+  box-shadow: var(--connect-shadow-elevation-default);
+  overflow: hidden;
+  font-family: var(--connect-font-mono);
+}
+.cf-register:focus {
+  outline: none;
+}
+
+/* Title bar with the three traffic lights and the prompt path. */
+.cf-register__bar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.625rem 0.875rem;
+  border-bottom: 1px solid var(--connect-border-default);
+  background: var(--cf-surface);
+  font-size: 0.75rem;
+  line-height: 1rem;
+  color: var(--cf-text-dim) !important;
+  letter-spacing: 0.04em;
+}
+.cf-register__dots {
+  display: inline-flex;
+  gap: 0.375rem;
+}
+.cf-register__dots i {
+  width: 0.625rem;
+  height: 0.625rem;
+  border-radius: 9999px;
+  background: var(--cf-border-hover);
+}
+.cf-register__dots i:first-child {
+  background: #d4564a;
+}
+.cf-register__dots i:nth-child(2) {
+  background: var(--connect-orange-400);
+}
+.cf-register__dots i:last-child {
+  background: var(--cf-accent-text);
+}
+.cf-register__path {
+  color: var(--cf-text-base) !important;
+}
+.cf-register__badge {
+  margin-left: auto;
+  padding: 0.125rem 0.5rem;
+  border: 1px dashed var(--connect-border-accent-orange);
+  border-radius: 0.25rem;
+  color: var(--connect-text-accent-orange) !important;
+  font-size: 0.625rem;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+
+.cf-register__body {
+  padding: 1.75rem;
+}
+
+/* FIGlet-ish wordmark. Pre so the ASCII art keeps its own monospace metrics
+   and its line breaks; aria-hidden so it is never read aloud twice. */
+.cf-register__banner {
+  margin: 0 0 1.25rem;
+  color: var(--cf-accent-text) !important;
+  font-family: var(--connect-font-mono) !important;
+  font-size: 0.5rem;
+  line-height: 1.05;
+  letter-spacing: 0;
+  white-space: pre;
+  overflow-x: auto;
+  user-select: none;
+}
+@media (min-width: 480px) {
+  .cf-register__banner {
+    font-size: 0.625rem;
+  }
+}
+@media (min-width: 900px) {
+  .cf-register__banner {
+    font-size: 0.8125rem;
+  }
+}
+
+.cf-register__title {
+  margin: 0 0 0.5rem;
+  color: var(--cf-text) !important;
+  font-family: var(--connect-font-sans);
+  font-size: 1.5rem;
+  font-weight: 300;
+  line-height: 2rem;
+  letter-spacing: -0.01em;
+}
+.cf-register__intro {
+  max-width: 62ch;
+  margin: 0 0 1.75rem;
+  color: var(--cf-text-dim) !important;
+  font-family: var(--connect-font-sans);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+.cf-register__form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* Two columns on desktop, one on a phone. auto-fit + minmax rather than a
+   breakpoint so the fields reflow on the panel's width, not the viewport's. */
+.cf-register__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+  gap: 1.125rem 1.25rem;
+}
+
+.cf-register__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  min-width: 0;
+}
+.cf-register__label {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  color: var(--cf-text-base) !important;
+  font-family: var(--connect-font-mono) !important;
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: text;
+}
+/* The $ prompt is the visual echo of the title bar's path. Decorative, so it is
+   hidden from the accessibility tree rather than read as part of the name. */
+.cf-register__prompt {
+  color: var(--cf-accent-text) !important;
+  font-weight: 700;
+}
+.cf-register__optional {
+  color: var(--cf-text-muted) !important;
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
+}
+.cf-register__hint {
+  margin: 0;
+  color: var(--cf-text-muted) !important;
+  font-family: var(--connect-font-mono) !important;
+  font-size: 0.6875rem;
+  line-height: 1.1rem;
+  letter-spacing: 0.01em;
+}
+
+.cf-register__input {
+  width: 100%;
+  padding: 0.625rem 0.75rem;
+  border: 1px solid var(--connect-border-default);
+  border-radius: 0.375rem;
+  background: var(--cf-bg);
+  color: var(--cf-text) !important;
+  font-family: var(--connect-font-mono) !important;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  /* The UA's default 2px inset ring is drawn on the field's own background and
+     reads as a second border. Replaced below with a full-offset ring. */
+  box-shadow: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.cf-register__input::placeholder {
+  color: var(--cf-text-muted) !important;
+  opacity: 1;
+}
+.cf-register__input:hover {
+  border-color: var(--connect-border-hover);
+}
+.cf-register__input:focus {
+  outline: none;
+  border-color: var(--cf-accent-text);
+  box-shadow: 0 0 0 3px rgb(95 217 146 / 22%);
+}
+.cf-register__input:focus-visible {
+  outline: none;
+}
+.cf-register__select {
+  /* Native select on a dark field: the closed control needs the dark surface
+     forced, and the popup itself is left to the OS. */
+  appearance: none;
+  padding-right: 2rem;
+  background-image: linear-gradient(45deg, transparent 50%, var(--cf-accent-text) 50%),
+    linear-gradient(135deg, var(--cf-accent-text) 50%, transparent 50%);
+  background-position: calc(100% - 1.125rem) calc(50% + 1px),
+    calc(100% - 0.8125rem) calc(50% + 1px);
+  background-size: 0.3125rem 0.3125rem, 0.3125rem 0.3125rem;
+  background-repeat: no-repeat;
+}
+.cf-register__area {
+  resize: vertical;
+  min-height: 4.5rem;
+}
+/* The dropdown list is painted on the OS surface, which is light on most
+   desktop setups. Forcing the dark surface keeps the options legible instead of
+   inheriting the control's own colors. */
+.cf-register__select option {
+  background: var(--cf-bg-alt);
+  color: var(--cf-text);
+}
+
+/* Invalid state. Driven by the class cf-register.js sets alongside
+   aria-invalid, so the visual and the announced state cannot drift apart. */
+.cf-register__input.is-invalid {
+  border-color: #e5695c;
+}
+.cf-register__input.is-invalid:focus {
+  box-shadow: 0 0 0 3px rgb(229 105 92 / 24%);
+}
+
+.cf-register__consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.625rem;
+  color: var(--cf-text-dim) !important;
+  font-family: var(--connect-font-sans) !important;
+  font-size: 0.8125rem;
+  line-height: 1.25rem;
+  cursor: pointer;
+}
+.cf-register__consent input {
+  flex: none;
+  width: 1rem;
+  height: 1rem;
+  margin: 0.125rem 0 0;
+  accent-color: var(--cf-accent-text);
+  cursor: pointer;
+}
+.cf-register__consent input:focus-visible {
+  outline: 2px solid var(--cf-accent-text);
+  outline-offset: 2px;
+}
+/* The consent box is a required control, so it gets .is-invalid like every
+   other field. It is accent-colored and borderless, so the .cf-register__input
+   rule cannot reach it and the error would otherwise be invisible: the readout
+   names the field, but nothing on the control itself changes. The label is
+   colored through :has() because the class lands on the input, not the label. */
+.cf-register__checkbox.is-invalid {
+  outline: 2px solid #e5695c;
+  outline-offset: 2px;
+}
+.cf-register__consent:has(.cf-register__checkbox.is-invalid) {
+  color: #e5695c !important;
+}
+
+/* Status readout. min-height reserves the space so the panel does not jump
+   when the first line appears — which on a scrolled-to panel is the difference
+   between reading the message and missing it. */
+.cf-register__log {
+  display: block;
+  min-height: 5.5rem;
+  max-height: 11rem;
+  overflow-y: auto;
+  padding: 0.75rem;
+  border: 1px solid var(--connect-border-default);
+  border-radius: 0.375rem;
+  background: var(--cf-bg);
+  color: var(--cf-text-dim) !important;
+  font-family: var(--connect-font-mono) !important;
+  font-size: 0.6875rem;
+  line-height: 1.5rem;
+  letter-spacing: 0.01em;
+}
+.cf-register__log:empty::before {
+  content: "· no output yet ·";
+  color: var(--cf-text-muted);
+}
+.cf-register__line {
+  display: block;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.cf-register__line.is-ok {
+  color: var(--cf-accent-text) !important;
+}
+.cf-register__line.is-bad {
+  color: #e5695c !important;
+}
+.cf-register__line.is-dim {
+  color: var(--cf-text-muted) !important;
+}
+
+.cf-register__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+.cf-register__submit[disabled],
+.cf-register__submit[aria-busy="true"] {
+  opacity: 0.55;
+  cursor: progress;
+}
+.cf-register__foot {
+  margin: 0;
+  color: var(--cf-text-muted) !important;
+  font-family: var(--connect-font-mono) !important;
+  font-size: 0.6875rem;
+  line-height: 1.1rem;
+}
+.cf-register__mail {
+  color: var(--cf-accent-text) !important;
+  font-family: var(--connect-font-mono) !important;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+.cf-register__mail:hover {
+  color: var(--connect-orange-400) !important;
+}
+
+@media (max-width: 720px) {
+  .cf-register__body {
+    padding: 1.25rem;
+  }
+  .cf-register__actions .cf-btn {
+    flex: 1 1 auto;
+  }
+}
+
+/* The tier buttons in the Access cards now open this panel instead of jumping
+   to an anchor, so they are real buttons and need the full reset the .cf-btn
+   class already gives them — this only stops the UA's button border/padding
+   from surviving inside the flex list. */
+li > span > button.cf-btn {
+  border: 0;
+}

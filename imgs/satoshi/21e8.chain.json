@@ -1,0 +1,144 @@
+{
+  "scheme": "htp-nft-coin-v1",
+  "title": "Digital Asset Attestation \u2014 21e8.jpeg",
+  "description": "Client-side cryptographic attestation binding a JPEG digital asset to Bitcoin genesis address 1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa, witnessed by the money.team coin.svg glyph and a Keybase cryptocurrency claim from identity easter47. All digests are recomputed in-browser on each page load via the Web Crypto API.",
+  "generated_at": "2026-08-04T23:32:31Z",
+  "reverify_on_load": true,
+  "site": "https://htp.sh",
+  "document": {
+    "type": "cryptographic-attestation",
+    "classification": "public-verification-record",
+    "authority": "htp.sh/money \u2014 independent client-side verification",
+    "disclaimer": "A Keybase cryptocurrency claim attests public association of an address with an identity. It does not constitute cryptographic proof of private-key control over that address."
+  },
+  "methodology": {
+    "hash": "SHA-256 (FIPS 180-4) via Web Crypto API (crypto.subtle.digest)",
+    "address_encoding": "Base58Check (Bitcoin P2PKH, version byte 0x00)",
+    "identity": "Keybase sigchain cryptocurrency proof (sig_version 2, NaCl ed25519)",
+    "chain": "Linear hash-linked ledger: H_i = SHA256(index|prev|body) where payload = index|prev|body",
+    "commitment": "SHA256(image_sha256|coin_sha256|address|sig_id|username|21e8.jpeg|coin.svg)",
+    "keybase_sig_id": "sig_id = hex(SHA256(sig_bytes)) + '0f' (Keybase sigchain convention)"
+  },
+  "asset": {
+    "id": "21e8",
+    "path": "imgs/satoshi/21e8.jpeg",
+    "filename": "21e8.jpeg",
+    "mime": "image/jpeg",
+    "bytes": 1034734,
+    "sha256": "81587de308f6a473cbf6b83a8483ec76025509bb2ba3883d044cef62fd969c0c",
+    "sha1": "eea56fe35b10bcca4e123056add765fe4a119489",
+    "md5": "bfd66fcde7dedde665fa926308d2367e"
+  },
+  "witness": {
+    "id": "money-team-coin",
+    "path": "money-team/coin.svg",
+    "source": "https://money.team/coin.svg",
+    "mime": "image/svg+xml",
+    "bytes": 2068,
+    "sha256": "5ba4e179a0d55be0329e5c68293cc00c03dcbb4d66509570b29e493618f056d3",
+    "role": "bitcoin-glyph-witness"
+  },
+  "stamp": {
+    "id": "21e8-coin-stamp",
+    "path": "imgs/satoshi/21e8.coin.svg",
+    "mime": "image/svg+xml",
+    "bytes": 7430,
+    "sha256": "bcef7b8f4f8e80413acf32030a791c1eaffd2c34e18ebd789f51f3afe837581a",
+    "role": "attestation-seal-svg"
+  },
+  "bitcoin": {
+    "address": "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa",
+    "network": "bitcoin-mainnet",
+    "type": "P2PKH",
+    "version": 0,
+    "hash160": "62e907b15cbf27d5425399ebf6f0fb50ebb88f18",
+    "note": "Genesis block coinbase output address (commonly attributed to Satoshi Nakamoto). Publicly claimed on Keybase by easter47. A Keybase claim does not constitute proof of private-key control.",
+    "explorers": {
+      "mempool": "https://mempool.space/address/1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa",
+      "blockstream": "https://blockstream.info/address/1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa"
+    }
+  },
+  "keybase": {
+    "username": "easter47",
+    "uid": "e24107e5a5687a829a06a0e60a78d219",
+    "sig_id": "fa0d750fa6644335738cde1b61a967099b2bf9b4dc2243578f3746924240466e0f",
+    "ed25519_pubkey": "f7a7c82a39e3a6d560a26b8f6f588abcbd8112fc3ac17377057b3c0281c48a36",
+    "kid": "0120f7a7c82a39e3a6d560a26b8f6f588abcbd8112fc3ac17377057b3c0281c48a360a",
+    "profile": "https://keybase.io/easter47",
+    "claim_type": "cryptocurrency",
+    "network": "bitcoin"
+  },
+  "commitment": {
+    "algorithm": "SHA-256",
+    "formula": "SHA256(image_sha256|coin_sha256|address|sig_id|username|21e8.jpeg|coin.svg)",
+    "payload": "81587de308f6a473cbf6b83a8483ec76025509bb2ba3883d044cef62fd969c0c|5ba4e179a0d55be0329e5c68293cc00c03dcbb4d66509570b29e493618f056d3|1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa|fa0d750fa6644335738cde1b61a967099b2bf9b4dc2243578f3746924240466e0f|easter47|21e8.jpeg|coin.svg",
+    "digest": "cf7c041b3421014cc75d20022bd8a4c4e8df58158bfcbb0e9780a73fac9f7c10"
+  },
+  "confetti": {
+    "library": "confetti-js",
+    "source": "money.team-compatible",
+    "svgs": [
+      "money-team/coin.svg",
+      "money-team/stack.svg",
+      "money-team/bills.svg",
+      "money-team/bag.svg"
+    ]
+  },
+  "blocks": [
+    {
+      "index": 0,
+      "type": "genesis",
+      "body": "scheme=htp-nft-coin-v1|site=https://htp.sh|issued=2026-08-04T23:32:31Z",
+      "payload": "0|0000000000000000000000000000000000000000000000000000000000000000|scheme=htp-nft-coin-v1|site=https://htp.sh|issued=2026-08-04T23:32:31Z",
+      "prev": "0000000000000000000000000000000000000000000000000000000000000000",
+      "hash": "c10db2517780ef49de90e1bedbe5dbcb587d9625a3635c4654a81b977c04eb7d"
+    },
+    {
+      "index": 1,
+      "type": "asset",
+      "body": "path=imgs/satoshi/21e8.jpeg|sha256=81587de308f6a473cbf6b83a8483ec76025509bb2ba3883d044cef62fd969c0c|bytes=1034734",
+      "payload": "1|c10db2517780ef49de90e1bedbe5dbcb587d9625a3635c4654a81b977c04eb7d|path=imgs/satoshi/21e8.jpeg|sha256=81587de308f6a473cbf6b83a8483ec76025509bb2ba3883d044cef62fd969c0c|bytes=1034734",
+      "prev": "c10db2517780ef49de90e1bedbe5dbcb587d9625a3635c4654a81b977c04eb7d",
+      "hash": "bc7b1059d5472890d20a4e79bc1b24b1725c4261b28f64296999f8f7dc4c3935"
+    },
+    {
+      "index": 2,
+      "type": "witness",
+      "body": "path=money-team/coin.svg|sha256=5ba4e179a0d55be0329e5c68293cc00c03dcbb4d66509570b29e493618f056d3|bytes=2068|source=https://money.team/coin.svg",
+      "payload": "2|bc7b1059d5472890d20a4e79bc1b24b1725c4261b28f64296999f8f7dc4c3935|path=money-team/coin.svg|sha256=5ba4e179a0d55be0329e5c68293cc00c03dcbb4d66509570b29e493618f056d3|bytes=2068|source=https://money.team/coin.svg",
+      "prev": "bc7b1059d5472890d20a4e79bc1b24b1725c4261b28f64296999f8f7dc4c3935",
+      "hash": "a88249345ac06d1fb22f8fa6af5ebaeea96afe4a134fd3c355bd8e4cc8974bb4"
+    },
+    {
+      "index": 3,
+      "type": "bitcoin",
+      "body": "address=1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa|network=mainnet|type=P2PKH|hash160=62e907b15cbf27d5425399ebf6f0fb50ebb88f18",
+      "payload": "3|a88249345ac06d1fb22f8fa6af5ebaeea96afe4a134fd3c355bd8e4cc8974bb4|address=1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa|network=mainnet|type=P2PKH|hash160=62e907b15cbf27d5425399ebf6f0fb50ebb88f18",
+      "prev": "a88249345ac06d1fb22f8fa6af5ebaeea96afe4a134fd3c355bd8e4cc8974bb4",
+      "hash": "3c897993cf516d41b9c6de638945cbe93af0baa8e9b6d58c3a0fb7ce0680b797"
+    },
+    {
+      "index": 4,
+      "type": "keybase",
+      "body": "user=easter47|uid=e24107e5a5687a829a06a0e60a78d219|sig_id=fa0d750fa6644335738cde1b61a967099b2bf9b4dc2243578f3746924240466e0f|ed25519=f7a7c82a39e3a6d560a26b8f6f588abcbd8112fc3ac17377057b3c0281c48a36",
+      "payload": "4|3c897993cf516d41b9c6de638945cbe93af0baa8e9b6d58c3a0fb7ce0680b797|user=easter47|uid=e24107e5a5687a829a06a0e60a78d219|sig_id=fa0d750fa6644335738cde1b61a967099b2bf9b4dc2243578f3746924240466e0f|ed25519=f7a7c82a39e3a6d560a26b8f6f588abcbd8112fc3ac17377057b3c0281c48a36",
+      "prev": "3c897993cf516d41b9c6de638945cbe93af0baa8e9b6d58c3a0fb7ce0680b797",
+      "hash": "68c8a7cbf8e5872f7308383a7d5bf881183f04ece08f1e9a4f9cc906186673ad"
+    },
+    {
+      "index": 5,
+      "type": "commitment",
+      "body": "algorithm=SHA-256|digest=cf7c041b3421014cc75d20022bd8a4c4e8df58158bfcbb0e9780a73fac9f7c10|payload=81587de308f6a473cbf6b83a8483ec76025509bb2ba3883d044cef62fd969c0c|5ba4e179a0d55be0329e5c68293cc00c03dcbb4d66509570b29e493618f056d3|1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa|fa0d750fa6644335738cde1b61a967099b2bf9b4dc2243578f3746924240466e0f|easter47|21e8.jpeg|coin.svg",
+      "payload": "5|68c8a7cbf8e5872f7308383a7d5bf881183f04ece08f1e9a4f9cc906186673ad|algorithm=SHA-256|digest=cf7c041b3421014cc75d20022bd8a4c4e8df58158bfcbb0e9780a73fac9f7c10|payload=81587de308f6a473cbf6b83a8483ec76025509bb2ba3883d044cef62fd969c0c|5ba4e179a0d55be0329e5c68293cc00c03dcbb4d66509570b29e493618f056d3|1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa|fa0d750fa6644335738cde1b61a967099b2bf9b4dc2243578f3746924240466e0f|easter47|21e8.jpeg|coin.svg",
+      "prev": "68c8a7cbf8e5872f7308383a7d5bf881183f04ece08f1e9a4f9cc906186673ad",
+      "hash": "3c547dc3336eb6fd55d3cbaf16e31fca39b6b98d31188bb3ffbc4d0c223cd825"
+    }
+  ],
+  "tip": "3c547dc3336eb6fd55d3cbaf16e31fca39b6b98d31188bb3ffbc4d0c223cd825",
+  "block_count": 6,
+  "chain": {
+    "algorithm": "H_i = SHA256(payload) where payload = index|prev|body",
+    "length": 6,
+    "tip": "3c547dc3336eb6fd55d3cbaf16e31fca39b6b98d31188bb3ffbc4d0c223cd825"
+  }
+}

@@ -1,0 +1,70 @@
+/* htp.sh — critical viewport rules
+ *
+ * The must-be-present-at-first-paint half of htp-responsive.css. That file is
+ * loaded media="print" onload so it never blocks first paint, which is correct
+ * — except that these rules fix visible defects *during* the first paint: the
+ * safe-area inset puts content under the notch, and the short-viewport clamp
+ * hides the terminal prompt entirely on a landscape phone.
+ *
+ * Only what is needed before the lazy stylesheet arrives. Everything else —
+ * long-word wrapping, prefers-* preferences, ASCII scrolling, the media shelf's
+ * small-screen collapse — stays in htp-responsive.css.
+ *
+ * ~700 bytes. Kept separate rather than inlined by hand because the Worker
+ * already inlines small stylesheets per request; this file exists so the
+ * optimizer has something small to inline.
+ */
+
+:root {
+  --htp-safe-t: env(safe-area-inset-top, 0px);
+  --htp-safe-r: env(safe-area-inset-right, 0px);
+  --htp-safe-b: env(safe-area-inset-bottom, 0px);
+  --htp-safe-l: env(safe-area-inset-left, 0px);
+}
+
+body {
+  padding-left: var(--htp-safe-l);
+  padding-right: var(--htp-safe-r);
+}
+
+@supports (height: 100dvh) {
+  .htp-page,
+  body.htp-body {
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+}
+
+@media (max-height: 40rem) {
+  .term-wrap {
+    min-height: 0;
+    max-height: none;
+    overflow: visible;
+  }
+
+  .py-ide {
+    min-height: 22rem;
+  }
+}
+
+@media (max-width: 48rem) and (max-height: 40rem) {
+  .term-wrap {
+    min-height: 0;
+    max-height: none;
+    overflow: visible;
+  }
+}
+
+@media (max-width: 40rem) {
+  pre,
+  code {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  pre.ascii-scroll,
+  pre.ascii-scroll code {
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+}

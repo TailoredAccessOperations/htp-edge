@@ -1,0 +1,256 @@
+{
+  "scheme": "htp-chain-v1",
+  "genesis": "HTP47-USER-PNG",
+  "site": "https://htp.sh",
+  "money": {
+    "pages": [
+      "/money",
+      "/money.html",
+      "/money/private.html"
+    ],
+    "banner": "imgs/user/money.png",
+    "team": "https://money.team",
+    "team_private": "https://money.team/private",
+    "identity_sizes": [
+      16,
+      32,
+      48,
+      64,
+      96,
+      128,
+      180,
+      192,
+      256,
+      512
+    ]
+  },
+  "generated_at": "2026-08-01T10:41:58Z",
+  "tip": "6affdadf98da8085d56f2cd6980deac204d07169e88523fc7f423cc0011eb465",
+  "block_count": 14,
+  "blocks": [
+    {
+      "index": 0,
+      "prev": "0000000000000000000000000000000000000000000000000000000000000000",
+      "hash": "cc8a88770c51cc8824ed4b2d68920af1b23e4d75e8a3ed352da5e625e9b30baf",
+      "asset": {
+        "id": "user",
+        "path": "assets/images/user/user.png",
+        "web_path": "imgs/user/user.png",
+        "role": "master",
+        "size_px": null,
+        "bytes": 6499260,
+        "sha256": "7a52e126c5d1554c58c093bf31783d57183f4fffd94c7cea2d955d51cbf1e24c"
+      },
+      "payload": "0|0000000000000000000000000000000000000000000000000000000000000000|imgs/user/user.png|7a52e126c5d1554c58c093bf31783d57183f4fffd94c7cea2d955d51cbf1e24c|6499260||master",
+      "ts": "2026-08-01T10:41:58Z"
+    },
+    {
+      "index": 1,
+      "prev": "cc8a88770c51cc8824ed4b2d68920af1b23e4d75e8a3ed352da5e625e9b30baf",
+      "hash": "df49b2845fda93b5ba10a17566b2f2fa5ea170ccb72a9650d2528128c34160ee",
+      "asset": {
+        "id": "user_source",
+        "path": "assets/images/user/user-source.jpg",
+        "web_path": "imgs/user/user-source.jpg",
+        "role": "source",
+        "size_px": null,
+        "bytes": 909269,
+        "sha256": "ca70ee1c2a41638eb9f4d09c0acc2f356724559a333361b0582d384d86157450"
+      },
+      "payload": "1|cc8a88770c51cc8824ed4b2d68920af1b23e4d75e8a3ed352da5e625e9b30baf|imgs/user/user-source.jpg|ca70ee1c2a41638eb9f4d09c0acc2f356724559a333361b0582d384d86157450|909269||source",
+      "ts": "2026-08-01T10:41:58Z"
+    },
+    {
+      "index": 2,
+      "prev": "df49b2845fda93b5ba10a17566b2f2fa5ea170ccb72a9650d2528128c34160ee",
+      "hash": "32eb57d17cc272fc7291ac043b755b0ab06ace728ded8344916660a877abacb7",
+      "asset": {
+        "id": "user_og_1200x630",
+        "path": "assets/images/user/user-og-1200x630.png",
+        "web_path": "imgs/user/user-og-1200x630.png",
+        "role": "og",
+        "size_px": null,
+        "bytes": 1280921,
+        "sha256": "8c89e9b3dc9b3cc62cfdca1036615bf406795449f86f473d0bf4925538fc6cff"
+      },
+      "payload": "2|df49b2845fda93b5ba10a17566b2f2fa5ea170ccb72a9650d2528128c34160ee|imgs/user/user-og-1200x630.png|8c89e9b3dc9b3cc62cfdca1036615bf406795449f86f473d0bf4925538fc6cff|1280921||og",
+      "ts": "2026-08-01T10:41:58Z"
+    },
+    {
+      "index": 3,
+      "prev": "32eb57d17cc272fc7291ac043b755b0ab06ace728ded8344916660a877abacb7",
+      "hash": "14ecc6b5faa1bef816c34fb1475d969bd124c44b269b244b57d4afbdbf2532c9",
+      "asset": {
+        "id": "money",
+        "path": "assets/images/user/money.png",
+        "web_path": "imgs/user/money.png",
+        "role": "money-banner",
+        "size_px": null,
+        "bytes": 13444,
+        "sha256": "82ff8c7c83fdcdb6b0bc8418bc7714883e02a24f9a7a382fdb17b7c015e76cf8"
+      },
+      "payload": "3|32eb57d17cc272fc7291ac043b755b0ab06ace728ded8344916660a877abacb7|imgs/user/money.png|82ff8c7c83fdcdb6b0bc8418bc7714883e02a24f9a7a382fdb17b7c015e76cf8|13444||money-banner",
+      "ts": "2026-08-01T10:41:58Z"
+    },
+    {
+      "index": 4,
+      "prev": "14ecc6b5faa1bef816c34fb1475d969bd124c44b269b244b57d4afbdbf2532c9",
+      "hash": "dba9e39aff480d97f026e5e26f48ffadf498f97e28bdf5a9cf73ff642cd5a98e",
+      "asset": {
+        "id": "user_16",
+        "path": "assets/images/user/user-16.png",
+        "web_path": "imgs/user/user-16.png",
+        "role": "icon",
+        "size_px": 16,
+        "bytes": 1692,
+        "sha256": "77a92fdd4614d9b06f719b24bccef489cb8c2baea01433a1055fc8ce16aae2ea"
+      },
+      "payload": "4|14ecc6b5faa1bef816c34fb1475d969bd124c44b269b244b57d4afbdbf2532c9|imgs/user/user-16.png|77a92fdd4614d9b06f719b24bccef489cb8c2baea01433a1055fc8ce16aae2ea|1692|16|icon",
+      "ts": "2026-08-01T10:41:58Z"
+    },
+    {
+      "index": 5,
+      "prev": "dba9e39aff480d97f026e5e26f48ffadf498f97e28bdf5a9cf73ff642cd5a98e",
+      "hash": "078a39e3daf20699431d74cd96c03bbc4d8e9bee0faa3579d73fab8aa7e8adfe",
+      "asset": {
+        "id": "user_32",
+        "path": "assets/images/user/user-32.png",
+        "web_path": "imgs/user/user-32.png",
+        "role": "icon",
+        "size_px": 32,
+        "bytes": 3255,
+        "sha256": "6f4c47ad90c6cdec16785dc3c2ee72dbe0ff90e73fcdad81dc02629317b0d04c"
+      },
+      "payload": "5|dba9e39aff480d97f026e5e26f48ffadf498f97e28bdf5a9cf73ff642cd5a98e|imgs/user/user-32.png|6f4c47ad90c6cdec16785dc3c2ee72dbe0ff90e73fcdad81dc02629317b0d04c|3255|32|icon",
+      "ts": "2026-08-01T10:41:58Z"
+    },
+    {
+      "index": 6,
+      "prev": "078a39e3daf20699431d74cd96c03bbc4d8e9bee0faa3579d73fab8aa7e8adfe",
+      "hash": "b5675049cb73cc5bf89c2476a7b75cbee6b7204a365684039839a7babb3d550c",
+      "asset": {
+        "id": "user_48",
+        "path": "assets/images/user/user-48.png",
+        "web_path": "imgs/user/user-48.png",
+        "role": "icon",
+        "size_px": 48,
+        "bytes": 5746,
+        "sha256": "ba8948ee6c7ebcba426e21153d13adef490521b3ee23a06488061de42c380257"
+      },
+      "payload": "6|078a39e3daf20699431d74cd96c03bbc4d8e9bee0faa3579d73fab8aa7e8adfe|imgs/user/user-48.png|ba8948ee6c7ebcba426e21153d13adef490521b3ee23a06488061de42c380257|5746|48|icon",
+      "ts": "2026-08-01T10:41:58Z"
+    },
+    {
+      "index": 7,
+      "prev": "b5675049cb73cc5bf89c2476a7b75cbee6b7204a365684039839a7babb3d550c",
+      "hash": "413bb007999993afb7eec178e8c959b583f2947e19e8e2e8926ad4d2a38b05d1",
+      "asset": {
+        "id": "user_64",
+        "path": "assets/images/user/user-64.png",
+        "web_path": "imgs/user/user-64.png",
+        "role": "icon",
+        "size_px": 64,
+        "bytes": 9181,
+        "sha256": "fdf679deceff528b3920fcdaf91deeeec9f55059ddfe77c7df2e389e9489e7e2"
+      },
+      "payload": "7|b5675049cb73cc5bf89c2476a7b75cbee6b7204a365684039839a7babb3d550c|imgs/user/user-64.png|fdf679deceff528b3920fcdaf91deeeec9f55059ddfe77c7df2e389e9489e7e2|9181|64|icon",
+      "ts": "2026-08-01T10:41:58Z"
+    },
+    {
+      "index": 8,
+      "prev": "413bb007999993afb7eec178e8c959b583f2947e19e8e2e8926ad4d2a38b05d1",
+      "hash": "bc9a42712263f63c8a49d98e26bb02446771199864d3ef4f88f9072b5ede57ff",
+      "asset": {
+        "id": "user_96",
+        "path": "assets/images/user/user-96.png",
+        "web_path": "imgs/user/user-96.png",
+        "role": "icon",
+        "size_px": 96,
+        "bytes": 18891,
+        "sha256": "f0449056282034927bf27cb421672256f302886b9ef0c00a94a758191f5e8aa6"
+      },
+      "payload": "8|413bb007999993afb7eec178e8c959b583f2947e19e8e2e8926ad4d2a38b05d1|imgs/user/user-96.png|f0449056282034927bf27cb421672256f302886b9ef0c00a94a758191f5e8aa6|18891|96|icon",
+      "ts": "2026-08-01T10:41:58Z"
+    },
+    {
+      "index": 9,
+      "prev": "bc9a42712263f63c8a49d98e26bb02446771199864d3ef4f88f9072b5ede57ff",
+      "hash": "272aff10dc2019b791d9a694366ab6b3536a40044ecc18c31801af3019f45f4e",
+      "asset": {
+        "id": "user_128",
+        "path": "assets/images/user/user-128.png",
+        "web_path": "imgs/user/user-128.png",
+        "role": "icon",
+        "size_px": 128,
+        "bytes": 32509,
+        "sha256": "b5215723a7c7670a764d8b8d3f40aca7d73ec33ea3d5c6a17695e0f15af0bb44"
+      },
+      "payload": "9|bc9a42712263f63c8a49d98e26bb02446771199864d3ef4f88f9072b5ede57ff|imgs/user/user-128.png|b5215723a7c7670a764d8b8d3f40aca7d73ec33ea3d5c6a17695e0f15af0bb44|32509|128|icon",
+      "ts": "2026-08-01T10:41:58Z"
+    },
+    {
+      "index": 10,
+      "prev": "272aff10dc2019b791d9a694366ab6b3536a40044ecc18c31801af3019f45f4e",
+      "hash": "23dcd79faa972acfeb6e8d48d1c79f54c489c3aac1c2f6d0c6dc7a89fff3b2a1",
+      "asset": {
+        "id": "user_180",
+        "path": "assets/images/user/user-180.png",
+        "web_path": "imgs/user/user-180.png",
+        "role": "icon",
+        "size_px": 180,
+        "bytes": 62651,
+        "sha256": "56bec1a85a61f6f0591611441aac90f52f8f89951eb98a3cb15b7e8e51cfc242"
+      },
+      "payload": "10|272aff10dc2019b791d9a694366ab6b3536a40044ecc18c31801af3019f45f4e|imgs/user/user-180.png|56bec1a85a61f6f0591611441aac90f52f8f89951eb98a3cb15b7e8e51cfc242|62651|180|icon",
+      "ts": "2026-08-01T10:41:58Z"
+    },
+    {
+      "index": 11,
+      "prev": "23dcd79faa972acfeb6e8d48d1c79f54c489c3aac1c2f6d0c6dc7a89fff3b2a1",
+      "hash": "34b2767a7c10165a833d1a0885d977243c2821c4eaa50a2384909fb3b7daa9f2",
+      "asset": {
+        "id": "user_192",
+        "path": "assets/images/user/user-192.png",
+        "web_path": "imgs/user/user-192.png",
+        "role": "icon",
+        "size_px": 192,
+        "bytes": 70866,
+        "sha256": "7a865fd224f5234a7a4ea5998a4fe7b7b4ea4485b6a376146e953226baadfffb"
+      },
+      "payload": "11|23dcd79faa972acfeb6e8d48d1c79f54c489c3aac1c2f6d0c6dc7a89fff3b2a1|imgs/user/user-192.png|7a865fd224f5234a7a4ea5998a4fe7b7b4ea4485b6a376146e953226baadfffb|70866|192|icon",
+      "ts": "2026-08-01T10:41:58Z"
+    },
+    {
+      "index": 12,
+      "prev": "34b2767a7c10165a833d1a0885d977243c2821c4eaa50a2384909fb3b7daa9f2",
+      "hash": "286e63a5bbd2539fd560c4c05346c63d397a04df25efbe80999e3568588fb364",
+      "asset": {
+        "id": "user_256",
+        "path": "assets/images/user/user-256.png",
+        "web_path": "imgs/user/user-256.png",
+        "role": "icon",
+        "size_px": 256,
+        "bytes": 123913,
+        "sha256": "49b542661e88042d45c359df43d9b01331337a83a9911a43143fd9d5352cbde0"
+      },
+      "payload": "12|34b2767a7c10165a833d1a0885d977243c2821c4eaa50a2384909fb3b7daa9f2|imgs/user/user-256.png|49b542661e88042d45c359df43d9b01331337a83a9911a43143fd9d5352cbde0|123913|256|icon",
+      "ts": "2026-08-01T10:41:58Z"
+    },
+    {
+      "index": 13,
+      "prev": "286e63a5bbd2539fd560c4c05346c63d397a04df25efbe80999e3568588fb364",
+      "hash": "6affdadf98da8085d56f2cd6980deac204d07169e88523fc7f423cc0011eb465",
+      "asset": {
+        "id": "user_512",
+        "path": "assets/images/user/user-512.png",
+        "web_path": "imgs/user/user-512.png",
+        "role": "icon",
+        "size_px": 512,
+        "bytes": 470893,
+        "sha256": "c5e4ae6252752580ce4dab7ecdde42e3a1842a5b3856c361637364df5cbfb033"
+      },
+      "payload": "13|286e63a5bbd2539fd560c4c05346c63d397a04df25efbe80999e3568588fb364|imgs/user/user-512.png|c5e4ae6252752580ce4dab7ecdde42e3a1842a5b3856c361637364df5cbfb033|470893|512|icon",
+      "ts": "2026-08-01T10:41:58Z"
+    }
+  ]
+}

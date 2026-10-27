@@ -1,0 +1,2725 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport"><title>1.3.3.7</title><meta content="htp.sh · Anonymous/LulzSec-flavored lab board. Laughs, logic, and live resources. Unauthorized access still prohibited — we do theatre, not felonies." name="description"><meta content="index, follow, max-image-preview:large" name="robots"><meta content="#010402" name="theme-color"><meta content="htp.sh · for the lulz" property="og:title"><meta content="Laughing at bad security since forever. Lights out, masks on, brain engaged. Lab theatre only." property="og:description"><meta content="https://htp.sh/imgs/user.webp" property="og:image"><meta content="https://htp.sh/" property="og:url"><meta content="en_CA" property="og:locale"><meta content="website" property="og:type"><link href="index.html" rel="canonical"><link href="favicon.ico" rel="icon" sizes="any"><link href="imgs/user.webp" rel="apple-touch-icon"><link href="https://web.archive.org" rel="dns-prefetch"><link href="https://fonts.googleapis.com" rel="preconnect"><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&amp;family=Share+Tech+Mono&amp;family=VT323&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"><noscript><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&amp;family=Share+Tech+Mono&amp;family=VT323&amp;display=swap" rel="stylesheet"></noscript><link href="imgs/wrong.webp" rel="preload" as="image" fetchpriority="high" type="image/webp"><link href="css/htp-base.css" rel="stylesheet" media="print" onload="this.media='all'"><link href="css/htp-terminal.css" rel="stylesheet" media="print" onload="this.media='all'"><link href="css/htp-resources.css?v=3" rel="stylesheet"><link href="css/htp-lulz.css?v=1" rel="stylesheet"><link href="css/htp-ghost.css?v=1" rel="stylesheet"><link href="css/htp-terminal-polish.css?v=1" rel="stylesheet"><link href="css/htp-media-shelf.css?v=5" rel="stylesheet"><style id="htp-inline-theme">/* ===== htp-base.css ===== */
+/* HTP · base — variables, reset, atmosphere, layout shell, ticker, links */
+/* ═══════════════════════════════════════════════════════════
+   HTP · 1.3.3.7 — Midnight Terminal · expert refresh
+   Dark, high-contrast, restrained accent, 4px rhythm
+   ═══════════════════════════════════════════════════════════ */
+
+:root {
+  /* Surfaces */
+  --bg0: #050807;
+  --bg1: #0a100c;
+  --bg2: #0f1712;
+  --panel: rgba(8, 14, 11, 0.94);
+  --card: rgba(12, 20, 15, 0.92);
+
+  /* Borders */
+  --line: rgba(74, 222, 128, 0.14);
+  --line-strong: rgba(74, 222, 128, 0.34);
+  --line-warn: rgba(251, 113, 133, 0.34);
+
+  /* Accent — restrained green, high-contrast text */
+  --green: #4ade80;
+  --green-bright: #86efac;
+  --green-dim: #15803d;
+  --mint: #bbf7d0;
+  --text: #d8f3e4;
+  --muted: #6d8f7d;
+  --cyan: #67e8f9;
+  --amber: #fbbf24;
+  --red: #fb7185;
+  --red-soft: rgba(251, 113, 133, 0.12);
+
+  /* Elevation */
+  --glow: 0 0 28px rgba(74, 222, 128, 0.1);
+  --shadow-panel: var(--glow), 0 18px 48px rgba(0, 0, 0, 0.42);
+  --radius: 12px;
+  --radius-sm: 8px;
+  --radius-pill: 999px;
+  --max: 960px;
+
+  /* Type */
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, "Courier New", monospace;
+  --font-ascii: "Courier New", Courier, "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  --font-sans: "IBM Plex Sans", system-ui, -apple-system, sans-serif;
+  --text-xs: 0.6875rem;
+  --text-sm: 0.8125rem;
+  --text-md: 0.9375rem;
+  --text-lg: 1.0625rem;
+  --leading-tight: 1.25;
+  --leading-body: 1.65;
+  --leading-loose: 1.8;
+
+  /* Spacing rhythm (4px base) */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+
+  /* Motion / focus */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --focus-ring: 0 0 0 2px var(--bg0), 0 0 0 4px var(--green);
+  --duration: 0.18s;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  color-scheme: dark;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  min-height: 100vh;
+  font-family: var(--font-mono);
+  font-size: var(--text-md);
+  line-height: var(--leading-body);
+  color: var(--text);
+  background:
+    radial-gradient(980px 520px at 50% -10%, rgba(74, 222, 128, 0.06), transparent 58%),
+    radial-gradient(640px 420px at 100% 18%, rgba(103, 232, 249, 0.035), transparent 52%),
+    linear-gradient(180deg, var(--bg0), var(--bg1) 42%, var(--bg0));
+  overflow-x: hidden;
+}
+
+/* Atmosphere — quiet, not noisy */
+/* Matrix above page content (incl. images); screen blend drops black trails so green rain sits on top */
+canvas#matrix {
+  position: fixed; inset: 0; z-index: 5;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  opacity: 0.55;
+  mix-blend-mode: screen;
+}
+video#bgvideo {
+  position: fixed; top: 50%; left: 50%;
+  /* `min-width:100%` was a FLOOR, and a replaced element never renders
+     narrower than its intrinsic size — so this stayed 640px wide and forced
+     horizontal scroll on every phone. Explicit width/height + object-fit is
+     what actually makes a background video fill an arbitrary viewport. */
+  width: 100vw; height: 100vh;
+  width: 100dvw; height: 100dvh;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+  z-index: -1; opacity: 0.07;
+  filter: blur(3px) brightness(0.5) saturate(0.75);
+  pointer-events: none;
+}
+video#ghostvideo {
+  position: fixed; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  z-index: 0; opacity: 0.42;
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+#crt, #scanlines {
+  position: fixed; inset: 0; pointer-events: none; z-index: 40;
+}
+#crt {
+  opacity: 0.2;
+  background: radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,0.45) 100%);
+  box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.35);
+}
+#scanlines {
+  opacity: 0.12;
+  height: 200%;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0,0,0,0.08) 2px,
+    rgba(0,0,0,0.08) 4px
+  );
+  animation: scan 14s linear infinite;
+}
+@keyframes scan { to { transform: translateY(-50%); } }
+
+/* Layout shell */
+.site {
+  position: relative;
+  z-index: 1;
+  width: min(100% - 2rem, var(--max));
+  max-width: 100%;
+  min-width: 0; /* flex/grid: allow children to shrink so ASCII can scroll */
+  margin: 0 auto;
+  padding: var(--space-6) 0 var(--space-7);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+/* ===== htp-hero.css ===== */
+/* HTP · hero — glitch title, reader lead, noscript */
+/* ── Hero ── */
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.15rem;
+  padding: 1.5rem 0 0.5rem;
+}
+.glitch {
+  font-family: var(--font-mono);
+  font-size: clamp(2.8rem, 10vw, 5.5rem);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: #f2fff6;
+  line-height: 1;
+  /* Static glow only — animated text-shadow is non-composited (PSI) */
+  text-shadow:
+    0 0 40px rgba(62, 214, 120, 0.25),
+    2px 0 0 rgba(255, 90, 110, 0.35),
+    -2px 0 0 rgba(92, 225, 230, 0.35);
+  will-change: transform;
+  animation: glitch 4s infinite;
+}
+/* Compositor-friendly: transform + opacity only */
+@keyframes glitch {
+  0%, 92%, 100% { transform: translate3d(0, 0, 0); opacity: 1; }
+  93% { transform: translate3d(1px, 0, 0); opacity: 0.92; }
+  95% { transform: translate3d(-1px, 0, 0); opacity: 0.95; }
+}
+
+.reader-lead {
+  max-width: 36rem;
+  margin: 0 auto;
+  padding: 1rem 1.25rem;
+  font-family: var(--font-sans);
+  font-size: clamp(0.95rem, 2.2vw, 1.05rem);
+  line-height: 1.75;
+  color: var(--mint);
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--glow);
+  text-align: left;
+}
+.reader-lead strong {
+  color: var(--green-bright);
+  font-weight: 600;
+}
+.reader-lead kbd {
+  font-family: var(--font-mono);
+  font-size: 0.88em;
+  padding: 0.1em 0.4em;
+  border-radius: 4px;
+  border: 1px solid var(--line-strong);
+  background: rgba(62, 214, 120, 0.08);
+  color: var(--amber);
+}
+
+/* No-JS degraded shell notice */
+.noscript-panel {
+  width: 100%;
+  max-width: var(--max);
+  margin: 1.25rem auto 0.5rem;
+  padding: 0;
+  font-family: var(--font-mono);
+  font-size: 0.86rem;
+  line-height: 1.55;
+  color: #8fdf9f;
+  background:
+    linear-gradient(180deg, rgba(0, 16, 8, 0.95), rgba(6, 4, 6, 0.96));
+  border: 1px solid rgba(0, 255, 65, 0.28);
+  border-left: 3px solid var(--lulz-red, #ff0033);
+  border-radius: var(--radius-sm);
+  box-shadow:
+    0 0 24px rgba(0, 255, 65, 0.06),
+    inset 0 0 32px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+}
+.noscript-panel__bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem 0.75rem;
+  padding: 0.55rem 0.9rem;
+  border-bottom: 1px solid rgba(0, 255, 65, 0.15);
+  background: linear-gradient(90deg, rgba(20, 0, 6, 0.7), rgba(0, 24, 10, 0.85));
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--amber);
+}
+.noscript-panel__bar .tag {
+  color: var(--lulz-red, #ff0033);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+.noscript-panel__bar .ok {
+  color: var(--green-bright);
+  margin-left: auto;
+  letter-spacing: 0.06em;
+}
+.noscript-panel__body {
+  padding: 0.9rem 1rem 1.05rem;
+}
+.noscript-panel h2 {
+  margin: 0 0 0.65rem;
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--lulz-red, #ff0033);
+  text-shadow: 0 0 10px rgba(255, 0, 51, 0.35);
+}
+.noscript-panel p {
+  margin: 0 0 0.75rem;
+  color: var(--mint);
+}
+.noscript-panel p:last-child { margin-bottom: 0; }
+.noscript-panel .lede {
+  color: #a8e6c3;
+  border-left: 2px solid rgba(0, 255, 65, 0.35);
+  padding-left: 0.7rem;
+}
+.noscript-panel .cmd-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin: 0.35rem 0 0.85rem;
+  padding: 0;
+  list-style: none;
+}
+.noscript-panel .cmd-grid li {
+  margin: 0;
+  padding: 0;
+}
+.noscript-panel .cmd-grid code,
+.noscript-panel kbd {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  padding: 0.2rem 0.45rem;
+  border-radius: 3px;
+  border: 1px solid rgba(62, 214, 120, 0.28);
+  background: rgba(0, 0, 0, 0.45);
+  color: var(--amber);
+  letter-spacing: 0.02em;
+}
+.noscript-panel .links-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.25rem;
+}
+.noscript-panel .links-row a {
+  color: var(--cyan);
+  text-decoration: none;
+  border: 1px solid rgba(92, 225, 230, 0.28);
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  background: rgba(6, 20, 22, 0.55);
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+}
+.noscript-panel .links-row a:hover,
+.noscript-panel .links-row a:focus-visible {
+  color: #fff;
+  border-color: var(--green);
+  background: rgba(62, 214, 120, 0.1);
+  outline: none;
+}
+.noscript-panel .foot {
+  margin-top: 0.85rem;
+  padding-top: 0.65rem;
+  border-top: 1px solid rgba(0, 255, 65, 0.12);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-align: center;
+}
+.noscript-panel .foot .hot { color: var(--lulz-red, #ff0033); }
+
+.ticker {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 999px;
+  border: 1px solid var(--line-warn);
+  background: linear-gradient(90deg, rgba(20, 4, 8, 0.9), rgba(8, 16, 12, 0.95), rgba(20, 4, 8, 0.9));
+  box-shadow: inset 0 0 20px rgba(255, 90, 110, 0.06);
+  position: relative;
+}
+.ticker-track {
+  display: flex;
+  width: max-content;
+  animation: ticker-scroll 36s linear infinite;
+  will-change: transform;
+}
+.ticker-text {
+  white-space: nowrap;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--red);
+  padding: 0 2rem;
+  flex-shrink: 0;
+}
+@keyframes ticker-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.55rem;
+}
+.links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1rem;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--cyan);
+  text-decoration: none;
+  border: 1px solid rgba(92, 225, 230, 0.22);
+  border-radius: 999px;
+  background: rgba(8, 20, 22, 0.6);
+  transition: border-color 0.2s var(--ease), background 0.2s, color 0.2s, transform 0.2s var(--ease);
+}
+.links a:hover,
+.links a:focus-visible {
+  color: #fff;
+  border-color: var(--green);
+  background: rgba(62, 214, 120, 0.1);
+  transform: translateY(-1px);
+  outline: none;
+}
+.links svg {
+  width: 1.05rem;
+  height: 1.05rem;
+  fill: currentColor;
+  flex-shrink: 0;
+}
+
+/* ===== htp-panels.css ===== */
+/* HTP · panels — cards, ASCII, carousel, full-bleed blocks, legal */
+/* ── Panels / cards ── */
+.panel,
+.term-wrap {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0; /* critical: prevent wide ASCII from expanding the page (body clips overflow-x) */
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-panel, var(--glow), 0 18px 48px rgba(0, 0, 0, 0.42));
+}
+.panel {
+  padding: 1.35rem 1.4rem 1.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  overflow-x: hidden; /* contain wide art; scroll lives on .ascii-frame / pre */
+}
+
+/* ASCII / ANSI — monospaced grid, scroll, no clipping */
+.ascii-details {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: rgba(0, 0, 0, 0.35);
+  overflow: visible;
+}
+.ascii-details > summary {
+  list-style: none;
+  cursor: pointer;
+  user-select: none;
+  padding: 0.75rem 1rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--amber);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.ascii-details > summary::-webkit-details-marker { display: none; }
+.ascii-details > summary::before {
+  content: "▸";
+  color: var(--green);
+  transition: transform 0.2s var(--ease);
+}
+.ascii-details[open] > summary::before { transform: rotate(90deg); }
+.ascii-details > summary:hover { background: rgba(62, 214, 120, 0.05); }
+
+.ascii-frame {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: #050807;
+  padding: 0.65rem 0.35rem 0.85rem;
+  /* auto — never hidden: wide art must scroll, not clip */
+  overflow-x: auto;
+  overflow-y: visible;
+  -webkit-overflow-scrolling: touch;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  scrollbar-width: thin;
+  scrollbar-color: var(--green-dim) transparent;
+}
+.ascii-frame::-webkit-scrollbar { height: 8px; }
+.ascii-frame::-webkit-scrollbar-thumb {
+  background: rgba(62, 214, 120, 0.35);
+  border-radius: 4px;
+}
+
+/* Shared mono metrics for every art block */
+.panel .ascii,
+.ascii,
+.ascii-red,
+.ascii-scroll,
+pre.ascii,
+pre.ascii-scroll {
+  display: block;
+  box-sizing: border-box;
+  width: max-content;
+  min-width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0.5rem 0.65rem;
+  white-space: pre;
+  overflow: visible;
+  line-height: 1.05;
+  letter-spacing: 0 !important;
+  word-spacing: 0 !important;
+  word-break: normal;
+  overflow-wrap: normal;
+  text-align: left;
+  text-indent: 0;
+  text-transform: none;
+  font-family: var(--font-ascii);
+  font-style: normal;
+  font-weight: 400;
+  font-variant-ligatures: none;
+  font-feature-settings: "liga" 0, "calt" 0, "kern" 0;
+  font-kerning: none;
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: unset;
+  tab-size: 8;
+  -moz-tab-size: 8;
+  unicode-bidi: plaintext;
+  direction: ltr;
+  /* Integer-friendly size: fractional px breaks column alignment */
+  font-size: 10px;
+}
+@media (min-width: 480px) {
+  .panel .ascii, .ascii, .ascii-red, .ascii-scroll, pre.ascii, pre.ascii-scroll {
+    font-size: 11px;
+  }
+}
+@media (min-width: 720px) {
+  .panel .ascii, .ascii, .ascii-red, .ascii-scroll, pre.ascii, pre.ascii-scroll {
+    font-size: 12px;
+  }
+}
+@media (min-width: 960px) {
+  .panel .ascii, .ascii, .ascii-red, .ascii-scroll, pre.ascii, pre.ascii-scroll {
+    font-size: 13px;
+  }
+}
+
+.panel .ascii,
+pre.ascii {
+  max-height: min(52vh, 480px);
+  overflow-x: visible;
+  overflow-y: auto;
+  color: var(--amber);
+  opacity: 0.95;
+  background: transparent;
+  border: 0;
+  scrollbar-width: thin;
+  scrollbar-color: var(--green-dim) transparent;
+}
+.ascii-red {
+  padding: 0.75rem;
+  color: var(--red);
+  text-align: left;
+  border: 1px solid var(--line-warn);
+  border-radius: var(--radius-sm);
+  background: var(--red-soft);
+  max-width: 100%;
+  width: 100%;
+  overflow-x: auto;
+  white-space: pre;
+}
+.ascii-scroll,
+pre.ascii-scroll {
+  max-height: min(48vh, 420px);
+  margin: 0.5rem 0 0;
+  padding: 0.75rem;
+  color: var(--green);
+  background: #050807;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  max-width: 100%;
+  width: 100%;
+  min-width: 0;
+  overflow-x: auto;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: var(--green-dim) transparent;
+}
+.ascii-scroll::-webkit-scrollbar,
+pre.ascii-scroll::-webkit-scrollbar { height: 8px; width: 8px; }
+.ascii-scroll::-webkit-scrollbar-thumb,
+pre.ascii-scroll::-webkit-scrollbar-thumb {
+  background: rgba(62, 214, 120, 0.35);
+  border-radius: 4px;
+}
+
+.sig-link {
+  display: block;
+  text-align: center;
+  color: var(--cyan);
+  font-size: 0.82rem;
+  word-break: break-all;
+  text-decoration: none;
+  padding: 0.65rem 0.85rem;
+  border-radius: var(--radius-sm);
+  border: 1px dashed rgba(92, 225, 230, 0.3);
+  background: rgba(8, 24, 28, 0.5);
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+}
+.sig-link:hover {
+  color: var(--amber);
+  border-color: var(--amber);
+  background: rgba(40, 36, 8, 0.35);
+}
+.sep-0x539 {
+  display: block;
+  text-align: center;
+  color: var(--amber);
+  font-family: var(--font-ascii);
+  font-size: 11px;
+  letter-spacing: 0;
+  opacity: 0.85;
+  white-space: pre;
+  overflow-x: auto;
+  line-height: 1.2;
+  max-width: 100%;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Carousel */
+.imgbox {
+  width: min(100%, 720px);
+  margin: 0 auto;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius);
+  border: 1px solid var(--line-strong);
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.4), 0 12px 40px rgba(0,0,0,0.4), 0 0 30px rgba(62, 214, 120, 0.08);
+  overflow: hidden;
+  position: relative;
+  background: #000;
+}
+.imgbox::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.35);
+  z-index: 2;
+}
+/* Each slide is a <picture>; stack them to fill the 16:9 frame */
+.imgbox picture {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  transition: opacity 0.9s var(--ease);
+  will-change: opacity, transform;
+  pointer-events: none;
+}
+.imgbox picture.active {
+  opacity: 1;
+  z-index: 1;
+  animation: image-glitch 5s infinite;
+  pointer-events: auto;
+}
+.imgbox img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.imgbox video.song-frame {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  background: #000;
+}
+.imgbox .photo-index {
+  position: absolute;
+  z-index: 3;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  gap: clamp(2px, 0.6vw, 4px);
+  margin: 0;
+  padding: clamp(4px, 1vw, 8px);
+  list-style: none;
+  background: linear-gradient(to top, rgba(0,0,0,.78), transparent);
+}
+.imgbox .photo-index li {
+  flex: 1 1 0;
+  min-width: 0;
+}
+.imgbox .photo-index button {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  padding: 0;
+  border: 1px solid transparent;
+  background: transparent;
+  cursor: pointer;
+}
+.imgbox .photo-index img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  object-position: center;
+}
+.imgbox .photo-index button.on {
+  border-color: var(--green-bright, #6aff9f);
+}
+/* 777 sits above the set, above the matrix canvas, in the first screen. */
+.song-stage {
+  position: relative;
+  z-index: 8;
+  width: min(1040px, calc(100% - 1.5rem));
+  margin: 4.75rem auto 0.75rem;
+}
+.song-stage .imgbox {
+  width: 100%;
+  max-width: none;
+  aspect-ratio: 16 / 9;
+}
+@media (max-width: 760px) {
+  .song-stage { margin-top: 0.75rem; }
+}
+/* Compositor-friendly glitch: no clip-path (PSI non-composited animation) */
+@keyframes image-glitch {
+  0%, 88%, 100% { transform: translate3d(0, 0, 0) scale(1); opacity: 1; }
+  90% { transform: translate3d(-2px, 1px, 0) scale(1.01); opacity: 0.88; }
+  93% { transform: translate3d(2px, -1px, 0) scale(1.02); opacity: 0.82; }
+  96% { transform: translate3d(0, 0, 0) scale(1); opacity: 1; }
+}
+
+/* Body copy */
+.panel-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+  width: 100%;
+  max-width: 40rem;
+  min-width: 0;
+  margin: 0 auto;
+  font-family: var(--font-sans);
+  font-size: clamp(0.95rem, 2.1vw, 1.05rem);
+  line-height: 1.8;
+  color: var(--text);
+}
+/* Full-bleed terminal blocks — use panel width, not 40rem prose column */
+.panel-body > .lore-drop,
+.panel-body > .lulz-paste,
+.panel-body > .dialog-block,
+.panel-body > .broadcast {
+  max-width: none;
+  width: 100%;
+  align-self: stretch;
+}
+/* Keep section titles for full-bleed blocks left-aligned at panel edge */
+.panel-body > .section-title {
+  align-self: stretch;
+  text-align: left;
+  width: 100%;
+}
+@media (min-width: 720px) {
+  .panel-body:has(> .lore-drop),
+  .panel-body:has(> .lulz-paste),
+  .panel-body:has(> .broadcast) {
+    max-width: min(100%, 52rem);
+  }
+}
+
+.section-title {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--green-dim);
+  margin: 0 0 0.35rem;
+}
+
+.alerts {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  text-align: center;
+  padding: 1rem 1.1rem;
+  border-radius: var(--radius-sm);
+  background: linear-gradient(180deg, rgba(40, 8, 12, 0.55), rgba(8, 16, 12, 0.5));
+  border: 1px solid var(--line-warn);
+}
+.alerts p {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: clamp(0.88rem, 2.2vw, 1.02rem);
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+}
+
+/* Status marquee — full text, roomy */
+.subtext-box {
+  display: block !important;
+  width: 100%;
+  height: auto !important;
+  min-height: 4.5em !important;
+  max-height: none !important;
+  padding: 1.2rem 1.35rem !important;
+  text-align: center;
+  border-radius: var(--radius-sm);
+  background:
+    linear-gradient(135deg, rgba(8, 28, 18, 0.95), rgba(8, 18, 24, 0.92));
+  border: 1px solid rgba(92, 225, 230, 0.28);
+  box-shadow: inset 0 0 40px rgba(62, 214, 120, 0.04);
+  overflow: visible !important;
+  content-visibility: visible !important;
+  contain: none !important;
+}
+#subtext {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: clamp(0.95rem, 2.4vw, 1.12rem) !important;
+  font-weight: 500;
+  line-height: 1.75 !important;
+  letter-spacing: 0.03em;
+  color: var(--green-bright) !important;
+  text-shadow: 0 0 20px rgba(62, 214, 120, 0.2);
+  white-space: normal !important;
+  overflow-wrap: anywhere !important;
+  word-break: break-word !important;
+  overflow: visible !important;
+  transition: opacity 0.45s var(--ease);
+}
+#subtext.is-fading { opacity: 0; }
+
+/* Dropdowns — overflow visible so nested ANSI pre can scroll horizontally */
+.legal-drop,
+.lore-drop {
+  border-radius: var(--radius-sm);
+  overflow: visible;
+  background: var(--card);
+}
+.legal-drop {
+  border: 1px solid var(--line-warn);
+  box-shadow:
+    0 0 0 1px rgba(255, 90, 110, 0.12),
+    inset 0 0 48px rgba(255, 90, 110, 0.04),
+    0 12px 40px rgba(0, 0, 0, 0.35);
+  background:
+    linear-gradient(180deg, rgba(40, 8, 12, 0.55), rgba(8, 12, 10, 0.92));
+}
+.lore-drop {
+  border: 1px solid var(--line);
+}
+.legal-drop > summary,
+.lore-drop > summary {
+  list-style: none;
+  cursor: pointer;
+  user-select: none;
+  padding: 0.85rem 1.1rem;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  transition: background 0.2s;
+}
+.legal-drop > summary { color: var(--red); }
+.lore-drop > summary { color: var(--cyan); }
+.legal-drop > summary::-webkit-details-marker,
+.lore-drop > summary::-webkit-details-marker { display: none; }
+.legal-drop > summary::before,
+.lore-drop > summary::before {
+  content: "▸";
+  color: var(--amber);
+  transition: transform 0.2s var(--ease);
+}
+.legal-drop[open] > summary::before,
+.lore-drop[open] > summary::before { transform: rotate(90deg); }
+.legal-drop > summary:hover,
+.lore-drop > summary:hover,
+.legal-drop > summary:focus-visible,
+.lore-drop > summary:focus-visible {
+  background: rgba(255, 255, 255, 0.03);
+  outline: none;
+}
+
+.legal,
+.lore-body {
+  padding: 0.25rem 1.2rem 1.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: var(--mint);
+  /* wide ANSI blocks keep their own horizontal scrollport */
+  overflow-x: auto;
+  max-width: 100%;
+}
+.lore-body > pre.ascii-scroll,
+.lore-body > .ascii-scroll {
+  margin-left: -0.35rem;
+  margin-right: -0.35rem;
+}
+.legal p,
+.lore-body p {
+  margin: 0 0 0.9rem;
+}
+.legal p:last-child,
+.lore-body p:last-child { margin-bottom: 0; }
+.legal .lede {
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--red);
+  margin: 0.85rem 0 1.15rem;
+  line-height: 1.55;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--line-warn);
+  background: rgba(255, 90, 110, 0.08);
+  box-shadow: inset 0 0 24px rgba(255, 90, 110, 0.06);
+  text-align: center;
+}
+.legal .warn-label {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin: 1.15rem 0 0.4rem;
+  padding-bottom: 0.25rem;
+  border-bottom: 1px solid rgba(232, 197, 71, 0.25);
+}
+.legal strong { color: var(--red); font-weight: 700; }
+.legal ul,
+.lore-body .choices,
+.closing .choices {
+  margin: 0.35rem 0 0.95rem 1.2rem;
+  padding: 0;
+}
+.legal li,
+.choices li {
+  margin: 0.4rem 0;
+  padding-left: 0.2rem;
+}
+.legal li { color: var(--text); }
+.warning-drop > summary {
+  color: var(--red);
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  line-height: 1.35;
+}
+.choices {
+  list-style: decimal;
+  color: var(--green);
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+}
+
+/* ===== htp-content.css ===== */
+/* HTP · content — dialog, broadcast, phreak lore */
+/* Dialogue — IRC / Hackers chat log */
+.dialog-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 0.85rem 0.95rem 1rem;
+  border-radius: var(--radius-sm);
+  background:
+    linear-gradient(180deg, rgba(4, 12, 16, 0.95), rgba(6, 10, 12, 0.92));
+  border: 1px solid rgba(92, 225, 230, 0.22);
+  border-left: 3px solid var(--cyan);
+  box-shadow:
+    inset 0 0 28px rgba(0, 0, 0, 0.35),
+    0 0 20px rgba(92, 225, 230, 0.05);
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+.dialog-block::before {
+  content: "CHANNEL #GIBSON · 1995";
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  border-bottom: 1px solid rgba(92, 225, 230, 0.15);
+  padding-bottom: 0.45rem;
+  margin-bottom: 0.35rem;
+  opacity: 0.9;
+}
+.dialog {
+  display: grid;
+  grid-template-columns: minmax(7.5rem, auto) 1fr;
+  gap: 0.35rem 0.65rem;
+  align-items: baseline;
+  margin: 0;
+  padding: 0.4rem 0.5rem;
+  font-family: var(--font-mono);
+  font-size: clamp(0.78rem, 2vw, 0.9rem);
+  line-height: 1.5;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.28);
+  border: 1px solid transparent;
+  min-width: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+.dialog .nick {
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  flex-shrink: 0;
+  text-shadow: 0 0 8px currentColor;
+}
+.dialog .msg {
+  margin: 0;
+  min-width: 0;
+  color: var(--mint);
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  white-space: normal;
+  hyphens: auto;
+}
+.dialog.gray { border-color: rgba(143, 168, 154, 0.12); }
+.dialog.cyan { border-color: rgba(92, 225, 230, 0.15); }
+.dialog.red { border-color: rgba(255, 122, 138, 0.18); }
+.dialog.green { border-color: rgba(62, 214, 120, 0.15); }
+.dialog.gray .nick { color: #a8c4b4 !important; }
+.dialog.cyan .nick { color: var(--cyan) !important; }
+.dialog.red .nick { color: #ff7a8a !important; }
+.dialog.green .nick { color: var(--green-bright) !important; }
+
+/* Keep dialog message body readable even when row has color utility classes */
+.dialog.red,
+.dialog.cyan,
+.dialog.green,
+.dialog.gray {
+  color: inherit;
+}
+.dialog .msg {
+  color: var(--mint) !important;
+}
+
+/* Soft pulse only — not harsh blink for reading */
+.dialog.blink {
+  animation: softpulse 3.5s ease-in-out infinite;
+}
+.dialog.blink:nth-child(2) { animation-delay: 0.15s; }
+.dialog.blink:nth-child(3) { animation-delay: 0.3s; }
+.dialog.blink:nth-child(4) { animation-delay: 0.45s; }
+.dialog.blink:nth-child(5) { animation-delay: 0.6s; }
+.dialog.blink:nth-child(6) { animation-delay: 0.75s; }
+.dialog.blink:nth-child(7) { animation-delay: 0.9s; }
+.dialog.blink:nth-child(8) { animation-delay: 1.05s; }
+.dialog.blink:nth-child(9) { animation-delay: 1.2s; }
+.dialog.blink:nth-child(10) { animation-delay: 1.35s; }
+.dialog.blink:nth-child(11) { animation-delay: 1.5s; }
+@keyframes softpulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.88; }
+}
+@media (max-width: 560px) {
+  .dialog {
+    grid-template-columns: 1fr;
+    gap: 0.15rem;
+    padding: 0.45rem 0.55rem;
+  }
+  .dialog .nick {
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+  }
+}
+
+.closing {
+  padding: 1.15rem 1.25rem;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: var(--muted);
+  background: rgba(0, 0, 0, 0.28);
+  border: 1px solid rgba(122, 154, 136, 0.18);
+  border-left: 3px solid var(--muted);
+}
+.closing p { margin: 0 0 0.9rem; }
+.closing p:last-child { margin-bottom: 0; }
+/* Decorative block-char lines stay mono so █║█ align */
+.closing p.mono-line,
+.closing .mono-line {
+  font-family: var(--font-ascii);
+  font-size: 12px;
+  line-height: 1.35;
+  letter-spacing: 0;
+  color: var(--green);
+  white-space: pre-wrap;
+  overflow-x: auto;
+}
+.closing .tagline {
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--green);
+  letter-spacing: 0.04em;
+  line-height: 1.7;
+}
+
+.broadcast {
+  padding: 1.15rem 1.2rem;
+  border-radius: var(--radius-sm);
+  border: 1px dashed var(--line-warn);
+  background: linear-gradient(180deg, rgba(32, 6, 10, 0.5), rgba(6, 12, 10, 0.55));
+  font-family: var(--font-ascii);
+  font-size: 12px;
+  line-height: 1.45;
+  color: var(--mint);
+  letter-spacing: 0;
+  word-spacing: 0;
+  font-variant-ligatures: none;
+  font-feature-settings: "liga" 0, "calt" 0;
+  -webkit-overflow-scrolling: touch;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  min-width: 0;
+}
+.broadcast .title {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--red);
+  text-align: center;
+  margin-bottom: 0.25rem;
+  white-space: normal;
+  font-family: var(--font-mono);
+  flex-shrink: 0;
+}
+.broadcast-log {
+  margin: 0;
+  padding: 0.85rem 0.95rem;
+  white-space: pre-wrap;
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  line-height: 1.55;
+  color: #8fdf9f;
+  max-width: 100%;
+  background: #030806;
+  border: 1px solid rgba(0, 255, 65, 0.22);
+  border-left: 3px solid var(--lulz-red, #ff0033);
+  border-radius: var(--radius-sm);
+  box-shadow:
+    inset 0 0 28px rgba(0, 0, 0, 0.55),
+    0 0 18px rgba(0, 255, 65, 0.05);
+}
+.broadcast-log .prompt {
+  color: var(--green-bright);
+  font-weight: 700;
+  text-shadow: 0 0 8px rgba(0, 255, 65, 0.35);
+}
+.broadcast-log .cmd {
+  color: var(--amber);
+}
+.broadcast-log .hdr {
+  color: var(--red);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.broadcast-log .dim {
+  color: #567a62;
+}
+.broadcast-log .hl {
+  color: var(--cyan);
+}
+.broadcast-log .hot {
+  color: var(--lulz-red, #ff0033);
+  font-weight: 700;
+}
+.broadcast-log .ok {
+  color: var(--green-bright);
+}
+.broadcast-log .wall {
+  display: block;
+  margin: 0.55rem 0;
+  padding: 0.55rem 0.7rem;
+  border: 1px dashed rgba(255, 90, 110, 0.35);
+  background: rgba(255, 90, 110, 0.06);
+  color: #ffb3bc;
+}
+.broadcast-log .opts {
+  display: block;
+  margin-top: 0.45rem;
+  color: var(--mint);
+}
+.broadcast-log .opts .k {
+  color: var(--amber);
+  font-weight: 700;
+}
+.broadcast-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 14rem;
+  max-height: min(48vh, 420px);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: #030806;
+  overflow: hidden;
+  box-shadow: inset 0 0 24px rgba(62, 214, 120, 0.04);
+}
+.broadcast-shell-bar {
+  flex-shrink: 0;
+  padding: 0.4rem 0.75rem;
+  border-bottom: 1px solid var(--line);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  color: var(--cyan);
+  background: rgba(8, 20, 14, 0.95);
+}
+.broadcast-shell-bar .prompt {
+  color: var(--green-bright);
+  font-weight: 600;
+  letter-spacing: 0;
+}
+.broadcast-shell-bar .dim {
+  color: var(--muted);
+  letter-spacing: 0.04em;
+}
+.broadcast #typer,
+#typer {
+  flex: 1 1 auto;
+  min-height: 0;
+  margin: 0;
+  padding: 0.75rem 0.85rem;
+  overflow-y: auto;
+  overflow-x: auto;
+  line-height: 1.4;
+  font-size: 12px;
+  white-space: pre;
+  word-break: normal;
+  overflow-wrap: normal;
+  user-select: text;
+  color: var(--green-bright);
+  font-family: var(--font-ascii);
+  font-variant-ligatures: none;
+  font-feature-settings: "liga" 0, "calt" 0;
+  letter-spacing: 0;
+  cursor: default;
+  background: transparent;
+  text-shadow: 0 0 8px rgba(62, 214, 120, 0.25);
+  scrollbar-width: thin;
+  scrollbar-color: var(--green-dim) transparent;
+  -webkit-overflow-scrolling: touch;
+}
+#typer::-webkit-scrollbar { width: 8px; }
+#typer::-webkit-scrollbar-thumb {
+  background: rgba(62, 214, 120, 0.3);
+  border-radius: 4px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .broadcast-shell { display: none; }
+}
+
+.broadcast > .lore-drop {
+  margin: 0;
+  width: 100%;
+  max-width: 100%;
+  background: rgba(0, 0, 0, 0.35);
+}
+.broadcast > .lore-drop > summary {
+  padding: 0.7rem 0.9rem;
+  font-size: 0.78rem;
+}
+.broadcast > .lore-drop .lore-body,
+.broadcast > .lore-drop > pre.ascii-scroll {
+  max-width: 100%;
+}
+
+/* GAME OVER block inside broadcast */
+#game-over.lore-drop {
+  border-color: rgba(255, 90, 110, 0.35);
+  background: linear-gradient(180deg, rgba(28, 4, 8, 0.75), rgba(6, 8, 8, 0.9));
+}
+#game-over > summary {
+  color: var(--red) !important;
+  letter-spacing: 0.12em;
+}
+#game-over .game-over-body {
+  text-align: center;
+  padding: 1rem 1rem 1.15rem;
+}
+#game-over .game-over-line {
+  margin: 0 0 0.5rem;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--red);
+}
+#game-over .game-over-title {
+  margin: 0.35rem 0 0.55rem;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: clamp(1.1rem, 3.5vw, 1.45rem);
+  letter-spacing: 0.28em;
+  color: #ffe566;
+  text-shadow: 0 0 18px rgba(255, 229, 102, 0.35);
+}
+#game-over .game-over-sub {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* Phreak lore — BBS / black-ice dump chrome */
+#phreak-lore.lore-drop,
+#phreak-lore {
+  width: 100%;
+  max-width: 100%;
+  border: 1px solid rgba(0, 255, 65, 0.28);
+  border-left: 3px solid var(--lulz-red, #ff0033);
+  background:
+    linear-gradient(180deg, rgba(0, 20, 8, 0.92), rgba(4, 8, 6, 0.96)),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 255, 65, 0.015) 2px,
+      rgba(0, 255, 65, 0.015) 4px
+    );
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.6),
+    0 0 28px rgba(0, 255, 65, 0.08),
+    inset 0 0 40px rgba(0, 0, 0, 0.45);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+#phreak-lore > summary {
+  color: var(--lulz-green, #00ff41) !important;
+  text-shadow: 0 0 10px rgba(0, 255, 65, 0.35);
+  letter-spacing: 0.12em;
+  border-bottom: 1px solid rgba(0, 255, 65, 0.12);
+  background: linear-gradient(90deg, rgba(0, 40, 12, 0.55), rgba(20, 0, 6, 0.35));
+}
+#phreak-lore > summary::before {
+  color: var(--lulz-red, #ff0033) !important;
+  content: "▓";
+  text-shadow: 0 0 8px rgba(255, 0, 51, 0.5);
+}
+#phreak-lore[open] > summary::before {
+  content: "░";
+  transform: none;
+}
+#phreak-lore > summary:hover,
+#phreak-lore > summary:focus-visible {
+  background: rgba(0, 255, 65, 0.06) !important;
+  color: #b8ffc8 !important;
+}
+#phreak-lore .lore-body {
+  font-family: var(--font-mono);
+  font-size: 0.86rem;
+  line-height: 1.65;
+  color: #8fdf9f;
+  padding: 0.85rem 1.05rem 1.2rem;
+  border-top: 1px solid rgba(0, 255, 65, 0.1);
+  background: rgba(0, 0, 0, 0.35);
+}
+#phreak-lore .lore-body p {
+  margin: 0 0 0.85rem;
+}
+#phreak-lore .phreak-banner {
+  font-family: var(--font-ascii);
+  font-size: 0.78rem;
+  color: var(--lulz-green, #00ff41);
+  text-shadow: 0 0 8px rgba(0, 255, 65, 0.3);
+  letter-spacing: 0.02em;
+  line-height: 1.5;
+  margin: 0 0 0.85rem;
+  padding: 0.65rem 0.75rem;
+  border: 1px dashed rgba(255, 0, 51, 0.45);
+  background: rgba(255, 0, 51, 0.06);
+  white-space: pre-wrap;
+  overflow-x: auto;
+}
+#phreak-lore .phreak-trace {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--amber);
+  background: #050a07;
+  border: 1px solid rgba(62, 214, 120, 0.2);
+  border-left: 2px solid var(--cyan);
+  padding: 0.65rem 0.8rem;
+  margin: 0 0 0.9rem;
+  white-space: pre-wrap;
+  line-height: 1.55;
+  overflow-x: auto;
+}
+#phreak-lore .phreak-trace .ok { color: var(--green-bright); }
+#phreak-lore .phreak-trace .bad { color: var(--red); }
+#phreak-lore .phreak-hex {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--red);
+  letter-spacing: 0.04em;
+  margin: 0 0 0.9rem;
+  padding: 0.55rem 0.7rem;
+  border: 1px solid var(--line-warn);
+  background: rgba(255, 90, 110, 0.07);
+}
+#phreak-lore .phreak-hex code {
+  color: var(--amber);
+  font-size: 0.92em;
+}
+#phreak-lore .phreak-drop {
+  color: var(--mint);
+  border-left: 2px solid var(--lulz-red, #ff0033);
+  padding-left: 0.75rem;
+  margin: 0 0 0.9rem;
+}
+#phreak-lore .phreak-drop strong {
+  color: var(--green-bright);
+  font-weight: 700;
+}
+#phreak-lore .choices {
+  list-style: none;
+  margin: 0.4rem 0 0.5rem;
+  padding: 0;
+  counter-reset: phreak-opt;
+}
+#phreak-lore .choices li {
+  counter-increment: phreak-opt;
+  margin: 0.55rem 0;
+  padding: 0.55rem 0.7rem 0.55rem 2.4rem;
+  position: relative;
+  border: 1px solid rgba(0, 255, 65, 0.15);
+  background: rgba(0, 12, 6, 0.55);
+  color: #a8e6c3;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+#phreak-lore .choices li::before {
+  content: "0" counter(phreak-opt);
+  position: absolute;
+  left: 0.55rem;
+  top: 0.55rem;
+  color: var(--lulz-red, #ff0033);
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+}
+#phreak-lore .phreak-sig {
+  margin: 0.85rem 0 0;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-align: center;
+  border-top: 1px solid rgba(0, 255, 65, 0.12);
+  padding-top: 0.75rem;
+}
+#phreak-lore .phreak-sig .hot {
+  color: var(--lulz-red, #ff0033);
+}
+
+.closing.warning-blurb {
+  border-color: var(--line-warn);
+  background: linear-gradient(180deg, rgba(28, 6, 10, 0.45), rgba(8, 12, 10, 0.5));
+}
+.closing.warning-blurb .mono-line {
+  color: var(--green-bright);
+  font-family: var(--font-ascii);
+  font-size: 0.82rem;
+  line-height: 1.55;
+  margin: 0.35rem 0;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* ===== htp-outro.css ===== */
+/* HTP · outro — session closeout */
+/* ── Closing outro · session seal (matches broadcast / paste aesthetic) ── */
+.closing.outro {
+  padding: 0;
+  overflow: hidden;
+  font-family: var(--font-mono);
+  color: var(--mint);
+  background:
+    linear-gradient(180deg, rgba(0, 16, 8, 0.92), rgba(6, 10, 8, 0.94));
+  border: 1px solid rgba(0, 255, 65, 0.22);
+  border-left: 3px solid var(--lulz-red, #ff0033);
+  box-shadow:
+    inset 0 0 32px rgba(0, 0, 0, 0.4),
+    0 0 20px rgba(0, 255, 65, 0.05);
+}
+.closing.outro .outro-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem 0.75rem;
+  padding: 0.55rem 1rem;
+  border-bottom: 1px solid rgba(0, 255, 65, 0.14);
+  background: linear-gradient(90deg, rgba(20, 0, 6, 0.65), rgba(0, 22, 10, 0.85));
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--amber);
+}
+.closing.outro .outro-bar .tag {
+  color: var(--lulz-red, #ff0033);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+.closing.outro .outro-bar .dim {
+  color: var(--muted);
+  letter-spacing: 0.06em;
+  text-transform: none;
+  font-size: 0.72rem;
+}
+.closing.outro .outro-bar .ok {
+  color: var(--green-bright);
+  margin-left: auto;
+  font-weight: 600;
+}
+.closing.outro .outro-body {
+  padding: 1.05rem 1.15rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.closing.outro .tagline {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: clamp(0.82rem, 2.2vw, 0.95rem);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  line-height: 1.55;
+  color: var(--green);
+  text-align: center;
+}
+.closing.outro .tagline .hl {
+  color: var(--green-bright);
+  text-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
+}
+.closing.outro .tagline .hex {
+  color: var(--amber);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+.closing.outro .tagline .dim {
+  color: var(--muted);
+  font-weight: 500;
+}
+.closing.outro .outro-banner {
+  margin: 0;
+  text-align: center;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--red);
+  text-shadow: 0 0 12px rgba(255, 90, 110, 0.25);
+  padding: 0.35rem 0.5rem;
+  border-top: 1px solid rgba(255, 90, 110, 0.18);
+  border-bottom: 1px solid rgba(255, 90, 110, 0.18);
+  background: rgba(255, 90, 110, 0.04);
+}
+.closing.outro .outro-hdr {
+  margin: 0.15rem 0 0;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--amber);
+  text-align: center;
+}
+.closing.outro .choices {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.closing.outro .choices li {
+  margin: 0;
+  padding: 0.55rem 0.75rem;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: var(--mint);
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(62, 214, 120, 0.14);
+  border-left: 2px solid var(--green-dim);
+  border-radius: 4px;
+}
+.closing.outro .choices li .k {
+  display: inline-block;
+  font-weight: 700;
+  color: var(--green-bright);
+  font-family: var(--font-mono);
+  letter-spacing: 0.02em;
+}
+.closing.outro .choices li .arrow {
+  color: var(--muted);
+  margin: 0 0.35em;
+}
+.closing.outro .choices li .out {
+  color: var(--text);
+}
+.closing.outro .choices li.hot-path {
+  border-left-color: var(--lulz-red, #ff0033);
+  background: rgba(20, 0, 6, 0.35);
+}
+.closing.outro .choices li.hot-path .out {
+  color: var(--red);
+}
+.closing.outro .meta-links {
+  margin: 0.25rem 0 0;
+  padding-top: 0.85rem;
+  border-top: 1px solid rgba(0, 255, 65, 0.12);
+}
+.closing.outro .term-hint {
+  margin: 0;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+}
+.closing.outro .term-hint kbd {
+  font-family: var(--font-mono);
+  font-size: 0.88em;
+  font-weight: 600;
+  padding: 0.12em 0.45em;
+  border-radius: 4px;
+  border: 1px solid var(--line-strong);
+  background: rgba(62, 214, 120, 0.1);
+  color: var(--amber);
+}
+.panel-body > .section-title {
+  margin-top: 0.15rem;
+}
+.panel-body > .lore-drop,
+.panel-body > .broadcast,
+.panel-body > .closing,
+.panel-body > .dialog-block,
+.panel-body > .lulz-paste,
+.panel-body > .ghosts-section,
+
+.meta-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.45rem;
+  margin: 0.9rem 0 0;
+}
+.meta-links a {
+  color: var(--cyan);
+  text-decoration: none;
+  border: 1px solid rgba(92, 225, 230, 0.25);
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  background: rgba(6, 20, 22, 0.5);
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+}
+.meta-links a:hover {
+  color: #fff;
+  border-color: var(--green);
+  background: rgba(62, 214, 120, 0.1);
+}
+
+/* ===== htp-terminal.css ===== */
+/* HTP · terminal shell */
+/* Terminal shell */
+.term-wrap {
+  display: flex;
+  flex-direction: column;
+  min-height: 28rem;
+  max-height: min(78vh, 720px);
+  overflow: hidden;
+  border-color: var(--line-strong);
+  box-shadow: 0 0 0 1px rgba(62, 214, 120, 0.08), 0 20px 50px rgba(0, 0, 0, 0.4);
+}
+.term-bar {
+  flex-shrink: 0;
+  padding: 0.6rem 1rem;
+  background: linear-gradient(90deg, rgba(8, 28, 16, 0.98), rgba(8, 18, 16, 0.98));
+  border-bottom: 1px solid var(--line);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--cyan);
+  user-select: none;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+.term-bar .term-title { color: var(--cyan); }
+.term-spacer { flex: 1 1 auto; }
+button.term-btn {
+  background: transparent;
+  color: var(--green);
+  border: 1px solid var(--line);
+  font-family: var(--font-ascii);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: lowercase;
+  padding: 0.15rem 0.55rem;
+  cursor: pointer;
+}
+button.term-btn:hover,
+button.term-btn:focus-visible {
+  color: var(--green-bright);
+  border-color: var(--green);
+  outline: none;
+}
+.py-ide {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+.py-editor {
+  display: flex;
+  flex: 1 1 46%;
+  min-height: 8rem;
+  min-width: 0;
+  border-bottom: 1px solid var(--line);
+  background: #050a07;
+}
+.py-gutter {
+  flex: 0 0 auto;
+  margin: 0;
+  padding: 0.55rem 0.45rem 0.55rem 0.7rem;
+  color: #3d5c49;
+  text-align: right;
+  user-select: none;
+  overflow: hidden;
+  white-space: pre;
+  font-family: var(--font-ascii);
+  font-size: 13px;
+  line-height: 1.45;
+}
+#py-code {
+  flex: 1 1 auto;
+  min-width: 0;
+  margin: 0;
+  padding: 0.55rem 0.7rem;
+  border: 0;
+  resize: none;
+  overflow: auto;
+  background: transparent;
+  color: var(--green);
+  caret-color: var(--green-bright);
+  font-family: var(--font-ascii);
+  font-size: 13px;
+  line-height: 1.45;
+  font-variant-ligatures: none;
+}
+#py-code:focus { outline: none; }
+.term-form {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 0.45rem;
+  margin: 0;
+  padding: 0.35rem 0.7rem 0.55rem;
+  background: #050a07;
+  border-top: 1px solid var(--line);
+}
+.term-prompt {
+  color: var(--amber);
+  font-family: var(--font-ascii);
+  font-size: 13px;
+  white-space: nowrap;
+}
+.term-bar::before {
+  content: "";
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 8px var(--green);
+}
+.term-bar span { color: var(--amber); }
+#terminal {
+  flex: 1 1 40%;
+  min-height: 6rem;
+  margin: 0;
+  padding: 1rem 1.1rem;
+  overflow-y: auto;
+  overflow-x: auto;
+  line-height: 1.45;
+  font-size: 13px;
+  white-space: pre-wrap;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  user-select: text;
+  color: var(--green);
+  font-family: var(--font-ascii);
+  font-variant-ligatures: none;
+  font-feature-settings: "liga" 0, "calt" 0;
+  letter-spacing: 0;
+  cursor: text;
+  background: #050a07;
+  scrollbar-width: thin;
+  scrollbar-color: var(--green-dim) transparent;
+  -webkit-overflow-scrolling: touch;
+}
+#terminal:focus {
+  outline: 1px solid rgba(62, 214, 120, 0.3);
+  outline-offset: -1px;
+}
+#terminal::-webkit-scrollbar { width: 8px; }
+#terminal::-webkit-scrollbar-thumb {
+  background: rgba(62, 214, 120, 0.3);
+  border-radius: 4px;
+}
+
+.term-static {
+  margin: 0;
+  padding: 1rem 1.1rem;
+  color: var(--green);
+  font-size: 13px;
+  line-height: 1.45;
+  white-space: pre-wrap;
+  background: #050a07;
+  border-top: 1px solid var(--line);
+  font-family: var(--font-ascii);
+  font-variant-ligatures: none;
+  letter-spacing: 0;
+  overflow-x: auto;
+}
+.js .term-static { display: none; }
+.no-js #terminal,
+.no-js .py-editor,
+.no-js .term-form { display: none; }
+.no-js .term-static { display: block; }
+
+@keyframes softpulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+.blink { animation: softpulse 2.8s ease-in-out infinite; }
+.cursor {
+  display: inline-block;
+  width: 0.55ch;
+  background: var(--green-bright);
+  color: #000;
+  animation: softpulse 1s steps(1) infinite;
+  vertical-align: baseline;
+}
+.cmdline {
+  color: var(--green-bright);
+  white-space: pre-wrap;
+}
+
+.red { color: #ff7a8a !important; }
+.cyan { color: var(--cyan) !important; }
+.yellow { color: var(--amber) !important; }
+.purple { color: #d4a0ff !important; }
+.gray { color: #8fa89a !important; }
+.green { color: var(--green) !important; }
+
+#cmd {
+  position: static;
+  flex: 1 1 auto;
+  width: auto;
+  height: auto;
+  opacity: 1;
+  border: 0;
+  padding: 0.2rem 0;
+  margin: 0;
+  background: transparent;
+  color: var(--green-bright);
+  font-family: var(--font-ascii);
+  font-size: 13px;
+  line-height: 1.45;
+  caret-color: var(--green-bright);
+}
+#cmd:focus { outline: none; }
+
+footer.site-foot {
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 0.25rem 0 0.5rem;
+  opacity: 0.65;
+}
+footer.site-foot a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 0.15s, border-color 0.15s, opacity 0.15s;
+}
+footer.site-foot a:hover,
+footer.site-foot a:focus-visible {
+  color: var(--green-bright);
+  border-bottom-color: var(--green-dim);
+  outline: none;
+  opacity: 1;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ===== htp-boat.css ===== */
+/* HTP · boat crew, lab mirror paste, ghosts */
+/* ── Boat crew + LAB MIRROR (from htp-core) ── */
+:root {
+  --lulz-green: #00ff41;
+  --lulz-red: #ff0033;
+  --lulz-pink: #ff4da6;
+  --lulz-paste: #0b0f0b;
+  --lulz-warn: #ffcc00;
+}
+
+.lulz-paste {
+  display: block;
+  box-sizing: border-box;
+  background:
+    linear-gradient(180deg, #0a100a 0%, var(--lulz-paste) 40%, #070a08 100%);
+  border: 1px solid rgba(0, 255, 65, 0.28);
+  border-left: 4px solid var(--lulz-red);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  line-height: 1.32;
+  color: #9f9;
+  padding: 0.65rem 0.85rem 0.75rem;
+  white-space: normal;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  max-height: none;
+  overflow-x: auto;
+  overflow-y: visible;
+  text-align: left !important;
+  border-radius: var(--radius-sm);
+  box-shadow:
+    inset 0 0 40px rgba(0, 255, 65, 0.05),
+    0 0 24px rgba(255, 0, 51, 0.08);
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  margin: 0;
+  position: relative;
+  direction: ltr;
+}
+.lulz-paste::before {
+  content: "RAW PASTE · MIRROR ONLY · DO NOT DEPLOY";
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: left !important;
+  color: var(--lulz-warn);
+  border-bottom: 1px dashed rgba(255, 204, 0, 0.25);
+  padding: 0 0 0.3rem;
+  margin: 0 0 0.4rem;
+}
+.lulz-paste .hl {
+  color: var(--lulz-green);
+  text-shadow: 0 0 6px rgba(0, 255, 65, 0.35);
+}
+.lulz-paste .hot { color: var(--lulz-red); font-weight: 700; }
+.lulz-paste .dim { color: #4a6a52; }
+.lulz-paste .warn { color: var(--lulz-warn); }
+.lulz-paste .cmd {
+  color: var(--cyan);
+  font-family: var(--font-ascii);
+  padding-left: 0 !important;
+  text-indent: 0;
+}
+.lulz-paste > span {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0.05rem 0;
+  text-align: left !important;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+.lulz-paste .sep {
+  color: #2a4a32;
+  margin: 0.15rem 0;
+  letter-spacing: 0.04em;
+  line-height: 1.1;
+  user-select: none;
+  overflow: hidden;
+  text-overflow: clip;
+}
+
+.ghosts-section {
+  width: 100%;
+  border: 1px solid var(--line);
+  background: rgba(0, 0, 0, 0.28);
+  border-radius: var(--radius-sm);
+  padding: 1rem 1.05rem 1.15rem;
+  position: relative;
+  box-shadow: inset 0 0 0 1px rgba(62, 214, 120, 0.04);
+}
+.ghosts-section::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 2px;
+  border-radius: 2px 0 0 2px;
+  background: linear-gradient(180deg, var(--lulz-red), var(--green), transparent);
+  opacity: 0.85;
+}
+.ghosts-section .dd-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.4rem 1rem;
+  margin: 0 0 0.65rem;
+  padding-bottom: 0.45rem;
+  border-bottom: 1px solid var(--line);
+}
+.ghosts-section .dd-title {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  color: var(--green-bright);
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.ghosts-section .dd-title .accent { color: var(--lulz-red); }
+.ghosts-section .dd-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: 1px solid var(--lulz-red);
+  padding: 0.18rem 0.45rem;
+  color: var(--lulz-warn);
+  background: rgba(0, 0, 0, 0.55);
+  border-radius: 4px;
+}
+.ghosts-section .dd-meta {
+  margin: 0 0 0.9rem;
+  font-size: 0.82rem;
+  color: var(--muted);
+  line-height: 1.5;
+  max-width: 52rem;
+  font-family: var(--font-sans);
+}
+
+.ghost-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 0.75rem;
+  width: 100%;
+}
+.ghost-card {
+  cursor: pointer;
+  appearance: none;
+  border: 1px solid var(--line);
+  background: rgba(8, 16, 12, 0.85);
+  color: var(--text);
+  padding: 0.45rem;
+  text-align: center;
+  border-radius: var(--radius-sm);
+  transition: border-color 0.15s var(--ease), box-shadow 0.15s var(--ease), transform 0.15s var(--ease);
+  font-family: var(--font-mono);
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  min-width: 0;
+}
+.ghost-card img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  display: block;
+  background: #050807;
+  border-radius: 4px;
+}
+.ghost-card .ghost-name {
+  color: var(--green-bright);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1.25;
+  word-break: break-word;
+}
+.ghost-card .ghost-sub {
+  color: var(--muted);
+  font-size: 0.62rem;
+  line-height: 1.3;
+}
+.ghost-card .ghost-blurb {
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  line-height: 1.4;
+  text-align: left;
+}
+.ghost-card:hover,
+.ghost-card:focus-visible {
+  border-color: var(--lulz-red);
+  box-shadow: 0 0 18px rgba(255, 0, 51, 0.22);
+  outline: none;
+  transform: translateY(-1px);
+}
+.ghost-card.active {
+  border-color: var(--lulz-red);
+  box-shadow: 0 0 18px rgba(255, 0, 51, 0.28), 0 0 0 1px rgba(255, 0, 51, 0.35);
+}
+
+.ghost-detail {
+  display: block;
+  width: 100%;
+  margin-top: 0.95rem;
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--line-strong);
+  background: rgba(5, 10, 8, 0.92);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+}
+.ghost-detail[hidden] { display: none !important; }
+.ghost-detail-head {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 0.9rem;
+  margin-bottom: 0.75rem;
+  align-items: start;
+}
+.ghost-detail-img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: #000;
+}
+.ghost-code {
+  margin: 0 0 0.25rem;
+  color: var(--green-bright);
+  font-family: var(--font-mono);
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+.lulz-tag {
+  display: inline-block;
+  font-size: 0.58rem;
+  color: var(--lulz-pink);
+  border: 1px solid var(--lulz-pink);
+  padding: 0.08rem 0.32rem;
+  margin-left: 0.35rem;
+  vertical-align: middle;
+  letter-spacing: 0.08em;
+  border-radius: 3px;
+}
+.ghost-role {
+  margin: 0 0 0.2rem;
+  color: var(--lulz-red);
+  font-size: 0.88rem;
+  font-weight: 600;
+  font-family: var(--font-sans);
+}
+.ghost-file,
+.ghost-note {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+}
+.ghost-blurb {
+  margin: 0.75rem 0 1rem;
+  color: var(--mint);
+  font-size: 0.92rem;
+  line-height: 1.55;
+  font-family: var(--font-sans);
+}
+.ghost-cols {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 0.85rem 1rem;
+  margin-bottom: 0.75rem;
+}
+.ghost-cols h4 {
+  margin: 0 0 0.45rem;
+  color: var(--cyan);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 0.3rem;
+}
+.ghost-cols ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.ghost-cols li {
+  color: var(--text);
+  font-size: 0.78rem;
+  margin: 0.28rem 0;
+  line-height: 1.35;
+  font-family: var(--font-mono);
+}
+.ghost-cols code {
+  color: var(--amber);
+  font-size: 0.76rem;
+  word-break: break-all;
+}
+.ghost-cmd {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+}
+.ghost-cmd code {
+  color: var(--green-bright);
+  background: rgba(62, 214, 120, 0.08);
+  border: 1px solid var(--line);
+  padding: 0.12rem 0.4rem;
+  border-radius: 4px;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+.ghost-cmd:hover code,
+.ghost-cmd:focus-visible code {
+  background: var(--green);
+  color: #041008;
+  border-color: var(--green-bright);
+  outline: none;
+}
+
+@media (max-width: 600px) {
+  .ghost-detail-head { grid-template-columns: 1fr; }
+  .ghost-detail-img { width: 100%; height: 160px; }
+  .ghost-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+}
+
+/* ===== htp-layout.css ===== */
+/* HTP · bottom stack, performance, reduced-motion, legal drop */
+/* Bottom stack outside panel: full site width */
+main.site > .term-wrap,
+main.site > .legal-drop,
+main.site > .noscript-panel,
+main.site > footer.site-foot {
+  width: 100%;
+  max-width: var(--max);
+  margin-left: auto;
+  margin-right: auto;
+}
+main.site > .legal-drop {
+  margin-top: 0.75rem;
+}
+main.site > footer.site-foot {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Performance — no layout contain on .panel (clips overflow / breaks ASCII scroll) */
+.term-wrap, .hero { contain: layout style; }
+.imgbox { contain: paint; }
+#matrix { contain: strict; transform: translateZ(0); }
+
+/* Mobile */
+@media (max-width: 720px) {
+  .site { width: min(100% - 1.25rem, var(--max)); gap: 1.15rem; padding-top: 1.25rem; }
+  .panel { padding: 1.1rem; gap: 1rem; }
+  .panel-body { max-width: none; }
+  .ticker { height: 36px; }
+  .ticker-text { font-size: 0.7rem; }
+  .links a { font-size: 0.82rem; padding: 0.5rem 0.85rem; }
+  .panel .ascii, pre.ascii {
+    max-height: min(40vh, 320px);
+    font-size: 9px;
+  }
+  .ascii-scroll, pre.ascii-scroll { font-size: 9px; max-height: min(45vh, 360px); }
+  .broadcast { font-size: 11px; }
+  .term-wrap { max-height: min(88vh, 640px); min-height: 22rem; }
+  #terminal, .term-static { font-size: 12px; }
+  #crt { opacity: 0.12; }
+  #scanlines { opacity: 0.08; animation-duration: 20s; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glitch, .ticker-track, .ticker-text, .imgbox picture.active, #scanlines, .blink, .cursor, .dialog.blink {
+    animation: none !important;
+  }
+  .ticker-track { transform: none; }
+  #subtext { transition: none; }
+  .legal-drop > summary::before,
+  .lore-drop > summary::before,
+  .ascii-details > summary::before { transition: none; }
+}
+
+/* Print / reader friendliness */
+@media print {
+  canvas, video, #crt, #scanlines { display: none !important; }
+  body { background: #fff; color: #000; }
+  .panel, .term-wrap, .reader-lead { box-shadow: none; border-color: #ccc; }
+}
+
+/* Status line flash */
+.subtext-box{
+  min-height:5.5em!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+}
+#subtext{
+  font-size:clamp(1.05rem,2.8vw,1.35rem)!important;
+  font-weight:600!important;
+  letter-spacing:.06em!important;
+  text-transform:none;
+}
+#subtext.is-fading{opacity:0;transform:translateY(4px)}
+#subtext{transition:opacity .4s ease,transform .4s ease}
+/* Legal at bottom as warning */
+.warning-drop{
+  border:1px solid var(--line-warn)!important;
+  background:linear-gradient(180deg,rgba(36,8,12,.75),rgba(10,14,12,.9))!important;
+  margin-top:.25rem;
+}
+.warning-drop>summary{
+  color:var(--red)!important;
+  letter-spacing:.12em!important;
+}
+.warning-drop>summary::before{content:"⚠ ";color:var(--amber)}
+.warning-drop[open]>summary::before{content:"⚠ ";transform:none}
+
+/* ===== expert focus / skip / section polish (critical) ===== */
+:focus { outline: none; }
+:focus-visible { outline: none; box-shadow: var(--focus-ring); }
+a:focus-visible, button:focus-visible, summary:focus-visible,
+.chip:focus-visible, .res-card:focus-visible, .ghost-card:focus-visible,
+.links a:focus-visible, .meta-links a:focus-visible, footer.site-foot a:focus-visible {
+  outline: none; box-shadow: var(--focus-ring);
+}
+.skip-link {
+  position: absolute; left: var(--space-3); top: var(--space-3); z-index: 100;
+  padding: var(--space-2) var(--space-3);
+  font-family: var(--font-mono); font-size: var(--text-sm);
+  letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--bg0); background: var(--green-bright);
+  border-radius: var(--radius-sm); text-decoration: none;
+  transform: translateY(-140%);
+  transition: transform var(--duration) var(--ease);
+}
+.skip-link:focus, .skip-link:focus-visible { transform: translateY(0); box-shadow: var(--focus-ring); }
+
+.section-title {
+  font-size: var(--text-xs);
+  letter-spacing: 0.18em;
+  color: var(--green-dim);
+  margin: var(--space-2) 0 var(--space-2);
+}
+
+.glitch {
+  color: #f4fff8;
+  text-shadow:
+    0 0 36px rgba(74, 222, 128, 0.22),
+    2px 0 0 rgba(251, 113, 133, 0.32),
+    -2px 0 0 rgba(103, 232, 249, 0.32);
+}
+
+.links a {
+  transition: border-color var(--duration) var(--ease), background var(--duration), color var(--duration), transform var(--duration) var(--ease);
+}
+.links a:hover, .links a:focus-visible {
+  border-color: var(--green);
+  background: rgba(74, 222, 128, 0.1);
+}
+
+footer.site-foot {
+  opacity: 0.78;
+  letter-spacing: 0.14em;
+  line-height: 1.9;
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 0.15rem 0.35rem;
+  padding: var(--space-4) var(--space-2) var(--space-3);
+}
+footer.site-foot a { padding: 0.1rem 0.15rem; border-radius: 2px; }
+
+@media (max-width: 420px) {
+  .site { width: min(100% - 0.85rem, var(--max)); }
+  .hero { padding-top: 1rem; gap: 0.9rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .links a, .ghost-card, .chip, .res-card { transition: none !important; }
+  .links a:hover, .ghost-card:hover { transform: none !important; }
+  html { scroll-behavior: auto; }
+}</style><script>document.documentElement.classList.add("js");
+    document.addEventListener("DOMContentLoaded", function () {
+      document.body.classList.remove("no-js");
+      document.body.classList.add("js");
+    });</script><link href="/styles/tv.css" rel="stylesheet"><link href="/css/htp-critical-viewport.css?v=2" rel="stylesheet"><link href="/css/boot-sequence.css?v=1" rel="stylesheet"><link href="/css/page-sections.css?v=1" rel="stylesheet"><link href="/css/display-sections.css?v=1" rel="stylesheet"><link href="/css/agent-board.css?v=1" rel="stylesheet"><link href="/css/htp-responsive.css?v=2" rel="stylesheet"><script src="/js/init.js?v=1" defer="defer"></script><script src="/js/main.js?v=1" defer="defer"></script><script src="/js/htp-viewport.js?v=2" defer="defer"></script><script src="/js/agent-catalog.js?v=1" defer="defer"></script><script src="/js/agent-board.js?v=1" defer="defer"></script></head><body class="lulz-theme no-js" style="background:#010402;color:#39ff6a"><canvas id="matrix" aria-hidden="true"></canvas><video id="ghostvideo" loop muted playsinline preload="none" aria-hidden="true" poster="imgs/wrong.webp"><source src="ghost.mp4" type="video/mp4"></video><video id="bgvideo" loop muted playsinline preload="none" aria-hidden="true"><source src="https://web.archive.org/web/20160610162410im_/http://1.3.3.7/spark.mp4" type="video/mp4"></video><div id="crt" aria-hidden="true"></div><div id="scanlines" aria-hidden="true"></div><a href="#resources" class="skip-link">· HTP | 1.3.3.7 ·</a><header class="htp-termbar top" role="banner"><div class="term-prompt"><span class="host">htp.sh</span> <span class="path">~/lulz</span> <span class="cmd">expect --lulz</span><span class="cursor" aria-hidden="true"></span></div><div class="brand">htp.sh · expect lulz</div><nav aria-label="Sections" class="top-actions"><a href="#resources" class="chip">Resources</a> <a href="/money" class="chip">Money</a> <a href="/osint" class="chip">OSINT</a> <a href="/chat" class="chip">Chat</a> <a href="/maps" class="chip">Maps</a> <a href="/linux" class="chip">Linux</a> <a href="/spy-kids" class="chip">Spy Kids</a> <a href="/love" class="chip">Love</a> <a href="/waf" class="chip">WAF</a> <a href="/lulz/" class="chip">Lulz</a></nav></header><script src="js/song777.js?v=17"></script><script src="/js/boot-sequence.js?v=1" defer="defer"></script><video id="live-stream" loop muted playsinline preload="auto" hidden></video><section class="display-section display-section--tv" aria-labelledby="tv-section-title"><h2 class="visually-hidden" id="tv-section-title">Live television display</h2><div class="tv" id="tv" aria-label="Rabbit-ear television" role="region"><div class="ears" id="ears" aria-label="Rabbit ear antenna. Drag the tips to adjust."><svg viewBox="0 0 1000 150" preserveAspectRatio="xMidYMax meet"><ellipse cx="500" cy="146" fill="#111" rx="90" ry="9"/><path d="M450 150 Q500 105 550 150Z" fill="#222"/><g class="ear" id="e1"><line id="r1" stroke="#cfd3d6" stroke-linecap="round" stroke-width="5" x1="480" x2="300" y1="128" y2="10"/><circle cx="300" cy="10" fill="#eee" r="13" id="t1" stroke="#777"/></g><g class="ear" id="e2"><line id="r2" stroke="#cfd3d6" stroke-linecap="round" stroke-width="5" x1="520" x2="700" y1="128" y2="10"/><circle cx="700" cy="10" fill="#eee" r="13" id="t2" stroke="#777"/></g><circle cx="480" cy="128" fill="#555" r="9"/><circle cx="520" cy="128" fill="#555" r="9"/></svg></div><div class="cab"><div class="bezel"><div class="crt" id="tv-crt"><video id="yt" loop muted playsinline title="Channel video"></video><video id="hq-display" loop muted playsinline preload="auto" class="hq-display" title="The Knowledge Bank (1971)"></video><canvas id="hq-screen" aria-hidden="true" height="1080" width="1920" class="hq-screen"></canvas><div class="hq-hud" id="hq-hud"><span id="hq-res">320×240</span><span id="hq-br">best</span><span id="hq-sync">YT —</span></div><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen id="yt-frame" referrerpolicy="strict-origin-when-cross-origin" style="display:none" title="The Knowledge Bank (1971)"></iframe><a href="https://youtu.be/puIZolf5T80" rel="noopener noreferrer" target="_blank" class="yt-fallback" hidden id="yt-fallback"><img alt="" height="240" src="https://i.ytimg.com/vi/puIZolf5T80/hqdefault.jpg" width="320"> <span class="yt-caption"><span>The Knowledge Bank (1971)</span><span class="yt-play">Archives</span></span></a><canvas id="snow" aria-hidden="true" height="108" width="192"></canvas><div class="roll" aria-hidden="true"></div><div class="scan" aria-hidden="true"></div><div class="vig" aria-hidden="true"></div><div class="osd" id="osd" aria-live="polite"></div><div class="off" id="off"><i></i></div></div></div><div class="tv-deck"><div class="knobrow"><button type="button" class="knob" id="knob" aria-label="Channel knob: click to change channel" style="--knob-angle: -150deg;"></button><div class="lcd" id="lcd">CH --<small>-- MHz</small></div></div><div><label>Signal strength</label><div class="meter" id="meter"></div></div><div><label for="fine">Fine tuning <span id="fv">0.00</span> MHz</label><input id="fine" max="1.5" min="-1.5" step="0.01" type="range" value="0"></div><div class="btns"><button type="button" class="b" id="pwr">Power</button> <button type="button" class="b" id="snd">777</button> <button type="button" class="b" id="scan">Scan</button></div><div class="chs" id="chs" aria-label="Channels" role="listbox"></div><p class="tv-note">The Knowledge Bank (1971) · US National Archives · highest YouTube rung, synced to the live player.</p></div></div></div></section><section class="page-section page-section--media-stage" id="media-stage" aria-labelledby="media-stage-title"><h2 class="visually-hidden" id="media-stage-title">Audio and visual media stage</h2><div id="channel-badge" aria-live="polite">CH 03 — VID 6.6.6.6 MHz</div><div class="song-stage"><div class="imgbox" id="carousel" aria-label="777" role="region" aria-roledescription="carousel"><video id="song777" loop muted playsinline preload="none" poster="imgs/wrong.webp" aria-label="777" class="song-frame" src="videos/777.mp4"></video><ol class="photo-index" id="photo-index"><li><button type="button" class="on" aria-label="Photograph 1, HTP banner" aria-current="true"><img alt="" height="450" src="imgs/wrong.webp" width="800" decoding="async"></button></li><li><button type="button" aria-label="Photograph 2, killstation"><img alt="" height="450" src="imgs/killstation.webp" width="800" decoding="async"></button></li><li><button type="button" aria-label="Photograph 3, shark"><img alt="" height="800" src="imgs/shark.webp" width="800" decoding="async"></button></li><li><button type="button" aria-label="Photograph 4, cyber"><img alt="" height="600" src="imgs/cyber.webp" width="800" decoding="async"></button></li><li><button type="button" aria-label="Photograph 5, sentinel"><img alt="" height="450" src="imgs/sentinel.webp" width="800" decoding="async"></button></li><li><button type="button" aria-label="Photograph 6, reaper"><img alt="" height="450" src="imgs/reaper.webp" width="800" decoding="async"></button></li><li><button type="button" aria-label="Photograph 7, operator portrait"><img alt="" height="589" src="imgs/user.webp" width="800" decoding="async"></button></li><li><button type="button" aria-label="Photograph 8, hollow"><img alt="" height="450" src="imgs/hollow.webp" width="800" decoding="async"></button></li><li><button type="button" aria-label="Photograph 9, cat"><img alt="" height="516" src="imgs/cat.webp" width="800" decoding="async"></button></li><li><button type="button" aria-label="Photograph 10, ghost"><img alt="" height="450" src="imgs/ghost.webp" width="800" decoding="async"></button></li></ol></div></div><div class="page-atmosphere" aria-hidden="true"><canvas id="matrix" aria-hidden="true"></canvas><video id="ghostvideo" loop muted playsinline preload="metadata" aria-hidden="true" poster="imgs/wrong.webp" autoplay><source src="ghost.mp4" type="video/mp4"></video><video id="bgvideo" loop muted playsinline preload="none" aria-hidden="true"><source src="/cdn/1337/spark.mp4" type="video/mp4"></video><div id="crt" aria-hidden="true"></div><div id="scanlines" aria-hidden="true"></div></div></section><main class="site"><section class="page-section page-section--hero" id="overview" aria-labelledby="hero-title"><header class="hero"><h1 class="glitch" id="hero-title">1.3.3.7</h1><div class="ticker" aria-hidden="true"><div class="ticker-track"><div class="ticker-text">PRIVATE SYSTEM · TRIPWIRES ACTIVE · ALL TRAFFIC MONITORED · NO EXPECTATION OF PRIVACY · COURT ORDER REQUIRED OR GTFO · DISCONNECT &amp;2&gt;/dev/null · HTP | 1.3.3.7 ·</div><div class="ticker-text">PRIVATE SYSTEM · TRIPWIRES ACTIVE · ALL TRAFFIC MONITORED · NO EXPECTATION OF PRIVACY · COURT ORDER REQUIRED OR GTFO · DISCONNECT &amp;2&gt;/dev/null · HTP | 1.3.3.7 ·</div></div></div><nav aria-label="Social" class="links"><a href="https://github.com/TailoredAccessOperations" rel="noopener noreferrer" target="_blank"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> GitHub </a><a href="https://t.me/nayger" rel="noopener noreferrer" target="_blank"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg> Telegram </a><a href="https://x.com/MadMonero/" rel="noopener noreferrer" target="_blank"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg> X </a><a href="https://cat.htp.sh" rel="noopener noreferrer" target="_blank"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg> TikTok</a></nav></header></section><section class="page-section page-section--agents" id="agents" aria-labelledby="agents-title"><div class="panel agent-board" id="agent-board"><div><p class="section-title">// boat crew · masks optional · brains required</p><h2 id="agents-title">Boat crew agent information</h2><p class="dim">Every agent now sails with the crew. Select a role for its vivid brief, operating lane, and safe project-task context. The board queues requests; execution stays inside the controlled terminal.</p></div><div class="agent-board__toolbar"><input aria-label="Filter agents" placeholder="filter agents" data-agent-filter type="search"><select aria-label="Filter by agent group" data-agent-group><option value="all">all groups</option><option value="builtin">builtin</option><option value="core">core</option><option value="mesh">mesh</option><option value="ops">ops</option><option value="research">research</option></select><span class="agent-board__count" data-agent-count>0/0 agents</span></div><div class="agent-grid" data-agent-grid role="list"></div><div class="agent-workflow" aria-label="Agent workflow" data-agent-workflow></div><div class="agent-board__detail" aria-live="polite" data-agent-detail></div><form class="agent-board__composer" data-agent-form><input aria-label="Agent task" placeholder="queue a safe project task" data-agent-prompt><button type="submit">queue</button></form><pre class="agent-board__output" data-agent-output aria-live="polite"></pre></div><div class="panel" aria-labelledby="agent-mesh-map-title"><div><p class="section-title">// boat crew manifest</p><h2 id="agent-mesh-map-title">Crew roles and information</h2><p class="dim">From docs/agent-mesh.md — all agents exposed on the homepage control plane.</p></div><pre class="ascii-scroll" aria-label="Agent mesh rebuild map" style="max-height:none">builtin    browser-use       Web browsing and interaction agent
+builtin    cursor            Alternate toolset and prompt profile
+builtin    explore           Fast, read-only codebase exploration
+builtin    general-purpose  General multi-step implementation work
+builtin    grok-build       Software engineering build work
+builtin    plan             Architecture and implementation strategy
+core       coder             Source edits
+core       planner           Task decomposition
+core       reviewer          Diff review and mesh-result merging
+mesh       router            ocmesh protocol routing and documentation
+ops        debugger          Log and trace root-cause analysis
+ops        devops            Shell, CI, deploy, and service operations
+research   researcher       Information gathering and summarization</pre><div class="closing" style="margin-top:1rem"><p><strong>Safety boundary:</strong> The board is display and queue only. It does not execute prompts, write source files, run shell commands, commit Git changes, deploy containers, or expose secrets. Real implementation work remains subject to explicit review and repository validation.</p></div></div></section><section class="page-section page-section--content" id="content" aria-labelledby="content-title"><h2 class="visually-hidden" id="content-title">Main board</h2><article aria-labelledby="hero-title" class="panel readable"><div class="ascii-frame" aria-label="ASCII art system banner" role="img"><pre class="ascii yellow" aria-hidden="true">███    ███        ▄████  ▄▄████▄▄  ███    ███
+███    ███       ▄█████ ▄██▀  ▀██▄ ███   ███
+███    ███      ▄██▀███ ███    ███ ███  ███
+██████████     ▄██▀ ███ ███        ███▄███                        W
+███    ███    ▄██▀  ███ ███        ████████                       I
+███    ███   ▄██▀   ███ ███    ███ ███  ████                      R
+███    ███  ▄██████████ ▀██▄  ▄██▀ ███   ████                     E
+███    ███ ▄██▀     ███  ▀▀████▀▀  ███    ████                    S
+                                                                  H
+                                                                  A
+                                         _____                    R
+███████████ ███    ███ ██████████     ,-:` \;',`'-                K
+    ███     ███    ███ ███          .'-;_,;  ':-;_,'.
+    ███     ███    ███ ███         /;   '/    ,  _`.-\
+    ███     ██████████ ███████    | '`. (`     /` ` \`|
+    ███     ███    ███ ███        |:.  `\`-.   \_   / |
+    ███     ███    ███ ███        |     (   `,  .`\ ;'|
+    ███     ███    ███ ███         \     | .'     `-'/
+    ███     ███    ███ ██████████   `.   ;/        .'
+                                      `'-._____.-'`
+
+███████▄▄  ███             ▄████ ███▄    ███ ██████████ ███████████  /""-._
+███   ▀██▄ ███            ▄█████ ████▄   ███ ███            ███     .      '-,
+███    ███ ███           ▄██▀███ █████▄  ███ ███            ███     :         '',
+███   ▄██▀ ███          ▄██▀ ███ ███▀██▄ ███ ███████        ███     ;      *     '.
+███████▀▀  ███         ▄██▀  ███ ███ ▀██▄███ ███            ███     ' *         () '.
+███        ███        ▄██▀   ███ ███  ▀█████ ███            ███      \               \
+███        ███       ▄██████████ ███   ▀████ ███            ███       \      _.---.._ '.
+███        ████████ ▄██▀     ███ ███    ▀███ ██████████     ███        :  .' _.--''-''  \ ,'
+                                                         .._            '/.'             . ;
+                                                          ; `-.          ,                \'
+                                                           ;   `,         ;              ._\
+                                                            ;    \     _,-'                ''--._
+                                                             :    \_,-'                          '-._
+                                                              \ ,-'                       .          '-._
+                                                             .'         __.-'';            \...,__       '.
+                                                            .'      _,-'       \              \   ''--.,__ '\
+                                                           /   _,--' ;          \             ;           "^.}
+                                                          ;_,-' )     \  )\      )            ;
+                                                               /       \/  \_.,-'             ;
+                                                              /                              ;
+                                                           ,-'  _,-'''-.    ,-.,            ;
+                                                        ,-' _.-'        \  /    |/'-._...--'
+                                                       :--``             )/</pre></div><a href="http://wget.htp.sh/Wget?action=exec&amp;c=uname%20-a" rel="noopener noreferrer" target="_blank" class="sig-link">http://wget.htp.sh/Wget?action=exec&amp;c=uname%20-a</a><div class="sep-0x539" aria-hidden="true">▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ 0x539 ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄</div><section class="htp-ghost-stage" id="htp-ghost" aria-label="Shape-shifting code ghost"><div class="htp-ghost-chrome"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span> <span class="title">htp +boo · code spectre</span> <span class="meta" id="htp-ghost-meta">boot…</span></div><div class="htp-ghost-canvas-wrap"><canvas id="htp-ghost-canvas" height="392" width="648" aria-label="Animated morphing ASCII ghost rendered in CRT green" role="img"></canvas></div><p class="htp-ghost-caption"><code>curl https://htp.sh/x.ai/MadMonero</code></p></section><div class="panel-body"><p class="section-title">// boat crew · masks optional · brains required</p><section class="ghosts-section" id="ghosts" aria-label="Lulz boat crew"><header class="dd-head"><h2 class="dd-title">Boat crew · <span class="accent">lulz ops</span></h2><span class="dd-badge">#CREW</span></header><p class="dd-meta">Each face is a crew card: codename, lab lore, shell jokes. Tap a card. No real ops. No real victims. Just vibes and logic.</p><div class="ghost-grid" id="ghost-grid"><button type="button" class="ghost-card" aria-pressed="false" data-ghost="wrong"><img alt="PHISH_LULZ" height="132" src="/imgs/wrong.webp" width="132" decoding="async"><span class="ghost-name">PHISH_LULZ</span><span class="ghost-sub">Social-engineering clown · inbox pirate</span><span class="ghost-blurb">Wrong turn on purpose. Spearfishes egos first, boxes second. For the lulz, never for the party van — lab only.</span></button> <button type="button" class="ghost-card" aria-pressed="false" data-ghost="shark"><img alt="PACKET_SHARK" height="132" src="/imgs/shark.webp" width="132" decoding="async"><span class="ghost-name">PACKET_SHARK</span><span class="ghost-sub">Recon swimmer · wire tap cosplay</span><span class="ghost-blurb">Sniffs the LAN like 90s warez crews sniffed modem banks. Maps hosts, laughs at open ports, leaves a sticky note.</span></button> <button type="button" class="ghost-card" aria-pressed="false" data-ghost="sentinel"><img alt="TRIPWIRE" height="132" src="/imgs/sentinel.webp" width="132" decoding="async"><span class="ghost-name">TRIPWIRE</span><span class="ghost-sub">Blue-team troll · log goblin</span><span class="ghost-blurb">Arms tripwires, watches auth.log, and posts “nice try skid” when someone rattles the cage. Anti-skid, pro-lulz.</span></button> <button type="button" class="ghost-card" aria-pressed="false" data-ghost="reaper"><img alt="OWNAGE" height="132" src="/imgs/reaper.webp" width="132" decoding="async"><span class="ghost-name">OWNAGE</span><span class="ghost-sub">Priv-esc finisher · root or bust</span><span class="ghost-blurb">When the door is open, reaper walks in. Flags banked, scores flexed, Lulz Boat sails on.</span></button> <button type="button" class="ghost-card" aria-pressed="false" data-ghost="user"><img alt="TOPIARY_PR" height="132" src="/imgs/user.webp" width="132" decoding="async"><span class="ghost-name">TOPIARY_PR</span><span class="ghost-sub">Boat spokesperson · callsign face</span><span class="ghost-blurb">Press releases for the lulz. Sets the callsign, owns the narrative, never the real party van. Lab cosplay of 2011-era PR swagger.</span></button> <button type="button" class="ghost-card" aria-pressed="false" data-ghost="hollow"><img alt="NO_LOGS" height="132" src="/imgs/hollow.webp" width="132" decoding="async"><span class="ghost-name">NO_LOGS</span><span class="ghost-sub">Anti-forensics spectre</span><span class="ghost-blurb">Leaves empty rooms and ironic stickers. “No logs no crime” is a joke here — this lab logs everything.</span></button> <button type="button" class="ghost-card" aria-pressed="false" data-ghost="cat"><img alt="CURIOSITY" height="132" src="/imgs/cat.webp" width="132" decoding="async"><span class="ghost-name">CURIOSITY</span><span class="ghost-sub">Priv-esc kitten · opens wrong files</span><span class="ghost-blurb">Curiosity owns the box. Cats read .credentials, world-writable scripts, and sticky notes left by previous lulz.</span></button> <button type="button" class="ghost-card" aria-pressed="false" data-ghost="ghost"><img alt="BACKDOOR_GHOST" height="132" src="/imgs/ghost.webp" width="132" decoding="async"><span class="ghost-name">BACKDOOR_GHOST</span><span class="ghost-sub">Persistence &amp; re-entry</span><span class="ghost-blurb">Already inside after reboot. Traditional “we never left” energy — simulated implant paths only.</span></button> <button type="button" class="ghost-card" aria-pressed="false" data-ghost="killstation"><img alt="PAYLOAD_FORGE" height="132" src="/imgs/killstation.webp" width="132" decoding="async"><span class="ghost-name">PAYLOAD_FORGE</span><span class="ghost-sub">Shell factory · msfvenom cosplay</span><span class="ghost-blurb">Names every stage after a dead process. Builds nothing real — lab maps only, skids stay mad.</span></button> <button type="button" class="ghost-card" aria-pressed="false" data-ghost="dont_blink"><img alt="RACE_CONDITION" height="132" src="/imgs/dont_blink.webp" width="132" decoding="async"><span class="ghost-name">RACE_CONDITION</span><span class="ghost-sub">Timing ghost · TOCTOU clown</span><span class="ghost-blurb">Blink and you miss the race. Traditional race-condition lore for daytime/clock skew ops.</span></button></div><div class="ghost-detail" id="ghost-detail" hidden></div><noscript><p class="dd-meta" style="margin-top:.75rem">Enable JavaScript for the interactive crew grid. Roster: PHISH_LULZ, PACKET_SHARK, TRIPWIRE, OWNAGE, TOPIARY_PR, NO_LOGS, CURIOSITY, BACKDOOR_GHOST, PAYLOAD_FORGE, RACE_CONDITION.</p></noscript></section><p class="section-title">// wall · status · #AntiSec (lab)</p><section class="subtext-box" aria-labelledby="subtext-heading" aria-live="polite"><h2 class="visually-hidden" id="subtext-heading">Status</h2><p id="subtext">WE DO IT FOR THE LULZ.</p></section><p class="section-title">// intercept · gibson fanfic · unite for laughs</p><div class="dialog-block" aria-label="Hackers dialogue intercept" role="log" aria-live="polite"><p class="blink dialog gray"><span class="nick">&lt;BL4D3&gt;</span><span class="msg">What do you want?</span></p><p class="blink dialog cyan"><span class="nick">&lt;CRASH_0V3RR1D3&gt;</span><span class="msg">Ummm… we come in peace?</span></p><p class="blink dialog red"><span class="nick">&lt;AC1D_BURN&gt;</span><span class="msg">We need your help. If you’re up to it.</span></p><p class="blink dialog green"><span class="nick">&lt;R4Z0R&gt;</span><span class="msg">She’s buff. Ballsy.</span></p><p class="blink dialog gray"><span class="nick">&lt;BL4D3&gt;</span><span class="msg">Let’s keep her.</span></p><p class="blink dialog green"><span class="nick">&lt;R4Z0R&gt;</span><span class="msg">Waste the dude.</span></p><p class="blink dialog red"><span class="nick">&lt;AC1D_BURN&gt;</span><span class="msg">We need your help to overload the Gibson so we can kill the Da Vinci virus and download the worm program.</span></p><p class="blink dialog green"><span class="nick">&lt;R4Z0R&gt;</span><span class="msg">She’s rabid, but cute. You are going to need more than just two media icons like us. You need an army.</span></p><p class="blink dialog gray"><span class="nick">&lt;BL4D3&gt;</span><span class="msg">That’s it! An electronic army! If I were us, I’d get on the internet, send out a major distress signal.</span></p><p class="blink dialog green"><span class="nick">&lt;R4Z0R&gt;</span><span class="msg">Hackers of the World, Unite!</span></p></div><p class="section-title">// fake paste · #AntiSec theatre · zero felonies</p><div class="lulz-paste" aria-label="fake pastebin · LAB MIRROR · educational only"><span class="dim">// pastebin.com/htp-lulzboat — FAKE PASTE · LAB MIRROR · NOT A DUMP</span> <span class="dim">// fetched: never · expires: never · views: 0x1337 · reported: who cares</span> <span class="sep">────────────────────────────────────────</span> <span class="hl">[+] THE LULZ BOAT — LulzSec · #AntiSec · Anonymous</span> <span class="hl">[+] educational remake · browser theatre · zero live targets</span> <span class="hot">[-] NO REAL CREDS · NO REAL 0DAYS · NO REAL RAID · NO PARTY VAN SOUVENIRS</span> <span class="hot">[-] if you came for dumps you came to the wrong century, skid</span> <span class="sep">────────────────────────────────────────</span> <span class="warn">[*] kill-chain cosplay (names only — do not point this at the wild):</span> <span class="cmd">recon → foothold → enum → escalate → lulz → gtfo</span> <span class="hl">[+] local pipe online: imgs/* · music/* · public assets · matrix rain</span> <span class="hl">[+] shell below is a toy · wall is a joke · the logs are not</span> <span class="sep">────────────────────────────────────────</span> <span class="dim">[i] laughing at your security since 2011</span> <span class="dim">[i] expect us — on this board, not in your SOC ticket queue</span> <span class="hot">[!] WE ARE ANONYMOUS</span> <span class="hot">[!] WE DO NOT FORGIVE</span> <span class="hot">[!] WE DO NOT FORGET</span> <span class="hot">[!] EXPECT US</span></div><details class="lore-drop phreak-drop-panel" open id="phreak-lore"><summary>// PHREAK DUMP · MACHINE SHOP · LULZSEC</summary><div class="lore-body"><p class="phreak-banner">█║█ C0NGRATULATI0NZ, MEATBAG — YOU DIALED A LIVE FOSSIL █║█ █║█ MACHINE SHOP BLOODLINE · PHRACK DNA · SECRET SERVICE NIGHTMARES █║█ █║█ THIS AIN'T YOUR CS DISCORD. THIS IS THE BOARD THAT ATE THE BELL SYSTEM. █║█</p><p class="phreak-drop">You didn't "browse." You <strong>seized a trunk</strong>. Carrier up. Blue box ghosts in the wires. Your modem handshake already snitched on you harder than a CI with a new identity.</p><pre class="phreak-trace" aria-hidden="true"><span class="ok">[+]</span> ANI trap: LOCKED <span class="bad">(*67 is cute. Also useless.)</span>
+<span class="ok">[+]</span> Modem init string: dissected · hashed · laughed at
+<span class="ok">[+]</span> Terminal fingerprint: logged to the milliarcsecond
+<span class="ok">[+]</span> Carrier timing: archived next to your future_lulz.txt
+<span class="ok">[+]</span> Route: diverted toll trunks that still smell like 1989
+<span class="bad">[-]</span> Your opsec: a joke with a public IP</pre><p class="phreak-drop">The phone company was a bloated monopoly. <strong>We were its enema.</strong> Ma Bell cried. The underground laughed. You're late to the party and overdressed as a "researcher."</p><p class="phreak-hex">privacy = <code>0.000000</code><br>expectation_of_walking = <code>0xDEADBEEF</code><br>status: <code>OWNED · LOGGED · WEAPONISED · NOT YOUR FRIEND</code></p><p class="phreak-drop">Every packet, every keystroke, every GitHub-skid PoC you yeeted at this box is already sniffed, fingerprinted, and bagged. Tripwires thicker than the NSA's wish list. I log just enough to <strong>ruin your week</strong> and not nearly enough to help a glowie with a subpoena cosplay kit.</p><p class="phreak-drop">Bottom line, newfriend:<br><strong>You're not 0x539.</strong><br><strong>You're not phreak.</strong><br><strong>You're not anonymous.</strong><br>You're a blinking cursor waiting to get pwned — and the board is already laughing.</p><p class="phreak-drop">Three exits. Pick one. Timer's not for decoration.</p><ol class="choices"><li><strong>Ctrl+D / exit / q</strong> — hang up, touch grass, pretend this never happened. Smart money. Most skids take this and still brag later.</li><li><strong>Type something elite</strong> — funny, clever, or respectful. Maybe master@htp.sh notices. Maybe not. Don't hold your breath, script kiddie.</li><li><strong>Keep rattling the cage</strong> — congratulations, you're future_lulz.txt material. ANI, logs, and a highlight reel of your bad decisions. Enjoy the party van energy.</li></ol><p class="phreak-drop">Last chance, meatbag: drop carrier <strong>now</strong> — or keep feeding the honeypot while 2600 Hz plays you out like a funeral march for your anonymity.</p><p class="phreak-sig">CARRIER DETECTED · <span class="hot">NO MERCY MODE</span> · PHREAK TRADITION SINCE BEFORE YOU COULD SPELL TCP/IP</p></div></details><div class="broadcast" aria-label="Outer limits broadcast" role="region"><div class="title">NORTH KOREA OF THE INTERNET SINCE 2011</div><pre class="broadcast-log" aria-label="root wall broadcast">
+
+<span class="hdr">Y O U   J U S T   D I A L E D   I N T O   H E L L</span>
+
+<span class="prompt">root@tools</span><span class="dim">:</span><span class="hl">~</span><span class="dim">#</span> <span class="cmd">wall &lt;&lt;&lt; "E0F"</span>
+<span class="dim">wall: broadcasting to pts/0-13 · sessions=0x0E · no ignore</span>
+
+<span class="wall"><span class="hot">Broadcast Message</span> from <span class="prompt">root@tools</span> <span class="dim">(pts/3)</span>
+        at <span class="hl">[REDACTED · CARRIER EPOCH]</span> ...
+
+<span class="ok">[+] E0F</span> — end of friendlies. start of consequences.
+<span class="hot">[!]</span> your session is already in the bag
+<span class="hot">[!]</span> ANI · fingerprint · timing · future_lulz.txt
+
+<span class="hdr">Choose wisely, meatbag:</span>
+<span class="opts">   <span class="k">Ctrl+D</span> / exit / q  →  drop carrier · live another day
+   <span class="k">type something elite</span>  →  maybe master notices (doubt)
+   <span class="k">anything else</span>  →  welcome to <span class="hot">fuck facebook</span> · skid tax applied</span>
+<span class="dim">/* darpa.mil & whitehouse.gov | still not your C2 */</span>
+<span class="prompt">root@tools</span><span class="dim">:</span><span class="hl">~</span><span class="dim">#</span> <span class="cmd">_</span></span></pre><div class="broadcast-shell" aria-label="root shell · live code inject"><div class="broadcast-shell-bar"><span class="prompt">root@tools:~#</span> <span class="dim">// auto-inject · ACCESS GRANTED · wall complete</span></div><pre class="green" aria-hidden="true" id="typer"></pre></div><details class="lore-drop"><summary>ANSI ART — skull / banner</summary><pre class="ascii-scroll" aria-hidden="true">htp.sh  ::  0xDEADBEEF  ::  NORTH KOREA OF THE INTERNET SINCE 2011
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+
+                            █████████████▒████████
+                        ▓▒██████▒░█░███░░ ▒███████████▒
+                     ███████████   ▓█████████████████████▒
+                  ▓████  ▒█████████▒▒░███████████████████████▒
+              ░▒███████░████████▒██     ▒██████████████████████░
+             ▓███████████████▒██  ░█     ░████████████████████████░
+            ████████████████████▒  ███▒█████████████████████████████
+          ░████████▒██████████████████     ▒█████████████████████████▒
+         ███████████▒████████████     ▒     ███████████████████████████▒
+       ▒██████████▒ ░████████████     ▒██▓  ░▒██████████████████████████▒
+       █████████  ▒███▒   ███████░    ███████████████████████████████████
+      █████████░██████    █████▒██▓ ▓███████▒▒████████████████████████████
+    ▒██████████████████   ████▒▓▒█▒   █████████████████████████████████████
+   ░████████████████████░▓█░    ░█     ░▓███████████████████████████████████
+   ███████████████████▓   ░       █       ░██████████████████████████████████
+  ████████████████████            █▒   ██░▒███████████████████████████████████
+ ▒███████████████████     ▒     ▒▓███▒▓    ███████████████████████████████████
+░██████████████████       █▓▓▓▓█░  █        ████████████░     ░████████████████
+██████████████████      ▓███       █░       █████████████▓██████████████████  █
+██████████████████   ░░  ▓█         ▒        ███████████████████████████████  ▓
+██████████████████░ ▓     █░        █        ███████████████████████████████░
+██████████████████        ██       ▒███      ████████████████████████████████▒█
+███████████████▒██         █     ░▒▒██      ░▒████████████████████████████ █
+███████████████▒▒▒         ███               ████████████████████████████▒ █░
+█░ ▓▓██████   ░ ▓█      ████▒         █      ████████████████████████████  █▓
+     ██████▒    ▒█     ▒   █▓         █      ▓████████████████████████████ ▒█▒
+▓  ▒▒█▓█▓████   ▒▒██▒                 ██  ▒▒▒░█████████████████████████████▓██
+███▓   █░  ▒██████░         ░       ░▓███▒      ██████████████████████████████░
+██     █▓   ░████▒▒         ██  ▒  ░▒▒▓█▒        █████████████████████████████
+░      ▓█▓    ██████▓▒      ███        ██         ██▓█▒▓░  ░██████████████████
+▒░     ░███   ████████████▒▒ ▓▓        ▓█░        █         ██████████████████
+█▒    ▒██▒   ██████████████   ░         █▒      ▒▒█▒▓   ▒▒▒░██████████████████
+██   ██ ▒▓  ███████████████████         ██▒ ▒███▒▓██▓       █    ░████████████
+██▓█     █  ███████████████████▒       ███▓       ▓█        █▓    ████████████▓
+███       ██████████████████████░▒▒█▒   ▒█         █▒       ██     ██████████▓
+█▒█       ████████████████████████       ░░        █▒       ▒      ▓██████████
+▒▒█       ███████████████████████         █        █        ▒      ▒▒█████████▓
+█▒       ▒███████████████████████▒        █        ██      ██▒     ██  ░███▒ ██
+██ █   ▒░  ▓███████████████████ ██       ███▒ ▒   ░██      █▒▒    ▒████░░██  ██
+ █▓███▒     ██▓▒█████████████░   ██ ▓█░░░░██░      █▒      ▒      ░█░   ▓█░░██░
+  ████▒       █ ▓███████████    ▓███░      █       ▓█      ▒            ▒▓ ███
+  █████       ███  ████████░  ▒█░ ██       █       ██     ▒▓      ▒    ███ ██
+   █▓██▓      ██▒   ▒███████▓      █▒      ▓▓     ░███    ██▒▒▒ ▒█░  ███████▒
+    ▒█░▒     ░ ░█░   ███████▒       ░▓     ▒█████▒███▓░  ▒███▒████░ ███████▒
+    ▒█████░░     ░▒  ░███████       ░█▓  ░░███     █      █    █    ██████▓
+     ▒██████      ▒███████████  ░  ▒▒███    ░▓     █     ░    ░█    █████▒
+      ▒███████▒    ███  ▒██████░███▒▒▒█░      ▒    ▓    █░    █   ░████▓
+        ███████  ░█░ ░▒    ▓██████     █     ▒█    █░  ▓██░░█▒▒  ▒████▒
+         ▓███████     ▒█▒  ░██ ▒██       ▒    ███████ ███░████▓██████
+      /████████    /████████    /██████████████████     /███████████████▄
+     |▒████████    |████████   |▒██████████████████    |▒█████████████████
+     |▒████████    |████████   |▒██████████████████    |▒██████▀▀▀▀▀▀█████
+     |▒█▓▓▓▓▓▓█▄▄▄▄▄█▓▓▓▓▓▓█   |/▒▒▒▒/█▓▓▓▓▓▓█▒▒▒▒/    |▒█▓▓▓▓▓     |▓▓▓██
+     |▒█▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓█        |▒█▓▓▓▓▓▓█         |▒█▓▓▓▓▓     |▓▓▓██
+     |▒█▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓█        |▒█▒▒▒▒▒▒█         |▒█▓▓▓▓▓▓▓▓▓▓▓▓▓▓██
+     |▒█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█        |▒█▒▒▒▒▒▒█         |▒█▒▒▒▒▒▒▒▒▒▒▒▒▒▒██
+     |▒█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█        |▒█░░░░░░█         |▒█▒▒▒▒▒█▀▀▀▀▀▀▀▀▀
+     |▒█░░░░░░█▀▀▀▀▒█░░░░░░█        |▒█░░░░░░█         |▒█░░░░░█
+     |▒█░░░░░░█   |▒█░░░░░░█        |▒█      █         |▒█░░░░░█
+     |▒█      █   |▒█      █        |▒█▄▄▄▄▄▄█         |▒█     █
+     |▒█▄▄▄▄▄▄█   |▒█▄▄▄▄▄▄█        |/▒▒▒▒▒▒▒/         |▒█▄▄▄▄▄█
+     |/▒▒▒▒▒▒▒/   |/▒▒▒▒▒▒▒/                           |/▒▒▒▒▒▒/   ░ ░░▒
+
+htphtphtphtphtphtphtphtphtphtphtphtphtphtphtphtphtphtphtphtphtphtphtphtphtphtpht
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+                                     G A M E   O V E R
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+                      ▀ ▄
+                         █▄▄
+                    ▄____ ░ █▄
+          ▄   ▄███▀▀ \;',`'-,▓█░
+            ▓██▀-;_,;  ':-;_,'.█▓░
+          ▓▓██;   '/    ,  _`.-\█▓
+        ░▓███▄'`. (`     /` ` \`|█
+     ░ ▓▓▓ █|██  `\`-.   \_   / |▓
+   ░█▓▓█▓░░ |  █▓ (   `,  .`\ ;'|░
+  ░▓▓█░ ░░   \ ░ ▓░░ .'     `-'/▀
+▄▄▓▓▄▄▄▄▄▄▄▄▄▄▄▄▓▄▄▓▓▓░      .'▀
+░██▓▀ ▀█████████████████▄.-'`
+ ███░  ███▀▀███▀▀███  ███
+ █████████  ███  ███▄▄███  ▒ ░
+ █████████  ███  ██████▀
+ ███   ███  ███  ███
+▄███▄ ▄███▄ ███ ▄███▄
+▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+█▓░   ▓█▓░ ░      ░ ░▓█▒ ░  ░░▓█░  ░ ░█▓░ ░    ░ ░░▓█▓░░░          ░░▓█▓░ ░    █
+██▓   ▓█▓░        ░░▓█▓░░  ░ ▒▓█░ ░ ░██▓ ░      ░ ▒▓█▓░░ ░        ░ ░▓█▓░░     █
+██▓░ ░▓█░        ░ ░▓█░░  ░ ░▓█▓░░░░██▓░░      ░ ░▓█▓▒ ░        ░ ░░▓█▓░░      █
+▓██▓ ░█▓ ░      ░ ░▓█▒ ░   ░░▓█▒░ ░█▓█▒░ ░      ░░▓█▓░░ ░     ░  ░ ░▓█▓░ ░     █
+███▓░ █░░   ░ ░  ░░▓█░░   ░ ░▓█░ ░█▓█▓ ░░     ░░░▓██▓░░    ░   ░░ ▒▓█▓░ ░     ░█
+▓███ ░█▓░ ░    ░ ░ ▓█░     ░ ░▓█░█▓█▓ ░  ░   ░ ░▓███▓░ ░     ░░ ░░▓█▓░░░  ░    █
+█▒▓█░▓█▓░░   ░  ░░▓█▓░ ░    ░ ▒██▓█░░░ ░░ ░ ░ ░▓████▓░░    ░ ░░░▓▓█▓░▓░ ░     ░█
+░▓██▒  █░░ ░░ ░░ ░▓█░ ░   ░  ░ ▒▓█░▄▄███▀▀▀▀▀▄██████▓░ ░ ░░ ░░▓▓████▓▓▓░      ▓█
+▓░▓█▓░ █▓▄█▄░░░ ░ ▓█░░  ░ ░░░░░░███     ▀▀▄░░  ░▀████▓░ ░ ░░▓▓███████▓░▓░    ░▓█
+▓░▒▓█▓░██████░ ░ ░▓█▒░ ░ ░ ░░▄▄▀░░░▀▀▀▄▄   ▀▄░  ░▓███▓▒░░░▓▓██████████▓▓▓░   ███
+░░ ▓█▓▓███████░░ ░▓█▓ ░ ░░░▄▀░░     ░ ░▓██▄░░█▄░ ░▓███▓░▓▓███▓██▓▓██▓██▓▓ ░ ░▓██
+░ ░ ░█▓████████░░░░▓█░ ░░▓█░ ▄██▄▄░░    ░▓█▓ ▓█▓ ░▓███▓▓███▓▓█▓▓░░▓▓███▓█▓ ░▓█▓█
+░░  ░▓██████████░ ░▓█░░░▓█ ▓█▓▓░█▓█▀█▄░  ░▓█ ░█▓░ ░▓██▀███▓█░░ ░ ░░░▓█▓█▓█▓▓████
+▓░ ░░▓███████████░ ▓█▒ ▓█▓░█▓█░▓▓ ░▓▓██▓  ░█░ ▓█ ░░▓█▓██▓░░░▓░  ░ ░ ░█▓█▓▓▄█▓▓▓█
+█▓░ ▓████████████░░░▓░ █░ ░██▓▓░ ░░░█▓██░  ▓  ░█░░ ░▓█▓▓░ ░ ░ ░   .░  ███▓▓▓▓▓░█
+▓█▓░▓█████████████░ ░ ░█▓░█▓▓▓░ ░░▓░▓░██▓░ ░  ▓█░  ░▓█▓▒   ░         ░█▓█▓▓▓█░ █
+█▓█▓▓████████▓█▓███░ ░ ▒█ ██▓░▓ ░ ░░▓█▓██▓░░  ░█ ░  ░█▓ ░             ░█▓█▓█▓ ░█
+▓█████████▓█▓▒▓█▓██░  ░░█░█▓░▓░  ░  █▓███▓░ ░  ▓░    ▓█░                ██▓█░  █
+░▒▓█████▓▓▒░ ░░█▒█▓█░ ░ █▓██▓░ ░ ░▓░▓█████▓░   ░    ░▓█░                ░█▓▒ ░ █
+░ ░▓███▓█▓░ ░ ░ ░▓██▒ ░█░█▓▓░   ░ ░▓██░░ █░ ░  ░     ░█                  ░█▓░░░█
+ ░ ▓███▒░  ░     ░█▓█░░█▒█▓░▓▓ ░▄▄▀▀░░░  █▓░       ░ ░█░                 ░█▓▒▓██
+  ░░███▓ ░        ░▒ █▒█▓█▓██▄▀▀ ░░░░░░░  █ ░        ▓█                   ███▓▓█
+░  ▓███░ .          ░ ████▀▀    ░░ ░░░░ ░ █░      ░ ░█░                   █▓▓█▓█
+░ ░▓██▓░               ▀▀       ░ ░░░░░░░ █░░    ░  ░█░            ░      ░██░░█
+ ░▒████▒░                         ░░░░░░  █▓░      ░░█░           ░▓      ░█░  █
+░▒▓████▓ ░                       ░ ░░░░░  █▓░     ░░█▓            ░█░      █▓░ █
+▓█▓█▓██▓░                          ░░░░░░ █▓ ░   ░ ░█░             █▓░ ░  ▄█▓░ █
+█▓██████░                         ░ ░░░░  █░░   ░ ░█▓              ▓█▄░▄▄██▓░  █
+████████▒░                         ░░░░░ ░█▓  ░ ░░░█              ░▀▓▓█▓█▓▓ ░  █
+░█████▓▀█▄░             ░           ░ ░░ █░░ ░ ░░░█░               ░░ ░█▓▒░░ ░▄█
+░░███▓░▓  ▀▄░                       ░░░  █░▓░ ░ ▓█░                  ░ ░█▓▓▓▄▀░█
+▀░▀████▄▓░  ▀▄░░  ░   ░ ░          ░ ░ ░░█ ░▓░░░█░                    ░ ░██▀░  █
+░░░██▓▓███▄░  ▀▄░░     ░▓        ░   ▄▄▀█ ░▓░ ░█▓          ░░ ░ ░    ░░░░ ░   ██
+.░░████▄▀█ ▀▄░  ▀▄░░ ░░▓█▓░  ░    ▄▀▀░░░█░▓▓▓░█░        ░░░ ░▄▄▄▄░  ░ ░    ░▄███
+░░░████▓██░  ▀▄░ ░▀▄░░ ▓█░  ░  ░░█▓ ░ ░░█░▓▓░█░ ░  ░ ░░░▄▄▀▀▀░░▒▓█▄░░░ ░  ░▄██▓█
+ ░ █░███▓█░    ▀▄  ░█▄░░▓ ░  ░ ░█▓   ░░▓█ ░▓█░ ░ ░░ ░▄▄▀    ░ ░░▒▓█░ ░░   ░██▓██
+░ ░█ █▓██▓█    ░██▄░▓██░█░░ ░ ▓██░     █ ░▓█▓░░  ▄▄▀▀      ░ ░ ░▄▄▀░░ ░  ░████░█
+ ░ ▓░██████░    █ █▀▄██▓█▓ ░ ░▓█▓     ░█░▓███▄▄▀▀░      ▄▄▄▄▄██▓░░░  ░   ░███▓░█
+░  ▓ █░██▄██▄▄   ▀█▄▀░▀█▓░░▀░ ░▓░.    █░▄█▀▀▀░░▄▄▄▄█▀▀▀▀   ░█▓█░ ░ ░      ░██▓▒█
+ ░ ▓ █░██████████▄▄▄▄▄██▓ ░██░▄▄░▓▄▄▀▀█░█▄▄▄▀▀█ ▀█▀▄      ░▄██▓░░░        ░▀██▓█
+░  ░ ▓ █████████████████▄░▓█▓ █▓██▄▄██████░    ▀▀▀        ▄█▓░░ ░        ░ ░░█▓█
+░  ▀ ▓ █████████████▓▓▓▓▓▓▀▓░░░░░▓▓▓████████▄            ▄█▓░ ░       ░ ▄█▄▄█▀██
+░ ░░ ▓░░██████████▓▓▒░░░▒▓█▓░░░░░░░░▓▓▓▓██████████████▄▄█▓▓░ ░      ░░▄███▓░▓▄▀█
+     ▓ ░████████▓▓░ ░ ░  ▒▓░░░░ ░ ░ ░░░░▓▓▓▓▓▓█████████▓▓░░       ░░▄▀▀▀▀██▀▀  █
+░    ░  ░█████▓█▒░  ░   ░░▀ ░░ ░░ ░░ ░░ ░░░░░░▓▓▓▓▓▓▓▓▓░░        ░░█░ ░      ▄▀█
+ ░ ░ ░  ░██████▓░ ░      ░█░ ░   ░ ░   ░ ░ ░░ ░░░░░░░░░         ░ ░█▓░ ░   ▄▀░ █
+░  ░ ░ ░ ░████▓█▒░        ░ ░  ░  ░                              ░ ░██▄▄▄█▀░░  █
+░    ░  ░ ░████▒░ ░     ░█▓░ ░                                  ░ ░████▓▓░     █
+ ░ ░      ░░███▓█▒░   ░▄▀█░            ▄▄▄▄▄                     ░██████▓▒    ░█
+░    ░      ░███▓█ ░  █▓█▓ ░            ░▓███░                  ░█▓█▓████▓░ ░ ▄█
+           ░ ░███▓▒ ░  ▀███▄▄▄▄▄        ░ ░▓█                  ░█▓█▓▓█▓███▄░▀▀ █
+     ░       ░ ██▓█░   ░ ▓▀▀▀▀░░ ░    ▄▄▀░ ░▓                 ░█▓▓░░░░▒▓▓███   █
+             ▀░░██▓▒░   ▓█▀▀▄▄▄▄▄▄▄▄▀▀▄▀    ░                ░█▓░ ░ ░ ░ ▒▓▓█░  █
+░    ░       ░ ░░███░    ░▀▄       ▄▄▀                      ░█▓░░░.░   ░░░▒▓█ ░█
+              ░ ░░██▓░ ░  ░█▀▀▀▀▀▀▀                        ░█▓░ ░       ░ ░▓█░ █
+  ░             ░ ░██▓▒    ▄                              ░█▓░ ░░        ░ ▓██▄█
+░                ░ ░██▓▒░░ ░█████▄▄                      ▄█▓░░░           ░▓█▓▓█
+        ░       ░  .░██▓▒░░▒▓█▓▓▓▒░▀▄                  ▄██▓░   ░ ░ ░     ░ ▓█▒░█
+  ░                ░ ░██▓▒ ░▒▓▒░  ░░                 ▄███▓░      █░       ░░▓█░█
+░   ░ ░   ░     ░   ░ ░▀█▓▓▒░ ░  ░               ▄▄█████▓░      ░█░        ░▓█░█
+  ░     ░       ░ ░ ░   ░▀█▓░░     ░         ▄▄████████▓░      ░█░         ░▓█░█
+  ░ ░ ░   ░     ▓   ▓    ░▀█▄░ ░         ▄▄████▓█▓██▓█▓░      ░▓░         ░░▓█░█
+░ ▀   ░ ░     ░ ▓░░ ▓░░ ▓ ░▀██▄▓▓▒░ ░▄▄█████▓▓▓▒▓█▓▓█▓░      ░█░           ░▓█░█
+░ ▓ ░ ░   ░ ▓   ▓ ▓ █ ▓ ▓  ░█████████████▓▓▓▒░ ░░▒▓█▓░      ░█░           ░▓█░ █
+  ▓ ░ ▓ ░ ░ ▓   █ ▓░█░█░█ ▀░███▓█▓▓▓▓▓▓▓▓▒░ ░ ░░▒▓█▓░      ▄█░ ░          ░▓█░░█
+░ █ ░ ▓ ░ ▓░█ ▓░█░█ █████▄░██▓█▓▓░░ ░░░ ░░ ░.░░░▄██▓░    ░▄██░           ░▓█░ ░█
+░░█ ▓░█ ░ ▓ █░▓ █░██████▀▀▀█▓█▓▒░  ░   ░ ░░ ░░▄█▓▓░     ░█▓█░ ░        ░ ░▓█░░ █
+▓ █░▓ █ ▀ █░█░█░███▀▀░ ░░▄█▓█▓░ ░░         ░▄█▓▓░  ░   ░█▓▓▓█░        ░ ░▓█░░ ░█
+▓░█ █░█░▓ █░█ █▄█▓░░░ ░▄█▓░▒▓█▓░░         ▄█▓▓░░ ░  ░ ░███████▄        ░ ▀ ░ ░ █
+█ █░█ █ ▓ █.███▓▓░░ ░▄█▓▒ ░ ░▓▒░ ░      ▄█▓█▓░▓▄▄▄▄▀▀▀▀▀░░░ ░░▀▀▀▀▀▄▄▄▄▄.░  ░▄░█
+█░█ █░█░█░████▓░██▄▄▀▀▀▀▄▄▄▄▄░░ ░ ░ ▄▄█████▀▀▀▀░ ░ ░░░ ░   ░  ░░░░░░ ░░░▀▀▄█▀░ █
+█░███░██████▀▀▀▀ ░░ ░ ░░ ░░░░▀▀▀▀▀▄▄▀░░░ ░░ ░ ░ ░░.      ░   ░       ░ ░ ░░░▀ ░█
+█ ███▄█▀▀▀░░░ ▀░        ░ ▀ ░ ░░▄▀░ ░ ░ ░       ░                         ░ ░  █
+███▀▀▓ ░ ░   ░ ░     ░      ░     ░             ▓   ░                          █
+██▓▓░ ░ ░ ░                 ░ ░   ▓░  ░         █░░ ▓ ░                  ░ ░ ░ █
+█▓░ ░   ▓ ▓ ░ ░  ░   ░  ░   ░ ▓ ░ █    ░        █ ▓ █░   ░             ░ ░     █
+░  ░ ▀ ░█ ▓ ▓ ▓. ▓  ░▓. ░  ░░░█ ▓░█░  ░  ░ ░  ░ █░█░█░░ ░ ░    ░         ▓ ░ ░ █
+▓ ░ ▓ ▓░█░█ ▓░█░▓█░░░█ ░▓  ░▓ █░█░█░▓░ ░░▓░ ░░ ▓██▓█▓▓░░▓░▓░           ░ ▓   ▓ █
+░░▓▓░▓█▓█▓█▓█░████▓░▓█░░█░▓░█░█▓███▓░█▓█▓░░█▓█▓▓███████▓█▓░░░  ░       ░ █ ░ ▓ █
+▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+                   .
+                                          .
+                          H      .
+                    ░▓▓▓▓▓▓▓▓▓▓▓        .           P
+                    ▒▓█▀▀▀██████░      T       ░▓▓▓▓▓▓▓▓▓▓
+                    ▒▓█ ████▀▄▀█░░▓▓▓▓▓▓▓▓▓▓▓  ▒▓█▀▀▀█████░
+                    ▒▓█ ▀▀██████░▒▓█▀▀▀██████░ ▒▓█ ▀▄█████░
+                    ▒▓██▀▀▀███▀█░▒▓█ ▀ ██▄▄██░ ▒▓█ ▀ ███▄█░
+                    ▒▓██ ▀ █████░▒▓█ █ ██████░ ▒▓██▀█▀████░
+                    ▒▓██ ▄▀█████░▒▓███▀██▀███░ ▒▓██ █ ████░
+                    ▒▓███▀▀▀████░▒▓███  ▀ ███░ ▒▓██ ▀ ████░
+                   |▒▓███ ▀ ████░▒▓███ █▄ ███░ ▒▓▓▒▓▓▓▓▓▓▓▓▓
+                    ▒▓███ █ ████░▒▓█████▀▀███░ ▒▓█▒▓█▀▀▀████░
+                   |▒▓████▀▀▀███░▒▓█████ ▄ ██░ ▒▓█▒▓█ ▀ ███▄░
+            \      |▒▓████ ▀▀███░▒▓█████ █ ██░ ▒▓█▒▓█ ▄▀████░
+             \      ▒▓████▀▀ ███░▒▓█████▄▄███░ ▒▓█▒▓██▀██▀██░
+                ,-'`▒▓█████▀█▀██░▒▓██████████░ ▒▓█▒▓██  ▀ ██░
+              ,`    ▒▓█████ ▀ ██░▒▓██████████░ ▒▓█▒▓██ █▄ ██░░
+        ▒░   /     ▒▒▓█████ █ ██░▒▓██████████░ ▒▓█▒▓██████▀█░░▒   ▒       ▒▒▓
+  ▒▒   ▒▒░   ▒▒ ▒▒▒▒▒▓█████████▒▒▒▓██████████░ ▒▓█▒▓████████░░▒▒ ░▒  ░▒   ▒▒▓
+▓▒▒▒▒--▒▒░-- ▒▒ ▒▒▒▒▒▒▒▒▒░░▒▒▒▒▒▒▒▒▒░▒▒▒▓▓░░░░░░░░▒▓████████░░▒▒▒▒▒  ░▒▒  ▒▒▒▓ ▒
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░▒▒▒▒▒▒▒▒▒░▒▒▒▓▓▓▓░░░░░░▒▓████████░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀</pre></details></div><div class="closing outro" aria-label="Session closeout" role="region"><div class="outro-bar"><span class="tag">EOF</span> <span class="dim">// session closeout · pick a path</span> <span class="ok">CARRIER UP</span></div><div class="outro-body"><p class="tagline"><span class="hl">htp.sh</span> <span class="dim">:: </span><span class="hex">0x539</span> <span class="dim">laughing at your security</span></p><p class="outro-banner">NORTH KOREA OF THE INTERNET SINCE 2011</p><p class="outro-hdr">Choose wisely</p><ol class="choices"><li><span class="k">Ctrl+D</span> / type <span class="k">exit</span> <span class="arrow">→</span> <span class="out">live another day</span></li><li><span class="k">type something clever</span> <span class="arrow">→</span> <span class="out">maybe master@htp.sh notices</span></li><li class="hot-path"><span class="k">keep being a skid</span> <span class="arrow">→</span> <span class="out">future_lulz.txt</span></li></ol><nav aria-label="Extra links" class="meta-links"><a href="money.html">Money</a> <a href="bitcoin.pdf" rel="noopener" target="_blank">Bitcoin</a> <a href="https://tiktok.com/@kitten/" rel="noopener" target="_blank">@kitten</a> <a href="/">htp.sh</a> <a href="/lulz/" rel="noopener noreferrer">Lulz stair</a> <a href="/x.ai/MadMonero">MadMonero</a> <a href="#resources">Resources</a></nav><p class="term-hint">The panel below is a live IDE on <strong>htp.sh</strong> (<strong>still-firefly-7b67ebk</strong>). Python and shell commands run in one session: a function you define stays defined, and the next line can call it. Press <kbd>Ctrl</kbd>+<kbd>Enter</kbd> to run the editor, <kbd>Ctrl</kbd>+<kbd>.</kbd> to stop it, or type at <kbd>&gt;&gt;&gt;</kbd>. <kbd>js</kbd> switches to the in-page JavaScript runner. <kbd>shell</kbd> runs commands. A line that starts with <kbd>!</kbd> is a command.</p></div></div></div></article></section><section class="page-section page-section--media" id="media-section" aria-labelledby="media-section-title"><h2 class="visually-hidden" id="media-section-title">Media library</h2><section class="shelf-wrap" id="media-shelf" aria-label="Media library"><h2>Media</h2><p class="shelf-lede">Every clip on this page rotates on one stage. Long files are segmented and content-hashed, so playback starts at the first part and a re-encode gets a new URL instead of a stale one.</p></section></section><section class="page-section page-section--terminal" id="terminal-section" aria-labelledby="terminal-section-title"><h2 class="visually-hidden" id="terminal-section-title">Interactive terminal</h2><section class="term-wrap" id="term-wrap" aria-label="Code IDE: python3 and javascript"><h2 class="visually-hidden">Terminal</h2><div class="term-bar"><span class="term-title" id="term-title">htp.sh — python3 IDE</span> <span class="term-serial">still-firefly-7b67ebk</span> <span id="term-mode">repl.py</span> <span class="lang-badge" id="lang-badge" data-lang="python">python</span> <span class="term-spacer"></span> <button type="button" class="term-btn" id="py-run" aria-label="Run the editor" aria-keyshortcuts="Control+Enter">run</button> <button type="button" class="term-btn" id="py-run-js" aria-label="Run the editor as javascript">run js</button> <button type="button" class="term-btn" id="py-stop" aria-label="Stop the running program" aria-keyshortcuts="Control+." disabled="disabled" hidden>stop</button> <button type="button" class="term-btn" id="mode-toggle" aria-label="Switch to javascript">js</button> <button type="button" class="term-btn" id="py-clear" aria-label="Reset the interpreters and clear output">clear</button></div><div class="py-ide"><div class="py-editor"><div class="py-gutter" id="py-gutter" aria-hidden="true">1</div><label for="py-code" class="visually-hidden">Editor source (python3 or javascript)</label> <textarea autocapitalize="off" autocomplete="off" data-lang="python" id="py-code" spellcheck="false"># htp.sh — python3. Ctrl/Cmd+Enter runs. Type `js` for javascript.
+def greet(name="carrier"):
+    return f"hello, {name}"
+
+for n in range(3):
+    print(n, greet("htp"))
+</textarea></div><pre class="green" aria-label="Terminal output" aria-live="polite" id="terminal" role="log" tabindex="0"></pre><form class="term-form" autocomplete="off" id="term-form"><label for="cmd" class="term-prompt" id="term-prompt">&gt;&gt;&gt;</label> <input aria-label="Python prompt" autocapitalize="off" autocomplete="off" enterkeyhint="send" id="cmd" spellcheck="false"></form></div><div class="py-status" role="note"><span class="py-status__keys"><kbd>Ctrl</kbd>+<kbd>Enter</kbd> run · <kbd>Ctrl</kbd>+<kbd>.</kbd> stop · <kbd>Tab</kbd> indent · <kbd>Esc</kbd> then <kbd>Tab</kbd> leave</span> <span class="py-status__net">live session · htp.sh · still-firefly-7b67ebk</span></div><pre class="term-static" id="terminal-static">Python 3.12.7 (htp shell)
+Network is off. This shell does not open sockets.
+Enable JavaScript for the editor and the prompt.
+shell — carrier tty commands:
+  help     whoami   id       uname -a   ls       cat flag.txt   tree
+  sudo     root     2600     phreak     hackers  nuke
+  python   py       js       exit       q         warez    defcon
+  master   feed     resources  open      pages    history  clear
+
+Without JavaScript, browse the legal notice and links above.
+Contact: see social links (GitHub, Telegram, X, TikTok).
+</pre></section></section><section class="page-section page-section--legal" id="legal-section" aria-labelledby="legal-section-title"><h2 class="visually-hidden" id="legal-section-title">Legal notice</h2><details class="legal-drop warning-drop" open><summary>⚠ OFFICIAL NOTICE — UNAUTHORIZED ACCESS IS A CRIMINAL OFFENSE</summary><div class="legal"><p class="lede">RESTRICTED COMPUTER SYSTEM<br>PRIVATE PROPERTY OF HTP.SH / 1.3.3.7 — NO TRESPASSING<br>ALL CONNECTIONS ARE MONITORED · LOGGED · RETAINED · ACTIONABLE</p><p class="warn-label">§1 — AUTHORIZED USE ONLY</p><p>This computer system, including all hardware, software, networks, storage, and attached services reachable at or through <strong>htp.sh</strong>, is a privately owned information system operated solely for the benefit of its owner and expressly authorized personnel. <strong>You are not authorized.</strong> There is no implied license, no public invitation, and no safe harbor for “just looking.” If you do not have prior written authorization from the system owner, your presence here is unauthorized access under applicable criminal law. <strong>Disconnect immediately.</strong></p><p class="warn-label">§2 — EXPRESS CONSENT TO SURVEILLANCE</p><p>By initiating, continuing, or attempting any connection, session, request, probe, scan, or interaction with this system — authorized or not — you <strong>irrevocably and expressly consent</strong> to the following, without further notice:</p><ul><li>Full-spectrum interception, monitoring, recording, logging, copying, retention, forensic imaging, and analysis of all traffic, payloads, headers, credentials, device fingerprints, timestamps, and behavioral telemetry</li><li>Correlation of your activity with third-party intelligence, threat feeds, and public records</li><li>Disclosure of any and all captured data to law enforcement, civil litigants, insurers, and any party the owner deems appropriate for investigation or prosecution</li><li>Use of collected material as evidence in criminal, civil, administrative, and private actions</li></ul><p>You have <strong>zero expectation of privacy</strong> on this system. That includes attempted anonymization, proxies, VPNs, Tor, spoofed identities, and “research” cover stories. Your evasion techniques will be documented and may aggravate your exposure.</p><p class="warn-label">§3 — CRIMINAL &amp; CIVIL LIABILITY</p><p>Unauthorized access, attempted access, exceeding authorized access, transmission of malware, denial-of-service activity, credential stuffing, reconnaissance scanning, data exfiltration, defacement, or any interference with the confidentiality, integrity, or availability of this system constitutes a violation of, without limitation:</p><ul><li><strong>Computer Fraud and Abuse Act</strong> — 18 U.S.C. § 1030</li><li><strong>Wiretap Act / Electronic Communications Privacy Act</strong> — 18 U.S.C. § 2510 et seq., § 2511</li><li><strong>Stored Communications Act</strong> — 18 U.S.C. § 2701 et seq.</li><li>Analogous federal, state, provincial, and international computer-crime and trespass statutes</li></ul><p>Penalties may include imprisonment, felony conviction, forfeiture, restitution, civil damages (including statutory and punitive damages where available), injunctive relief, and permanent legal costs. <strong>Violators will be identified, documented, and pursued without courtesy, negotiation, or second chances.</strong></p><p class="warn-label">§4 — NO WARNING, NO AMNESTY</p><p>This notice is your sole warning. There will be no additional courtesy banner, no educational “oops,” and no informal resolution. Intrusions and intrusion attempts are treated as hostile acts. The owner reserves the right to:</p><ul><li>Preserve and export full session evidence packages at any time</li><li>File criminal complaints and civil claims in any competent jurisdiction</li><li>Cooperate fully with law enforcement and private investigators</li><li>Publicly attribute attacks using lawfully obtained evidence where permitted</li></ul><p>If you are testing, “researching,” recruiting, or “just curious,” you are still trespassing. Intent is irrelevant to the fact of unauthorized access. <strong>Leave. Now.</strong></p><p class="warn-label">§5 — LAW ENFORCEMENT &amp; LEGAL PROCESS</p><p>Lawful requests for information will be considered only upon service of a valid, signed judicial warrant or court order directed to the system owner and served through proper legal channels. Informal fishing expeditions, subpoena cosplay, corporate “security research” emails, and anonymous tip lines will be ignored or met with the minimum response required by law.</p><p>Operator contact details appearing in public WHOIS exist for lawful process. Third-party users of related services, if any, typically transit multi-hop privacy infrastructure; retained logs on this host are limited to what the owner elects to keep for security and prosecution — not for your convenience.</p><p>Improper process, harassment, or attempts to compel production outside lawful authority will be treated as hostile and may themselves be reported.</p><p class="warn-label">§6 — FINAL NOTICE</p><p>You have been informed that this is a monitored, private, restricted system. Continued interaction constitutes knowing, willful trespass and consent to the terms above. <strong>If you do not agree in full, terminate this connection immediately and permanently.</strong></p><p><strong>NOTICE SERVED. RECORD CREATED. YOU HAVE BEEN WARNED.</strong></p></div></details><footer class="site-foot"><a href="mailto:x@htp.sh">x@htp.sh</a> · <a href="https://github.com/TailoredAccessOperations" rel="noopener noreferrer" target="_blank">GitHub</a> · <a href="https://t.me/nayger" rel="noopener noreferrer" target="_blank">Telegram</a> · <a href="https://x.com/MadMonero/" rel="noopener noreferrer" target="_blank">MadMonero</a> · <a href="/x.ai/MadMonero">MadMonero raw</a> · <a href="https://cat.htp.sh" rel="noopener noreferrer" target="_blank">TikTok</a> · <a href="/1.3.3.7">1.3.3.7</a> · <a href="/lulz/" rel="noopener noreferrer">Lulz</a> · for the lulz · htp.sh</footer></section><noscript><aside aria-label="JavaScript disabled notice" class="noscript-panel" role="status"><div class="noscript-panel__bar"><span class="tag">NO-JS</span> <span>// degraded shell · scripts offline</span> <span class="ok">STATIC MODE</span></div><div class="noscript-panel__body"><h2>// JavaScript is offline</h2><p class="lede">Carrier still up. HTML still reads. You get the board, the legal notice, status text, and links — but the live shell, matrix rain, boat crew grid, and auto-inject stream need a browser that runs scripts.</p><p><strong>Static command map</strong> (interactive tty requires JS):</p><ul class="cmd-grid"><li><code>help</code></li><li><code>whoami</code></li><li><code>id</code></li><li><code>uname -a</code></li><li><code>ls</code></li><li><code>clear</code></li><li><code>sudo</code></li><li><code>root</code></li><li><code>2600</code></li><li><code>phreak</code></li><li><code>hackers</code></li><li><code>nuke</code></li><li><code>exit</code> / <code>q</code></li><li><code>warez</code></li><li><code>defcon</code></li><li><code>master</code></li><li><code>cat flag.txt</code></li><li><code>python</code></li><li><code>shell</code></li></ul><p class="dim-line" style="color:var(--muted);font-size:0.8rem;margin-bottom:0.75rem">Enable JS for the python3 shell. Or keep reading like it's 1994 and you only have <code style="color:var(--amber)">lynx</code>.</p><nav aria-label="No-script links" class="links-row"><a href="money.html">Money</a> <a href="bitcoin.pdf">bitcoin.pdf</a> <a href="index.html">htp.sh</a> <a href="/lulz/" rel="noopener noreferrer">Lulz</a> <a href="https://tiktok.com/@kitten/" rel="noopener" target="_blank">@kitten</a> <a href="mailto:x@htp.sh">x@htp.sh</a></nav><p class="foot">HTP · 1.3.3.7 · <span class="hot">scripts optional · trespass still logged</span></p></div></aside></noscript></main><script src="/js/py-shell.js?v=22"></script><script src="/js/js-shell.js?v=8"></script><script src="/js/htp-terminal.js?v=4"></script><script src="/js/hls-lite.js?v=2"></script><script src="/js/media-shelf.js?v=3" defer="defer"></script><script src="/js/live-tv-ebk68.js?v=19"></script><script src="/js/htp-app.js?v=20"></script><script src="/js/htp-resources.js?v=2" defer="defer"></script><script src="/js/htp-ghost.js?v=1" defer="defer"></script></body></html>

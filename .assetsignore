@@ -1,0 +1,26 @@
+# Not shipped to Cloudflare Assets
+.DS_Store
+**/.DS_Store
+**/._*
+index 2.html
+# iCloud "conflicted copy" duplicates — stale forks of real source files that
+# nothing links to, but that wrangler would otherwise happily upload (~170KB).
+* 2.*
+**/* 2.*
+backup.html
+_*.html
+_*.png
+*.tmp
+*.opt
+
+# BTC package internals — proofs/json stay; tooling/secrets stay off CDN
+btc/.venv/**
+btc/**/__pycache__/**
+btc/gnupg/**
+btc/docker-wallet/**
+btc/bin/**
+btc/cache/**
+btc/full-verify/**
+**/.venv/**
+**/__pycache__/**
+**/gnupg/**

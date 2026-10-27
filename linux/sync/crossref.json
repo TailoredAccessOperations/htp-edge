@@ -1,0 +1,54 @@
+{
+  "checked_at": "2026-10-22 18:42:18 UTC",
+  "easter47": {
+    "username": "easter47",
+    "cased": "EASTER47",
+    "uid": "e24107e5a5687a829a06a0e60a78d219",
+    "created": "2026-06-22 02:53:37 UTC",
+    "full_name": "god",
+    "bio": "God or Devil.",
+    "location": "Rome",
+    "primary_pgp": "20867A78369EA23A420DF3C4D10E7AF2A93DE56B",
+    "pgp_uid": "easter47 (htp.sh/money) <easter47@keybase.io>",
+    "pgp_subkey": "E2E48D856BF35E4F41B89BF6DC39612C9C0BB640",
+    "sigchain_pass": "25/25",
+    "pgp_link_seq": 24,
+    "pgp_link_ok": true
+  },
+  "linux": {
+    "username": "linux",
+    "uid": "caf90169eefa5f807d577486b9f79519",
+    "primary_pgp": "da994c8789892c2c9ca0df149e88d841d1ddc62e",
+    "pgp_uid": "Will Ericson <admin@htp.sh>",
+    "sigchain_links": 349,
+    "mentions_easter47": false
+  },
+  "track": {
+    "seqno": 10,
+    "signed": "2026-06-22 03:35:23 UTC",
+    "signature_ok": true,
+    "tracked_username": "linux",
+    "tracked_uid": "caf90169eefa5f807d577486b9f79519",
+    "tracked_seqno": 349,
+    "tracked_payload_hash": "0f82a7583aa4307ffca0d63b5917ba5ba5be80a1a21587d561a2174657de6a9f",
+    "hash_matches_verified_linux_head": true,
+    "pinned_pgp": "da994c8789892c2c9ca0df149e88d841d1ddc62e",
+    "pinned_pgp_is_current_linux_primary": true
+  },
+  "pgp_sync": {
+    "shared_fingerprints": [],
+    "gpg_cross_certifications": 0,
+    "btc_copy_same_fingerprint": true,
+    "btc_copy_comment": "https://keybase.io/download",
+    "live_export_comment": "https://keybase.io/easter47"
+  },
+  "dns_live": {
+    "htp.sh": "apex TXT contains linux proof fa9sRCfKXM69u3_m6Ees-TI3miyGky-umIQjkfqwI2M",
+    "_keybase.htp.sh": "contains easter47 proof oa7Qu2IzymWB0_wosL-IwYpBTmIiUn1-A6lQNqPKE_c",
+    "war.htp.sh": "contains easter47 proof kWeP57XOd_CxiO4XXFtmKyVDvBAZKowBqRIkFt8ooxs",
+    "files.htp.sh": "contains linux proof Xlai5Lt6Im9_gkiKsfkcACTtDnd_bEIkd19RVinQO8Q"
+  },
+  "shared_coin_addresses": [],
+  "easter47_bitcoin_claim": "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa",
+  "note": "A Keybase track pins the tracked account's published chain head and PGP key. It is not a certification that one OpenPGP key owns the other, and a cryptocurrency claim is not spend control."
+}

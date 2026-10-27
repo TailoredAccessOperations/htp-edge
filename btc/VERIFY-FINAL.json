@@ -1,0 +1,57 @@
+{
+  "generated_utc": "2026-07-19T01:25:30.183529+00:00",
+  "pgp_note": "easter47 publishes OpenPGP 20867A78369EA23A420DF3C4D10E7AF2A93DE56B (uid easter47 (htp.sh/money) <easter47@keybase.io>), signed into the Keybase sigchain. akula47 publishes no OpenPGP key. The Bitcoin claim itself is a Keybase NaCl ed25519 signature (sig_version 2) and does not prove genesis spend control. Detached signature: /btc/PGP-ATTESTATION.json.asc.",
+  "user_provided_sig_id": {
+    "overall": "PASS",
+    "username": "akula47",
+    "uid": "ba76fcdbf7a8a82cdcfabb2b4ca1e219",
+    "btc_address": "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa",
+    "type": "bitcoin",
+    "sig_id": "6786e86aabce6720a3ac52f3661537c9d01a53fa2905fa8622503642997e9e6e0f",
+    "kid": "01204acb827c34fb9ac44315365f62786f697b8c10ca47e5d9b96e1a1b9606da26c20a",
+    "ed25519_pubkey": "4acb827c34fb9ac44315365f62786f697b8c10ca47e5d9b96e1a1b9606da26c2",
+    "checks": {
+      "ed25519_over_compact_link": "PASS",
+      "payload_json_bound_via_sha256": "PASS",
+      "sig_id_eq_sha256_blob_0f": "PASS"
+    },
+    "caveat": "Keybase claim is self-attestation by NaCl device key; does NOT prove BTC private-key control."
+  },
+  "easter47_official_btc": {
+    "overall": "PASS",
+    "username": "easter47",
+    "uid": "e24107e5a5687a829a06a0e60a78d219",
+    "btc_address": "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa",
+    "type": "bitcoin",
+    "sig_id": "fa0d750fa6644335738cde1b61a967099b2bf9b4dc2243578f3746924240466e0f",
+    "kid": "0120f7a7c82a39e3a6d560a26b8f6f588abcbd8112fc3ac17377057b3c0281c48a360a",
+    "ed25519_pubkey": "f7a7c82a39e3a6d560a26b8f6f588abcbd8112fc3ac17377057b3c0281c48a36",
+    "checks": {
+      "ed25519_over_compact_link": "PASS",
+      "payload_json_bound_via_sha256": "PASS",
+      "sig_id_eq_sha256_blob_0f": "PASS"
+    },
+    "caveat": "Keybase claim is self-attestation by NaCl device key; does NOT prove BTC private-key control."
+  },
+  "mapping": {
+    "requested_sig_id": "6786e86aabce6720a3ac52f3661537c9d01a53fa2905fa8622503642997e9e6e0f",
+    "belongs_to": "akula47",
+    "easter47_btc_sig_id": "fa0d750fa6644335738cde1b61a967099b2bf9b4dc2243578f3746924240466e0f",
+    "shared_address": "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa",
+    "address_note": "Genesis block coinbase (Satoshi). Multiple users can claim any address on Keybase."
+  },
+  "trust_anchors": {
+    "keybase_linux_pgp": "https://keybase.io/linux/pgp_keys.asc -> key 9E88D841D1DDC62E Will Ericson",
+    "keybase_code_signing": "https://keybase.io/docs/server_security/code_signing_key.asc -> key 47484E50656D16C7",
+    "gnupg_home": "/home/av/btc/gnupg-keybase",
+    "easter47_pgp": "20867A78369EA23A420DF3C4D10E7AF2A93DE56B easter47 (htp.sh/money) <easter47@keybase.io> https://keybase.io/easter47/pgp_keys.asc"
+  },
+  "xai_install": {
+    "url": "https://x.ai/cli/install.sh",
+    "sha256": "0465d810453bbf18608ccae310fa79f4c59ae4a0538bd8a3a374ebce749be952",
+    "md5": "d98cb0947bec970a8e8d2cbb36e07b17",
+    "bytes": 17003,
+    "executed": false,
+    "note": "Sanitized download only; curl|bash NOT run"
+  }
+}

@@ -1,0 +1,17 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex, nofollow"><title>HTP WAF watchdog</title><style>:root{color-scheme:dark}body{margin:0;background:#0d1117;color:#c9d1d9;font:14px/1.5 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;padding:1.5rem}h1{font-size:1.1rem;letter-spacing:.08em;color:#58a6ff;border-bottom:1px solid #21262d;padding-bottom:.5rem}.card{border:1px solid #21262d;border-radius:8px;padding:.75rem 1rem;margin:.5rem 0;max-width:720px}.label{color:#8b949e;text-transform:uppercase;font-size:.68rem;letter-spacing:.1em}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:.5rem}.num{font-size:1.3rem;color:#f0f6fc}table{border-collapse:collapse;width:100%}td{padding:.15rem .4rem;border-bottom:1px solid #161b22}button{background:#21262d;color:#c9d1d9;border:1px solid #30363d;border-radius:6px;padding:.4rem .8rem;font:inherit;cursor:pointer}button:hover{border-color:#58a6ff}.ok{color:#3fb950}.bad{color:#f85149}</style><h1>HTP WAF watchdog</h1><div class="card"><span class="label">engine</span> <span id="engine">…</span></div><div class="card"><div class="grid"><div><span class="label">enabled</span><div class="num" id="enabled">…</div></div><div><span class="label">block status</span><div class="num" id="block-status">…</div></div><div><span class="label">cc (req/min)</span><div class="num" id="cc">…</div></div><div><span class="label">mode</span><div class="num" id="mode">…</div></div></div></div><div class="card"><span class="label">rules per class</span><table id="rules"><tbody></table></div><div class="card"><span class="label">counters</span><div class="grid"><div><span class="label">blocked</span><div class="num" id="c-blocked">…</div></div><div><span class="label">cc 429</span><div class="num" id="c-cc">…</div></div><div><span class="label">passed</span><div class="num" id="c-passed">…</div></div></div></div><div class="card"><span class="label">self-test</span><div style="margin-top:.5rem"><button id="selftest">Run self-test</button> <span id="selftest-out"></span></div></div><script src="/js/waf-watchdog.js" type="module"></script>
+
+</script>
+
+
+
+
+
+</script>
+
+
+</script>
+
+
+  <link rel="stylesheet" href="/css/htp-critical-viewport.css?v=2">
+  <link rel="stylesheet" href="/css/htp-responsive.css?v=2">
+  <script src="/js/htp-viewport.js?v=2" defer></script>

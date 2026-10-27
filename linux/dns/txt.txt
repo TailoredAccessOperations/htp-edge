@@ -1,0 +1,77 @@
+2pac.me
+;; connection timed out; no servers could be reached
+
+_keybase.2pac.me
+;; connection timed out; no servers could be reached
+
+avac.io
+;; connection timed out; no servers could be reached
+
+_keybase.avac.io
+;; connection timed out; no servers could be reached
+
+blackhat.rehab
+;; connection timed out; no servers could be reached
+
+_keybase.blackhat.rehab
+;; connection timed out; no servers could be reached
+
+brick.lol
+;; connection timed out; no servers could be reached
+
+_keybase.brick.lol
+;; connection timed out; no servers could be reached
+
+brick.men
+;; connection timed out; no servers could be reached
+
+_keybase.brick.men
+;; connection timed out; no servers could be reached
+
+brooke.lol
+;; connection timed out; no servers could be reached
+
+_keybase.brooke.lol
+;; connection timed out; no servers could be reached
+
+cf0.pw
+;; connection timed out; no servers could be reached
+
+_keybase.cf0.pw
+;; connection timed out; no servers could be reached
+
+cock.zone
+;; connection timed out; no servers could be reached
+
+_keybase.cock.zone
+;; connection timed out; no servers could be reached
+
+files.htp.sh
+;; connection timed out; no servers could be reached
+
+_keybase.files.htp.sh
+;; connection timed out; no servers could be reached
+
+htp.sh
+;; connection timed out; no servers could be reached
+
+_keybase.htp.sh
+;; connection timed out; no servers could be reached
+
+iliterallyhavenoidea.cf
+;; connection timed out; no servers could be reached
+
+_keybase.iliterallyhavenoidea.cf
+
+
+masa.li
+"v=spf1 include:_spf.mx.cloudflare.net ~all"
+
+_keybase.masa.li
+
+
+skid.site
+
+
+_keybase.skid.site
+

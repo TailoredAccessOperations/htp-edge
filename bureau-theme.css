@@ -1,0 +1,136 @@
+/* HTP Operations Bureau theme
+   Original editorial layout inspired by public-service agency sites.
+   It does not copy external markup, text, or imagery. */
+:root {
+  --bureau-paper: #e8eadf;
+  --bureau-paper-2: #dfe3d4;
+  --bureau-ink: #101a16;
+  --bureau-olive: #263b2d;
+  --bureau-olive-2: #38513c;
+  --bureau-lime: #b8d438;
+  --bureau-orange: #e47739;
+  --bureau-line: rgba(16, 26, 22, .22);
+  --bureau-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --bureau-sans: "IBM Plex Sans", system-ui, sans-serif;
+}
+
+html { background: var(--bureau-paper); }
+body { background: var(--bureau-paper); color: var(--bureau-ink); }
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  opacity: .32;
+  background-image: linear-gradient(var(--bureau-line) 1px, transparent 1px), linear-gradient(90deg, var(--bureau-line) 1px, transparent 1px);
+  background-size: 42px 42px;
+  mask-image: linear-gradient(to bottom, #000, transparent 80%);
+}
+
+.cf-nav {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  color: var(--bureau-paper);
+  background: var(--bureau-olive);
+  border-bottom: 4px solid var(--bureau-orange);
+  box-shadow: 0 5px 0 rgba(16, 26, 22, .16);
+}
+.cf-nav__shell { min-height: 4.5rem; }
+.cf-nav__logo, .cf-nav__link, .cf-nav__dropdown-trigger { color: inherit; }
+.cf-nav__wordmark span:last-child { color: var(--bureau-lime); }
+.cf-nav__link:hover, .cf-nav__link:focus-visible { color: var(--bureau-lime); }
+
+main.site { position: relative; width: min(100% - 2rem, 1200px); gap: 0; padding-top: 0; }
+.hero { padding: 2.5rem 0 0; gap: 1rem; }
+.hero > .glitch {
+  align-self: flex-start;
+  padding: .35rem .7rem;
+  color: var(--bureau-paper);
+  background: var(--bureau-olive);
+  border-left: .45rem solid var(--bureau-orange);
+  letter-spacing: .08em;
+  text-shadow: none;
+  font-size: clamp(2rem, 7vw, 4.8rem);
+}
+.ticker {
+  border: 0;
+  border-radius: 0;
+  background: var(--bureau-orange);
+  color: var(--bureau-ink);
+  box-shadow: none;
+}
+.ticker-text { color: var(--bureau-ink); font-weight: 700; }
+.links { justify-content: flex-start; width: 100%; padding-block: .75rem 1.25rem; }
+.links a {
+  color: var(--bureau-ink);
+  border-color: var(--bureau-line);
+  border-radius: 0;
+  background: transparent;
+  font-family: var(--bureau-sans);
+  font-weight: 600;
+}
+.links a:hover, .links a:focus-visible { color: var(--bureau-paper); background: var(--bureau-olive); border-color: var(--bureau-olive); transform: none; }
+
+.cf-hero {
+  min-height: min(760px, calc(100svh - 5rem));
+  height: min(760px, calc(100svh - 5rem));
+  background: var(--bureau-olive);
+  border: 1px solid var(--bureau-ink);
+  border-radius: 0;
+}
+.cf-hero__content { min-height: 100%; align-items: flex-start; justify-content: flex-end; padding: clamp(2rem, 7vw, 6rem); text-align: left; }
+.cf-hero__eyebrow { border-radius: 0; border-color: var(--bureau-lime); color: var(--bureau-paper); font-family: var(--bureau-mono); text-transform: uppercase; letter-spacing: .1em; }
+.cf-hero__title { color: var(--bureau-paper); font-size: clamp(3rem, 10vw, 9rem); line-height: .9; }
+.cf-hero__meta { border-radius: 0; color: var(--bureau-paper); background: var(--bureau-ink); }
+.cf-btn { border-radius: 0; font-family: var(--bureau-mono); text-transform: uppercase; }
+.cf-btn--secondary { color: var(--bureau-paper); border-color: var(--bureau-paper); }
+.cf-btn--on-orange { background: var(--bureau-orange); color: var(--bureau-ink); border-color: var(--bureau-orange); }
+
+.panel, .term-wrap, .legal-drop, .noscript-panel {
+  border-radius: 0;
+  border-color: var(--bureau-line);
+  background: rgba(232, 234, 223, .94);
+  color: var(--bureau-ink);
+  box-shadow: 10px 10px 0 rgba(38, 59, 45, .16);
+}
+.panel { margin-block: 2rem; padding: clamp(1rem, 3vw, 2rem); }
+.panel-body, .legal, .lore-body, .closing { color: var(--bureau-ink); font-family: var(--bureau-sans); }
+.section-title, .cf-section__label { color: var(--bureau-orange); font-family: var(--bureau-mono); font-weight: 700; }
+.ascii-frame, .dialog-block, .broadcast, .ghosts-section, .term-wrap { border-radius: 0; border-color: var(--bureau-line); background: var(--bureau-olive); color: var(--bureau-paper); box-shadow: none; }
+.sig-link, .meta-links a { border-radius: 0; color: var(--bureau-olive); border-color: var(--bureau-line); background: transparent; }
+.imgbox { border-radius: 0; border-color: var(--bureau-ink); box-shadow: none; }
+
+.cf-section { margin: 0; padding: clamp(3rem, 8vw, 7rem) 0; border-top: 1px solid var(--bureau-line); }
+.cf-section:nth-of-type(even) { background: rgba(223, 227, 212, .7); }
+.cf-section__head { max-width: 72rem; margin-bottom: 2rem; }
+.cf-section__title { max-width: 18ch; color: var(--bureau-olive); font-family: var(--bureau-sans); font-size: clamp(2rem, 5vw, 4.5rem); line-height: .95; letter-spacing: -.04em; }
+.cf-section__sub { max-width: 48rem; color: var(--bureau-ink); font-family: var(--bureau-sans); }
+.cf-cardgrid, .cf-agenda, .cf-stats { gap: 1px; background: var(--bureau-line); }
+.cf-cardgrid > li, .cf-agenda__day, .cf-stat { border-radius: 0; background: var(--bureau-paper); color: var(--bureau-ink); }
+.cf-cardgrid__title, .cf-agenda__date, .cf-stat__value { color: var(--bureau-olive); }
+.cf-cardgrid__body, .cf-agenda__item, .cf-stat__label { color: var(--bureau-ink); }
+.cf-register, .cf-panel { border-radius: 0; border-color: var(--bureau-olive); background: var(--bureau-paper); }
+.cf-register__bar { border-radius: 0; background: var(--bureau-olive); }
+.cf-register__input { border-radius: 0; border-color: var(--bureau-line); background: #f5f6ee; color: var(--bureau-ink); }
+.cf-faq__trigger { border-radius: 0; color: var(--bureau-olive); background: transparent; }
+
+.term-wrap { margin-top: 2rem; }
+.term-bar { background: var(--bureau-ink); color: var(--bureau-lime); }
+#terminal, .term-static { background: #0b1710; color: var(--bureau-lime); }
+.warning-drop { border-radius: 0 !important; }
+footer.site-foot { color: var(--bureau-olive); font-family: var(--bureau-mono); }
+
+@media (max-width: 767px) {
+  main.site { width: min(100% - 1rem, 1200px); }
+  .cf-hero { min-height: 720px; height: 720px; }
+  .cf-hero__content { padding: 1.25rem; }
+  .cf-section__title { font-size: clamp(2rem, 12vw, 3.5rem); }
+  .links { gap: .25rem; }
+  .links a { padding-inline: .55rem; }
+  .panel { box-shadow: 5px 5px 0 rgba(38, 59, 45, .16); }
+}
+@media (prefers-reduced-motion: reduce) {
+  body::before { mask-image: none; }
+}

@@ -1,0 +1,2010 @@
+{
+  "meta": {
+    "source": "htp747ebk curated builder",
+    "generated_at": "2026-09-24T11:12:35.919Z",
+    "curated": true,
+    "license": "labeled synthetic sample"
+  },
+  "items": [
+    {
+      "id": "cam0",
+      "name": "Statue Square 0",
+      "country": "NL",
+      "city": "Amsterdam",
+      "lat": 52.1454,
+      "lon": 4.6863,
+      "fps": 30,
+      "status": "offline"
+    },
+    {
+      "id": "cam1",
+      "name": "Champs Elysees 1",
+      "country": "SG",
+      "city": "Singapore",
+      "lat": 1.412,
+      "lon": 104.1016,
+      "fps": 25,
+      "status": "online"
+    },
+    {
+      "id": "cam2",
+      "name": "Dam Square 2",
+      "country": "BR",
+      "city": "Sao Paulo",
+      "lat": -23.8279,
+      "lon": -46.9176,
+      "fps": 60,
+      "status": "online"
+    },
+    {
+      "id": "cam3",
+      "name": "Dam Square 3",
+      "country": "PH",
+      "city": "Manila",
+      "lat": 14.7679,
+      "lon": 120.88,
+      "fps": 60,
+      "status": "offline"
+    },
+    {
+      "id": "cam4",
+      "name": "Kremlin Web 4",
+      "country": "PT",
+      "city": "Lisbon",
+      "lat": 38.8099,
+      "lon": -9.3323,
+      "fps": 30,
+      "status": "online"
+    },
+    {
+      "id": "cam5",
+      "name": "Statue Square 5",
+      "country": "NO",
+      "city": "Oslo",
+      "lat": 60.1189,
+      "lon": 10.5936,
+      "fps": 25,
+      "status": "online"
+    },
+    {
+      "id": "cam6",
+      "name": "Copacabana 6",
+      "country": "NG",
+      "city": "Lagos",
+      "lat": 6.7526,
+      "lon": 3.5174,
+      "fps": 25,
+      "status": "online"
+    },
+    {
+      "id": "cam7",
+      "name": "Champs Elysees 0",
+      "country": "IS",
+      "city": "Reykjavik",
+      "lat": 64.4472,
+      "lon": -21.8318,
+      "fps": 60,
+      "status": "online"
+    },
+    {
+      "id": "cam8",
+      "name": "Harbour Cam 1",
+      "country": "EG",
+      "city": "Cairo",
+      "lat": 29.731,
+      "lon": 31.128,
+      "fps": 30,
+      "status": "online"
+    },
+    {
+      "id": "cam9",
+      "name": "Rhine Bridge 2",
+      "country": "AU",
+      "city": "Sydney",
+      "lat": -33.5854,
+      "lon": 151.4513,
+      "fps": 30,
+      "status": "online"
+    },
+    {
+      "id": "cam10",
+      "name": "Shibuya Crossing 3",
+      "country": "MX",
+      "city": "Mexico City",
+      "lat": 19.1777,
+      "lon": -99.0148,
+      "fps": 60,
+      "status": "online"
+    },
+    {
+      "id": "cam11",
+      "name": "Harbour Cam 4",
+      "country": "KR",
+      "city": "Seoul",
+      "lat": 37.3675,
+      "lon": 126.9489,
+      "fps": 25,
+      "status": "online"
+    },
+    {
+      "id": "cam12",
+      "name": "Dubai Marina 5",
+      "country": "KR",
+      "city": "Seoul",
+      "lat": 37.7781,
+      "lon": 127.0749,
+      "fps": 30,
+      "status": "online"
+    },
+    {
+      "id": "cam13",
+      "name": "Dubai Marina 6",
+      "country": "KE",
+      "city": "Nairobi",
+      "lat": -1.2015,
+      "lon": 36.5126,
+      "fps": 30,
+      "status": "online"
+    },
+    {
+      "id": "cam14",
+      "name": "Copacabana 0",
+      "country": "NL",
+      "city": "Amsterdam",
+      "lat": 52.4678,
+      "lon": 4.9569,
+      "fps": 30,
+      "status": "online"
+    },
+    {
+      "id": "cam15",
+      "name": "Copacabana 1",
+      "country": "PH",
+      "city": "Manila",
+      "lat": 14.5254,
+      "lon": 120.6819,
+      "fps": 60,
+      "status": "online"
+    },
+    {
+      "id": "cam16",
+      "name": "Champs Elysees 2",
+      "country": "NO",
+      "city": "Oslo",
+      "lat": 60.0091,
+      "lon": 10.9212,
+      "fps": 25,
+      "status": "online"
+    },
+    {
+      "id": "cam17",
+      "name": "Dam Square 3",
+      "country": "IS",
+      "city": "Reykjavik",
+      "lat": 63.8903,
+      "lon": -21.8018,
+      "fps": 25,
+      "status": "offline"
+    },
+    {
+      "id": "cam18",
+      "name": "Dam Square 4",
+      "country": "KE",
+      "city": "Nairobi",
+      "lat": -1.3237,
+      "lon": 36.6605,
+      "fps": 25,
+      "status": "offline"
+    },
+    {
+      "id": "cam19",
+      "name": "Statue Square 5",
+      "country": "KE",
+      "city": "Nairobi",
+      "lat": -1.6418,
+      "lon": 36.786,
+      "fps": 25,
+      "status": "online"
+    },
+    {
+      "id": "cam20",
+      "name": "Kremlin Web 6",
+      "country": "BR",
+      "city": "Sao Paulo",
+      "lat": -23.6351,
+      "lon": -46.855,
+      "fps": 25,
+      "status": "online"
+    },
+    {
+      "id": "cam21",
+      "name": "Statue Square 0",
+      "country": "BR",
+      "city": "Sao Paulo",
+      "lat": -23.2065,
+      "lon": -46.5518,
+      "fps": 30,
+      "status": "online"
+    },
+    {
+      "id": "cam22",
+      "name": "Harbour Cam 1",
+      "country": "SG",
+      "city": "Singapore",
+      "lat": 1.0463,
+      "lon": 104.1627,
+      "fps": 60,
+      "status": "online"
+    },
+    {
+      "id": "cam23",
+      "name": "Harbour Cam 2",
+      "country": "SG",
+      "city": "Singapore",
+      "lat": 1.1088,
+      "lon": 103.6938,
+      "fps": 25,
+      "status": "online"
+    },
+    {
+      "id": "cam24",
+      "name": "Champs Elysees 3",
+      "country": "AU",
+      "city": "Sydney",
+      "lat": -34.1375,
+      "lon": 150.9764,
+      "fps": 30,
+      "status": "online"
+    },
+    {
+      "id": "cam25",
+      "name": "Harbour Cam 4",
+      "country": "AU",
+      "city": "Sydney",
+      "lat": -34.0765,
+      "lon": 151.0667,
+      "fps": 30,
+      "status": "offline"
+    },
+    {
+      "id": "cam26",
+      "name": "Rhine Bridge 5",
+      "country": "NO",
+      "city": "Oslo",
+      "lat": 60.0959,
+      "lon": 10.4512,
+      "fps": 25,
+      "status": "online"
+    },
+    {
+      "id": "cam27",
+      "name": "Dubai Marina 6",
+      "country": "JP",
+      "city": "Tokyo",
+      "lat": 35.558,
+      "lon": 139.9075,
+      "fps": 25,
+      "status": "offline"
+    },
+    {
+      "id": "cam28",
+      "name": "Times Square 0",
+      "country": "EG",
+      "city": "Cairo",
+      "lat": 30.248,
+      "lon": 31.1396,
+      "fps": 60,
+      "status": "offline"
+    },
+    {
+      "id": "cam29",
+      "name": "Shibuya Crossing 1",
+      "country": "MX",
+      "city": "Mexico City",
+      "lat": 19.1691,
+      "lon": -98.8967,
+      "fps": 30,
+      "status": "offline"
+    },
+    {
+      "id": "cam30",
+      "name": "Copacabana 2",
+      "country": "SG",
+      "city": "Singapore",
+      "lat": 1.5851,
+      "lon": 103.8582,
+      "fps": 60,
+      "status": "online"
+    },
+    {
+      "id": "cam31",
+      "name": "Champs Elysees 3",
+      "country": "NL",
+      "city": "Amsterdam",
+      "lat": 52.1905,
+      "lon": 4.9588,
+      "fps": 60,
+      "status": "offline"
+    },
+    {
+      "id": "cam32",
+      "name": "Dubai Marina 4",
+      "country": "PH",
+      "city": "Manila",
+      "lat": 14.558,
+      "lon": 120.9432,
+      "fps": 60,
+      "status": "online"
+    },
+    {
+      "id": "cam33",
+      "name": "Rhine Bridge 5",
+      "country": "PH",
+      "city": "Manila",
+      "lat": 14.9086,
+      "lon": 121.1034,
+      "fps": 60,
+      "status": "online"
+    },
+    {
+      "id": "cam34",
+      "name": "Shibuya Crossing 6",
+      "country": "PH",
+      "city": "Manila",
+      "lat": 14.4059,
+      "lon": 120.9814,
+      "fps": 25,
+      "status": "offline"
+    },
+    {
+      "id": "cam35",
+      "name": "Times Square 0",
+      "country": "EG",
+      "city": "Cairo",
+      "lat": 30.2953,
+      "lon": 31.2309,
+      "fps": 60,
+      "status": "online"
+    },
+    {
+      "id": "cam36",
+      "name": "Harbour Cam 1",
+      "country": "NL",
+      "city": "Amsterdam",
+      "lat": 52.0471,
+      "lon": 4.9208,
+      "fps": 60,
+      "status": "online"
+    },
+    {
+      "id": "cam37",
+      "name": "Harbour Cam 2",
+      "country": "ZA",
+      "city": "Cape Town",
+      "lat": -34.0102,
+      "lon": 18.7243,
+      "fps": 25,
+      "status": "online"
+    },
+    {
+      "id": "cam38",
+      "name": "Statue Square 3",
+      "country": "MX",
+      "city": "Mexico City",
+      "lat": 19.2317,
+      "lon": -99.304,
+      "fps": 30,
+      "status": "online"
+    },
+    {
+      "id": "cam39",
+      "name": "Rhine Bridge 4",
+      "country": "JP",
+      "city": "Tokyo",
+      "lat": 35.6198,
+      "lon": 139.3022,
+      "fps": 60,
+      "status": "online"
+    },
+    {
+      "id": "cam40",
+      "name": "Statue Square 5",
+      "country": "PH",
+      "city": "Manila",
+      "lat": 14.8357,
+      "lon": 121.1079,
+      "fps": 60,
+      "status": "offline"
+    },
+    {
+      "id": "cam41",
+      "name": "Times Square 6",
+      "country": "EG",
+      "city": "Cairo",
+      "lat": 30.2152,
+      "lon": 31.3258,
+      "fps": 25,
+      "status": "online"
+    },
+    {
+      "id": "cam42",
+      "name": "Rhine Bridge 0",
+      "country": "KR",
+      "city": "Seoul",
+      "lat": 37.6567,
+      "lon": 126.9705,
+      "fps": 25,
+      "status": "offline"
+    },
+    {
+      "id": "cam43",
+      "name": "Rhine Bridge 1",
+      "country": "NO",
+      "city": "Oslo",
+      "lat": 59.649,
+      "lon": 10.8128,
+      "fps": 30,
+      "status": "online"
+    },
+    {
+      "id": "cam44",
+      "name": "Dubai Marina 2",
+      "country": "JP",
+      "city": "Tokyo",
+      "lat": 35.6932,
+      "lon": 139.4972,
+      "fps": 30,
+      "status": "online"
+    },
+    {
+      "id": "cam45",
+      "name": "Shibuya Crossing 3",
+      "country": "NO",
+      "city": "Oslo",
+      "lat": 59.9617,
+      "lon": 10.4723,
+      "fps": 60,
+      "status": "online"
+    },
+    {
+      "id": "cam46",
+      "name": "Statue Square 4",
+      "country": "ZA",
+      "city": "Cape Town",
+      "lat": -33.8328,
+      "lon": 18.7678,
+      "fps": 30,
+      "status": "online"
+    },
+    {
+      "id": "cam47",
+      "name": "Shibuya Crossing 5",
+      "country": "NL",
+      "city": "Amsterdam",
+      "lat": 52.4337,
+      "lon": 5.0836,
+      "fps": 30,
+      "status": "online"
+    },
+    {
+      "id": "cam48",
+      "name": "Times Square 6",
+      "country": "AU",
+      "city": "Sydney",
+      "lat": -33.5804,
+      "lon": 151.2153,
+      "fps": 25,
+      "status": "online"
+    },
+    {
+      "id": "cam49",
+      "name": "Harbour Cam 0",
+      "country": "PH",
+      "city": "Manila",
+      "lat": 14.5002,
+      "lon": 121.3008,
+      "fps": 30,
+      "status": "online"
+    },
+    {
+      "id": "cam50",
+      "name": "Harbour Cam 1",
+      "country": "BR",
+      "city": "Sao Paulo",
+      "lat": -23.3257,
+      "lon": -46.8635,
+      "fps": 30,
+      "status": "online"
+    },
+    {
+      "id": "cam51",
+      "name": "Kremlin Web 2",
+      "country": "SG",
+      "city": "Singapore",
+      "lat": 1.2948,
+      "lon": 103.9186,
+      "fps": 60,
+      "status": "offline"
+    },
+    {
+      "id": "cam52",
+      "name": "Dam Square 3",
+      "country": "RO",
+      "city": "Bucharest",
+      "lat": 44.7046,
+      "lon": 26.2146,
+      "fps": 60,
+      "status": "offline"
+    },
+    {
+      "id": "cam53",
+      "name": "Rhine Bridge 4",
+      "country": "KR",
+      "city": "Seoul",
+      "lat": 37.6407,
+      "lon": 126.7273,
+      "fps": 60,
+      "status": "online"
+    },
+    {
+      "id": "cam54",
+      "name": "Shibuya Crossing 5",
+      "country": "KR",
+      "city": "Seoul",
+      "lat": 37.6656,
+      "lon": 127.3051,
+      "fps": 25,
+      "status": "offline"
+    },
+    {
+      "id": "cam55",
+      "name": "Rhine Bridge 6",
+      "country": "PT",
+      "city": "Lisbon",
+      "lat": 39.0337,
+      "lon": -9.148,
+      "fps": 25,
+      "status": "online"
+    },
+    {
+      "id": "cam56",
+      "name": "Dubai Marina 0",
+      "country": "KR",
+      "city": "Seoul",
+      "lat": 37.8097,
+      "lon": 127.2156,
+      "fps": 60,
+      "status": "online"
+    },
+    {
+      "id": "cam57",
+      "name": "Harbour Cam 1",
+      "country": "KE",
+      "city": "Nairobi",
+      "lat": -1.1854,
+      "lon": 36.832,
+      "fps": 30,
+      "status": "online"
+    },
+    {
+      "id": "cam58",
+      "name": "Harbour Cam 2",
+      "country": "ZA",
+      "city": "Cape Town",
+      "lat": -33.9643,
+      "lon": 18.1188,
+      "fps": 25,
+      "status": "offline"
+    },
+    {
+      "id": "cam59",
+      "name": "Shibuya Crossing 3",
+      "country": "PH",
+      "city": "Manila",
+      "lat": 14.5486,
+      "lon": 121.0806,
+      "fps": 60,
+      "status": "online"
+    },
+    {
+      "id": "cam60",
+      "name": "Copacabana 4",
+      "country": "EG",
+      "city": "Cairo",
+      "lat": 30.2321,
+      "lon": 31.404,
+      "fps": 30,
+      "status": "offline"
+    },
+    {
+      "id": "cam61",
+      "name": "Kremlin Web 5",
+      "country": "EG",
+      "city": "Cairo",
+      "lat": 29.8085,
+      "lon": 31.0639,
+      "fps": 25,
+      "status": "offline"
+    },
+    {
+      "id": "cam62",
+      "name": "Rhine Bridge 6",
+      "country": "BR",
+      "city": "Sao Paulo",
+      "lat": -23.459,
+      "lon": -46.3141,
+      "fps": 60,
+      "status": "online"
+    },
+    {
+      "id": "cam63",
+      "name": "Times Square 0",
+      "country": "AU",
+      "city": "Sydney",
+      "lat": -33.6031,
+      "lon": 151.5124,
+      "fps": 60,
+      "status": "offline"
+    },
+    {
+      "id": "cam64",
+      "name": "Copacabana 1",
+      "country": "EG",
+      "city": "Cairo",
+      "lat": 30.1235,
+      "lon": 31.4663,
+      "fps": 60,
+      "status": "online"
+    },
+    {
+      "id": "cam65",
+      "name": "Kremlin Web 2",
+      "country": "MX",
+      "city": "Mexico City",
+      "lat": 19.5156,
+      "lon": -98.975,
+      "fps": 60,
+      "status": "online"
+    },
+    {
+      "id": "cam66",
+      "name": "Copacabana 3",
+      "country": "MX",
+      "city": "Mexico City",
+      "lat": 19.2909,
+      "lon": -99.239,
+      "fps": 30,
+      "status": "online"
+    },
+    {
+      "id": "cam67",
+      "name": "Times Square 4",
+      "country": "SG",
+      "city": "Singapore",
+      "lat": 1.2326,
+      "lon": 103.788,
+      "fps": 30,
+      "status": "online"
+    },
+    {
+      "id": "cam68",
+      "name": "Statue Square 5",
+      "country": "PT",
+      "city": "Lisbon",
+      "lat": 38.4415,
+      "lon": -9.2924,
+      "fps": 25,
+      "status": "online"
+    },
+    {
+      "id": "cam69",
+      "name": "Statue Square 6",
+      "country": "KR",
+      "city": "Seoul",
+      "lat": 37.3292,
+      "lon": 127.1753,
+      "fps": 30,
+      "status": "online"
+    },
+    {
+      "id": "cam70",
+      "name": "Times Square 0",
+      "country": "IS",
+      "city": "Reykjavik",
+      "lat": 64.3156,
+      "lon": -22.2533,
+      "fps": 30,
+      "status": "online"
+    },
+    {
+      "id": "cam71",
+      "name": "Kremlin Web 1",
+      "country": "RO",
+      "city": "Bucharest",
+      "lat": 44.2125,
+      "lon": 26.4507,
+      "fps": 60,
+      "status": "offline"
+    },
+    {
+      "id": "cam72",
+      "name": "Statue Square 2",
+      "country": "BR",
+      "city": "Sao Paulo",
+      "lat": -23.5787,
+      "lon": -46.4282,
+      "fps": 60,
+      "status": "online"
+    },
+    {
+      "id": "cam73",
+      "name": "Harbour Cam 3",
+      "country": "EG",
+      "city": "Cairo",
+      "lat": 30.3203,
+      "lon": 31.0744,
+      "fps": 25,
+      "status": "online"
+    },
+    {
+      "id": "cam74",
+      "name": "Harbour Cam 4",
+      "country": "MX",
+      "city": "Mexico City",
+      "lat": 19.6243,
+      "lon": -99.0502,
+      "fps": 30,
+      "status": "online"
+    },
+    {
+      "id": "cam75",
+      "name": "Shibuya Crossing 5",
+      "country": "ZA",
+      "city": "Cape Town",
+      "lat": -33.7356,
+      "lon": 18.3197,
+      "fps": 60,
+      "status": "offline"
+    },
+    {
+      "id": "cam76",
+      "name": "Rhine Bridge 6",
+      "country": "NG",
+      "city": "Lagos",
+      "lat": 6.1984,
+      "lon": 3.5273,
+      "fps": 30,
+      "status": "offline"
+    },
+    {
+      "id": "cam77",
+      "name": "Copacabana 0",
+      "country": "KR",
+      "city": "Seoul",
+      "lat": 37.4081,
+      "lon": 127.2119,
+      "fps": 30,
+      "status": "offline"
+    },
+    {
+      "id": "cam78",
+      "name": "Harbour Cam 1",
+      "country": "BR",
+      "city": "Sao Paulo",
+      "lat": -23.5811,
+      "lon": -46.617,
+      "fps": 30,
+      "status": "offline"
+    },
+    {
+      "id": "cam79",
+      "name": "Statue Square 2",
+      "country": "NG",
+      "city": "Lagos",
+      "lat": 6.7752,
+      "lon": 3.4933,
+      "fps": 30,
+      "status": "online"
+    },
+    {
+      "id": "cam80",
+      "name": "Harbour Cam 3",
+      "country": "NL",
+      "city": "Amsterdam",
+      "lat": 52.3535,
+      "lon": 4.6192,
+      "fps": 30,
+      "status": "offline"
+    },
+    {
+      "id": "cam81",
+      "name": "Champs Elysees 4",
+      "country": "PH",
+      "city": "Manila",
+      "lat": 14.2992,
+      "lon": 121.1213,
+      "fps": 25,
+      "status": "online"
+    },
+    {
+      "id": "cam82",
+      "name": "Champs Elysees 5",
+      "country": "PT",
+      "city": "Lisbon",
+      "lat": 38.9267,
+      "lon": -9.2642,
+      "fps": 60,
+      "status": "online"
+    },
+    {
+      "id": "cam83",
+      "name": "Shibuya Crossing 6",
+      "country": "NL",
+      "city": "Amsterdam",
+      "lat": 52.6156,
+      "lon": 4.7934,
+      "fps": 30,
+      "status": "online"
+    },
+    {
+      "id": "cam84",
+      "name": "Harbour Cam 0",
+      "country": "IS",
+      "city": "Reykjavik",
+      "lat": 64.2688,
+      "lon": -22.1894,
+      "fps": 60,
+      "status": "offline"
+    },
+    {
+      "id": "cam85",
+      "name": "Shibuya Crossing 1",
+      "country": "KR",
+      "city": "Seoul",
+      "lat": 37.6214,
+      "lon": 126.7976,
+      "fps": 25,
+      "status": "online"
+    },
+    {
+      "id": "cam86",
+      "name": "Kremlin Web 2",
+      "country": "IS",
+      "city": "Reykjavik",
+      "lat": 63.8987,
+      "lon": -21.6707,
+      "fps": 30,
+      "status": "online"
+    },
+    {
+      "id": "cam87",
+      "name": "Champs Elysees 3",
+      "country": "JP",
+      "city": "Tokyo",
+      "lat": 35.7986,
+      "lon": 139.3584,
+      "fps": 60,
+      "status": "online"
+    },
+    {
+      "id": "cam88",
+      "name": "Dam Square 4",
+      "country": "IS",
+      "city": "Reykjavik",
+      "lat": 64.4777,
+      "lon": -21.6621,
+      "fps": 25,
+      "status": "online"
+    },
+    {
+      "id": "cam89",
+      "name": "Times Square 5",
+      "country": "IS",
+      "city": "Reykjavik",
+      "lat": 64.2363,
+      "lon": -21.697,
+      "fps": 60,
+      "status": "online"
+    },
+    {
+      "id": "cam90",
+      "name": "Shibuya Crossing 6",
+      "country": "KE",
+      "city": "Nairobi",
+      "lat": -1.1004,
+      "lon": 36.9931,
+      "fps": 60,
+      "status": "online"
+    },
+    {
+      "id": "cam91",
+      "name": "Shibuya Crossing 0",
+      "country": "PT",
+      "city": "Lisbon",
+      "lat": 38.7225,
+      "lon": -8.8577,
+      "fps": 25,
+      "status": "online"
+    },
+    {
+      "id": "cam92",
+      "name": "Statue Square 1",
+      "country": "MX",
+      "city": "Mexico City",
+      "lat": 19.3122,
+      "lon": -99.3301,
+      "fps": 60,
+      "status": "online"
+    },
+    {
+      "id": "cam93",
+      "name": "Dam Square 2",
+      "country": "ZA",
+      "city": "Cape Town",
+      "lat": -33.8632,
+      "lon": 18.6665,
+      "fps": 25,
+      "status": "online"
+    },
+    {
+      "id": "cam94",
+      "name": "Dubai Marina 3",
+      "country": "PH",
+      "city": "Manila",
+      "lat": 14.7411,
+      "lon": 120.991,
+      "fps": 25,
+      "status": "offline"
+    },
+    {
+      "id": "cam95",
+      "name": "Dubai Marina 4",
+      "country": "KR",
+      "city": "Seoul",
+      "lat": 37.7666,
+      "lon": 127.1279,
+      "fps": 25,
+      "status": "online"
+    },
+    {
+      "id": "cam96",
+      "name": "Statue Square 5",
+      "country": "RO",
+      "city": "Bucharest",
+      "lat": 44.5027,
+      "lon": 25.9484,
+      "fps": 30,
+      "status": "online"
+    },
+    {
+      "id": "cam97",
+      "name": "Statue Square 6",
+      "country": "PT",
+      "city": "Lisbon",
+      "lat": 38.458,
+      "lon": -8.8614,
+      "fps": 30,
+      "status": "online"
+    },
+    {
+      "id": "cam98",
+      "name": "Dubai Marina 0",
+      "country": "IS",
+      "city": "Reykjavik",
+      "lat": 63.9594,
+      "lon": -22.2757,
+      "fps": 60,
+      "status": "online"
+    },
+    {
+      "id": "cam99",
+      "name": "Harbour Cam 1",
+      "country": "MX",
+      "city": "Mexico City",
+      "lat": 19.2125,
+      "lon": -99.4085,
+      "fps": 30,
+      "status": "offline"
+    },
+    {
+      "id": "cam100",
+      "name": "Dam Square 2",
+      "country": "NO",
+      "city": "Oslo",
+      "lat": 59.6288,
+      "lon": 11.0499,
+      "fps": 60,
+      "status": "online"
+    },
+    {
+      "id": "cam101",
+      "name": "Rhine Bridge 3",
+      "country": "EG",
+      "city": "Cairo",
+      "lat": 29.8052,
+      "lon": 30.9063,
+      "fps": 30,
+      "status": "offline"
+    },
+    {
+      "id": "cam102",
+      "name": "Champs Elysees 4",
+      "country": "JP",
+      "city": "Tokyo",
+      "lat": 35.4694,
+      "lon": 139.3628,
+      "fps": 60,
+      "status": "online"
+    },
+    {
+      "id": "cam103",
+      "name": "Kremlin Web 5",
+      "country": "PH",
+      "city": "Manila",
+      "lat": 14.4783,
+      "lon": 121.2806,
+      "fps": 60,
+      "status": "online"
+    },
+    {
+      "id": "cam104",
+      "name": "Harbour Cam 6",
+      "country": "NG",
+      "city": "Lagos",
+      "lat": 6.1845,
+      "lon": 3.171,
+      "fps": 30,
+      "status": "online"
+    },
+    {
+      "id": "cam105",
+      "name": "Kremlin Web 0",
+      "country": "PT",
+      "city": "Lisbon",
+      "lat": 38.529,
+      "lon": -9.018,
+      "fps": 25,
+      "status": "online"
+    },
+    {
+      "id": "cam106",
+      "name": "Harbour Cam 1",
+      "country": "ZA",
+      "city": "Cape Town",
+      "lat": -34.1864,
+      "lon": 18.0887,
+      "fps": 25,
+      "status": "online"
+    },
+    {
+      "id": "cam107",
+      "name": "Harbour Cam 2",
+      "country": "ZA",
+      "city": "Cape Town",
+      "lat": -33.8769,
+      "lon": 18.3811,
+      "fps": 60,
+      "status": "online"
+    },
+    {
+      "id": "cam108",
+      "name": "Rhine Bridge 3",
+      "country": "ZA",
+      "city": "Cape Town",
+      "lat": -33.5942,
+      "lon": 18.0815,
+      "fps": 25,
+      "status": "online"
+    },
+    {
+      "id": "cam109",
+      "name": "Dam Square 4",
+      "country": "SG",
+      "city": "Singapore",
+      "lat": 1.1169,
+      "lon": 104.0419,
+      "fps": 25,
+      "status": "online"
+    },
+    {
+      "id": "cam110",
+      "name": "Shibuya Crossing 5",
+      "country": "RO",
+      "city": "Bucharest",
+      "lat": 44.5797,
+      "lon": 26.1052,
+      "fps": 60,
+      "status": "online"
+    },
+    {
+      "id": "cam111",
+      "name": "Times Square 6",
+      "country": "NL",
+      "city": "Amsterdam",
+      "lat": 52.2376,
+      "lon": 5.2106,
+      "fps": 60,
+      "status": "online"
+    },
+    {
+      "id": "cam112",
+      "name": "Copacabana 0",
+      "country": "SG",
+      "city": "Singapore",
+      "lat": 1.0719,
+      "lon": 103.6993,
+      "fps": 60,
+      "status": "offline"
+    },
+    {
+      "id": "cam113",
+      "name": "Harbour Cam 1",
+      "country": "IS",
+      "city": "Reykjavik",
+      "lat": 64.2309,
+      "lon": -21.9104,
+      "fps": 25,
+      "status": "offline"
+    },
+    {
+      "id": "cam114",
+      "name": "Harbour Cam 2",
+      "country": "ZA",
+      "city": "Cape Town",
+      "lat": -34.0556,
+      "lon": 18.4338,
+      "fps": 60,
+      "status": "online"
+    },
+    {
+      "id": "cam115",
+      "name": "Times Square 3",
+      "country": "RO",
+      "city": "Bucharest",
+      "lat": 44.5136,
+      "lon": 26.13,
+      "fps": 30,
+      "status": "online"
+    },
+    {
+      "id": "cam116",
+      "name": "Shibuya Crossing 4",
+      "country": "KE",
+      "city": "Nairobi",
+      "lat": -1.5633,
+      "lon": 36.6401,
+      "fps": 60,
+      "status": "online"
+    },
+    {
+      "id": "cam117",
+      "name": "Copacabana 5",
+      "country": "KR",
+      "city": "Seoul",
+      "lat": 37.6449,
+      "lon": 127.0878,
+      "fps": 25,
+      "status": "online"
+    },
+    {
+      "id": "cam118",
+      "name": "Shibuya Crossing 6",
+      "country": "PH",
+      "city": "Manila",
+      "lat": 14.4722,
+      "lon": 120.9772,
+      "fps": 60,
+      "status": "online"
+    },
+    {
+      "id": "cam119",
+      "name": "Dam Square 0",
+      "country": "NO",
+      "city": "Oslo",
+      "lat": 59.9015,
+      "lon": 10.727,
+      "fps": 60,
+      "status": "offline"
+    },
+    {
+      "id": "cam120",
+      "name": "Shibuya Crossing 1",
+      "country": "JP",
+      "city": "Tokyo",
+      "lat": 35.9945,
+      "lon": 139.5104,
+      "fps": 60,
+      "status": "online"
+    },
+    {
+      "id": "cam121",
+      "name": "Statue Square 2",
+      "country": "RO",
+      "city": "Bucharest",
+      "lat": 44.7711,
+      "lon": 26.4218,
+      "fps": 60,
+      "status": "offline"
+    },
+    {
+      "id": "cam122",
+      "name": "Harbour Cam 3",
+      "country": "JP",
+      "city": "Tokyo",
+      "lat": 35.6267,
+      "lon": 139.8845,
+      "fps": 60,
+      "status": "offline"
+    },
+    {
+      "id": "cam123",
+      "name": "Shibuya Crossing 4",
+      "country": "BR",
+      "city": "Sao Paulo",
+      "lat": -23.3068,
+      "lon": -46.8164,
+      "fps": 25,
+      "status": "online"
+    },
+    {
+      "id": "cam124",
+      "name": "Shibuya Crossing 5",
+      "country": "NO",
+      "city": "Oslo",
+      "lat": 60.0825,
+      "lon": 11.0911,
+      "fps": 30,
+      "status": "online"
+    },
+    {
+      "id": "cam125",
+      "name": "Rhine Bridge 6",
+      "country": "NL",
+      "city": "Amsterdam",
+      "lat": 52.4317,
+      "lon": 5.0617,
+      "fps": 60,
+      "status": "offline"
+    },
+    {
+      "id": "cam126",
+      "name": "Statue Square 0",
+      "country": "NG",
+      "city": "Lagos",
+      "lat": 6.2238,
+      "lon": 3.4381,
+      "fps": 60,
+      "status": "offline"
+    },
+    {
+      "id": "cam127",
+      "name": "Statue Square 1",
+      "country": "SG",
+      "city": "Singapore",
+      "lat": 1.214,
+      "lon": 104.0831,
+      "fps": 30,
+      "status": "online"
+    },
+    {
+      "id": "cam128",
+      "name": "Dubai Marina 2",
+      "country": "JP",
+      "city": "Tokyo",
+      "lat": 35.761,
+      "lon": 139.6636,
+      "fps": 25,
+      "status": "online"
+    },
+    {
+      "id": "cam129",
+      "name": "Dam Square 3",
+      "country": "NO",
+      "city": "Oslo",
+      "lat": 59.6731,
+      "lon": 11.0732,
+      "fps": 30,
+      "status": "online"
+    },
+    {
+      "id": "cam130",
+      "name": "Champs Elysees 4",
+      "country": "RO",
+      "city": "Bucharest",
+      "lat": 44.7272,
+      "lon": 26.0268,
+      "fps": 60,
+      "status": "offline"
+    },
+    {
+      "id": "cam131",
+      "name": "Champs Elysees 5",
+      "country": "NL",
+      "city": "Amsterdam",
+      "lat": 52.1348,
+      "lon": 4.8335,
+      "fps": 60,
+      "status": "offline"
+    },
+    {
+      "id": "cam132",
+      "name": "Dam Square 6",
+      "country": "KR",
+      "city": "Seoul",
+      "lat": 37.5019,
+      "lon": 127.2566,
+      "fps": 60,
+      "status": "online"
+    },
+    {
+      "id": "cam133",
+      "name": "Statue Square 0",
+      "country": "EG",
+      "city": "Cairo",
+      "lat": 29.7404,
+      "lon": 31.102,
+      "fps": 30,
+      "status": "offline"
+    },
+    {
+      "id": "cam134",
+      "name": "Rhine Bridge 1",
+      "country": "NO",
+      "city": "Oslo",
+      "lat": 59.5934,
+      "lon": 10.4106,
+      "fps": 60,
+      "status": "online"
+    },
+    {
+      "id": "cam135",
+      "name": "Dubai Marina 2",
+      "country": "KE",
+      "city": "Nairobi",
+      "lat": -1.2641,
+      "lon": 36.812,
+      "fps": 25,
+      "status": "online"
+    },
+    {
+      "id": "cam136",
+      "name": "Kremlin Web 3",
+      "country": "RO",
+      "city": "Bucharest",
+      "lat": 44.3617,
+      "lon": 26.4196,
+      "fps": 60,
+      "status": "online"
+    },
+    {
+      "id": "cam137",
+      "name": "Harbour Cam 4",
+      "country": "NG",
+      "city": "Lagos",
+      "lat": 6.4777,
+      "lon": 3.696,
+      "fps": 60,
+      "status": "online"
+    },
+    {
+      "id": "cam138",
+      "name": "Rhine Bridge 5",
+      "country": "SG",
+      "city": "Singapore",
+      "lat": 1.1461,
+      "lon": 103.6781,
+      "fps": 25,
+      "status": "offline"
+    },
+    {
+      "id": "cam139",
+      "name": "Copacabana 6",
+      "country": "IS",
+      "city": "Reykjavik",
+      "lat": 63.8207,
+      "lon": -22.2412,
+      "fps": 30,
+      "status": "online"
+    },
+    {
+      "id": "cam140",
+      "name": "Dubai Marina 0",
+      "country": "NG",
+      "city": "Lagos",
+      "lat": 6.6819,
+      "lon": 3.2233,
+      "fps": 25,
+      "status": "online"
+    },
+    {
+      "id": "cam141",
+      "name": "Dubai Marina 1",
+      "country": "AU",
+      "city": "Sydney",
+      "lat": -33.8102,
+      "lon": 151.5422,
+      "fps": 25,
+      "status": "online"
+    },
+    {
+      "id": "cam142",
+      "name": "Dam Square 2",
+      "country": "ZA",
+      "city": "Cape Town",
+      "lat": -34.045,
+      "lon": 18.4116,
+      "fps": 30,
+      "status": "offline"
+    },
+    {
+      "id": "cam143",
+      "name": "Champs Elysees 3",
+      "country": "NG",
+      "city": "Lagos",
+      "lat": 6.7546,
+      "lon": 3.0328,
+      "fps": 30,
+      "status": "online"
+    },
+    {
+      "id": "cam144",
+      "name": "Dubai Marina 4",
+      "country": "KE",
+      "city": "Nairobi",
+      "lat": -1.5946,
+      "lon": 36.7258,
+      "fps": 60,
+      "status": "offline"
+    },
+    {
+      "id": "cam145",
+      "name": "Times Square 5",
+      "country": "AU",
+      "city": "Sydney",
+      "lat": -33.8843,
+      "lon": 151.2154,
+      "fps": 30,
+      "status": "online"
+    },
+    {
+      "id": "cam146",
+      "name": "Kremlin Web 6",
+      "country": "EG",
+      "city": "Cairo",
+      "lat": 30.1666,
+      "lon": 31.0079,
+      "fps": 30,
+      "status": "offline"
+    },
+    {
+      "id": "cam147",
+      "name": "Harbour Cam 0",
+      "country": "NL",
+      "city": "Amsterdam",
+      "lat": 52.668,
+      "lon": 4.8842,
+      "fps": 25,
+      "status": "online"
+    },
+    {
+      "id": "cam148",
+      "name": "Shibuya Crossing 1",
+      "country": "NG",
+      "city": "Lagos",
+      "lat": 6.6023,
+      "lon": 3.1844,
+      "fps": 30,
+      "status": "online"
+    },
+    {
+      "id": "cam149",
+      "name": "Harbour Cam 2",
+      "country": "KR",
+      "city": "Seoul",
+      "lat": 37.36,
+      "lon": 126.7894,
+      "fps": 30,
+      "status": "online"
+    },
+    {
+      "id": "cam150",
+      "name": "Times Square 3",
+      "country": "KE",
+      "city": "Nairobi",
+      "lat": -1.1415,
+      "lon": 36.5381,
+      "fps": 60,
+      "status": "offline"
+    },
+    {
+      "id": "cam151",
+      "name": "Dam Square 4",
+      "country": "RO",
+      "city": "Bucharest",
+      "lat": 44.2759,
+      "lon": 26.3781,
+      "fps": 25,
+      "status": "online"
+    },
+    {
+      "id": "cam152",
+      "name": "Kremlin Web 5",
+      "country": "NG",
+      "city": "Lagos",
+      "lat": 6.4678,
+      "lon": 3.5605,
+      "fps": 25,
+      "status": "offline"
+    },
+    {
+      "id": "cam153",
+      "name": "Rhine Bridge 6",
+      "country": "NL",
+      "city": "Amsterdam",
+      "lat": 52.3627,
+      "lon": 4.9367,
+      "fps": 60,
+      "status": "online"
+    },
+    {
+      "id": "cam154",
+      "name": "Shibuya Crossing 0",
+      "country": "SG",
+      "city": "Singapore",
+      "lat": 1.2448,
+      "lon": 103.8742,
+      "fps": 30,
+      "status": "online"
+    },
+    {
+      "id": "cam155",
+      "name": "Times Square 1",
+      "country": "PH",
+      "city": "Manila",
+      "lat": 14.2749,
+      "lon": 120.9469,
+      "fps": 30,
+      "status": "online"
+    },
+    {
+      "id": "cam156",
+      "name": "Copacabana 2",
+      "country": "BR",
+      "city": "Sao Paulo",
+      "lat": -23.2248,
+      "lon": -46.3668,
+      "fps": 60,
+      "status": "online"
+    },
+    {
+      "id": "cam157",
+      "name": "Statue Square 3",
+      "country": "RO",
+      "city": "Bucharest",
+      "lat": 44.2633,
+      "lon": 26.1728,
+      "fps": 25,
+      "status": "online"
+    },
+    {
+      "id": "cam158",
+      "name": "Dubai Marina 4",
+      "country": "NO",
+      "city": "Oslo",
+      "lat": 60.2621,
+      "lon": 11.0164,
+      "fps": 25,
+      "status": "offline"
+    },
+    {
+      "id": "cam159",
+      "name": "Statue Square 5",
+      "country": "IS",
+      "city": "Reykjavik",
+      "lat": 64.0459,
+      "lon": -22.0278,
+      "fps": 60,
+      "status": "online"
+    },
+    {
+      "id": "cam160",
+      "name": "Times Square 6",
+      "country": "NO",
+      "city": "Oslo",
+      "lat": 60.067,
+      "lon": 10.8439,
+      "fps": 60,
+      "status": "offline"
+    },
+    {
+      "id": "cam161",
+      "name": "Champs Elysees 0",
+      "country": "NG",
+      "city": "Lagos",
+      "lat": 6.3158,
+      "lon": 3.5766,
+      "fps": 60,
+      "status": "online"
+    },
+    {
+      "id": "cam162",
+      "name": "Times Square 1",
+      "country": "KR",
+      "city": "Seoul",
+      "lat": 37.7234,
+      "lon": 126.648,
+      "fps": 30,
+      "status": "online"
+    },
+    {
+      "id": "cam163",
+      "name": "Times Square 2",
+      "country": "NO",
+      "city": "Oslo",
+      "lat": 60.1775,
+      "lon": 10.4965,
+      "fps": 60,
+      "status": "online"
+    },
+    {
+      "id": "cam164",
+      "name": "Times Square 3",
+      "country": "RO",
+      "city": "Bucharest",
+      "lat": 44.1431,
+      "lon": 26.4219,
+      "fps": 25,
+      "status": "online"
+    },
+    {
+      "id": "cam165",
+      "name": "Kremlin Web 4",
+      "country": "AU",
+      "city": "Sydney",
+      "lat": -34.1068,
+      "lon": 151.0565,
+      "fps": 30,
+      "status": "offline"
+    },
+    {
+      "id": "cam166",
+      "name": "Times Square 5",
+      "country": "MX",
+      "city": "Mexico City",
+      "lat": 19.3279,
+      "lon": -99.0226,
+      "fps": 60,
+      "status": "online"
+    },
+    {
+      "id": "cam167",
+      "name": "Statue Square 6",
+      "country": "ZA",
+      "city": "Cape Town",
+      "lat": -33.9222,
+      "lon": 18.2023,
+      "fps": 30,
+      "status": "offline"
+    },
+    {
+      "id": "cam168",
+      "name": "Rhine Bridge 0",
+      "country": "SG",
+      "city": "Singapore",
+      "lat": 1.5317,
+      "lon": 103.4833,
+      "fps": 25,
+      "status": "offline"
+    },
+    {
+      "id": "cam169",
+      "name": "Times Square 1",
+      "country": "SG",
+      "city": "Singapore",
+      "lat": 1.695,
+      "lon": 104.1688,
+      "fps": 60,
+      "status": "online"
+    },
+    {
+      "id": "cam170",
+      "name": "Shibuya Crossing 2",
+      "country": "NL",
+      "city": "Amsterdam",
+      "lat": 52.3531,
+      "lon": 4.809,
+      "fps": 60,
+      "status": "offline"
+    },
+    {
+      "id": "cam171",
+      "name": "Statue Square 3",
+      "country": "NG",
+      "city": "Lagos",
+      "lat": 6.4974,
+      "lon": 3.246,
+      "fps": 60,
+      "status": "offline"
+    },
+    {
+      "id": "cam172",
+      "name": "Statue Square 4",
+      "country": "SG",
+      "city": "Singapore",
+      "lat": 1.4907,
+      "lon": 103.5785,
+      "fps": 60,
+      "status": "online"
+    },
+    {
+      "id": "cam173",
+      "name": "Rhine Bridge 5",
+      "country": "JP",
+      "city": "Tokyo",
+      "lat": 35.6767,
+      "lon": 139.4838,
+      "fps": 25,
+      "status": "online"
+    },
+    {
+      "id": "cam174",
+      "name": "Rhine Bridge 6",
+      "country": "BR",
+      "city": "Sao Paulo",
+      "lat": -23.7329,
+      "lon": -46.4462,
+      "fps": 60,
+      "status": "online"
+    },
+    {
+      "id": "cam175",
+      "name": "Copacabana 0",
+      "country": "AU",
+      "city": "Sydney",
+      "lat": -33.7237,
+      "lon": 151.3086,
+      "fps": 25,
+      "status": "online"
+    },
+    {
+      "id": "cam176",
+      "name": "Rhine Bridge 1",
+      "country": "KR",
+      "city": "Seoul",
+      "lat": 37.4619,
+      "lon": 126.724,
+      "fps": 60,
+      "status": "online"
+    },
+    {
+      "id": "cam177",
+      "name": "Dam Square 2",
+      "country": "MX",
+      "city": "Mexico City",
+      "lat": 19.4188,
+      "lon": -99.2861,
+      "fps": 25,
+      "status": "online"
+    },
+    {
+      "id": "cam178",
+      "name": "Times Square 3",
+      "country": "ZA",
+      "city": "Cape Town",
+      "lat": -33.7764,
+      "lon": 18.2182,
+      "fps": 25,
+      "status": "offline"
+    },
+    {
+      "id": "cam179",
+      "name": "Copacabana 4",
+      "country": "NL",
+      "city": "Amsterdam",
+      "lat": 52.6032,
+      "lon": 5.0782,
+      "fps": 60,
+      "status": "online"
+    },
+    {
+      "id": "cam180",
+      "name": "Champs Elysees 5",
+      "country": "KE",
+      "city": "Nairobi",
+      "lat": -1.3517,
+      "lon": 36.8262,
+      "fps": 25,
+      "status": "online"
+    },
+    {
+      "id": "cam181",
+      "name": "Statue Square 6",
+      "country": "NL",
+      "city": "Amsterdam",
+      "lat": 52.3698,
+      "lon": 4.7607,
+      "fps": 60,
+      "status": "online"
+    },
+    {
+      "id": "cam182",
+      "name": "Copacabana 0",
+      "country": "NG",
+      "city": "Lagos",
+      "lat": 6.8737,
+      "lon": 3.6581,
+      "fps": 60,
+      "status": "online"
+    },
+    {
+      "id": "cam183",
+      "name": "Harbour Cam 1",
+      "country": "NO",
+      "city": "Oslo",
+      "lat": 60.0243,
+      "lon": 10.4207,
+      "fps": 30,
+      "status": "online"
+    },
+    {
+      "id": "cam184",
+      "name": "Times Square 2",
+      "country": "NG",
+      "city": "Lagos",
+      "lat": 6.3983,
+      "lon": 3.6395,
+      "fps": 30,
+      "status": "online"
+    },
+    {
+      "id": "cam185",
+      "name": "Statue Square 3",
+      "country": "IS",
+      "city": "Reykjavik",
+      "lat": 63.9297,
+      "lon": -21.6252,
+      "fps": 60,
+      "status": "online"
+    },
+    {
+      "id": "cam186",
+      "name": "Kremlin Web 4",
+      "country": "ZA",
+      "city": "Cape Town",
+      "lat": -34.1005,
+      "lon": 18.1716,
+      "fps": 60,
+      "status": "online"
+    },
+    {
+      "id": "cam187",
+      "name": "Dubai Marina 5",
+      "country": "NG",
+      "city": "Lagos",
+      "lat": 6.2296,
+      "lon": 3.4216,
+      "fps": 30,
+      "status": "online"
+    },
+    {
+      "id": "cam188",
+      "name": "Dam Square 6",
+      "country": "JP",
+      "city": "Tokyo",
+      "lat": 36.0262,
+      "lon": 139.6377,
+      "fps": 25,
+      "status": "online"
+    },
+    {
+      "id": "cam189",
+      "name": "Dam Square 0",
+      "country": "NL",
+      "city": "Amsterdam",
+      "lat": 52.489,
+      "lon": 5.0289,
+      "fps": 60,
+      "status": "offline"
+    },
+    {
+      "id": "cam190",
+      "name": "Dubai Marina 1",
+      "country": "AU",
+      "city": "Sydney",
+      "lat": -34.0967,
+      "lon": 150.9401,
+      "fps": 30,
+      "status": "offline"
+    },
+    {
+      "id": "cam191",
+      "name": "Shibuya Crossing 2",
+      "country": "AU",
+      "city": "Sydney",
+      "lat": -33.5919,
+      "lon": 151.241,
+      "fps": 25,
+      "status": "offline"
+    },
+    {
+      "id": "cam192",
+      "name": "Dubai Marina 3",
+      "country": "KE",
+      "city": "Nairobi",
+      "lat": -1.3314,
+      "lon": 36.9911,
+      "fps": 60,
+      "status": "online"
+    },
+    {
+      "id": "cam193",
+      "name": "Statue Square 4",
+      "country": "KR",
+      "city": "Seoul",
+      "lat": 37.4956,
+      "lon": 127.1603,
+      "fps": 25,
+      "status": "online"
+    },
+    {
+      "id": "cam194",
+      "name": "Shibuya Crossing 5",
+      "country": "NO",
+      "city": "Oslo",
+      "lat": 59.8246,
+      "lon": 10.6799,
+      "fps": 30,
+      "status": "offline"
+    },
+    {
+      "id": "cam195",
+      "name": "Champs Elysees 6",
+      "country": "EG",
+      "city": "Cairo",
+      "lat": 30.3517,
+      "lon": 31.2444,
+      "fps": 25,
+      "status": "online"
+    },
+    {
+      "id": "cam196",
+      "name": "Dubai Marina 0",
+      "country": "AU",
+      "city": "Sydney",
+      "lat": -33.7127,
+      "lon": 151.3318,
+      "fps": 25,
+      "status": "online"
+    },
+    {
+      "id": "cam197",
+      "name": "Rhine Bridge 1",
+      "country": "SG",
+      "city": "Singapore",
+      "lat": 1.5461,
+      "lon": 103.7609,
+      "fps": 30,
+      "status": "online"
+    },
+    {
+      "id": "cam198",
+      "name": "Dubai Marina 2",
+      "country": "SG",
+      "city": "Singapore",
+      "lat": 1.6146,
+      "lon": 104.0984,
+      "fps": 25,
+      "status": "online"
+    },
+    {
+      "id": "cam199",
+      "name": "Copacabana 3",
+      "country": "ZA",
+      "city": "Cape Town",
+      "lat": -33.7786,
+      "lon": 18.1506,
+      "fps": 30,
+      "status": "offline"
+    }
+  ]
+}

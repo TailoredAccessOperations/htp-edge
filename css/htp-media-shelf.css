@@ -1,0 +1,276 @@
+/* htp.sh — media shelf / rotating display viewer
+ *
+ * Styling for the viewer built by /js/media-shelf.js. Kept in its own file
+ * (loaded async from the page head) so it cannot block first paint, and
+ * deliberately independent of htp-terminal.css so a failure in one does not
+ * take the other down.
+ *
+ * The stage reserves its box with aspect-ratio before any metadata arrives.
+ * That is the whole reason the grid that used to live here was replaced: a
+ * <video> of unknown intrinsic size inside an auto-fill grid shifted the entire
+ * page as each card resolved — the CLS the critical-CSS audit watches for.
+ * One stage, sized once, has nothing to reflow.
+ *
+ * Viewport adaptations (safe-area insets, short-viewport handling, small-screen
+ * collapse) live in htp-responsive.css, not here. This file owns appearance and
+ * intrinsic layout only.
+ */
+
+.shelf-wrap {
+  margin: 2.5rem 0;
+  /* Reserve the viewer's box before it exists.
+   *
+   * The viewer is injected once public/media/manifest.json has been read, which
+   * is a round-trip after first paint. Without a reservation the section grows
+   * by roughly 600px at that moment and pushes the legal notice and the footer
+   * down with it — a layout shift on a page whose whole lower half is text.
+   * With JS off the reservation reads as an empty slot, which is honest: that
+   * is exactly what the section is without its viewer.
+   */
+  min-height: 38rem;
+}
+
+.shelf-wrap h2 {
+  margin: 0 0 0.25rem;
+  font: inherit;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.shelf-lede {
+  margin: 0 0 1rem;
+  opacity: 0.7;
+  font-size: 0.9rem;
+}
+
+.viewer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* ---- stage ------------------------------------------------------------- */
+
+.viewer-stage {
+  position: relative;
+  display: block;
+  border: 1px solid currentColor;
+  border-radius: 6px;
+  overflow: hidden;
+  /* contain keeps the video's decode from invalidating page layout */
+  contain: content;
+}
+
+.viewer-video {
+  display: block;
+  width: 100%;
+  /* Reserve the media box before any metadata arrives. */
+  aspect-ratio: 16 / 9;
+  /* Letterbox, not a highlight: a square or 4:3 clip inside a 16:9 stage pads
+     the sides, and `background: currentColor` painted those bars in the accent
+     green. The token is defined by the base layer; the literal is the fallback
+     for the pages where it is not. */
+  background: var(--bg1, #0a100c);
+  /* 0 until a source resolves, so an idle viewer costs no attention. */
+  opacity: 0.2;
+  transition: opacity 0.3s ease;
+}
+
+.viewer-video[data-state="ready"] {
+  opacity: 1;
+}
+
+.viewer-video[data-state="failed"] {
+  opacity: 0.12;
+}
+
+/* Warm-up clones are metadata-only and exist for a few seconds. They must never
+   be seen; they are appended to the stage purely to start a fetch early. */
+.viewer-warm {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+  top: 0;
+  left: 0;
+}
+
+.viewer-cap {
+  position: absolute;
+  inset: auto 0 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem;
+  padding: 0.5rem 0.6rem;
+  font-size: 0.8rem;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.72), transparent);
+}
+
+.viewer-title {
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.viewer-note {
+  opacity: 0.75;
+}
+
+.viewer-tag {
+  padding: 0.05rem 0.35rem;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+.viewer-count {
+  margin-left: auto;
+  opacity: 0.7;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---- dwell bar --------------------------------------------------------- */
+
+.viewer-dwell {
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.viewer-dwell-fill {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: currentColor;
+}
+
+@keyframes viewer-dwell {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+/* ---- controls ---------------------------------------------------------- */
+
+.viewer-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.viewer-btn {
+  font: inherit;
+  font-size: 0.8rem;
+  padding: 0.25rem 0.6rem;
+  border: 1px solid currentColor;
+  border-radius: 4px;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.viewer-btn:hover,
+.viewer-btn:focus-visible {
+  background: currentColor;
+  color: Canvas;
+}
+
+.viewer-btn-play {
+  min-width: 5.5rem;
+}
+
+/* ---- rail -------------------------------------------------------------- */
+
+.viewer-rail {
+  display: flex;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  /* Reserve the rail's height so adding clips cannot reflow the page. */
+  min-height: 3.1rem;
+}
+
+.viewer-chip {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  flex: 0 0 auto;
+  max-width: 11rem;
+  padding: 0.3rem 0.5rem;
+  border: 1px solid currentColor;
+  border-radius: 4px;
+  background: none;
+  color: inherit;
+  font: inherit;
+  font-size: 0.75rem;
+  text-align: left;
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+.viewer-chip span {
+  opacity: 0.75;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.viewer-chip strong {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.viewer-chip:hover,
+.viewer-chip:focus-visible {
+  opacity: 1;
+}
+
+.viewer-chip[aria-current="true"] {
+  opacity: 1;
+  font-weight: 700;
+  border-width: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .viewer-video {
+    transition: none;
+  }
+
+  /* The dwell bar is motion. The rotation it measures is already disabled by
+     the script under the same preference; this stops the bar sweeping. */
+  .viewer-dwell-fill {
+    animation: none !important;
+    width: 100%;
+    opacity: 0.35;
+  }
+}
+
+@media (max-width: 40rem) {
+  /* The stage is narrower here, so the reservation can be too. */
+  .shelf-wrap {
+    min-height: 20rem;
+  }
+
+  .viewer-count {
+    margin-left: 0;
+  }
+
+  .viewer-btn {
+    flex: 1 1 auto;
+    text-align: center;
+  }
+
+  .viewer-chip {
+    max-width: 9rem;
+  }
+}

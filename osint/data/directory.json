@@ -1,0 +1,58 @@
+{
+  "generated_at": "2026-09-24T11:12:35.919Z",
+  "chains": [
+    {
+      "id": "planes",
+      "label": "planes",
+      "chain": "HTP_PLANES",
+      "file": "/osint/data/planes.json",
+      "accent": "#3ed678",
+      "count": 300
+    },
+    {
+      "id": "trains",
+      "label": "trains",
+      "chain": "HTP_TRAINS",
+      "file": "/osint/data/trains.json",
+      "accent": "#5ad1e6",
+      "count": 150
+    },
+    {
+      "id": "cctv",
+      "label": "cctv",
+      "chain": "HTP_CCTV",
+      "file": "/osint/data/cctv.json",
+      "accent": "#e0a63b",
+      "count": 200
+    },
+    {
+      "id": "ips",
+      "label": "ips",
+      "chain": "HTP_IPS",
+      "file": "/osint/data/ips.json",
+      "accent": "#e6c85a",
+      "count": 1200
+    },
+    {
+      "id": "intel",
+      "label": "intel",
+      "chain": "HTP_INTEL",
+      "file": "/osint/data/intel.json",
+      "accent": "#ff5c7a",
+      "count": 40
+    }
+  ],
+  "tools": [
+    {
+      "id": "iplookup",
+      "label": "ip lookup",
+      "action": "iplookup"
+    },
+    {
+      "id": "taranis",
+      "label": "self-host taranis",
+      "action": "taranis"
+    }
+  ],
+  "rules_index": "/osint/rules/index.json"
+}

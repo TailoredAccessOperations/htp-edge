@@ -1,0 +1,13 @@
+/* HTP · shared a11y baseline — visible keyboard focus + reduced motion. Safe on every page. */
+:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: 2px solid var(--green, #4ade80) !important;
+  outline-offset: 2px;
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

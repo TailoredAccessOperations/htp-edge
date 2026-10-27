@@ -1,0 +1,175 @@
+/* ── Feed (snap scroll) ─────────────────────────────────────────────── */
+#feed {
+  height: 100%;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain; /* stop pull-to-refresh / back-swipe churn on mobile */
+}
+/* Desktop: the feed is a portrait device screen (TikTok-style column), so
+   a 9:16 clip keeps ~86% of its frame instead of being cropped to ~33% in
+   a full-width landscape slide. Phones stay full-bleed (see media query). */
+@media (min-width: 768px) {
+  #feed {
+    max-width: min(96vw, 500px);
+    margin: 0 auto;
+    border-inline: 1px solid var(--line);
+    box-shadow: 0 0 80px rgba(0, 0, 0, .6);
+  }
+}
+.slide {
+  position: relative;
+  height: 100%;
+  min-height: 100dvh;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  background: var(--bg);
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+  touch-action: pan-y; /* one-axis pan: no double-tap zoom, no horizontal gesture fights */
+  animation: slideIn .5s var(--ease) both;
+}
+@keyframes slideIn {
+  from { opacity: 0; transform: scale(1.02); }
+  to { opacity: 1; transform: none; }
+}
+.slide .media {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: contain;
+  background: #000;
+}
+.slide .media.fill { object-fit: cover; }
+.slide .slides-stack {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+}
+
+/* TikTok official embed fallback */
+.slide .tt-embed-wrap {
+  width: min(420px, 100%);
+  max-height: 90%;
+  overflow: auto;
+  border-radius: 4px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  padding: .5rem;
+}
+
+.shade-bot {
+  position: absolute; left: 0; right: 0; bottom: 0; height: 46%;
+  background: linear-gradient(transparent, rgba(0, 0, 0, .94));
+  pointer-events: none; z-index: 2;
+}
+.caption {
+  position: absolute; left: 0; right: 4.5rem; bottom: 0;
+  z-index: 3; padding: 1.1rem 1.2rem calc(1.5rem + env(safe-area-inset-bottom, 0px));
+  display: flex; flex-direction: column; gap: .42rem;
+}
+.caption .user {
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 700; font-size: 1.18rem; letter-spacing: .01em;
+  display: flex; align-items: center; gap: .5rem; flex-wrap: wrap;
+}
+.caption .user b { color: var(--pink); font-weight: 700; }
+.caption .user em {
+  font-style: normal;
+  font-family: "Azeret Mono", monospace;
+  font-size: .6rem; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--steel);
+  border: 1px solid var(--line);
+  padding: .16rem .42rem; border-radius: 2px;
+}
+.caption .title {
+  font-size: clamp(.98rem, 2.4vw, 1.22rem); font-weight: 500;
+  line-height: 1.38;
+  max-height: 4.2em; overflow: hidden;
+  color: var(--osd);
+}
+.caption .meta {
+  font-family: "Azeret Mono", monospace;
+  font-size: .64rem; color: var(--steel); letter-spacing: .04em;
+}
+.kind-pill {
+  display: inline-block;
+  font-family: "Azeret Mono", monospace;
+  font-size: .56rem; font-weight: 500; letter-spacing: .14em; text-transform: uppercase;
+  padding: .14rem .4rem; border-radius: 2px;
+  color: var(--pink); margin-right: .42rem; vertical-align: 2px;
+  border: 1px solid rgba(254, 44, 85, .5); background: transparent;
+}
+.kind-pill.img, .kind-pill.slides { color: var(--osd); border-color: rgba(245, 240, 230, .35); }
+.kind-pill.embed { color: var(--steel); border-color: var(--line); }
+
+.rail {
+  position: absolute; right: .6rem; bottom: calc(5.6rem + env(safe-area-inset-bottom, 0px));
+  z-index: 4;
+  display: flex; flex-direction: column; gap: .6rem;
+  align-items: center;
+}
+.rail button, .rail a {
+  width: 44px; height: 44px;
+  border-radius: 3px;
+  border: 1px solid var(--line);
+  background: rgba(17, 17, 17, .6);
+  color: var(--osd);
+  display: inline-flex; align-items: center; justify-content: center;
+  font-family: "Azeret Mono", monospace; font-size: .9rem; cursor: pointer;
+  text-decoration: none;
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  transition: border-color .18s var(--ease), color .18s var(--ease), transform .18s var(--ease);
+}
+.rail button:hover, .rail a:hover {
+  border-color: var(--osd); color: #fff; transform: translateY(-2px);
+}
+.rail button:active { transform: scale(.94); }
+
+/* Waveform progress — a sound-wave strip instead of a plain bar */
+.progress {
+  position: absolute; left: 0; right: 0; bottom: 0; height: 5px;
+  background: repeating-linear-gradient(90deg, rgba(245, 240, 230, .05) 0 2px, transparent 2px 7px);
+  z-index: 5; overflow: hidden;
+}
+.progress > i {
+  display: block; height: 100%; width: 0%;
+  background: repeating-linear-gradient(90deg, var(--osd) 0 2px, transparent 2px 7px);
+  box-shadow: 0 0 14px rgba(245, 240, 230, .45);
+}
+
+.empty, .loading {
+  min-height: 100dvh;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: .8rem; padding: 2rem; text-align: center;
+  color: var(--steel);
+}
+.empty h2, .loading h2 {
+  font-family: "Barlow Condensed", sans-serif;
+  color: var(--osd); font-size: 1.5rem; font-weight: 700; letter-spacing: .01em;
+}
+.empty p, .loading p {
+  font-family: "Azeret Mono", monospace; font-size: .68rem; letter-spacing: .06em;
+}
+.spinner {
+  width: 32px; height: 32px; border-radius: 50%;
+  border: 2px solid rgba(245, 240, 230, .15);
+  border-top-color: var(--amber);
+  animation: spin .8s linear infinite;
+}
+
+@media (max-width: 640px) {
+  .counter .tc { display: none; }
+  .counter { font-size: .64rem; padding: .3rem .5rem; }
+  .brand h1 { font-size: 1.05rem; }
+  /* keep the top strip clear of a notch: safe-area top + tight side padding */
+  .top { padding: calc(.5rem + env(safe-area-inset-top, 0px)) .7rem; }
+  .caption { right: 3.6rem; }
+  .rail { right: .42rem; }
+  /* full-size 44px thumb targets on touch (don't shrink like before) */
+  .rail button, .rail a { font-size: .8rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+  #feed { scroll-behavior: auto; }
+}

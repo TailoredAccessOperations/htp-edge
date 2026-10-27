@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+                              K E Y   B A S E
+
+                            crypto for everyone
+
+                        because no one we know ever
+                      seems to have a public key. :-(
+
+     No Google Analytics or other 3rd party hosted script tags on Keybase.
+
+     And this has the added bonus that we'll never be able to serve ad code.
+
+                                    \o/  \o/
+                                  keybase team
+
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+
+  <head>
+    <title>linux (X) | Keybase</title>
+    <meta       name="viewport"    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link       href="/_/brew/_/b8545bac/sitewide-css.css"      rel="stylesheet">
+    
+    <script      src="/_/brew/_/019a7763/sitewide-js.js"></script>
+
+    <meta    charset="UTF-8" />
+    
+
+<meta name="Description" content="linux (X) is now on Keybase, an open source app for encryption and cryptography."><meta property="og:description" content="linux (X) is now on Keybase, an open source app for encryption and cryptography."><meta name="twitter:image" content="https://s3.amazonaws.com/keybase_processed_uploads/258dd01532c70f16f5faf7363d50b305_360_360.jpg"><meta name="twitter:title" content="linux (X) on Keybase"><meta name="twitter:description" content="linux (X) is now on Keybase, an open source app for encryption and cryptography."><meta property="og:image"  content="https://s3.amazonaws.com/keybase_processed_uploads/258dd01532c70f16f5faf7363d50b305_360_360.jpg"><meta property="og:image:width" content="360"><meta property="og:image:height" content="360">
+
+    <script>
+    window.csrf_token="lgHZIDZmYTg0Mjk3YjU1ZjMyMTMwYzM4OThjZGUyYjEzNjA4zly/8uDOAxcEAMDEIHeQ0WM/zDmHgyPnEURu5Mne5rn20MjCzCrwFry5eIpH";
+    </script>
+  </head>
+
+  <body id="">
+  <div class="run-mode run-mode-prod">
+    <div class="grid-monitor"> 
+      <input id="url_base" type="hidden" value="https://keybase.io/"/>
+
+        <div id="navbar-top">
+          <div class="navbar navbar-fixed-top navbar-default" role="navigation" data-active-tab="">
+
+            <div class="container navbar-container">
+              <div class="row">
+
+                <div class="col-xs-2 col-sm-1">
+                  <div class="navbar-header">
+                    <div class="navbar-brand">
+                      <a href="/" aria-label="home">
+                        <img src="/images/icons/icon-keybase-logo-48.png" srcset="/images/icons/icon-keybase-logo-48@2x.png 2x" width="48" height="48" />
+                      </a>
+                    </div>
+                    <div class="staging-notice">Keybase Staging Server</div>
+                  </div>
+                </div>
+
+                <div class="col-xs-10 col-sm-5">
+                  <div class="nav-search-wrapper">
+                    <div class="input-group form-group">
+                      <input type="text" class="form-control auto-focus nav-search-input 1pw-reject" data-focus-priority="0" placeholder="Search Keybase"
+                      autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false">
+                      <span class="input-group-addon"><i class="fas fa-search"></i></span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-6">    
+
+      <table class="nav navbar-right navbar-buttons pull-right">
+        <tr>
+          <td class="nav-job-link  hidden-sm hidden-xs"><div class="" title="Jobs">
+            
+            <span class="label label-info hidden-sm hidden-xs">New</span> <a href="/jobs" style="font-size:13px;">Keybase is hiring</a>
+          </div></td>
+
+
+        
+            <td>
+              
+              <a href="/download" class="btn btn-primary">Install</a>
+            </td>
+            <td><a onclick="return false;" href="#_" class="navbar-link link-login ">Login</a></td>
+            <td class="nav-btn "><div class="auto-tooltip" title="Encrypt"><a href="/encrypt" aria-label="encrypt"><i class="fas fa-lock"></i></a></div></td>
+            <td class="nav-btn " ><div class="auto-tooltip" title="Verify"><a href="/verify" aria-label="verify"><i class="fas fa-check"></i></a></div></td>
+            <td class="hidden-xs nav-btn "   ><div class="auto-tooltip" title="Docs"><a href="/docs" aria-label="docs"><i class="fas fa-question"></i></a></div></td>
+          
+        </tr>
+      </table>
+</div>
+
+                
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+    <div class="launch-notice hidden-xs">
+      <div class="container" style="text-align:center;">
+        Experimental: <b><a href="/slack-importer">💥 Slack to Keybase team import 💥</a></b>
+      </div>
+    </div>
+    <div id="autoreset-event-error" class="container alert alert-warning" style="text-align:center; display:none;">
+  <span id="autoreset-event-error-msg">  </span>
+  <button type="button" class="close"><span id="autoreset-event-error-close">×</span></button>
+</div>
+<div id="autoreset-event-success" class="container alert alert-success" style="text-align:center; display:none;">
+  <span id="autoreset-event-success-msg">  </span>
+  <button type="button" class="close"><span id="autoreset-event-success-close">×</span></button>
+</div>
+
+
+
+
+      
+      <div class="modal modal-primary" id="shared-modal" data-backdrop="static">
+      </div>
+
+      
+      <div class="content">
+        
+
+<input type="hidden" id="is-self-view" value="0">
+<div id="page-user">
+
+
+  
+<div class="container user-deeper-nav">
+  <ul class="kb-nav kb-nav-tabs">
+    <li><a class="username"  href="/linux"><i class="fas fa-arrow-left"></i> <span class="hidden-xs"></span> linux</a></li>
+    <li class=""><a class="btn-cry-graph"    href="/linux/graph"><i class="fas fa-code-fork"></i> graph</a></li>
+    <li class=""><a class="btn-cry-devices"    href="/linux/devices"><i class="icon-kb-iconfont-identity-devices"></i> devices</a></li>
+    <li class="active"><a class="btn-cry-sigchain" href="/linux/sigchain"><i class="fas fa-link"></i> chain</a></li>
+  </ul>
+</div>
+<div class="container page-sigchain" data-uid="caf90169eefa5f807d577486b9f79519" data-proof-id="" data-username="linux">
+  <div class="row">
+    <div class="col-xs-12  kb-main-card">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="sigchain-explanation">
+            
+
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="sigchain"></div>
+        </div>
+        <div class="col-sm-6">
+          <div class="sigchain-sidebar">
+            <div class="sig-box">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+      </div>
+
+      <div class="footer">
+  
+      <div class="container hidden-xs">
+        <div class="row">
+          <div class="col-xs-12 col-sm-6 col-md-5 col-lg-4">
+            <img src="/images/walkthrough/footprints_transp.png"  class="img-responsive" width="1000" height="272">
+          </div>
+        </div>
+      </div>
+    
+
+<div class="container text-center hidden-xs">
+  <div>
+
+    <small>
+      Keybase, 2019
+    | Available within Tor at <strong>http://keybase5wmilwokqirssclfnsqrjdsi7jdir5wy7y7iu3tanwmtp6oid.onion</strong><br/><br/>
+
+    </small>
+
+      <a href="/download">install Keybase</a>
+      | <a href="/blog">read our blog</a>
+      | <a href="/docs">documentation</a>
+      | <a href="/docs/bug_reporting">bug reporting</a>
+      | <a href="/docs/terms">terms</a>
+      &amp; <a href="/docs/privacypolicy">privacy</a><br><br>
+      <a href="/jobs">jobs @ keybase</a>
+    </div>
+  </div>
+</div>
+<div class="container text-center visible-xs" style="padding:20px 0">
+
+  
+
+  <div style="margin-bottom:20px">
+    <a href="https://github.com/keybase/client/issues" rel="noopener noreferrer">Please send us feedback &amp; bug reports</a>.
+  </div>
+  Keybase, 2019
+    | <a href="/blog">read our blog</a>
+    | <a href="/docs/terms">terms</a>
+    &amp; <a href="/docs/privacypolicy">privacy</a><br><br>
+      <span class="label label-info">HEY</span> <a href="/jobs">GET A JOB!</a> <span class="label label-info">/HEY</span>
+</div>
+</div>
+
+
+    </div>
+  </div>
+  <script type="text/javascript">
+    window.session = new Session()
+    window.run_mode = "prod";
+  </script>
+  </body>
+</html>

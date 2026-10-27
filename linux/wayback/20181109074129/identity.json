@@ -1,0 +1,200 @@
+{
+  "username": "linux",
+  "uid": "caf90169eefa5f807d577486b9f79519",
+  "full_name": "X",
+  "bio": "XMPP: x@htp.re Email - x@neko.li | x@htp.re Discord: Linux#0001",
+  "location": "/bin/laden",
+  "devices": "2 devices",
+  "pgp_kid": "01010176c4f264f12d9d1bd06500e51628b6f87aa1630f8caf5f91cb9c5585625a6a0a",
+  "pgp_short": "EE32 288C 6BCD 7F7B",
+  "bitcoin_address": "19uDB5UDJRoTXBPzyMF2KD1Z7ZvqmdVWA4",
+  "bitcoin_sig_id": "cfdb568da40075fc42fa06701a70c94d3a0343f653db8c6c502e7b9b0cf5fd840f",
+  "proofs": [
+    {
+      "label": "2 devices",
+      "href": "/linux/devices",
+      "tags": []
+    },
+    {
+      "label": "EE32 288C 6BCD 7F7B",
+      "href": "#show-public",
+      "tags": []
+    },
+    {
+      "label": "grsecurity",
+      "href": "https://github.com/grsecurity",
+      "tags": [
+        "gist"
+      ]
+    },
+    {
+      "label": "linux.keybase.pub",
+      "href": "https://linux.keybase.pub",
+      "tags": [
+        "https"
+      ]
+    },
+    {
+      "label": "brooke.lol",
+      "href": "http://brooke.lol",
+      "tags": [
+        "dns"
+      ]
+    },
+    {
+      "label": "brick.lol",
+      "href": "http://brick.lol",
+      "tags": [
+        "dns"
+      ]
+    },
+    {
+      "label": "2pac.me",
+      "href": "http://2pac.me",
+      "tags": [
+        "dns"
+      ]
+    }
+  ],
+  "people": {
+    "following": [
+      {
+        "username": "wkn",
+        "name": ""
+      },
+      {
+        "username": "dank",
+        "name": "Leigh Brayshaw"
+      },
+      {
+        "username": "cache",
+        "name": "ryan"
+      },
+      {
+        "username": "FucciSec",
+        "name": "FucciSec"
+      },
+      {
+        "username": "jogn",
+        "name": "Jogn"
+      },
+      {
+        "username": "rhythm",
+        "name": ""
+      },
+      {
+        "username": "ammar",
+        "name": "Ammar Bandukwala"
+      },
+      {
+        "username": "Zenexer",
+        "name": "Paul Buonopane"
+      },
+      {
+        "username": "bcrypt",
+        "name": "Yan"
+      },
+      {
+        "username": "hacker",
+        "name": "Vincent Canfield"
+      }
+    ],
+    "followers": [
+      {
+        "username": "wkn",
+        "name": ""
+      },
+      {
+        "username": "kagome",
+        "name": ""
+      },
+      {
+        "username": "FucciSec",
+        "name": "FucciSec"
+      },
+      {
+        "username": "cache",
+        "name": "ryan"
+      },
+      {
+        "username": "rhythm",
+        "name": ""
+      },
+      {
+        "username": "depression",
+        "name": "z a y d"
+      },
+      {
+        "username": "kfalconspb",
+        "name": "Scott Bollinger"
+      },
+      {
+        "username": "Little",
+        "name": "Lane"
+      }
+    ],
+    "browse": [
+      {
+        "username": "Morendil",
+        "name": "Laurent Bossavit"
+      },
+      {
+        "username": "PJPatriot",
+        "name": "PJ"
+      },
+      {
+        "username": "wzyboy",
+        "name": "Zhuoyun Wei"
+      },
+      {
+        "username": "mattmight",
+        "name": "Matt Might"
+      },
+      {
+        "username": "neiljbrookes",
+        "name": "Neil Brookes"
+      },
+      {
+        "username": "W4CPATRIOT",
+        "name": ""
+      },
+      {
+        "username": "olivergierke",
+        "name": "Oliver Drotbohm"
+      },
+      {
+        "username": "alexisohanian",
+        "name": "Alexis Ohanian"
+      },
+      {
+        "username": "pajowu",
+        "name": "pajowu"
+      },
+      {
+        "username": "ndw",
+        "name": "Norman Walsh"
+      },
+      {
+        "username": "alicetragedy",
+        "name": "Laura Gaetano"
+      },
+      {
+        "username": "li",
+        "name": "Luis Iv\u00e1n Cuende"
+      },
+      {
+        "username": "azakria",
+        "name": ""
+      },
+      {
+        "username": "tsmith",
+        "name": "Ty Smith"
+      },
+      {
+        "username": "jobert",
+        "name": "Jobert Abma"
+      }
+    ]
+  },
+  "avatar": "https://s3.amazonaws.com/keybase_processed_uploads/a054308b22cade27ddca527ade535805_360_360.jpg"
+}

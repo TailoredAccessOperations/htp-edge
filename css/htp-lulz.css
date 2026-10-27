@@ -1,0 +1,355 @@
+/* htp-lulz.css — Anonymous / LulzSec-adjacent home theme
+ * home-lulz-anon · 2026-10-134
+ * Green-on-black CRT, acid accents, tasteful glitch/marquee.
+ * Mask motif via CSS shapes only — no ripped logos.
+ */
+:root {
+  --bg0: #010402;
+  --bg1: #020805;
+  --bg2: #04110a;
+  --panel: rgba(2, 12, 6, 0.96);
+  --card: rgba(4, 18, 10, 0.94);
+  --line: rgba(57, 255, 106, 0.22);
+  --line-strong: rgba(212, 255, 0, 0.55);
+  --line-warn: rgba(255, 43, 214, 0.4);
+  --green: #39ff6a;
+  --green-bright: #7dff9a;
+  --green-dim: #128a3a;
+  --mint: #c8ffd8;
+  --text: #39ff6a;
+  --muted: #1f8a3c;
+  --cyan: #00f0ff;
+  --amber: #d4ff00;
+  --red: #ff2bd6;
+  --red-soft: rgba(255, 43, 214, 0.14);
+  --glow: 0 0 32px rgba(57, 255, 106, 0.18);
+  --shadow-panel: var(--glow), 0 20px 50px rgba(0, 0, 0, 0.55);
+  --radius: 4px;
+  --radius-sm: 2px;
+  --radius-pill: 999px;
+  --focus-ring: 0 0 0 2px #010402, 0 0 0 4px #d4ff00;
+  --lulz-green: #39ff6a;
+  --lulz-red: #ff2bd6;
+  --lz-acid: #d4ff00;
+  --lz-hot: #ff2bd6;
+  --lz-cyan: #00f0ff;
+  --font-mono: "Share Tech Mono", "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  --font-ascii: "VT323", "Share Tech Mono", "Courier New", monospace;
+  --font-sans: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+
+html, body {
+  background: #010402 !important;
+  color: var(--green) !important;
+  color-scheme: dark;
+}
+
+body {
+  font-family: var(--font-mono);
+  background:
+    radial-gradient(900px 480px at 50% -8%, rgba(57, 255, 106, 0.09), transparent 55%),
+    radial-gradient(520px 360px at 100% 20%, rgba(212, 255, 0, 0.05), transparent 50%),
+    linear-gradient(180deg, #010402, #020805 40%, #010402) !important;
+}
+
+/* CRT scan + vignette (tasteful; disabled for reduced motion below) */
+body.lulz-theme::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9998;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.22) 0 1px,
+    transparent 1px 3px
+  );
+  mix-blend-mode: multiply;
+  opacity: 0.55;
+}
+body.lulz-theme::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9997;
+  background: radial-gradient(ellipse at center, transparent 52%, rgba(0, 0, 0, 0.72) 100%);
+}
+
+#crt {
+  opacity: 0.28 !important;
+  box-shadow: inset 0 0 140px rgba(0, 0, 0, 0.55) !important;
+}
+#scanlines {
+  opacity: 0.35 !important;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent 0 2px,
+    rgba(0, 40, 10, 0.18) 2px 3px
+  ) !important;
+}
+
+a { color: var(--lz-acid); }
+a:hover, a:focus-visible {
+  color: var(--lz-hot);
+  text-shadow: 0 0 8px rgba(255, 43, 214, 0.55);
+}
+:focus-visible {
+  outline: 2px dashed var(--lz-acid) !important;
+  outline-offset: 3px;
+}
+
+/* Top bar — ops channel strip */
+.top {
+  background: linear-gradient(90deg, rgba(2, 20, 8, 0.98), rgba(8, 4, 16, 0.95)) !important;
+  border-bottom: 1px solid var(--line-strong) !important;
+  box-shadow: 0 0 24px rgba(57, 255, 106, 0.12);
+}
+.top .brand {
+  color: var(--lz-acid) !important;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.top .brand::before {
+  content: "◉ ";
+  color: var(--green);
+  text-shadow: 0 0 10px var(--green);
+}
+.chip {
+  border: 1px solid var(--line) !important;
+  background: rgba(0, 0, 0, 0.45) !important;
+  color: var(--green) !important;
+  border-radius: 2px !important;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.7rem !important;
+}
+.chip:hover, .chip:focus-visible {
+  border-color: var(--lz-acid) !important;
+  color: var(--lz-acid) !important;
+  box-shadow: 0 0 12px rgba(212, 255, 0, 0.25);
+}
+
+/* Hero glitch */
+.hero .glitch {
+  font-family: var(--font-ascii) !important;
+  font-size: clamp(3.2rem, 12vw, 6.5rem) !important;
+  letter-spacing: 0.08em;
+  color: var(--green) !important;
+  text-shadow:
+    0 0 2px var(--green),
+    2px 0 0 rgba(255, 43, 214, 0.55),
+    -2px 0 0 rgba(0, 240, 255, 0.45),
+    0 0 28px rgba(57, 255, 106, 0.35) !important;
+  animation: lz-flicker 4.8s steps(2, end) infinite;
+}
+@keyframes lz-flicker {
+  0%, 96%, 100% { opacity: 1; filter: none; }
+  97% { opacity: 0.82; filter: hue-rotate(40deg) brightness(1.2); }
+  98% { opacity: 1; transform: translate(1px, 0); }
+  99% { opacity: 0.9; transform: translate(-1px, 0); }
+}
+
+/* Marquee / ticker — acid strip */
+.ticker {
+  border: 1px solid var(--line-strong) !important;
+  background: rgba(0, 0, 0, 0.65) !important;
+  box-shadow: inset 0 0 20px rgba(57, 255, 106, 0.08);
+}
+.ticker-text {
+  color: var(--lz-acid) !important;
+  font-family: var(--font-mono) !important;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.links a {
+  border-color: var(--line) !important;
+  background: rgba(0, 8, 4, 0.7) !important;
+  color: var(--green) !important;
+  border-radius: 2px !important;
+}
+.links a:hover, .links a:focus-visible {
+  border-color: var(--lz-hot) !important;
+  color: var(--lz-hot) !important;
+  background: rgba(255, 43, 214, 0.08) !important;
+}
+
+/* Guy Fawkes–adjacent mask motif (CSS only, not a trademark asset) */
+.hero::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: -0.4rem;
+  width: 72px;
+  height: 88px;
+  transform: translateX(-50%);
+  pointer-events: none;
+  opacity: 0.22;
+  background:
+    radial-gradient(ellipse 38% 22% at 32% 42%, #010402 0 55%, transparent 56%),
+    radial-gradient(ellipse 38% 22% at 68% 42%, #010402 0 55%, transparent 56%),
+    radial-gradient(ellipse 70% 78% at 50% 48%, transparent 0 42%, var(--green) 43% 46%, transparent 47%),
+    radial-gradient(ellipse 18% 10% at 50% 68%, #010402 0 60%, transparent 61%),
+    radial-gradient(ellipse 58% 70% at 50% 45%, transparent 0 58%, var(--green) 59% 62%, transparent 63%);
+  filter: drop-shadow(0 0 8px rgba(57, 255, 106, 0.35));
+}
+.hero { position: relative; padding-top: 2.6rem !important; }
+
+.section-title {
+  color: var(--lz-acid) !important;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  border-left: 3px solid var(--lz-hot) !important;
+  padding-left: 0.65rem !important;
+}
+
+.dd-title { color: var(--green) !important; }
+.dd-title .accent { color: var(--lz-acid) !important; }
+.dd-badge {
+  background: rgba(255, 43, 214, 0.12) !important;
+  border: 1px solid var(--lz-hot) !important;
+  color: var(--lz-hot) !important;
+  border-radius: 2px !important;
+  letter-spacing: 0.12em;
+}
+.dd-meta { color: var(--muted) !important; }
+.dd-meta a { color: var(--lz-cyan); }
+
+/* Resources */
+.res-section {
+  border: 1px solid var(--line) !important;
+  background: linear-gradient(180deg, rgba(2, 16, 8, 0.95), rgba(0, 0, 0, 0.85)) !important;
+  box-shadow: var(--shadow-panel);
+  border-radius: 4px !important;
+}
+.res-feed {
+  border: 1px dashed var(--line) !important;
+  background: rgba(0, 0, 0, 0.45) !important;
+}
+.res-feed-head a { color: var(--lz-acid) !important; }
+.res-tag.live {
+  background: rgba(57, 255, 106, 0.12) !important;
+  color: var(--green) !important;
+  border: 1px solid var(--green) !important;
+  animation: lz-pulse 1.8s ease-in-out infinite;
+}
+.res-tag.lock {
+  background: rgba(212, 255, 0, 0.1) !important;
+  color: var(--lz-acid) !important;
+  border: 1px solid var(--lz-acid) !important;
+}
+@keyframes lz-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(57, 255, 106, 0.35); }
+  50% { box-shadow: 0 0 0 6px rgba(57, 255, 106, 0); }
+}
+.res-card {
+  border: 1px solid var(--line) !important;
+  background: rgba(0, 10, 5, 0.75) !important;
+  border-radius: 2px !important;
+}
+.res-card:hover, .res-card:focus-visible {
+  border-color: var(--lz-acid) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 0 18px rgba(212, 255, 0, 0.15);
+}
+.res-name { color: var(--green-bright) !important; }
+.res-url { color: var(--lz-cyan) !important; }
+.res-desc { color: var(--muted) !important; }
+
+/* Ghost / crew cards */
+.ghost-card {
+  border: 1px solid var(--line) !important;
+  background: rgba(0, 0, 0, 0.55) !important;
+  border-radius: 2px !important;
+}
+.ghost-card:hover, .ghost-card[aria-pressed="true"] {
+  border-color: var(--lz-hot) !important;
+  box-shadow: 0 0 16px rgba(255, 43, 214, 0.2);
+}
+.ghost-name { color: var(--lz-acid) !important; }
+
+/* Status box */
+.subtext-box {
+  border: 1px solid var(--line-strong) !important;
+  background: rgba(0, 0, 0, 0.55) !important;
+}
+#subtext {
+  color: var(--lz-acid) !important;
+  font-family: var(--font-ascii) !important;
+  font-size: 1.35rem !important;
+  letter-spacing: 0.06em;
+  text-shadow: 0 0 12px rgba(212, 255, 0, 0.35);
+}
+
+/* Dialog / paste / broadcast */
+.dialog .nick { color: var(--lz-hot) !important; }
+.dialog.green .msg { color: var(--green) !important; }
+.dialog.cyan .msg { color: var(--lz-cyan) !important; }
+.dialog.red .msg { color: var(--lz-hot) !important; }
+.lulz-paste {
+  border: 1px solid var(--line) !important;
+  background: #000 !important;
+  box-shadow: inset 0 0 40px rgba(57, 255, 106, 0.06);
+}
+.lulz-paste .hl { color: var(--green) !important; }
+.lulz-paste .hot { color: var(--lz-hot) !important; }
+.lulz-paste .warn { color: var(--lz-acid) !important; }
+.lulz-paste .cmd { color: var(--lz-cyan) !important; }
+
+.broadcast .title {
+  color: var(--lz-hot) !important;
+  letter-spacing: 0.22em;
+  text-shadow: 0 0 14px rgba(255, 43, 214, 0.45);
+}
+
+/* Terminal */
+.term-wrap, .term-bar {
+  border-color: var(--line-strong) !important;
+  background: rgba(0, 0, 0, 0.72) !important;
+}
+.term-title { color: var(--lz-acid) !important; }
+
+/* Footer */
+footer.site-foot {
+  border-top: 1px solid var(--line);
+  color: var(--muted) !important;
+  letter-spacing: 0.12em;
+}
+footer.site-foot a { color: var(--green) !important; }
+footer.site-foot a:hover { color: var(--lz-acid) !important; }
+
+/* Skip link */
+.skip-link {
+  background: #000 !important;
+  color: var(--lz-acid) !important;
+  border: 1px solid var(--lz-acid) !important;
+}
+
+/* Marquee accent bar under top */
+.top::after {
+  content: "WE ARE ANONYMOUS · WE ARE LEGION · WE DO NOT FORGIVE · WE DO NOT FORGET · EXPECT LULZ";
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  color: var(--lz-hot);
+  background: #000;
+  border-top: 1px solid rgba(255, 43, 214, 0.35);
+  padding: 0.2rem 0;
+  animation: lz-marquee 28s linear infinite;
+}
+@keyframes lz-marquee {
+  0% { text-indent: 100%; }
+  100% { text-indent: -100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero .glitch,
+  .res-tag.live,
+  .top::after { animation: none !important; }
+  body.lulz-theme::before { opacity: 0.25; }
+  .res-card:hover { transform: none; }
+}

@@ -1,0 +1,282 @@
+{
+  "schema_version": "1.0.0-full",
+  "generated_utc": "2026-08-02T12:59:17Z",
+  "address": "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa",
+  "keybase_user": "easter47",
+  "overall": {
+    "result": "PASS",
+    "verdict": "PASS_BINDING_AND_CHAIN: Keybase user cryptographically bound to address; address exists and matches Bitcoin mainnet/genesis data. Spend control still NOT_PROVEN (no signmessage / no local bitcoind wallet key).",
+    "keybase_identity_binding": "PASS",
+    "bitcoin_chain": "PASS",
+    "bitcoin_spend_control": "NOT_PROVEN",
+    "components": {
+      "ownership_layers": {
+        "L1_session": "PASS",
+        "L2_claim_crypto": "PASS",
+        "L3_keybase_id": "PASS",
+        "L4_saltpack": "PASS",
+        "L5_btc_message": "NOT_PROVEN"
+      },
+      "keybase_http_api": "PASS",
+      "bitcoin_indexers": "PASS",
+      "genesis_linkage": "PASS",
+      "indexer_consensus": "PASS"
+    }
+  },
+  "keybase_ownership": {
+    "overall": {
+      "keybase_identity_binding": "PASS",
+      "bitcoin_spend_control": "NOT_PROVEN",
+      "verdict": "KEYBASE_BINDING_ONLY: Keybase user easter47 cryptographically claims and saltpack-signed binding to 1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa. Bitcoin spend control NOT proven (L5=NOT_PROVEN).",
+      "layer_summary": {
+        "L1_session": "PASS",
+        "L2_claim_crypto": "PASS",
+        "L3_keybase_id": "PASS",
+        "L4_saltpack": "PASS",
+        "L5_btc_message": "NOT_PROVEN"
+      }
+    },
+    "claimed_owner": {
+      "keybase_username": "easter47",
+      "keybase_uid": "e24107e5a5687a829a06a0e60a78d219",
+      "device_name": "aio",
+      "device_id": "431a8206365e48288ca6718d5e201218",
+      "local_whoami": "easter47"
+    },
+    "challenge_sha256": "27e61511a3ce77c9b1d039d295b04e76db9b1c6a752ec382c4d860a9a74a9a75",
+    "artifacts": {
+      "canonical_json_sha256": "146824066394340f557e4600ff80a5206b698a2bc43a9213b0ee41f5393438c7",
+      "document_path": "/home/av/btc/ownership-verify/OWNERSHIP-VERIFY.json",
+      "pretty_document_path": "/home/av/btc/ownership-verify/OWNERSHIP-VERIFY.pretty.json",
+      "saltpack_detached_path": "/home/av/btc/ownership-verify/OWNERSHIP-ATTESTATION.saltpack",
+      "challenge_path": "/home/av/btc/ownership-verify/OWNERSHIP-CHALLENGE.canonical.json",
+      "btc_spend_challenge_path": "/home/av/btc/ownership-verify/BTC-SPEND-CONTROL-CHALLENGE.json",
+      "schema_path": "/home/av/btc/schema/ownership-verification.schema.json",
+      "pretty_saltpack_path": "/home/av/btc/ownership-verify/OWNERSHIP-VERIFY.pretty.json.saltpack"
+    },
+    "layers": {
+      "L1_local_keybase_session": {
+        "result": "PASS",
+        "whoami": "easter47",
+        "proves": "Local operator controls an unlocked device key for this Keybase account"
+      },
+      "L2_keybase_cryptocurrency_claim": {
+        "result": "PASS",
+        "sig_id": "fa0d750fa6644335738cde1b61a967099b2bf9b4dc2243578f3746924240466e0f",
+        "checks": {
+          "ed25519_over_compact_link": "PASS",
+          "payload_json_bound_via_sha256": "PASS",
+          "sig_id_eq_sha256_blob_0f": "PASS",
+          "username_matches": "PASS",
+          "address_matches": "PASS",
+          "type_is_bitcoin": "PASS"
+        },
+        "method": "Keybase sig_version=2 NaCl ed25519 over msgpack compact link"
+      },
+      "L3_keybase_identity_proofs": {
+        "result": "PASS",
+        "address_listed_in_keybase_id": true,
+        "proves": "keybase id shows address on the user's sigchain view"
+      },
+      "L4_keybase_signed_attestation": {
+        "result": "PASS",
+        "method": "keybase saltpack sign --detached + verify --signed-by",
+        "signed_by_assertion": "easter47",
+        "challenge_sha256": "27e61511a3ce77c9b1d039d295b04e76db9b1c6a752ec382c4d860a9a74a9a75",
+        "proves": "The Keybase user cryptographically signed the canonical attestation binding their username to the BTC address and claim sig_id"
+      },
+      "L5_bitcoin_message_signature": {
+        "result": "NOT_PROVEN",
+        "proves": "secp256k1 private key control — not supplied"
+      }
+    }
+  },
+  "keybase_http_api": {
+    "result": "PASS",
+    "api_status": {
+      "code": 0,
+      "name": "OK"
+    },
+    "username": "easter47",
+    "uid": "e24107e5a5687a829a06a0e60a78d219",
+    "bitcoin_claims": [
+      {
+        "address": "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa",
+        "sig_id": "fa0d750fa6644335738cde1b61a967099b2bf9b4dc2243578f3746924240466e0f"
+      }
+    ],
+    "matching_claim": {
+      "address": "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa",
+      "sig_id": "fa0d750fa6644335738cde1b61a967099b2bf9b4dc2243578f3746924240466e0f"
+    },
+    "claim_crypto": {
+      "result": "PASS",
+      "username": "easter47",
+      "uid": "e24107e5a5687a829a06a0e60a78d219",
+      "address": "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa",
+      "type": "bitcoin",
+      "sig_id": "fa0d750fa6644335738cde1b61a967099b2bf9b4dc2243578f3746924240466e0f",
+      "kid": "0120f7a7c82a39e3a6d560a26b8f6f588abcbd8112fc3ac17377057b3c0281c48a360a",
+      "ed25519_pubkey": "f7a7c82a39e3a6d560a26b8f6f588abcbd8112fc3ac17377057b3c0281c48a36",
+      "checks": {
+        "ed25519_over_compact_link": "PASS",
+        "payload_json_bound_via_sha256": "PASS",
+        "sig_id_eq_sha256_blob_0f": "PASS",
+        "username_matches": "PASS",
+        "address_matches": "PASS",
+        "type_is_bitcoin": "PASS"
+      },
+      "method": "Keybase sig_version=2 NaCl ed25519 over msgpack compact link"
+    },
+    "proofs": [
+      {
+        "proof_type": "twitter",
+        "nametag": "madmonero",
+        "state": 1,
+        "human_url": "https://twitter.com/madmonero/status/2068890480197165325"
+      },
+      {
+        "proof_type": "dns",
+        "nametag": "war.htp.sh",
+        "state": 1,
+        "human_url": "dns://war.htp.sh"
+      }
+    ],
+    "endpoints": {
+      "lookup": "https://keybase.io/_/api/1.0/user/lookup.json?username=easter47&fields=basics,cryptocurrency_addresses,proofs_summary",
+      "sig_get": "https://keybase.io/_/api/1.0/sig/get.json?sig_id=fa0d750fa6644335738cde1b61a967099b2bf9b4dc2243578f3746924240466e0f",
+      "profile": "https://keybase.io/easter47"
+    }
+  },
+  "bitcoin_blockchain": {
+    "result": "PASS",
+    "address": "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa",
+    "network": "bitcoin-mainnet",
+    "balance": {
+      "confirmed_sats": 5732599802,
+      "confirmed_btc": 57.32599802,
+      "mempool_delta_sats": 3822,
+      "total_received_sats": 5732599802,
+      "total_spent_sats": 0,
+      "tx_count_confirmed": 64593,
+      "utxo_count_approx": 77164,
+      "never_spent": true,
+      "chain_tip_height": 960732,
+      "chain_tip_hash": "000000000000000000001fe75085bf50293dc0067d19450e06a1116e57504b51"
+    },
+    "indexer_consensus": {
+      "result": "PASS",
+      "field_matches": {
+        "funded_txo_count": true,
+        "funded_txo_sum": true,
+        "spent_txo_count": true,
+        "spent_txo_sum": true,
+        "tx_count": true
+      },
+      "blockstream_chain_stats": {
+        "funded_txo_count": 77164,
+        "funded_txo_sum": 5732599802,
+        "spent_txo_count": 0,
+        "spent_txo_sum": 0,
+        "tx_count": 64593
+      },
+      "mempool_chain_stats": {
+        "funded_txo_count": 77164,
+        "funded_txo_sum": 5732599802,
+        "spent_txo_count": 0,
+        "spent_txo_sum": 0,
+        "tx_count": 64593
+      }
+    },
+    "sources": {
+      "blockstream": {
+        "api": "https://blockstream.info/api",
+        "address": {
+          "address": "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa",
+          "chain_stats": {
+            "funded_txo_count": 77164,
+            "funded_txo_sum": 5732599802,
+            "spent_txo_count": 0,
+            "spent_txo_sum": 0,
+            "tx_count": 64593
+          },
+          "mempool_stats": {
+            "funded_txo_count": 7,
+            "funded_txo_sum": 3822,
+            "spent_txo_count": 0,
+            "spent_txo_sum": 0,
+            "tx_count": 7
+          }
+        },
+        "chain_tip_height": 960732,
+        "chain_tip_hash": "000000000000000000001fe75085bf50293dc0067d19450e06a1116e57504b51",
+        "result": "PASS"
+      },
+      "mempool_space": {
+        "api": "https://mempool.space/api",
+        "address": {
+          "address": "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa",
+          "chain_stats": {
+            "funded_txo_count": 77164,
+            "funded_txo_sum": 5732599802,
+            "spent_txo_count": 0,
+            "spent_txo_sum": 0,
+            "tx_count": 64593
+          },
+          "mempool_stats": {
+            "funded_txo_count": 7,
+            "funded_txo_sum": 3822,
+            "spent_txo_count": 0,
+            "spent_txo_sum": 0,
+            "tx_count": 7
+          }
+        },
+        "chain_tip_height": 960732,
+        "chain_tip_hash": "000000000000000000001fe75085bf50293dc0067d19450e06a1116e57504b51",
+        "result": "PASS"
+      }
+    },
+    "genesis_linkage": {
+      "result": "PASS",
+      "block_height": 0,
+      "block_hash": "000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f",
+      "expected_genesis_hash": "000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f",
+      "block_hash_matches_canonical": true,
+      "coinbase_txid": "4a5e1e4baab89f3a32518a88c31bc87f618f76673e2cc77ab2127b7afdeda33b",
+      "expected_coinbase_txid": "4a5e1e4baab89f3a32518a88c31bc87f618f76673e2cc77ab2127b7afdeda33b",
+      "coinbase_txid_matches": true,
+      "coinbase_value_sats": 5000000000,
+      "scriptpubkey": "4104678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5fac",
+      "scriptpubkey_type": "p2pk",
+      "genesis_pubkey": "04678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5f",
+      "derived_p2pkh_from_genesis_pubkey": "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa",
+      "derived_equals_target_address": true,
+      "coinbase_message_hex": "5468652054696d65732030332f4a616e2f32303039204368616e63656c6c6f72206f6e206272696e6b206f66207365636f6e64206261696c6f757420666f722062616e6b73",
+      "coinbase_message_utf8": "The Times 03/Jan/2009 Chancellor on brink of second bailout for banks",
+      "notes": "Genesis output is P2PK (not P2PKH). Modern explorers credit P2PKH(hash160(pubkey)) = 1A1z… as the address form of that coinbase.",
+      "coinbase_tx_hex_sha256": "27362e66e032c731c1c8519f43063fe0e5d070db1c0c3552bb04afa18a31c6bf",
+      "coinbase_tx_hex_len": 204
+    },
+    "errors": [],
+    "method": "Esplora HTTP APIs (Blockstream.info + Mempool.space) backed by Bitcoin full nodes; not a local bitcoind on this host"
+  },
+  "caveats": [
+    "No local bitcoind/bitcoin-cli on this host; chain data from public Esplora APIs (Blockstream + Mempool.space).",
+    "Those APIs reflect Bitcoin mainnet consensus as indexed by their full nodes.",
+    "Keybase claim + saltpack prove identity binding, not secp256k1 spend control of the address.",
+    "Genesis coinbase is P2PK; address 1A1z… is the P2PKH encoding of hash160(genesis_pubkey).",
+    "spent_txo_count=0 on Genesis does not imply you can spend it; it means explorers show no spends from those outputs."
+  ],
+  "local_node": {
+    "bitcoin_cli": false,
+    "bitcoind": false,
+    "note": "Install Bitcoin Core and re-run for local RPC verification if desired"
+  },
+  "artifacts": {
+    "pretty": "/home/av/btc/full-verify/FULL-VERIFY.pretty.json",
+    "canonical": "/home/av/btc/full-verify/FULL-VERIFY.json",
+    "latest": "/home/av/btc/FULL-VERIFY-LATEST.json",
+    "saltpack": "/home/av/btc/full-verify/FULL-VERIFY.pretty.json.saltpack",
+    "sha256_pretty": "9ff7a36c49c857261bda9b64672166a0905803030438447f0954a4931d101bfa"
+  }
+}

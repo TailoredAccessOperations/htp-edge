@@ -1,0 +1,11 @@
+; Context RRset for the lulz boat room.
+; Four TXT records on one name: a round-robin set.
+; Publish these at rr.lulz.htp.sh when the zone token can edit DNS.
+; lulz.htp.sh itself is left untouched (CNAME hacked.by.cia.gov).
+$ORIGIN lulz.htp.sh.
+$TTL 120
+
+rr    IN TXT  "v=htp-lulz1 disc=SHADY-XV side=X track=02 Psychopath-Killer clock=5:19"
+rr    IN TXT  "v=htp-lulz1 stair=/psychopath-killer frames=4 figure=fixed-do"
+rr    IN TXT  "v=htp-lulz1 deck=https://htp.sh callsign=1.3.3.7"
+rr    IN TXT  "v=htp-lulz1 boat=lab-mirror crew=anonymous theme=lulzsec"

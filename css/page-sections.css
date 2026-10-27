@@ -1,0 +1,156 @@
+/* Page display sections: stable boundaries for each interactive surface. */
+.page-section,
+.display-section {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+}
+
+.display-section {
+  z-index: 2;
+}
+
+.page-section--media-stage {
+  z-index: 2;
+  display: grid;
+  gap: var(--space-4, 1rem);
+  width: min(100% - 2rem, var(--max));
+  margin: 0 auto;
+  isolation: isolate;
+}
+
+.page-section--agents,
+.page-section--content {
+  scroll-margin-top: 1rem;
+}
+
+.page-section--agents > .panel,
+.page-section--content > .panel,
+.page-section--media > .shelf-wrap,
+.page-section--terminal > .term-wrap,
+.page-section--legal > .legal-drop,
+.page-section--legal > .site-foot {
+  width: 100%;
+  min-width: 0;
+}
+
+.page-section--agents > .panel {
+  display: grid;
+  gap: var(--space-4, 1rem);
+}
+
+.page-section--content > article {
+  overflow: clip;
+}
+
+.page-section--legal .legal {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.page-atmosphere {
+  position: relative;
+  min-height: 0;
+}
+
+.page-atmosphere canvas,
+.page-atmosphere video {
+  pointer-events: none;
+}
+
+.display-section--tv {
+  min-height: clamp(24rem, 72vh, 52rem);
+  display: grid;
+  place-items: center;
+  padding: clamp(1rem, 4vw, 3rem) 1rem 0;
+  overflow: clip;
+}
+
+.page-section--hero {
+  padding-top: clamp(1rem, 4vw, 3rem);
+}
+
+.page-section--content,
+.page-section--media,
+.page-section--terminal,
+.page-section--legal {
+  scroll-margin-top: 1rem;
+}
+
+.page-section--content > .panel,
+.page-section--media > .shelf-wrap,
+.page-section--terminal > .term-wrap,
+.page-section--legal > .legal-drop,
+.page-section--legal > .site-foot {
+  width: 100%;
+  min-width: 0;
+}
+
+.page-section--media,
+.page-section--terminal,
+.page-section--legal {
+  display: grid;
+  gap: var(--space-4, 1rem);
+}
+
+.page-section--media {
+  padding-top: var(--space-4, 1rem);
+}
+
+.page-section--terminal {
+  padding-top: var(--space-2, 0.5rem);
+}
+
+.page-section--legal {
+  padding-top: var(--space-2, 0.5rem);
+}
+
+/* Keep fixed atmosphere layers behind content sections. */
+.page-section--hero,
+.page-section--content,
+.page-section--media,
+.page-section--terminal,
+.page-section--legal {
+  isolation: isolate;
+}
+
+@media (min-width: 900px) {
+  .display-section--tv {
+    min-height: 42rem;
+  }
+
+  .page-section--content > .panel {
+    padding: clamp(1.25rem, 3vw, 2.5rem);
+  }
+}
+
+@media (max-width: 720px) {
+  .page-section--agents > .panel,
+  .page-section--content > article {
+    padding-inline: 1rem;
+  }
+
+  .page-section--media-stage {
+    width: min(100% - 1.25rem, var(--max));
+  }
+
+  .display-section--tv {
+    min-height: 30rem;
+    padding-inline: 0;
+  }
+
+  .page-section--hero {
+    padding-top: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .display-section--tv,
+  .page-section--hero,
+  .page-section--content,
+  .page-section--media,
+  .page-section--terminal,
+  .page-section--legal {
+    scroll-margin-top: 0;
+  }
+}

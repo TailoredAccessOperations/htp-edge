@@ -1,0 +1,195 @@
+/* HTP · base — variables, reset, atmosphere, layout shell, ticker, links */
+/* ═══════════════════════════════════════════════════════════
+   HTP · 1.3.3.7 — Midnight Terminal · expert refresh
+   Dark, high-contrast, restrained accent, 4px rhythm
+   ═══════════════════════════════════════════════════════════ */
+
+:root {
+  /* Surfaces */
+  --bg0: #050807;
+  --bg1: #0a100c;
+  --bg2: #0f1712;
+  --panel: rgba(8, 14, 11, 0.94);
+  --card: rgba(12, 20, 15, 0.92);
+
+  /* Borders */
+  --line: rgba(74, 222, 128, 0.14);
+  --line-strong: rgba(74, 222, 128, 0.34);
+  --line-warn: rgba(251, 113, 133, 0.34);
+
+  /* Accent — restrained green, high-contrast text */
+  --green: #4ade80;
+  --green-bright: #86efac;
+  --green-dim: #15803d;
+  --mint: #bbf7d0;
+  --text: #d8f3e4;
+  --muted: #6d8f7d;
+  --cyan: #67e8f9;
+  --amber: #fbbf24;
+  --red: #fb7185;
+  --red-soft: rgba(251, 113, 133, 0.12);
+
+  /* Elevation */
+  --glow: 0 0 28px rgba(74, 222, 128, 0.1);
+  --shadow-panel: var(--glow), 0 18px 48px rgba(0, 0, 0, 0.42);
+  --radius: 12px;
+  --radius-sm: 8px;
+  --radius-pill: 999px;
+  --max: 960px;
+
+  /* Type */
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, "Courier New", monospace;
+  --font-ascii: "Courier New", Courier, "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  --font-sans: "IBM Plex Sans", system-ui, -apple-system, sans-serif;
+  --text-xs: 0.6875rem;
+  --text-sm: 0.8125rem;
+  --text-md: 0.9375rem;
+  --text-lg: 1.0625rem;
+  --leading-tight: 1.25;
+  --leading-body: 1.65;
+  --leading-loose: 1.8;
+
+  /* Spacing rhythm (4px base) */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+
+  /* Motion / focus */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --focus-ring: 0 0 0 2px var(--bg0), 0 0 0 4px var(--green);
+  --duration: 0.18s;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  color-scheme: dark;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  min-height: 100vh;
+  font-family: var(--font-mono);
+  font-size: var(--text-md);
+  line-height: var(--leading-body);
+  color: var(--text);
+  background:
+    radial-gradient(980px 520px at 50% -10%, rgba(74, 222, 128, 0.06), transparent 58%),
+    radial-gradient(640px 420px at 100% 18%, rgba(103, 232, 249, 0.035), transparent 52%),
+    linear-gradient(180deg, var(--bg0), var(--bg1) 42%, var(--bg0));
+  overflow-x: hidden;
+}
+
+/* Atmosphere — quiet, not noisy */
+canvas#matrix {
+  position: fixed; inset: 0; z-index: 5;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  opacity: 0.55;
+  mix-blend-mode: screen;
+}
+video#bgvideo {
+  position: fixed; top: 50%; left: 50%;
+  /* Explicit width/height, not min-*: a replaced element is never rendered
+     narrower than its intrinsic size, so `min-width:100%` left this at 640px
+     and forced horizontal scroll on phones. object-fit does the covering. */
+  width: 100vw; height: 100vh;
+  width: 100dvw; height: 100dvh;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+  z-index: -1; opacity: 0.07;
+  filter: blur(3px) brightness(0.5) saturate(0.75);
+  pointer-events: none;
+}
+video#ghostvideo {
+  position: fixed; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  z-index: 0; opacity: 0.42;
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+#crt, #scanlines {
+  position: fixed; inset: 0; pointer-events: none; z-index: 40;
+}
+#crt {
+  opacity: 0.18;
+  background: radial-gradient(ellipse at center, transparent 52%, rgba(0,0,0,0.48) 100%);
+  box-shadow: inset 0 0 110px rgba(0, 0, 0, 0.38);
+}
+#scanlines {
+  opacity: 0.1;
+  height: 200%;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0,0,0,0.07) 2px,
+    rgba(0,0,0,0.07) 4px
+  );
+  animation: scan 16s linear infinite;
+}
+@keyframes scan { to { transform: translateY(-50%); } }
+
+/* Layout shell */
+.site {
+  position: relative;
+  z-index: 1;
+  width: min(100% - 2rem, var(--max));
+  max-width: 100%;
+  min-width: 0;
+  margin: 0 auto;
+  padding: var(--space-6) 0 var(--space-7);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+/* Global focus — keyboard first */
+:focus { outline: none; }
+:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible,
+.chip:focus-visible,
+.res-card:focus-visible,
+.ghost-card:focus-visible,
+.links a:focus-visible,
+.meta-links a:focus-visible,
+footer.site-foot a:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+/* Skip link — visible on focus */
+.skip-link {
+  position: absolute;
+  left: var(--space-3);
+  top: var(--space-3);
+  z-index: 100;
+  padding: var(--space-2) var(--space-3);
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--bg0);
+  background: var(--green-bright);
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transform: translateY(-140%);
+  transition: transform var(--duration) var(--ease);
+}
+.skip-link:focus,
+.skip-link:focus-visible {
+  transform: translateY(0);
+  box-shadow: var(--focus-ring);
+}

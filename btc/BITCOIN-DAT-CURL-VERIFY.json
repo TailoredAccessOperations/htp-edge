@@ -1,0 +1,101 @@
+{
+  "utc": "2026-07-19T04:26:47Z",
+  "expected": {
+    "sha256": "b1674191a88ec5cdd733e4240a81803105dc412d6c6708d53ab94fc248f4f553",
+    "md5": "d56d71ecadf2137be09d8b1d35c6c042",
+    "size": 184292
+  },
+  "sources": {
+    "bitcoin.org/bitcoin.pdf": "PASS",
+    "htp.sh/bitcoin.pdf": "PASS",
+    "htp.sh/wallet.dat": "PASS (deployed still-firefly public/wallet.dat)",
+    "local_mirror_wallet.dat": "PASS"
+  },
+  "keybase": {
+    "easter47": {
+      "result": "PASS",
+      "address": "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa",
+      "sig_id": "fa0d750fa6644335738cde1b61a967099b2bf9b4dc2243578f3746924240466e0f"
+    },
+    "akula47": {
+      "result": "PASS",
+      "address": "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa",
+      "sig_id": "6786e86aabce6720a3ac52f3661537c9d01a53fa2905fa8622503642997e9e6e0f"
+    }
+  },
+  "container_checks": [
+    {
+      "container": "htp-mirror",
+      "url": "http://127.0.0.1/wallet.dat",
+      "http": "200",
+      "size": "184292",
+      "sha256": "b1674191a88ec5cdd733e4240a81803105dc412d6c6708d53ab94fc248f4f553",
+      "result": "PASS",
+      "content_type": "Content-Type: application/octet-stream"
+    },
+    {
+      "container": "htp-mirror",
+      "url": "http://127.0.0.1/bitcoin.pdf",
+      "http": "200",
+      "size": "184292",
+      "sha256": "b1674191a88ec5cdd733e4240a81803105dc412d6c6708d53ab94fc248f4f553",
+      "result": "PASS",
+      "content_type": "Content-Type: application/pdf"
+    },
+    {
+      "container": "htp-docker-agent",
+      "url": "http://host.docker.internal:18480/wallet.dat",
+      "http": "200",
+      "size": "184292",
+      "sha256": "b1674191a88ec5cdd733e4240a81803105dc412d6c6708d53ab94fc248f4f553",
+      "result": "PASS",
+      "content_type": "Content-Type: application/octet-stream"
+    },
+    {
+      "container": "creatoor-nginx-gateway",
+      "url": "http://host.docker.internal:18480/wallet.dat",
+      "http": "200",
+      "size": "184292",
+      "sha256": "b1674191a88ec5cdd733e4240a81803105dc412d6c6708d53ab94fc248f4f553",
+      "result": "PASS",
+      "content_type": "Content-Type: application/octet-stream"
+    },
+    {
+      "container": "crypto-mesh",
+      "url": "http://host.docker.internal:18480/wallet.dat",
+      "http": "200",
+      "size": "184292",
+      "sha256": "b1674191a88ec5cdd733e4240a81803105dc412d6c6708d53ab94fc248f4f553",
+      "result": "PASS",
+      "content_type": "Content-Type: application/octet-stream"
+    },
+    {
+      "container": "creatoor-nginx-node-1",
+      "url": "http://host.docker.internal:18480/wallet.dat",
+      "http": "200",
+      "size": "184292",
+      "sha256": "b1674191a88ec5cdd733e4240a81803105dc412d6c6708d53ab94fc248f4f553",
+      "result": "PASS",
+      "content_type": "Content-Type: application/octet-stream"
+    },
+    {
+      "container": "lan-a-gateway",
+      "url": "http://host.docker.internal:18480/wallet.dat",
+      "http": "200",
+      "size": "184292",
+      "sha256": "b1674191a88ec5cdd733e4240a81803105dc412d6c6708d53ab94fc248f4f553",
+      "result": "PASS",
+      "content_type": "Content-Type: application/octet-stream"
+    },
+    {
+      "container": "ephemeral-curl",
+      "url": "http://host.docker.internal:18480/wallet.dat",
+      "http": "200",
+      "size": "184292",
+      "sha256": "b1674191a88ec5cdd733e4240a81803105dc412d6c6708d53ab94fc248f4f553",
+      "result": "PASS",
+      "content_type": "-"
+    }
+  ],
+  "overall": "PASS"
+}

@@ -1,0 +1,845 @@
+/* ============================================================================
+   HTP top banner — shared nav slice
+   ----------------------------------------------------------------------------
+   The single source of the top banner that appears on every navigable page.
+
+   This is the nav half of connect-components.css, extracted so that /money,
+   /osint and /chat can wear the homepage banner without also downloading the
+   54KB hero/FAQ/stats/agenda layer they have no use for. The CSS below is a
+   byte-for-byte copy of those blocks; scripts/inject_nav.py --check fails if
+   the two files drift.
+
+   Kept here in addition to connect-components.css (rather than moved out of
+   it) because connect-components.css is a port of Cloudflare's Connect 2026
+   stylesheet and is meant to stay complete on its own. No page loads both.
+
+   Load order note: this is render-blocking on purpose. The banner is the first
+   thing on the page, so letting it paint unstyled and then restyle is exactly
+   the layout shift htp-critical.css exists to prevent.
+   ========================================================================== */
+
+@font-face {
+  font-family: "Connect 2026 STK Bureau Sans";
+  src: url(/fonts/STKBureauSans-Book.6yelHiG-.woff2) format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Connect 2026 STK Bureau Sans";
+  src: url(/fonts/STKBureauSans-Regular.Cogyas__.woff2) format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Paper Mono";
+  src: url(/fonts/PaperMonoVariable.I2B71st_.woff2) format("woff2");
+  font-weight: 100 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  color-scheme: dark;
+
+  --cf-bg: #070b09;
+  --cf-bg-alt: #0c1410;
+  --cf-orange: #3ed678;
+  --cf-orange-hi: #5fd992;
+  /* Brand field: deep terminal green, so --cf-on-brand can be light text. */
+  --cf-field: #0b4423;
+  --cf-field-hi: #0f5c2e;
+  --cf-field-wash: #1f9a4e;
+  --cf-accent-text: #5fd992;
+  --cf-text: #c8e6d4;
+  --cf-text-warm: #b7d6c4;
+  --cf-text-muted: #7a9a88;
+  --cf-text-dim: #6f9d85;
+  --cf-border: #1c2a22;
+  --cf-border-subtle: #16241c;
+  --cf-border-hover: #2b4234;
+  --cf-surface: #0c1410;
+  --cf-surface-hover: #101a14;
+  --cf-control-hover: #14251b;
+  --cf-control-selected: #172c20;
+  --cf-on-brand: #c8e6d4;
+  --cf-on-accent: #04140b;
+
+  --connect-text-base: #c8e6d4;
+  --connect-text-default: #9dbdaa;
+  --connect-text-muted: #7a9a88;
+  --connect-text-subtle: #6f9d85;
+  --connect-text-faint: #7a9a88;
+  --connect-icon-faint: #6f8f7c;
+  --connect-orange-0: #eafff1;
+  --connect-orange-100: #d2fbe2;
+  --connect-orange-200: #b5f0cd;
+  --connect-orange-300: #8fe6b3;
+  --connect-orange-400: #5fd992;
+  --connect-orange-500: #3ed678;
+  --connect-orange-600: #2bb862;
+  --connect-orange-700: #1f9a4e;
+  --connect-orange-800: #17793d;
+  --connect-orange-900: #0f5c2e;
+  --connect-orange-1000: #0b4423;
+  --connect-orange-1100: #07321a;
+  --connect-orange-1200: #052413;
+  --connect-orange-1300: #031a0e;
+  --connect-orange-1400: #02120a;
+  --connect-orange-1500: #010b06;
+  --connect-text-accent-orange: var(--connect-orange-400);
+  --connect-icon-accent-orange: var(--connect-orange-400);
+  --connect-background-base: #070b09;
+  --connect-background-surface: #0c1410;
+  --connect-background-accent-orange: var(--connect-orange-500);
+  --connect-border-default: #1c2a22;
+  --connect-border-muted: #17251d;
+  --connect-border-dashed: #1a2a21;
+  --connect-border-accent-orange: var(--connect-orange-400);
+
+  --connect-font-sans: "Connect 2026 STK Bureau Sans", sans-serif;
+  --connect-font-mono: "Paper Mono", ui-monospace, SFMono-Regular, Menlo, Consolas,
+    monospace;
+
+  --connect-shadow-elevation-default: inset 0 0 0 1px transparent,
+    0 24px 32px -12px color-mix(in oklab, black 3%, transparent),
+    0 6px 12px 0 color-mix(in oklab, black 1%, transparent),
+    0 3px 6px 0 color-mix(in oklab, black 1%, transparent),
+    0 0 0 1px color-mix(in oklab, black 4%, transparent);
+  --connect-shadow-elevation-no-outline: inset 0 0 0 1px transparent,
+    0 24px 32px -12px color-mix(in oklab, black 3%, transparent),
+    0 6px 12px 0 color-mix(in oklab, black 1%, transparent),
+    0 3px 6px 0 color-mix(in oklab, black 1%, transparent);
+
+  --connect-shadow-button-primary-rest: inset 0 -1px 3px 0
+      color-mix(in oklab, #8fe6b3 12%, transparent),
+    inset 0 -0.5px 0.5px 0 color-mix(in oklab, #8fe6b3 24%, transparent),
+    inset 0 -0.25px 0.25px 0 color-mix(in oklab, #3ed678 40%, transparent),
+    inset 0 4px 8px 0 color-mix(in oklab, #8fe6b3 12%, transparent),
+    inset 0 1px 3px 0 color-mix(in oklab, #8fe6b3 24%, transparent),
+    inset 0 0.5px 0.5px 0 color-mix(in oklab, #8fe6b3 32%, transparent),
+    inset 0 0.25px 0.25px 0 #3ed678,
+    0 6px 10px -4px color-mix(in oklab, #1f9a4e 24%, transparent),
+    0 2px 4px -1px color-mix(in oklab, #1f9a4e 12%, transparent),
+    0 1px 1px -0.5px color-mix(in oklab, #1f9a4e 12%, transparent),
+    0 0.5px 0.5px 0 color-mix(in oklab, #1f9a4e 12%, transparent);
+  --connect-shadow-button-primary-hover: inset 0 -1px 3px 0
+      color-mix(in oklab, #8fe6b3 24%, transparent),
+    inset 0 -0.5px 0.5px 0 color-mix(in oklab, #8fe6b3 24%, transparent),
+    inset 0 -0.25px 0.25px 0 color-mix(in oklab, #3ed678 40%, transparent),
+    inset 0 4px 8px 0 color-mix(in oklab, #8fe6b3 24%, transparent),
+    inset 0 1px 3px 0 color-mix(in oklab, #8fe6b3 24%, transparent),
+    inset 0 0.5px 0.5px 0 color-mix(in oklab, #8fe6b3 32%, transparent),
+    inset 0 0.25px 0.25px 0 #3ed678,
+    0 6px 10px -4px color-mix(in oklab, #1f9a4e 32%, transparent),
+    0 2px 4px -1px color-mix(in oklab, #1f9a4e 12%, transparent),
+    0 1px 1px -0.5px color-mix(in oklab, #1f9a4e 12%, transparent),
+    0 0.5px 0.5px 0 color-mix(in oklab, #1f9a4e 12%, transparent);
+  --connect-shadow-button-primary-pressed: inset 0 -1px 3px 0
+      color-mix(in oklab, #8fe6b3 12%, transparent),
+    inset 0 -0.5px 0.5px 0 color-mix(in oklab, #8fe6b3 24%, transparent),
+    inset 0 -0.25px 0.25px 0 color-mix(in oklab, #3ed678 40%, transparent),
+    inset 0 4px 8px 0 color-mix(in oklab, #8fe6b3 12%, transparent),
+    inset 0 1px 3px 0 color-mix(in oklab, #8fe6b3 24%, transparent),
+    inset 0 0.5px 0.5px 0 color-mix(in oklab, #8fe6b3 32%, transparent),
+    inset 0 0.25px 0.25px 0 #3ed678,
+    0 6px 10px -4px color-mix(in oklab, #1f9a4e 12%, transparent),
+    0 2px 4px -1px color-mix(in oklab, #1f9a4e 12%, transparent),
+    0 1px 1px -0.5px color-mix(in oklab, #1f9a4e 12%, transparent),
+    0 0.5px 0.5px 0 color-mix(in oklab, #1f9a4e 12%, transparent);
+  --connect-shadow-button-primary-focus: var(--connect-shadow-button-primary-rest),
+    0 0 0 1.5px var(--connect-background-base), 0 0 0 2.5px var(--connect-orange-400);
+
+  --connect-shadow-button-secondary-rest: 0 8px 12px -2px transparent,
+    0 4px 8px -2px rgb(0 0 0 / 2%), 0 2px 4px -1px rgb(0 0 0 / 2%),
+    0 1px 1px -0.5px rgb(0 0 0 / 2%), 0 0 0 1px rgb(0 0 0 / 4%);
+  --connect-shadow-button-secondary-hover: 0 8px 12px -2px rgb(0 0 0 / 2%),
+    0 4px 8px -2px rgb(0 0 0 / 2%), 0 2px 4px -1px rgb(0 0 0 / 2%),
+    0 1px 1px -0.5px rgb(0 0 0 / 2%), 0 0 0 1px rgb(0 0 0 / 4%);
+  --connect-shadow-button-secondary-active: 0 8px 12px -2px transparent,
+    0 3px 6px -2px rgb(0 0 0 / 1%), 0 2px 4px -1px rgb(0 0 0 / 2%),
+    0 1px 1px -0.5px rgb(0 0 0 / 2%), 0 0 0 1px rgb(0 0 0 / 4%);
+  --connect-shadow-button-secondary-focus: 0 4px 8px -2px rgb(0 0 0 / 2%),
+    0 2px 4px -1px rgb(0 0 0 / 2%), 0 1px 1px -0.5px rgb(0 0 0 / 2%),
+    0 0 0 1px rgb(0 0 0 / 4%), 0 0 0 2.5px var(--connect-background-base),
+    0 0 0 3.5px var(--connect-orange-400);
+
+  --text-hero: clamp(2.75rem, 5vw, 4rem);
+  --text-section: clamp(1.75rem, 3.5vw, 2.5rem);
+  --text-subsection: clamp(1.25rem, 2vw, 1.5rem);
+  --text-body-lg: 1.125rem;
+  --text-code: 0.8125rem;
+  --space-section: clamp(64px, 10vh, 80px);
+  --max-width: 1296px;
+}
+
+@supports (background: color(display-p3 0 0 0)) {
+  :root {
+    --connect-background-base: color(display-p3 0.0275 0.0431 0.0353);
+    --connect-background-surface: color(display-p3 0.0471 0.0784 0.0627);
+    --connect-border-default: color(display-p3 0.1098 0.1647 0.1333);
+    --connect-border-muted: color(display-p3 0.0902 0.1451 0.1137);
+    --connect-border-dashed: color(display-p3 0.102 0.1647 0.1294);
+  }
+}
+
+[data-cf-surface="dark"] {
+  --cf-bg: #070b09;
+  --cf-bg-alt: #0c1410;
+  --cf-text-warm: #b7d6c4;
+  --cf-text-muted: #7a9a88;
+  --cf-text-dim: #6f9d85;
+  --cf-border: rgba(62, 214, 120, 0.18);
+  --connect-text-base: #c8e6d4;
+  --connect-text-default: #9dbdaa;
+  --connect-text-muted: #7a9a88;
+  --connect-background-base: #070b09;
+  --connect-background-surface: #0c1410;
+  --connect-border-default: rgba(62, 214, 120, 0.16);
+  --connect-border-muted: rgba(62, 214, 120, 0.12);
+  --connect-border-dashed: rgba(62, 214, 120, 0.2);
+}
+
+.cf-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.625rem;
+  border-radius: 9999px;
+  font-family: var(--connect-font-sans);
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.25rem;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: box-shadow 0.2s ease, background-color 0.2s ease, color 0.2s ease,
+    opacity 0.2s ease, transform 0.03s ease;
+}
+.cf-btn > span {
+  position: relative;
+  z-index: 1;
+  padding-inline: 0.375rem;
+}
+.cf-btn:focus-visible {
+  outline: none;
+}
+.cf-btn:active {
+  transform: scale(0.99);
+  transition-duration: 30ms;
+}
+
+.cf-btn--secondary {
+  background-color: var(--connect-background-base);
+  color: var(--connect-text-base);
+  box-shadow: var(--connect-shadow-button-secondary-rest);
+}
+.cf-btn--secondary:hover {
+  box-shadow: var(--connect-shadow-button-secondary-hover);
+}
+.cf-btn--secondary:active {
+  box-shadow: var(--connect-shadow-button-secondary-active);
+}
+.cf-btn--secondary:focus-visible {
+  box-shadow: var(--connect-shadow-button-secondary-focus);
+}
+
+.cf-btn--primary {
+  background-color: var(--connect-orange-500);
+  color: var(--cf-on-accent);
+  box-shadow: var(--connect-shadow-button-primary-rest);
+}
+.cf-btn--primary:hover {
+  box-shadow: var(--connect-shadow-button-primary-hover);
+}
+.cf-btn--primary:active {
+  box-shadow: var(--connect-shadow-button-primary-pressed);
+}
+.cf-btn--primary:focus-visible {
+  box-shadow: var(--connect-shadow-button-primary-focus);
+}
+/* The two gradient sheen layers Cloudflare overlays on primary CTAs. */
+.cf-btn--primary::before,
+.cf-btn--primary::after {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  content: "";
+  pointer-events: none;
+  opacity: 0.24;
+  transition: all 0.2s ease;
+}
+.cf-btn--primary::before {
+  background: linear-gradient(to bottom, var(--connect-orange-600), transparent 40%);
+}
+.cf-btn--primary::after {
+  background: linear-gradient(to top, var(--connect-orange-600), transparent 40%);
+}
+.cf-btn--primary:hover::before,
+.cf-btn--primary:hover::after {
+  opacity: 0.32;
+}
+.cf-btn--primary:active::before,
+.cf-btn--primary:active::after {
+  opacity: 0.08;
+  transition-duration: 30ms;
+}
+
+@media (max-width: 767px) {
+  .cf-btn--full-mobile {
+    width: 100%;
+  }
+}
+
+/* ── Font utility ───────────────────────────────────────────────────────────
+   The injected markup carries font-connect (upstream's Tailwind font family
+   utility). This stylesheet is hand-written and never goes through Tailwind,
+   so the class would otherwise be inert. */
+
+.font-connect {
+  font-family: var(--connect-font-sans);
+}
+
+/* ── Nav ────────────────────────────────────────────────────────────────────
+   Condensed from the 741-line upstream block: the sliding hover pill, the
+   over-hero transparent state, the shimmer sweep, dropdowns and the
+   full-screen mobile menu. */
+
+.cf-nav {
+  --cf-nav-h: 80px;
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  /* main.site constrains its children to a 920px column; the nav is meant to
+     span the full viewport, so it breaks out the same way .section-divider
+     does rather than sitting boxed in the content gutter. */
+  width: 100vw;
+  margin-inline: calc(50% - 50vw);
+  background: var(--cf-bg);
+  transition: background 0.25s ease, box-shadow 0.25s ease;
+}
+.cf-nav--menu-open {
+  z-index: 100;
+  background: transparent;
+}
+.cf-nav--menu-open .cf-nav__logo img {
+  filter: none !important;
+}
+.cf-nav--menu-open .cf-nav__bar {
+  background: var(--cf-text-warm) !important;
+}
+.cf-nav--menu-open .cf-nav__cta {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.2s ease, visibility 0.2s;
+}
+html[data-nav-menu-open] .cf-mode-toggle {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.cf-nav__shell {
+  display: flex;
+  align-items: center;
+  height: var(--cf-nav-h);
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+  position: relative;
+  z-index: 2;
+}
+.cf-nav__logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  line-height: 0;
+  justify-self: start;
+  text-decoration: none;
+}
+.cf-nav__logo img {
+  width: 57px;
+  height: 26px;
+  display: block;
+}
+.cf-nav__wordmark {
+  display: flex;
+  flex-direction: column;
+  color: var(--connect-orange-400);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.32px;
+  white-space: nowrap;
+  transition: color 0.25s ease;
+}
+.cf-nav__separator {
+  width: 1px;
+  height: 13px;
+  margin-left: 24px;
+  margin-right: 10px;
+  flex: 0 0 auto;
+  border-radius: 9999px;
+  background: var(--connect-border-default);
+  transition: opacity 150ms ease;
+}
+.cf-nav__links {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  /* Containing block for the absolutely-positioned hover pill. */
+  position: relative;
+}
+.cf-nav__dropdown {
+  position: relative;
+}
+.cf-nav__link {
+  display: inline-flex;
+  align-items: center;
+  height: 32px;
+  padding: 0 14px;
+  border-radius: 9999px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--connect-text-base);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 150ms ease, opacity 150ms ease;
+  /* Sit above the sliding pill so the link text stays legible. */
+  position: relative;
+  z-index: 1;
+}
+.cf-nav__dropdown-trigger {
+  gap: 4px;
+  margin: 0;
+  border: 0;
+  background: transparent;
+  font-family: inherit;
+  cursor: pointer;
+}
+.cf-nav__dropdown-chevron {
+  transition: transform 200ms ease;
+}
+.cf-nav__dropdown-trigger[aria-expanded="true"] .cf-nav__dropdown-chevron {
+  transform: rotate(180deg);
+}
+
+/* Shimmer sweep for the emphasised nav item. Brightness alone can't carry the
+   glint over the orange hero, so the glint shifts hue into the apricot band. */
+.cf-nav__shimmer {
+  --cf-nav-shimmer-base: var(--connect-text-base);
+  --cf-nav-shimmer-glint: var(--connect-orange-600);
+  --cf-nav-shimmer-duration: 1.5s;
+  background-image: linear-gradient(
+    100deg,
+    var(--cf-nav-shimmer-base) 40%,
+    var(--cf-nav-shimmer-glint) 50%,
+    var(--cf-nav-shimmer-base) 60%
+  );
+  background-size: 300% 100%;
+  background-position: 100% 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: cf-nav-shimmer 6s var(--cf-nav-shimmer-duration) linear infinite;
+}
+@keyframes cf-nav-shimmer {
+  0%,
+  70%,
+  100% {
+    background-position: 100% 0;
+  }
+  85% {
+    background-position: 0 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cf-nav__shimmer {
+    animation: none;
+    background-image: none;
+    color: var(--connect-text-base);
+  }
+}
+
+.cf-nav__hover-pill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 32px;
+  border-radius: 9999px;
+  background: var(--cf-surface-hover);
+  pointer-events: none;
+  opacity: 0;
+  transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1), width 0.28s
+      cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease;
+}
+.cf-nav__links:hover .cf-nav__hover-pill,
+.cf-nav__links:focus-within .cf-nav__hover-pill {
+  opacity: 1;
+}
+
+.cf-nav__dropdown-panel {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  min-width: 280px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-4px);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+  z-index: 10;
+}
+.cf-nav__dropdown-panel[data-open] {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.cf-nav__dropdown-surface {
+  padding: 8px;
+  border-radius: 10px;
+  background: var(--connect-background-base);
+  border: 1px solid var(--connect-border-default);
+  box-shadow: var(--connect-shadow-elevation-default);
+}
+.cf-nav__dropdown-link {
+  display: block;
+  padding: 8px 12px;
+  border-radius: 8px;
+  text-decoration: none;
+}
+.cf-nav__dropdown-link:hover {
+  background: var(--cf-surface-hover);
+}
+.cf-nav__dropdown-label {
+  display: block;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--connect-text-base);
+}
+.cf-nav__dropdown-description {
+  display: block;
+  font-size: 13px;
+  line-height: 18px;
+  color: var(--connect-text-default);
+}
+
+.cf-nav__right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: auto;
+}
+.cf-nav__hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  padding: 0 9px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+.cf-nav__bar {
+  display: block;
+  height: 1.5px;
+  width: 100%;
+  background: var(--connect-text-base);
+  transition: transform 0.25s ease, opacity 0.2s ease;
+}
+
+.cf-nav__menu {
+  position: fixed;
+  inset: 0;
+  background: var(--connect-background-base);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s;
+  z-index: 90;
+}
+.cf-nav__menu[data-open] {
+  opacity: 1;
+  visibility: visible;
+}
+.cf-nav__menu-inner {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: calc(var(--cf-nav-h) + 24px) 24px 32px;
+  overflow-y: auto;
+}
+.cf-nav__menu-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+  border: 0;
+  background: transparent;
+  font-family: var(--connect-font-sans);
+  font-size: 24px;
+  line-height: 32px;
+  letter-spacing: -0.02em;
+  color: var(--connect-text-base);
+  text-decoration: none;
+  text-align: left;
+  cursor: pointer;
+}
+.cf-nav__menu-submenu {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 250ms ease;
+}
+.cf-nav__menu-submenu > * {
+  min-height: 0;
+  overflow: hidden;
+}
+.cf-nav__menu-submenu[data-open] {
+  grid-template-rows: 1fr;
+}
+.cf-nav__menu-trigger[aria-expanded="true"] .cf-nav__menu-chevron {
+  transform: rotate(180deg);
+}
+.cf-nav__menu-chevron {
+  transition: transform 200ms ease;
+}
+.cf-nav__menu-sublink {
+  display: block;
+  padding: 8px 0 8px 16px;
+  font-size: 18px;
+  line-height: 28px;
+  color: var(--connect-text-default);
+  text-decoration: none;
+}
+.cf-nav__menu-footer {
+  margin-top: auto;
+  padding-top: 24px;
+}
+
+/* Over the orange hero the nav drops its own background and recolors to warm
+   white so the links and logo read against orange. Desktop only — on mobile
+   the nav sits over a solid panel. */
+@media (min-width: 768px) {
+  html[data-over-hero] .cf-nav {
+    background: transparent;
+    box-shadow: none;
+  }
+  html[data-over-hero] .cf-nav__link {
+    color: var(--cf-on-brand);
+  }
+  html[data-over-hero] .cf-nav__hover-pill {
+    background: rgba(200, 230, 212, 0.12);
+  }
+  html[data-over-hero] .cf-nav__logo img {
+    filter: brightness(0) invert(1);
+  }
+  html[data-over-hero] .cf-nav__wordmark {
+    color: var(--cf-on-brand);
+  }
+  html[data-over-hero] .cf-nav__separator {
+    opacity: 0.45;
+  }
+  html[data-over-hero] .cf-nav__shimmer {
+    --cf-nav-shimmer-base: #0b4423;
+    --cf-nav-shimmer-glint: var(--connect-orange-300);
+    --cf-nav-shimmer-duration: 1.5s;
+  }
+  html[data-over-hero] .cf-nav__links:has(.cf-nav__link:hover) .cf-nav__link:not(:hover),
+  html[data-over-hero]
+    .cf-nav__links:has(.cf-nav__link:focus-visible)
+    .cf-nav__link:not(:focus-visible),
+  html[data-over-hero]
+    .cf-nav__links:has(.cf-nav__dropdown-trigger[aria-expanded="true"])
+    .cf-nav__link:not([aria-expanded="true"]) {
+    opacity: 0.72;
+  }
+}
+
+/* The hero carries its own Register button, so the nav CTA slides away with
+   the hero on narrow viewports rather than duplicating it. */
+@media (max-width: 900px) {
+  .cf-nav__hamburger {
+    display: flex;
+  }
+  /* Collapse to the full-screen panel. Without this the desktop bar stays
+     display:flex and renders on top of the hamburger. */
+  .cf-nav__links,
+  .cf-nav__hover-pill {
+    display: none;
+  }
+  .cf-nav__cta {
+    transition: opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+      transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.35s,
+      max-width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    max-width: 200px;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  html[data-over-hero] .cf-nav__cta {
+    opacity: 0;
+    transform: translateY(-8px);
+    visibility: hidden;
+    pointer-events: none;
+    max-width: 0;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+@media (max-width: 1024px) {
+  .cf-nav__shell {
+    padding: 0 16px;
+  }
+}
+
+/* ── Utility ─────────────────────────────────────────────────────────────── */
+
+.cf-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* The CF components assume a light canvas for their shadows. On HTP's black
+   terminal the 1px outer ring reads as a hard outline, so soften it. */
+body .cf-panel,
+body .cf-cardgrid,
+body .cf-nav__dropdown-surface {
+  box-shadow: 0 24px 32px -12px rgb(0 0 0 / 55%),
+    0 6px 12px 0 rgb(0 0 0 / 35%), 0 3px 6px 0 rgb(0 0 0 / 30%),
+    0 0 0 1px rgb(255 255 255 / 4%);
+}
+
+/* ── Additions for the shared banner ────────────────────────────────────────
+   Everything above is the copied slice. What follows is only what the banner
+   needs on pages it did not previously have to work on. */
+
+/* The banner is sticky, so an in-page anchor jump has to clear it. The
+   homepage's own sections get this from .cf-section; sub-pages have no
+   cf-sections, so a jump to any of their own ids would land under the bar. */
+:target {
+  scroll-margin-top: calc(var(--cf-nav-h) + 16px);
+}
+
+/* Which page you are on. The homepage has no aria-current anywhere in its bar
+   (every link there is a same-page section anchor), so this only ever paints
+   on the sub-pages. */
+.cf-nav__link[aria-current="page"] {
+  color: var(--connect-orange-400);
+}
+/* ...and it stays lit when the pointer is elsewhere, so "where am I" is legible
+   without hovering. The hover pill is driven purely by :hover/:focus-within, so
+   an aria-current link needs its own resting indicator. */
+.cf-nav__link[aria-current="page"]::before {
+  content: "";
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  width: 4px;
+  height: 4px;
+  border-radius: 9999px;
+  background: var(--connect-orange-400);
+  transform: translateX(-50%);
+}
+.cf-nav__menu-link[aria-current="page"] {
+  color: var(--connect-orange-400);
+}
+
+/* The full-screen mobile panel is position:fixed and covers everything, so the
+   page behind it must not scroll. cf-nav.js sets this inline on <html> too;
+   here it also covers the no-JS and pre-script states. */
+html[data-nav-menu-open] {
+  overflow: hidden;
+}
+
+/* Some global theme styles (*.css shipped with subpages) set bare `a`, `span`,
+   `div` and `p` to !important colors and font-families. That is lethal for the
+   banner: it rewrites the whole bar on /money and /osint regardless of source
+   order or how specific our own rules are, because !important outranks
+   specificity. To win we must punch through with equal strength, but only
+   inside the nav subtree — otherwise we would be reintroducing the exact
+   global !important cascade we are escaping.
+
+   The bare-element reset has to cover every element the banner is built from,
+   not just the ones that visibly carry text: the wrappers (.cf-nav__shell,
+   .cf-nav__links, .cf-nav__separator) set the font-size and line-height the
+   links inherit, so leaving them alone leaves the links on the page theme's
+   type scale even after their own color is fixed. */
+.cf-nav,
+.cf-nav div,
+.cf-nav span,
+.cf-nav p,
+.cf-nav li,
+.cf-nav a,
+.cf-nav button,
+.cf-nav svg,
+.cf-nav path {
+  font-family: var(--connect-font-sans) !important;
+  color: var(--connect-text-base) !important;
+}
+/* The banner's own type scale, pinned rather than inherited. Each host page
+   sets body{font-size} to its own value (15px on /, /money and /osint, 14px on
+   /chat), and .cf-nav takes no font-size of its own, so without this the bar
+   silently re-typesets itself to whichever page it is on — same component,
+   four different sizes. */
+.cf-nav,
+.cf-nav div,
+.cf-nav span,
+.cf-nav p,
+.cf-nav li,
+.cf-nav a,
+.cf-nav button {
+  font-size: 14px;
+  line-height: 20px;
+}
+/* Re-apply the accent and muted tones the design actually uses. These sit above
+   the reset because they are scoped to the element that owns the value, so
+   they still win on specificity within the !important set. */
+.cf-nav .cf-nav__wordmark,
+.cf-nav .cf-nav__wordmark span {
+  color: var(--connect-orange-400) !important;
+}
+.cf-nav .cf-nav__dropdown-description {
+  color: var(--connect-text-muted) !important;
+  font-family: var(--connect-font-mono) !important;
+}
+.cf-nav .cf-nav__separator {
+  background: var(--connect-border-default) !important;
+}
+.cf-nav .cf-nav__link[aria-current="page"],
+.cf-nav .cf-nav__menu-link[aria-current="page"] {
+  color: var(--connect-orange-400) !important;
+}
+.cf-nav .cf-nav__link[aria-current="page"]::before {
+  background: var(--connect-orange-400) !important;
+}
+.cf-nav .cf-nav__cta,
+.cf-nav .cf-nav__menu-footer .cf-btn--primary {
+  color: var(--cf-on-accent) !important;
+}
+/* The button label is a <span> inside the <a>, and the bare-element reset
+   above colors spans too — so without this the CTA reads pale green on its own
+   green fill. Same trap as the wordmark: colour the text node's own element,
+   not just its ancestor. */
+.cf-nav .cf-nav__cta span,
+.cf-nav .cf-nav__menu-footer .cf-btn--primary span {
+  color: var(--cf-on-accent) !important;
+}
+.cf-nav .cf-nav__cta:hover,
+.cf-nav .cf-nav__cta:focus-visible,
+.cf-nav .cf-nav__menu-footer .cf-btn--primary:hover,
+.cf-nav .cf-nav__menu-footer .cf-btn--primary:focus-visible {
+  color: var(--cf-on-accent) !important;
+}
+/* END SHARED RESET — see inject_nav.py css_drift() */
